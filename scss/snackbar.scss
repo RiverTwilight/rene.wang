@@ -1,0 +1,36 @@
+/**
+  *Snackbar
+  **/
+  
+.snackbar {
+    position: fixed;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%, -0);
+    min-width: 200px;
+    border-radius: 3px;
+    animation: floatSnackbar 0.5s;
+    -moz-animation: floatSnackbar 0.5s; /* Firefox */
+    -webkit-animation: floatSnackbar 0.5s forwards 1; /* Safari 和 Chrome */
+    -o-animation: floatSnackbar 0.5s;
+    transition: 1s;
+    .snackbar-inner {
+        padding: 10px 20px;
+        text-align: center;
+    }
+}
+
+.snackbar-hide {
+    animation: floatSnackbar 0.5s reverse;
+}
+
+@keyframes floatSnackbar {
+    from {
+        top: 80px;
+        opacity: 0;
+    }
+    to {
+        top: 120px;
+        opacity: 1;
+    }
+}

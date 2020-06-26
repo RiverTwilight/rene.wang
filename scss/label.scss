@@ -1,0 +1,19 @@
+@import "./global.scss";
+
+.label {
+    border-radius: 50px;
+    background: rgb(216, 206, 206);
+    color: black;
+    height: 40px;
+    padding: 4px 10px;
+    cursor: pointer;
+    margin-right: 4px;
+    &:hover {
+        -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+        box-shadow: 0 2px 4px rgba(26, 26, 26, 0.1);
+    }
+}
+
+.label-header{
+    @extend .label
+}

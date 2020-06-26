@@ -1,0 +1,31 @@
+{
+  "name": "nextjs",
+  "version": "1.0.0",
+  "description": "A set of mature solutions for school official website|一套成熟的学校官网解决方案",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p 4000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "glob": "^7.1.6",
+    "gray-matter": "^4.0.2",
+    "next": "^9.4.2",
+    "node-sass": "^4.14.0",
+    "raw-loader": "^4.0.1",
+    "react": "^16.13.1",
+    "react-content-loader": "^5.0.4",
+    "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@types/react": "^16.9.34",
+    "typescript": "^3.8.3"
+  }
+}

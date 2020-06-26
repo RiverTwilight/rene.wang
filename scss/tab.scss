@@ -1,0 +1,91 @@
+@import './global.scss';
+
+.header-tab {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 5px;
+    background: white;
+}
+
+.tab {
+    display: flex;
+    flex-wrap: wrap;
+    height: 58px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-bottom: 1px solid #f0f2f7;
+    transition: 0.5s height;
+    -webkit-transition: height 0.5s;
+    a {
+        padding: 17px 10px;
+        cursor: pointer;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        font-size: 16px;
+        margin: 0px 22px;
+        @media (max-width: 640px) {
+            margin: 0px 2px;
+        }
+    }
+}
+
+/*切换为水平展开*/
+.tab-x {
+    flex-wrap: nowrap;
+    overflow-x: scorll;
+    a {
+        flex-shrink: 0;
+    }
+}
+
+.tab-extend {
+    height: 55px * 2; //根据实际需要多少行确定
+    @media (max-width: 400px){
+        height: 55px * 3;
+    }
+}
+
+.tab-showmore {
+    flex-shrink: 0;
+    height: 30px;
+    border: none;
+    padding: 5px 8px;
+    background: #ebebeb;
+    border-radius: 3px;
+    cursor: pointer;
+    &:active{
+        background: #aaa3a3;
+    }
+}
+
+.tab-active {
+    color: $themeColor;
+}
+
+/**滚动条样式**/
+
+.tab::-webkit-scrollbar {
+    display: none;
+}
+.tab-x::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.tab-x::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+}
+.tab-x::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 2px;
+}

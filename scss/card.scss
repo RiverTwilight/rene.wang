@@ -1,0 +1,21 @@
+.card-media {
+    background: #fff;
+    margin-bottom: 10px;
+    .card-media-img {
+        object-fit: cover;
+        width: 100%;
+    }
+    .card-title {
+        display: flex;
+        padding: 5px 8px;
+        font-size: 17px;
+        border-bottom: 1px solid #e5f2ff;
+    }
+    .card-content {
+        padding: 5px 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        color: #5c5858;
+    }
+}

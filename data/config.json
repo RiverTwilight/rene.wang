@@ -1,0 +1,18 @@
+{
+    "title": "江村暮的网络日志",
+    "description": "开发日志、技术文章以及生活随感。",
+    "keywords": [],
+    "logo":{
+        "small": "/static/image/logo.png",
+        "large": "/static/image/logo-160x160.png"
+    },
+    "author": {
+        "name": "江村暮",
+        "image": "/static/image/headermaster.jpg",
+        "intro": [
+            {
+                "title": ""
+            }
+        ]
+    }
+}

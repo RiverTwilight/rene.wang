@@ -1,0 +1,207 @@
+@import "./global.scss";
+
+/**
+ * =============================================================================
+ * ************   头部   ************
+ * =============================================================================
+ */
+
+$headerTextColor: #8590a6;
+
+@mixin stickToTop {
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+@mixin flexLayout {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+/****整个头部****/
+.app-header {
+    position: fixed;
+    padding-top: 3px;
+    @include stickToTop();
+    z-index: 100;
+    @media (min-width: 640px) {
+        min-width: 1032px;
+    }
+    overflow: hidden;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+    box-shadow: 0 1px 3px #1a1a1a1a;
+    background-clip: content-box;
+    .app-header-inner {
+        position: relative;
+        @include flexLayout();
+        width: 90%;
+        @media screen and (max-width: 640px) {
+            width: 98%;
+        }
+        height: 52px;
+        margin: 0 auto;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+        transition: transform 0.3s, -webkit-transform 0.3s;
+        .logo-large {
+            width: 250px;
+            height: 45px;
+        }
+        .logo-small {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}
+
+.header-liner {
+    position: fixed;
+    z-index: 108;
+    @include stickToTop();
+    height: 3px;
+    background: $themeColor;
+}
+
+/****头部导航栏****/
+.app-header-list {
+    @include flexLayout();
+    margin {
+        left: -15px;
+        right: 6px;
+    }
+    @media screen and (max-width: 640px) {
+        margin-left: -38px;
+        margin-right: 3px;
+        max-width: 50%;
+    }
+    .app-header-list-item {
+        flex-shrink: 0;
+        font-size: 0.95em;
+        list-style-type: none;
+        margin: 15px;
+        @media screen and (max-width: 640px) {
+            margin: 15px 5px;
+        }
+        color: #8590a6;
+        padding: 14px 0px 14px 0px;
+    }
+    .app-header-list-item-active {
+        @media (min-width: 640px) {
+            font-weight: 600;
+            color: black;
+            border-bottom: 3px solid $themeColor;
+        }
+        @media (max-width: 640px) {
+            font-weight: 400;
+            color: $themeColor;
+        }
+    }
+}
+
+/****搜索框*******/
+.search {
+    margin-right: 14px;
+    height: 31px;
+    width: 200px;
+    @media screen and (max-width: 640px) {
+        margin-right: 0px;
+        width: 100px;
+    }
+    border: 1px solid #ebebeb;
+    background: #f6f6f6;
+    padding: 0 4px 0 10px;
+    @include flexLayout();
+    border-radius: 50px;
+    transition: 0.2s border;
+    -webkit-transition: border 0.2s; /* Safari */
+    transition: 0.2s width;
+    -webkit-transition: width 0.2s; /* Safari */
+    input {
+        outline: none;
+        border: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        display: block;
+    }
+    .search-btn {
+        background: transparent;
+        display: inline-block;
+        position: relative;
+        border: 0;
+    }
+}
+
+.search-focus {
+    border: 1px solid $themeColor;
+    width: 260px;
+    @media screen and (max-width: 640px) {
+        width: 100%;
+    }
+}
+/***搜索联想框****/
+.hotwords {
+    background: #fff;
+    position: fixed;
+    width: 260px;
+    @media (max-width: 640px) {
+        width: auto;
+        max-height: 50%;
+        overflow-y: auto;
+    }
+    top: 60px;
+    padding: 10px;
+    box-shadow: 5px 4px 3px rgba(26, 26, 26, 0.1);
+    .hotwords-subtitle {
+        font-size: 14px;
+        color: #8590a6;
+        padding: 2px 0;
+        width: 100%;
+        border-bottom: 1px solid #f0f2f7;
+    }
+    .hotwords-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        .hotwords-item {
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+            &:hover {
+                color: $themeColor;
+            }
+        }
+    }
+}
+
+/**语言切换菜单***/
+.language {
+    margin-left: 15px;
+    button {
+        outline: none;
+        border-style: none;
+        cursor: pointer;
+        background: transparent;
+        color: $headerTextColor;
+        font-size: 14px;
+    }
+}
+
+.arrow-up {
+    width: 32px;
+    height: 16px;
+    -webkit-transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%);
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    left: 67px;
+    top: 0px;
+}

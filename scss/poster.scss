@@ -1,0 +1,37 @@
+.poster {
+    background: white;
+    padding: 10px;
+    margin-bottom: 8px;
+    .headline {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+        font-family: "SF Pro SC", "SF Pro Display", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica",
+            "Arial", sans-serif;
+        margin: 10px 0;
+    }
+    .introduce {
+        font-size: 21px;
+        line-height: 1.19048;
+        font-weight: 600;
+        color: #8c8c8c;
+        letter-spacing: 0.011em;
+        font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    }
+
+    .bg {
+        height: 40vh;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        line-height: 40vh;
+        text-align: center;
+        font-size: 5vh;
+        border-radius: 3px;
+    }
+
+    .g-img1 {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+    }
+}

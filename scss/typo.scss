@@ -1,0 +1,33 @@
+@import "./global.scss";
+
+/**
+ * =============================================================================
+ * ************   排版   ************
+ * =============================================================================
+ */
+ .typo{
+    background: white;
+    padding: 10px;
+}
+
+.typo img {
+    border-radius: 3px !important;
+}
+
+.typo-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.typo-detail {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.typo-split{
+    border-bottom: 1px solid $grey;
+    text-align: center;
+    padding-top: 5px;
+    color: $grey
+}

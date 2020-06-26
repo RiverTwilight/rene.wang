@@ -1,0 +1,83 @@
+$themeColor: #974578;
+
+/************文章列表******************/
+.passage-list {
+    background: #fff;
+    padding: 5px;
+    .passage-item {
+        border-bottom: 1px solid #ebebeb;
+        padding: 4px 0;
+        .passage-item-header {
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            .passage-item-header-title {
+                font: {
+                    size: 18px;
+                    weight: 600;
+                    synthesis: style;
+                }
+                line-height: 1.5;
+                color: #1a1a1a;
+                margin: {
+                    top: -4px;
+                    bottom: -4px;
+                }
+                cursor: pointer;
+                max-width: 80%;
+                &:hover {
+                    color: $themeColor;
+                }
+            }
+            .passage-item-header-date {
+                color: #888888;
+                font-weight: 100;
+                margin-top: -2px;
+            }
+        }
+        .passage-item-content {
+            display: flex;
+            padding: 11px 0;
+            line-height: 1.67;
+            .passage-item-content-text {
+                overflow: hidden;
+                max-height: 100px;
+                @media screen and (max-width: 640px) {
+                    max-height: 80px;
+                }
+            }
+        }
+    }
+
+    .passage-item-content-cover-inner img {
+        object-fit: cover;
+        width: 180px;
+        height: 105px;
+        @media screen and (max-width: 640px) {
+            width: 162px;
+            height: 90px;
+        }
+        overflow: hidden;
+        background-position: 50%;
+        background-size: cover;
+        border-radius: 4px;
+        margin-right: 5px;
+    }
+
+    .passage-item-action {
+        font-size: 14px;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .passage-more {
+        margin-top: 10px;
+        display: flex;
+        flex-basis: content;
+        justify-content: center;
+        cursor: pointer;
+        &:hover {
+            color: #444;
+        }
+    }
+}
