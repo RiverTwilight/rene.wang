@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import matter from 'gray-matter'
 import PassageItem from '../components/PassageLine'
 import Marquee from '../components/Marquee'
@@ -121,18 +121,18 @@ export default class extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            channel: 0
+            channel: 0,
+            page: 1
         }
     }
     render() {
-        const { allBlogs, siteConfig } = this.props
+        const { allBlogs, siteConfig } = this.props;
+        const { channel, page } = this.state;
         return (
             <Layout config={siteConfig}>
                 <Marquee
                     imgList={[
-                        "//7953524.s21i.faiusr.com/2/ABUIABACGAAgn4b40AUoz5e4lAQwgA84wgM.jpg",
-                        "//7953524.s21i.faiusr.com/2/ABUIABACGAAgjIP40AUou5fWHzCADzjCAw.jpg",
-                        "//7953524.s21i.faiusr.com/2/ABUIABACGAAgp4P40AUo9fX3-wEwgA84wgM.jpg"
+
                     ]}
                 />
                 <Tab onChange={index => {
@@ -142,9 +142,9 @@ export default class extends React.Component {
                 }}
                 />
                 <div className="card passage-list">
-                    {allBlogs.map((post, i) => (
+                    {allBlogs.slice(0, page * 2).map((post, i) => (
                         <PassageItem
-                            key={i}
+                            key={post.slug}
                             title={post.frontmatter.title}
                             slug={post.slug}
                             summary={post.markdownBody}
@@ -152,7 +152,15 @@ export default class extends React.Component {
                             date={post.frontmatter.date}
                         />
                     ))}
+                    <div style={{
+                        display: page === Math.ceil(allBlogs.length / 2) ? 'hidden' : ''
+                    }} onClick={() => {
+                        this.setState({ page: page + 1 })
+                    }} className="bg-white passage-more">
+                        加载更多
+                    </div>
                 </div>
+
             </Layout>
         )
     }

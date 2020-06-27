@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Headmaster = ({config: { name, image }}) => {
+const Headmaster = ({ config: { name, image, intro } }) => {
     return (
         <div className="our-headmaster card">
             <img className="lijun" src={image} />
@@ -9,27 +9,16 @@ const Headmaster = ({config: { name, image }}) => {
                 &nbsp;&nbsp;{name}
             </div>
             <div className="headmaster-content">
-                <div className="headmaster-content-title">
-                    教育箴言:
-                </div>
-                <div className="headmaster-content-text">
-                    严师出高徒
-                </div>
-                <div className="headmaster-content-title">
-                    教育目标:
-                </div>
-                <div className="headmaster-content-text">
-                    培养学生终身发展力
-                </div>
-                <div className="headmaster-content-title">
-                    教育资源:
-                </div>
-                <div className="headmaster-content-text">
-                    安全健康和美丽舒适的校园<br></br>
-                    爱生敬业和水平一流的师资<br></br>
-                    为学生终身奠基的四大课程体系<br></br>
-                    引领学生茁壮成长的校风
-                </div>
+                {intro.map((int: { title: React.ReactNode; content: React.ReactNode }) => (
+                    <>
+                        <div className="headmaster-content-title">
+                            {int.title}:
+                        </div>
+                        <div className="headmaster-content-text">
+                            {int.content}
+                        </div>
+                    </>
+                ))}
             </div>
         </div>
     )

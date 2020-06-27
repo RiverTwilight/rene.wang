@@ -6,7 +6,7 @@ $themeColor: #974578;
     padding: 5px;
     .passage-item {
         border-bottom: 1px solid #ebebeb;
-        padding: 4px 0;
+        padding: 4px 2px;
         .passage-item-header {
             padding-top: 10px;
             display: flex;
@@ -36,16 +36,31 @@ $themeColor: #974578;
             }
         }
         .passage-item-content {
-            display: flex;
             padding: 11px 0;
             line-height: 1.67;
             .passage-item-content-text {
-                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .passage-item-content-close {
+            .passage-item-content-text {
                 max-height: 100px;
+                overflow: hidden;
                 @media screen and (max-width: 640px) {
                     max-height: 80px;
                 }
             }
+            display: flex;
+        }
+        .passage-item-readmore {
+            cursor: pointer;
+            padding: 2px 5px;
+            &:hover {
+                color: rgb(95, 188, 231);
+            }
+            color: rgb(47, 136, 177);
         }
     }
 
@@ -65,9 +80,13 @@ $themeColor: #974578;
     }
 
     .passage-item-action {
-        font-size: 14px;
+        position: sticky;
+        bottom: 0;
         display: flex;
         flex-direction: row-reverse;
+        height: 40px;
+        align-items: center;
+        background: #fff;
     }
 
     .passage-more {

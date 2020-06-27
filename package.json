@@ -1,7 +1,7 @@
 {
-  "name": "nextjs",
+  "name": "nblog",
   "version": "1.0.0",
-  "description": "A set of mature solutions for school official website|一套成熟的学校官网解决方案",
+  "description": "A Responsive, Fast, i18n and Markdown Blog base on Next.js.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

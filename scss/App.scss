@@ -56,6 +56,10 @@ a {
 .img-round {
     border-radius: 3px !important;
 }
+
+.bg-white{
+    background: white;
+}
 /**
  * =============================================================================
  * ************   响应式工具   ************
@@ -303,5 +307,17 @@ a {
         object-fit: cover;
         width: 100%;
         height: 200px;
+    }
+}
+
+
+.passage-more {
+    margin-top: 10px;
+    display: flex;
+    flex-basis: content;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+        color: #444;
     }
 }

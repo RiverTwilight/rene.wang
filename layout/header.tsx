@@ -1,6 +1,5 @@
 import React from 'react'
 import Text from '../utils/languages'
-import Snackbar from '../components/Snackbar'
 import '../scss/header.scss'
 import ActiveLink from '../utils/AcitiveLink'
 
@@ -108,8 +107,8 @@ const Menu = (): React.ReactElement => {
             1: 'Home',
             0: '首页'
         },
-        school: {
-            1: 'School',
+        about: {
+            1: 'About',
             0: '学校概况'
         },
         recruit: {
@@ -125,8 +124,8 @@ const Menu = (): React.ReactElement => {
                         text: <Text home />,
                         to: '/'
                     }, {
-                        text: <Text school />,
-                        to: '/school'
+                        text: <Text about />,
+                        to: '/about'
                     }, {
                         text: <Text recruit />,
                         to: '/party'
@@ -205,7 +204,7 @@ class Language extends React.Component
     }
 }
 
-export default class extends React.Component<any, { lang: number }>{
+export default class extends React.Component<{ config: any; }, { lang: number }>{
     constructor(props: any) {
         super(props);
         this.state = {
@@ -213,16 +212,17 @@ export default class extends React.Component<any, { lang: number }>{
         }
     }
     render() {
-        const { lang } = this.state
+        const { lang } = this.state;
+        const { config } = this.props;
         return (
             <>
                 <div className="app-header">
                     <div className="app-header-inner">
                         <a className="hidden-sm-down">
-                            <img className="logo-large" src="/static/image/logo.png" />
+                            <img className="logo-large" src={config.logo.large} />
                         </a>
                         <a className="hidden-md-up">
-                            <img className="logo-small" src="/static/image/logo-160x160.jpg" />
+                            <img className="logo-small" src={config.logo.small} />
                         </a>
                         <Menu />
                         <Search />

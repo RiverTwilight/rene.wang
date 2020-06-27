@@ -18,7 +18,7 @@ export default class extends React.Component {
                     <title>{config.title}</title>
                 </Head>
                 <div ref={r => this.loading = r} style={{ display: 'inline-block' }} className="header-liner"></div>
-                <Header />
+                <Header config={config} />
                 <main className="main">
                     <div className="container">
                         <div className="container-left">

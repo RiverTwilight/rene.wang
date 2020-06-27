@@ -59,7 +59,7 @@ export default class extends React.Component<MarqueeProps, { index: number; time
                         this.setTimer()//重新计时提高用户体验
                         this.togglePrev()
                     }} className="marquee-prev">
-
+                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><title>ionicons-v5-a</title><polyline points='328 112 184 256 328 400' style={{fill:'#ffffff',stroke:'#000',strokeLinecap:'round',strokeLinejoin:'round',strokeWidth:'48px'}} /></svg>
                 </button>
                 <button
                     onClick={() => {

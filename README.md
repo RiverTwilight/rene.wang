@@ -1,6 +1,6 @@
 # NBlog
 
-A Responsive, Fast and Markdown Blog base on Next.js
+A Responsive, Fast, i18n and Markdown Blog base on Next.js. Inspired by this [article](https://dev.to/tinacms/creating-a-markdown-blog-with-next-js-52hk)
 
 ## Config
 
