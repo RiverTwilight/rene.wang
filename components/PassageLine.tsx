@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ReactMarkdown from 'react-markdown'
 import '../scss/passageLine.scss'
+import '../scss/typo.scss'
 
 export default ({ slug, title, cover, summary, date }: Readonly<{
     title: string;
@@ -24,13 +25,13 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
                         <img alt={title.replace('&nbsp;', ' ')} src={cover} />
                     </div>
                 </div>
-                <div className="passage-item-content-text">
-                    {expand ? <ReactMarkdown source={summary}></ReactMarkdown> : summary}
+                <div className="typo passage-item-content-text">
+                    {expand ? <ReactMarkdown source={summary}></ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>
             </div>
             <div onClick={() => {
                 setExpand(!expand)
-            }} className={"passage-item-action"}>
+            }} className={`passage-item-action ${expand ? 'passage-item-action-sticky' : ''}`}>
                 <span className="passage-item-readmore">{expand ? "收起" : "展开全文"}</span>
             </div>
         </div>

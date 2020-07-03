@@ -5,22 +5,25 @@ import ReactMarkdown from 'react-markdown'
 import Layout from '../../layout/index'
 import '../../scss/typo.scss'
 
+/**
+ * 文章详情
+ * @todo 图片显示问题，文章元数据展示 
+ */
+
 export default ({ frontmatter, markdownBody, siteConfig }) => {
     return (
         <Layout config={siteConfig}>
-            <div className="typo">
-                <div className="typo">
-                    <div className="typo-title text-center">
-                        {frontmatter.title}
+            <article className="typo">
+                <h1 className="typo-title text-center">
+                    {frontmatter.title}
+                </h1>
+                <div className="typo-detail">
+                    <div className="typo-detail-date">
                     </div>
-                    <div className="typo-detail">
-                        <div className="typo-detail-date">
-                        </div>
-                    </div>
-                    <ReactMarkdown source={markdownBody}></ReactMarkdown>
                 </div>
+                <ReactMarkdown source={markdownBody}></ReactMarkdown>
                 <div className="typo-split">END</div>
-            </div>
+            </article>
         </Layout>
     )
 }
@@ -54,7 +57,7 @@ export async function getStaticPaths() {
     )
 
     // create paths with `slug` param
-    const paths = blogSlugs.map(slug => `/blog/${slug}`)
+    const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
 
     return {
         paths,

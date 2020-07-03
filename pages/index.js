@@ -118,6 +118,7 @@ const Tab = ({ onChange }) => {
 }
 
 export default class extends React.Component {
+    postsPerPage = 5;
     constructor(props) {
         super(props);
         this.state = {
@@ -142,10 +143,10 @@ export default class extends React.Component {
                 }}
                 />
                 <div className="card passage-list">
-                    {allBlogs.slice(0, page * 2).map((post, i) => (
+                    {allBlogs.slice(0, page * this.postsPerPage).map((post, i) => (
                         <PassageItem
                             key={post.slug}
-                            title={post.frontmatter.title}
+                            title={post.frontmatter.title || post.slug}
                             slug={post.slug}
                             summary={post.markdownBody}
                             cover={post.frontmatter.cover}
@@ -153,14 +154,13 @@ export default class extends React.Component {
                         />
                     ))}
                     <div style={{
-                        display: page === Math.ceil(allBlogs.length / 2) ? 'hidden' : ''
+                        display: page === Math.ceil(allBlogs.length / this.postsPerPage) ? 'hidden' : ''
                     }} onClick={() => {
                         this.setState({ page: page + 1 })
                     }} className="bg-white passage-more">
                         加载更多
                     </div>
                 </div>
-
             </Layout>
         )
     }

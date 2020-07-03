@@ -110,10 +110,6 @@ const Menu = (): React.ReactElement => {
         about: {
             1: 'About',
             0: '学校概况'
-        },
-        recruit: {
-            1: 'Recruit',
-            0: '招生招聘'
         }
     }
     return (
@@ -126,9 +122,6 @@ const Menu = (): React.ReactElement => {
                     }, {
                         text: <Text about />,
                         to: '/about'
-                    }, {
-                        text: <Text recruit />,
-                        to: '/party'
                     }
                 ].map(item => (
                     <ActiveLink activeClassName="app-header-list-item-active" href={item.to}>

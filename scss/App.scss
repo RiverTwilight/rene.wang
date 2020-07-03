@@ -309,15 +309,3 @@ a {
         height: 200px;
     }
 }
-
-
-.passage-more {
-    margin-top: 10px;
-    display: flex;
-    flex-basis: content;
-    justify-content: center;
-    cursor: pointer;
-    &:hover {
-        color: #444;
-    }
-}

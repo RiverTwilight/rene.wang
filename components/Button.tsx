@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import '../scss/button.scss'
 
 export default ({ theme = 'primary', children, ...others }: {

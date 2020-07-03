@@ -35,6 +35,7 @@ $headerTextColor: #8590a6;
     background-clip: content-box;
     .app-header-inner {
         position: relative;
+        justify-content: center;
         @include flexLayout();
         width: 90%;
         @media screen and (max-width: 640px) {
@@ -50,7 +51,7 @@ $headerTextColor: #8590a6;
         transition: transform 0.3s;
         transition: transform 0.3s, -webkit-transform 0.3s;
         .logo-large {
-            width: 250px;
+            width: 140px;
             height: 45px;
         }
         .logo-small {
