@@ -1,12 +1,18 @@
 import * as React from 'react'
 import ReactMarkdown from 'react-markdown'
+import CodeBlock from '../components/CodeBlock'
 import '../scss/passageLine.scss'
 import '../scss/typo.scss'
+
+/**
+ * 单个文章组件
+ */
 
 export default ({ slug, title, cover, summary, date }: Readonly<{
     title: string;
     summary: string;
     slug: string;
+    /**封面 */
     cover?: string;
     date?: string;
 }>) => {
@@ -17,6 +23,8 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
                 <a href={'/blog/' + slug} className="passage-item-header-title">
                     {title.replace('&nbsp;', ' ')}
                 </a>
+                <meta itemProp="url" content={"https://blog.yungeeker.com//blog/" + slug} />
+                <meta itemProp="name" content={title} />
                 <div className="passage-item-header-date">{date}</div>
             </div>
             <div className={`passage-item-content ${!expand && "passage-item-content-close"}`}>
@@ -26,7 +34,12 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
                     </div>
                 </div>
                 <div className="typo passage-item-content-text">
-                    {expand ? <ReactMarkdown source={summary}></ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
+                    {expand ? <ReactMarkdown
+                        renderers={{
+                            code: CodeBlock
+                        }}
+                        source={summary}>
+                    </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>
             </div>
             <div onClick={() => {

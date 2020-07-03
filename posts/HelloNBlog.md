@@ -1,1 +1,1 @@
-test
+Put all posts(*.md) at `/posts/`.

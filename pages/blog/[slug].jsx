@@ -2,6 +2,8 @@ import React from 'react'
 import matter from 'gray-matter'
 import glob from 'glob'
 import ReactMarkdown from 'react-markdown'
+import CodeBlock from '../../components/CodeBlock'
+import HeadingBlock from '../../components/HeadingBlock'
 import Layout from '../../layout/index'
 import '../../scss/typo.scss'
 
@@ -10,18 +12,24 @@ import '../../scss/typo.scss'
  * @todo 图片显示问题，文章元数据展示 
  */
 
-export default ({ frontmatter, markdownBody, siteConfig }) => {
+export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
     return (
         <Layout config={siteConfig}>
-            <article className="typo">
+            <article className="p-a-1 typo bg-white">
                 <h1 className="typo-title text-center">
-                    {frontmatter.title}
+                    {frontmatter.title || slug}
                 </h1>
                 <div className="typo-detail">
                     <div className="typo-detail-date">
                     </div>
                 </div>
-                <ReactMarkdown source={markdownBody}></ReactMarkdown>
+                <ReactMarkdown
+                    renderers={{
+                        code: CodeBlock,
+                        heading: HeadingBlock
+                    }}
+                    source={markdownBody}>
+                </ReactMarkdown>
                 <div className="typo-split">END</div>
             </article>
         </Layout>
@@ -36,6 +44,7 @@ export async function getStaticProps({ ...ctx }) {
 
     return {
         props: {
+            slug,
             frontmatter: data.data,
             markdownBody: data.content,
             siteConfig: config.default

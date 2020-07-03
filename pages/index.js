@@ -129,12 +129,17 @@ export default class extends React.Component {
     render() {
         const { allBlogs, siteConfig } = this.props;
         const { channel, page } = this.state;
+        const defaultPoster = []
+        allBlogs.map(blog => {
+            let cover = blog.frontmatter.cover
+            if (cover) {
+                defaultPoster.push({url: cover})
+            }
+        })
         return (
             <Layout config={siteConfig}>
                 <Marquee
-                    imgList={[
-
-                    ]}
+                    imgList={siteConfig.poster || defaultPoster}
                 />
                 <Tab onChange={index => {
                     this.setState({
@@ -143,7 +148,7 @@ export default class extends React.Component {
                 }}
                 />
                 <div className="card passage-list">
-                    {allBlogs.slice(0, page * this.postsPerPage).map((post, i) => (
+                    {allBlogs.slice(0, page * this.postsPerPage).map(post => (
                         <PassageItem
                             key={post.slug}
                             title={post.frontmatter.title || post.slug}

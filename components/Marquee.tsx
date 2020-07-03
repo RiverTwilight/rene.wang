@@ -3,7 +3,9 @@ import '../scss/marquee.scss'
 
 interface MarqueeProps {
     /** 一个图片链接组成的数组 */
-    imgList: string[],
+    imgList: {
+        url: string
+    }[],
     delay?: number
 }
 
@@ -71,9 +73,9 @@ export default class extends React.Component<MarqueeProps, { index: number; time
                 </button>
                 <div className="marquee-auto">
                     <ul>
-                        {this.props.imgList.map((img, i) => (
+                        {this.props.imgList.map((poster, i) => (
                             <li style={{ width: index === i ? '694px' : '0' }} key={i}>
-                                <img className="poster" src={img} />
+                                <img className="poster" src={poster.url} />
                             </li>
                         ))}
                     </ul>

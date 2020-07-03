@@ -1,7 +1,13 @@
 import React from 'react'
 import Text from '../utils/languages'
-import '../scss/header.scss'
 import ActiveLink from '../utils/AcitiveLink'
+import '../scss/header.scss'
+
+/**
+ * 头部
+ * @todo 分离各个组件
+ * @todo 搜索功能
+ */
 
 type IhotSearchData = {
     kwd: string;
@@ -29,7 +35,7 @@ const Hot = ({ data, isHide, left }: { isHide: boolean, left: number, data: Ihot
         >
             <div className="hotwords-inner">
                 <div className="hotwords-subtitle">
-                    成高热搜
+                    搜索结果
                 </div>
                 {data.map((item: { kwd: string, href: string }) => (
                     <a

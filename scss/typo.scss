@@ -5,11 +5,31 @@
  * ************   排版   ************
  * =============================================================================
  */
- .typo{
-}
-
-.typo img {
-    border-radius: 3px !important;
+.typo {
+    .highlight {
+        margin: 0 -5px;
+    }
+    img {
+        border-radius: 3px !important;
+    }
+    blockquote{
+        margin: 5px;
+        p{
+            border-left:$grey 5px solid;
+            padding-left: 8px;
+        }
+    }
+    .typo-heading{
+        a{
+            display: none;
+        }
+        &:hover{
+            a{
+                display: inline
+            }
+        }
+    }
+    
 }
 
 .typo-title {
@@ -23,9 +43,9 @@
     justify-content: center;
 }
 
-.typo-split{
+.typo-split {
     border-bottom: 1px solid $grey;
     text-align: center;
     padding-top: 5px;
-    color: $grey
+    color: $grey;
 }
