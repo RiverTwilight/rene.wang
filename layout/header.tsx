@@ -1,5 +1,5 @@
 import React from 'react'
-import Text from '../utils/languages'
+import Text from '../utils/i18n'
 import ActiveLink from '../utils/AcitiveLink'
 import '../scss/header.scss'
 

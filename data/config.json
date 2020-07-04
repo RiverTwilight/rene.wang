@@ -2,7 +2,7 @@
     "title": "江村暮的网络日志",
     "description": "开发日志、技术文章以及生活随感。",
     "keywords": [],
-    "logo":{
+    "logo": {
         "large": "/static/image/logo-large.png",
         "small": "/static/image/logo-small.png"
     },
@@ -15,5 +15,15 @@
                 "content": ""
             }
         ]
+    },
+    "categories": {
+        "Life": {
+            "1": "Life",
+            "0": "生活"
+        },
+        "FrontEnd": {
+            "1": "Front End",
+            "0": "前端"
+        }
     }
 }
