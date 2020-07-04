@@ -64,8 +64,8 @@ export default class extends React.Component {
                 <Tab
                     tabs={Object.assign(siteConfig.categories, {
                         all: {
-                            0: 'All Posts',
-                            1: '全部'
+                            1: 'All Posts',
+                            0: '全部'
                         }
                     })}
                     activeIndex={channel}

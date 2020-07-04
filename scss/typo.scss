@@ -6,11 +6,19 @@
  * =============================================================================
  */
 .typo {
+    .typo-meta{
+        color: $grey;
+        text-align: center;
+        margin-top: -5px;
+    }
     .highlight {
         margin: 0 -5px;
     }
     img {
         border-radius: 3px !important;
+    }
+    p{
+        color: rgb(139, 114, 114)
     }
     blockquote{
         margin: 5px;

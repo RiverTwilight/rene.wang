@@ -28,7 +28,8 @@ export default class extends React.Component<DrawerProps, DrawerState> {
     }
     componentDidMount() {
         window.innerWidth >= 640 && window.addEventListener('scroll', () => {
-            var t = document.documentElement.scrollTop || document.body.scrollTop;
+            const t = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(t)
             if (t > 500) {
                 this.setState({ copyrightFixed: true })
             } else {
@@ -48,7 +49,7 @@ export default class extends React.Component<DrawerProps, DrawerState> {
         const drawerStyle = copyrightFixed ? {
             left: drawerLeft,
             width: drawerWidth + 'px',
-            top: `-${copyrightTop + 65.5}px`
+            top: `65px`
         } : {}
         return (
             <div

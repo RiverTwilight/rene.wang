@@ -38,6 +38,7 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
                         renderers={{
                             code: CodeBlock
                         }}
+                        escapeHtml={false}
                         source={summary}>
                     </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>

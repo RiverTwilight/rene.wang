@@ -27,7 +27,7 @@ export default class extends Document {
             <html>
                 <Head>
                     <meta charset="utf-8" />
-                    <link rel="icon" href="/static/favicon.ico" />
+                    <link rel="icon" href="/static/image/favicon.ico" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
                     <meta name="description" content={description} />

@@ -26,7 +26,7 @@ export default ({ onChange, tabs, activeIndex }: {
     return (
         <div className="header-tab card">
             <nav className={`tab ${extandTab ? 'tab-extend' : ''}`}>
-                <Text language={1} dictionary={tabs}>
+                <Text language={0} dictionary={tabs}>
                     {tabEles.map(tab => (
                         <a
                             onClick={_ => {

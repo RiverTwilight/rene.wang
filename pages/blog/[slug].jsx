@@ -3,6 +3,7 @@ import matter from 'gray-matter'
 import glob from 'glob'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '../../components/CodeBlock'
+//import ToTop from '../../components/ToTop'
 import HeadingBlock from '../../components/HeadingBlock'
 import Layout from '../../layout/index'
 import '../../scss/typo.scss'
@@ -15,10 +16,15 @@ import '../../scss/typo.scss'
 export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
     return (
         <Layout config={siteConfig}>
-            <article className="p-a-1 typo bg-white">
+            <article style={{
+                marginBottom: '7px'
+            }} className="p-a-1 typo bg-white">
                 <h1 className="typo-title text-center">
                     {frontmatter.title || slug}
                 </h1>
+                <div className="typo-meta">
+                    最后更新于{frontmatter.date}
+                </div>
                 <div className="typo-detail">
                     <div className="typo-detail-date">
                     </div>

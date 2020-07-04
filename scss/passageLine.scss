@@ -1,4 +1,4 @@
-$themeColor: #974578;
+@import './global.scss';
 
 /************文章列表******************/
 .passage-list {
@@ -56,9 +56,9 @@ $themeColor: #974578;
             cursor: pointer;
             padding: 2px 5px;
             &:hover {
-                color: rgb(95, 188, 231);
+                color: rgb(129, 207, 119);
             }
-            color: rgb(47, 136, 177);
+            color: $themeColor;
         }
     }
 

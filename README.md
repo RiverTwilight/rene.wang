@@ -4,7 +4,10 @@ A Responsive, Fast, i18n and Markdown Blog base on Next.js. Inspired by this [ar
 
 ## Config
 
-All config is in `/data/config.json`
+All config  is in `/data/config.json`
+
+* author: Author info will be  written into `<meta>` tags
+* catagories: Custom catagories, each post can add a catagoies info in `yaml`
 
 ## Writting
 

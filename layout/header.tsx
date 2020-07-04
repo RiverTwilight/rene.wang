@@ -115,12 +115,12 @@ const Menu = (): React.ReactElement => {
         },
         about: {
             1: 'About',
-            0: '学校概况'
+            0: '关于'
         }
     }
     return (
         <ul className="app-header-list">
-            <Text dictionary={dic} language={1} >
+            <Text dictionary={dic} language={0} >
                 {[
                     {
                         text: <Text home />,
@@ -217,13 +217,14 @@ export default class extends React.Component<{ config: any; }, { lang: number }>
             <>
                 <div className="app-header">
                     <div className="app-header-inner">
-                        <a className="hidden-sm-down">
+                        <a href="/" className="hidden-sm-down">
                             <img className="logo-large" src={config.logo.large} />
                         </a>
-                        <a className="hidden-md-up">
+                        <a href="/" className="hidden-md-up">
                             <img className="logo-small" src={config.logo.small} />
                         </a>
                         <Menu />
+                        <div className="app-header-space"></div>
                         <Search />
                         <Language
                             value={lang}

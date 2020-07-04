@@ -1,5 +1,5 @@
 {
-    "title": "江村暮的网络日志",
+    "title": "拣尽寒枝",
     "description": "开发日志、技术文章以及生活随感。",
     "keywords": [],
     "logo": {
@@ -8,11 +8,11 @@
     },
     "author": {
         "name": "江村暮",
-        "image": "/static/image/headermaster.jpg",
+        "image": "/static/image/author.jpg",
         "intro": [
             {
-                "title": "",
-                "content": ""
+                "title": "关于作者",
+                "content": "高中生"
             }
         ]
     },
@@ -24,6 +24,10 @@
         "FrontEnd": {
             "1": "Front End",
             "0": "前端"
+        },
+        "Feeling": {
+            "1": "Feeling",
+            "0": "随感"
         }
     }
 }
