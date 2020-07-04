@@ -1,5 +1,5 @@
 import * as React from 'react'
-import '../scss/button.scss'
+import '../scss/Button.scss'
 
 export default ({ theme = 'primary', children, ...others }: {
     theme?: 'primary' | '',
