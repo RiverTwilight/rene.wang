@@ -24,7 +24,7 @@ export async function getStaticProps() {
                 defaultTitle: slug,
                 frontmatter: document.data,
                 markdownBody: document.content,
-                slug,
+                slug: encodeURI(slug),
             }
         })
         return data
