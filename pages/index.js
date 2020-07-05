@@ -24,7 +24,7 @@ export async function getStaticProps() {
                 defaultTitle: slug,
                 frontmatter: document.data,
                 markdownBody: document.content,
-                slug: encodeURI(slug),
+                slug: slug,
             }
         })
         return data
@@ -90,7 +90,7 @@ export default class extends React.Component {
                             />
                         ))}
                     <div style={{
-                        display: page === Math.ceil(allPosts.length / this.postsPerPage) ? 'hidden' : ''
+                        display: page === Math.ceil(allPosts.length / this.postsPerPage) ? 'none' : ''
                     }} onClick={() => {
                         this.setState({ page: page + 1 })
                     }} className="bg-white passage-more">

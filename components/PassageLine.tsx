@@ -16,9 +16,9 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
     cover?: string;
     date?: string;
 }>) => {
-    const [expand, setExpand] = React.useState(false)
+    const [expand, setExpand] = React.useState(false);
     return (
-        <div className={"passage-item"}>
+        <div id={encodeURI(slug)} className={"passage-item"}>
             <div className="passage-item-header">
                 <a href={'/blog/' + slug} className="passage-item-header-title">
                     {title.replace('&nbsp;', ' ')}
@@ -27,24 +27,32 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
                 <meta itemProp="name" content={title} />
                 <div className="passage-item-header-date">{date}</div>
             </div>
-            <div className={`passage-item-content ${!expand && "passage-item-content-close"}`}>
+            <div style={{ display: expand ? 'none' : 'block' }} className="passage-item-content passage-item-content-close">
                 <div style={{ display: cover ? 'block' : 'none' }} className="passage-item-content-cover">
                     <div className="passage-item-content-cover-inner">
                         <img alt={title.replace('&nbsp;', ' ')} src={cover} />
                     </div>
                 </div>
                 <div className="typo passage-item-content-text">
-                    {expand ? <ReactMarkdown
+                    {summary.replace(/\<[^\>]+\>/g, '')}
+                </div>
+            </div>
+            <div style={{ display: !expand ? 'none' : 'block' }} className="passage-item-content">
+                <div className="typo passage-item-content-text">
+                    <ReactMarkdown
                         renderers={{
                             code: CodeBlock
                         }}
                         escapeHtml={false}
                         source={summary}>
-                    </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
+                    </ReactMarkdown>
                 </div>
             </div>
             <div onClick={() => {
-                setExpand(!expand)
+                setExpand(!expand);
+                if (expand) {
+                    window.location.hash = encodeURI(slug)
+                }
             }} className={`passage-item-action ${expand ? 'passage-item-action-sticky' : ''}`}>
                 <span className="passage-item-readmore">{expand ? "收起" : "展开全文"}</span>
             </div>

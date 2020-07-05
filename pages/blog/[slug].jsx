@@ -44,7 +44,7 @@ export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
 
 export async function getStaticProps({ ...ctx }) {
     const { slug } = ctx.params
-    const content = await import(`../../posts/${slug}.md`)
+    const content = await import(`../../posts/${decodeURI(slug)}.md`)
     const data = matter(content.default)
     const config = await import(`../../data/config.json`)
 

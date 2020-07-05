@@ -4,7 +4,7 @@ import '../scss/tab.scss'
 
 type tabsType = {
     [tabName: string]: {
-        [langIndex: number]: string
+        [langIndex: string]: string
     }
 }
 
