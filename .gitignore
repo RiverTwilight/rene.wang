@@ -1,5 +1,3 @@
 node_modules
 .next
 out
-posts/*.md
-!posts/HelloNBlog.md

@@ -13,7 +13,7 @@ All config  is in `/data/config.json`
 
 ## Deploy
 
-You can deploy your blog into Github Page or Coding Page easily by one command.
+You can deploy your blog by [Vercel](https://vercel.com) easily by one command.
 
 ```sh
 npm run deploy
