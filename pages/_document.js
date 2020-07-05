@@ -21,15 +21,6 @@ export default class extends Document {
             config: config.default
         }
     }
-    componentDidMount() {
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?29ab8ced8f951b925920356991531a45";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    }
     render() {
         const { title, description, author } = this.props.config
         return (
@@ -55,6 +46,7 @@ export default class extends Document {
                     <meta name="renderer" content="webkit" />
                     <meta name="force-rendering" content="webkit" />
                     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+                    <script defer src="//hm.baidu.com/hm.js?29ab8ced8f951b925920356991531a45"/>
                 </Head>
                 <body>
                     <Main />
