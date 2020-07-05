@@ -27,7 +27,7 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
                 <meta itemProp="name" content={title} />
                 <div className="passage-item-header-date">{date}</div>
             </div>
-            <div style={{ display: expand ? 'none' : 'block' }} className="passage-item-content passage-item-content-close">
+            <div style={{ display: expand ? 'none' : 'flex' }} className="passage-item-content passage-item-content-close">
                 <div style={{ display: cover ? 'block' : 'none' }} className="passage-item-content-cover">
                     <div className="passage-item-content-cover-inner">
                         <img alt={title.replace('&nbsp;', ' ')} src={cover} />
