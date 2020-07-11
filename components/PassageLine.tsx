@@ -27,25 +27,20 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
                 <meta itemProp="name" content={title} />
                 <div className="passage-item-header-date">{date}</div>
             </div>
-            <div style={{ display: expand ? 'none' : 'flex' }} className="passage-item-content passage-item-content-close">
-                <div style={{ display: cover ? 'block' : 'none' }} className="passage-item-content-cover">
+            <div className={`passage-item-content ${!expand && "passage-item-content-close"}`}>
+                <div style={{ display: (cover && !expand) ? 'block' : 'none' }} className="passage-item-content-cover">
                     <div className="passage-item-content-cover-inner">
                         <img alt={title.replace('&nbsp;', ' ')} src={cover} />
                     </div>
                 </div>
                 <div className="typo passage-item-content-text">
-                    {summary.replace(/\<[^\>]+\>/g, '')}
-                </div>
-            </div>
-            <div style={{ display: !expand ? 'none' : 'block' }} className="passage-item-content">
-                <div className="typo passage-item-content-text">
-                    <ReactMarkdown
+                    {expand ? <ReactMarkdown
                         renderers={{
                             code: CodeBlock
                         }}
                         escapeHtml={false}
                         source={summary}>
-                    </ReactMarkdown>
+                    </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>
             </div>
             <div onClick={() => {

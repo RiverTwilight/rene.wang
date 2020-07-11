@@ -3,6 +3,7 @@ import matter from 'gray-matter'
 import glob from 'glob'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '../../components/CodeBlock'
+import ImgaeBlock from '../../components/LazyloadImage'
 //import ToTop from '../../components/ToTop'
 import HeadingBlock from '../../components/HeadingBlock'
 import Layout from '../../layout/index'
@@ -10,7 +11,7 @@ import '../../scss/typo.scss'
 
 /**
  * 文章详情
- * @todo 图片显示问题，文章元数据展示 
+ * @todo
  */
 
 export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
@@ -19,7 +20,7 @@ export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
             <article style={{
                 marginBottom: '7px'
             }} className="p-a-1 typo bg-white">
-                <h1 className="typo-title text-center">
+                <h1 className="text-center">
                     {frontmatter.title || slug}
                 </h1>
                 <div className="typo-meta">
@@ -32,8 +33,10 @@ export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
                 <ReactMarkdown
                     renderers={{
                         code: CodeBlock,
-                        heading: HeadingBlock
+                        heading: HeadingBlock,
+                        image: ImgaeBlock
                     }}
+                    escapeHtml={false}
                     source={markdownBody}>
                 </ReactMarkdown>
                 <div className="typo-split">END</div>
@@ -44,7 +47,7 @@ export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
 
 export async function getStaticProps({ ...ctx }) {
     const { slug } = ctx.params
-    const content = await import(`../../posts/${decodeURI(slug)}.md`)
+    const content = await import(`../../posts/${slug}.md`)
     const data = matter(content.default)
     const config = await import(`../../data/config.json`)
 

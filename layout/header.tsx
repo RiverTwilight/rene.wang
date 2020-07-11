@@ -168,13 +168,15 @@ class Language extends React.Component
             <>
                 <div className="select language">
                     <button
-                        className="hidden-sm-down"
+                        className=""
                         ref={r => this.input = r}
-                        onFocus={() => {
-                            this.setState({ isShowUl: true })
-                        }}
-                        onBlur={() => {
-                            //this.setState({ isShowUl: false })
+                        onClick={() => {                   
+                            this.setState({ isShowUl: true }, ()=>{
+                                document.body.addEventListener('click', () => {
+                                    this.setState({ isShowUl: false });
+                                    document.body.removeEventListener('click', ()=>{})
+                                })
+                            })
                         }}
                     >{list[value]}</button>
                     <div style={Object.assign({
@@ -210,23 +212,23 @@ export default class extends React.Component<{ config: any; }, { lang: number }>
             <>
                 <div className="app-header">
                     <div className="app-header-inner">
-                        <a href="/" className="hidden-sm-down">
+                        <a href="/" className="logo hidden-sm-down">
                             <img className="logo-large" src={config.logo.large} />
                         </a>
-                        <a href="/" className="hidden-md-up">
+                        <a href="/" className="logo hidden-md-up">
                             <img className="logo-small" src={config.logo.small} />
                         </a>
                         <Menu />
                         <div className="app-header-space"></div>
                         <Search />
-                        <Language
+                        {/**<Language
                             value={lang}
                             cb={lang => {
                                 localStorage.setItem('language', String(lang));
                                 window.location.reload()
                             }}
                             list={['简体中文', 'English']}
-                        />
+                        />**/}
                     </div>
                 </div>
             </>

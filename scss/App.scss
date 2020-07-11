@@ -141,6 +141,8 @@ a {
 
 /*********下拉选择************/
 .select {
+    z-index: 2;
+
     input {
         color: transparent; /*隐藏光标*/
         text-shadow: 0 0 0 #8590a6;

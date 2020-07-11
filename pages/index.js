@@ -62,12 +62,12 @@ export default class extends React.Component {
                         }))}
                 />
                 <Tab
-                    tabs={Object.assign(siteConfig.categories, {
+                    tabs={Object.assign({
                         all: {
                             1: 'All Posts',
                             0: '全部'
                         }
-                    })}
+                    }, siteConfig.categories)}
                     activeIndex={channel}
                     onChange={index => {
                         this.setState({
