@@ -1,8 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Headmaster, CardMenu } from './utils';
-/**
- * PC端右侧部公共菜单
- */
+
+const LoveIcon = styled.svg`
+    display: inline-block;
+    width: 0.944444rem;
+    color: rgb(255, 85, 85);
+    transform: translateY(-10%);
+`
+
 interface DrawerProps {
     config: any
 }
@@ -13,6 +19,10 @@ interface DrawerState {
     drawerLeft: number;
     copyrightTop: number
 }
+
+/**
+ * PC端右侧部公共菜单
+ */
 
 export default class extends React.Component<DrawerProps, DrawerState> {
     drawer: any;
@@ -63,7 +73,9 @@ export default class extends React.Component<DrawerProps, DrawerState> {
                     <div className="go-to-creater"></div>
                 </div>
                 <div ref={r => this.copyright = r} className={`copyright`}>
-                    本博客系统基于Next.js开发，Theme By 江村暮<br></br>
+                    Made With
+                    <LoveIcon viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="sc-AxjAm dQgIel Footer__Heart-sc-1x77l7a-1 bkjEIT"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></LoveIcon>
+                    by 江村暮<br></br>
                     <a href="https://github.com/rivertwilight/knows">开放源代码</a> - <a href="https://www.yungeeker.com">关于作者</a><br></br>
                 </div>
             </div>

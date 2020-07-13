@@ -4,7 +4,7 @@ import glob from 'glob'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '../../components/CodeBlock'
 import ImgaeBlock from '../../components/LazyloadImage'
-//import ToTop from '../../components/ToTop'
+import ToTop from '../../components/ToTop'
 import HeadingBlock from '../../components/HeadingBlock'
 import Layout from '../../layout/index'
 import '../../scss/typo.scss'
@@ -41,6 +41,7 @@ export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
                 </ReactMarkdown>
                 <div className="typo-split">END</div>
             </article>
+            <ToTop />
         </Layout>
     )
 }
