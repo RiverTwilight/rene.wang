@@ -59,7 +59,7 @@ export default class extends React.Component<DrawerProps, DrawerState> {
         const drawerStyle = copyrightFixed ? {
             left: drawerLeft,
             width: drawerWidth + 'px',
-            top: `65px`
+            top: `-28px`
         } : {}
         return (
             <div

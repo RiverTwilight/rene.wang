@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Header from '../layout/header'
-import Drawer from '../layout/Drawer'
+import Header from './Header'
+import Drawer from './Drawer'
 import '../scss/App.scss'
 
 export default class extends React.Component {
