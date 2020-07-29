@@ -29,6 +29,22 @@ export async function getStaticProps() {
         })
         return data
     })(require.context('../posts', true, /\.md$/))
+    .sort((a, b) => {
+        let yearA = a.frontmatter.date.split('\/')[0]
+          , yearB = b.frontmatter.date.split('\/')[0];
+        return yearA - yearB
+    })
+    .sort((a, b) => {
+        let dayA = a.frontmatter.date.split('\/')[2]
+          , dayB = b.frontmatter.date.split('\/')[2];
+        return dayB - dayA
+    })
+    .sort((a, b) => {
+        let monthA = a.frontmatter.date.split('\/')[1]
+          , monthB = b.frontmatter.date.split('\/')[1];
+        return monthB - monthA
+    })
+
     const config = await import(`../data/config.json`)
     return {
         props: {
@@ -51,7 +67,7 @@ export default class extends React.Component {
         const { allPosts, siteConfig } = this.props;
         const { channel, page } = this.state;
         return (
-            <Layout config={siteConfig}>
+            <Layout allPosts={allPosts} config={siteConfig}>
                 <Marquee
                     //如果网站配置里没有海报，那么使用带有封面的文章
                     imgList={siteConfig.poster || allPosts

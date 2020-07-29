@@ -7,7 +7,21 @@ import ImgaeBlock from '../../components/LazyloadImage'
 import ToTop from '../../components/ToTop'
 import HeadingBlock from '../../components/HeadingBlock'
 import Layout from '../../layout/index'
+import styled from 'styled-components'
 import '../../scss/typo.scss'
+
+const Progress = styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    overflow: hidden;
+    background-color: rgba(63,81,181,.2);
+    border-radius: 2px;
+`
 
 /**
  * 文章详情
@@ -17,9 +31,10 @@ import '../../scss/typo.scss'
 export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
     return (
         <Layout config={siteConfig}>
+            <Progress width={50} />
             <article style={{
                 marginBottom: '7px'
-            }} className="p-a-1 typo bg-white">
+            }} className="p-a-2 typo bg-white">
                 <h1 className="text-center">
                     {frontmatter.title || slug}
                 </h1>

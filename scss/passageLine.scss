@@ -1,4 +1,4 @@
-@import './global.scss';
+@import "./global.scss";
 
 /************文章列表******************/
 .passage-list {
@@ -16,7 +16,7 @@
                 font: {
                     size: 18px;
                     weight: 600;
-                    synthesis: style;
+                    style: bold
                 }
                 line-height: 1.5;
                 color: #1a1a1a;
@@ -45,6 +45,24 @@
                 }
             }
         }
+        .passage-item-content-cover {
+            padding-top: 8px;
+
+            .passage-item-content-cover-inner img {
+                object-fit: cover;
+                width: 180px;
+                height: 105px;
+                @media screen and (max-width: 640px) {
+                    width: 162px;
+                    height: 90px;
+                }
+                overflow: hidden;
+                background-position: 50%;
+                background-size: cover;
+                border-radius: 4px;
+                margin-right: 5px;
+            }
+        }
         .passage-item-content-close {
             .passage-item-content-text {
                 max-height: 100px;
@@ -60,21 +78,6 @@
             }
             color: $themeColor;
         }
-    }
-
-    .passage-item-content-cover-inner img {
-        object-fit: cover;
-        width: 180px;
-        height: 105px;
-        @media screen and (max-width: 640px) {
-            width: 162px;
-            height: 90px;
-        }
-        overflow: hidden;
-        background-position: 50%;
-        background-size: cover;
-        border-radius: 4px;
-        margin-right: 5px;
     }
 
     .passage-item-action {

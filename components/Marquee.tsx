@@ -1,4 +1,5 @@
 import * as React from 'react'
+import styled from 'styled-components'
 import '../scss/marquee.scss'
 
 interface MarqueeProps {
@@ -8,6 +9,22 @@ interface MarqueeProps {
     }[],
     delay?: number
 }
+
+const ToggleIconLeft = styled.polyline`
+    fill: transparent;
+    stroke:#fff;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:48px;
+`
+
+const ToggleIconRight = styled(ToggleIconLeft)`
+    transform:scaleX(-1);
+    -ms-transform:scaleX(-1); 	/* IE 9 */
+    -moz-transform:scaleX(-1); 	/* Firefox */
+    -webkit-transform:scaleX(-1); /* Safari 和 Chrome */
+    -o-transform:scaleX(-1); 
+`
 
 /**
  * 轮播图组件
@@ -61,7 +78,9 @@ export default class extends React.Component<MarqueeProps, { index: number; time
                         this.setTimer()//重新计时提高用户体验
                         this.togglePrev()
                     }} className="marquee-prev">
-                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'><title>ionicons-v5-a</title><polyline points='328 112 184 256 328 400' style={{fill:'#ffffff',stroke:'#000',strokeLinecap:'round',strokeLinejoin:'round',strokeWidth:'48px'}} /></svg>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
+                        <ToggleIconLeft points='328 112 184 256 328 400' />
+                    </svg>
                 </button>
                 <button
                     onClick={() => {
@@ -69,7 +88,9 @@ export default class extends React.Component<MarqueeProps, { index: number; time
                         this.toggleNext()
                     }}
                     className="marquee-next">
-                    <svg viewBox="0 0 512 512"><path fill="#ffffff" stroke-linecap="square" stroke-miterlimit="10" stroke-width="48" d="M184 112l144 144-144 144"></path></svg>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
+                        <ToggleIconRight points='328 112 184 256 328 400' />
+                    </svg>
                 </button>
                 <div className="marquee-auto">
                     <ul>

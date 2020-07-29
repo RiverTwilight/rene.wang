@@ -1,111 +1,14 @@
-import React from 'react'
-import Text from '../utils/i18n'
-import ActiveLink from '../utils/AcitiveLink'
-import '../scss/header.scss'
+import * as React from 'react'
+import Search from './Search'
+import Text from '../../utils/i18n'
+import ActiveLink from '../../utils/AcitiveLink'
+import '../../scss/header.scss'
 
 /**
  * 头部
  * @todo 分离各个组件
  * @todo 搜索功能
  */
-
-type IhotSearchData = {
-    kwd: string;
-    href: string;
-}[]
-
-interface SearchState {
-    searchIsFocus: boolean;
-    kwd: string | undefined;
-    inputMarginLeft: number;
-    hotSearchData?: IhotSearchData
-}
-
-interface SearchProps {
-}
-
-const Hot = ({ data, isHide, left }: { isHide: boolean, left: number, data: IhotSearchData }): React.ReactElement | null => {
-    if (isHide) return null
-    return (
-        <div
-            style={{
-                left: left
-            }}
-            className="hotwords"
-        >
-            <div className="hotwords-inner">
-                <div className="hotwords-subtitle">
-                    搜索结果
-                </div>
-                {data.map((item: { kwd: string, href: string }) => (
-                    <a
-                        href={item.href}
-                        className="hotwords-item">
-                        {item.kwd}
-                    </a>
-                ))}
-            </div>
-        </div>
-    )
-}
-
-class Search extends React.Component<SearchProps, SearchState>{
-    searchField: any;
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            searchIsFocus: false,
-            kwd: undefined,
-            hotSearchData: [{
-                kwd: '',
-                href: '#'
-            }],
-            inputMarginLeft: 580
-        }
-    }
-    adjustPos() {
-        this.setState({
-            inputMarginLeft: window.innerWidth > 640 ? this.searchField.getBoundingClientRect().left : ''
-        })
-    }
-    componentDidMount() {
-        this.adjustPos()
-        window.onresize = () => {
-            this.adjustPos()
-        }
-    }
-    render() {
-        const { kwd, searchIsFocus, hotSearchData, inputMarginLeft } = this.state
-        return (
-            <>
-                <div ref={r => this.searchField = r} className={`search ${searchIsFocus ? 'search-focus' : ''}`}>
-                    <input
-                        onBlur={() => {
-                            this.setState({ searchIsFocus: false })
-                        }}
-                        onFocus={() => {
-                            this.setState({ searchIsFocus: true })
-                        }}
-                        type="search"
-                        value={kwd}
-                        onChange={e => {
-                            this.setState({ kwd: e.target.value })
-                        }}
-                        placeholder={hotSearchData[0].kwd}
-                    />
-                    <button className="search-btn">
-                        <svg fill="#8590a6" viewBox="0 0 24 24" width="18" height="18"><path d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z" fillRule="evenodd"></path></svg>
-                    </button>
-                </div>
-                <Hot
-                    left={inputMarginLeft}
-                    data={hotSearchData}
-                    isHide={!searchIsFocus}
-                />
-            </>
-        )
-    }
-}
 
 const Menu = (): React.ReactElement => {
     const dic = {
@@ -198,7 +101,7 @@ class Language extends React.Component
     }
 }
 
-export default class extends React.Component<{ config: any; }, { lang: number }>{
+export default class extends React.Component<{ config: any; allPosts: any }, { lang: number }>{
     constructor(props: any) {
         super(props);
         this.state = {
@@ -207,7 +110,7 @@ export default class extends React.Component<{ config: any; }, { lang: number }>
     }
     render() {
         const { lang } = this.state;
-        const { config } = this.props;
+        const { config, allPosts } = this.props;
         return (
             <>
                 <div className="app-header">
@@ -220,7 +123,7 @@ export default class extends React.Component<{ config: any; }, { lang: number }>
                         </a>
                         <Menu />
                         <div className="app-header-space"></div>
-                        <Search />
+                        <Search allPosts={allPosts} />
                         {/**<Language
                             value={lang}
                             cb={lang => {

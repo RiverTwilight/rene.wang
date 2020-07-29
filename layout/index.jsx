@@ -11,14 +11,14 @@ export default class extends React.Component {
         window.loadHide = () => loading.style.display = 'none';
     }
     render() {
-        const { config } = this.props;
+        const { config, allPosts } = this.props;
         return (
             <>
                 <Head>
                     <title>{config.title}</title>
                 </Head>
                 <div ref={r => this.loading = r} style={{ display: 'inline-block' }} className="header-liner"></div>
-                <Header config={config} />
+                <Header allPosts={allPosts} config={config} />
                 <main className="main">
                     <div className="container">
                         <div className="container-left">

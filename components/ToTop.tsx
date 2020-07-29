@@ -5,13 +5,22 @@ const ToTop = styled.button`
     position: fixed;
     right: 10px;
     bottom: 10px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     outline: none;
+    border: none;
     transition: 0.5s all;
     ${props => props.hide && css`
         bottom: -50px
     `}
+`
+
+const TopIcon = styled.polyline`
+    fill:none;
+    stroke:#000;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:48px
 `
 
 declare global {
@@ -23,15 +32,16 @@ declare global {
 export default () => {
     const [isHide, setHide] = React.useState(true)
     React.useEffect(() => {
-        window.addEventListener("scroll", () => {
+        const cb = () => {
             var t = document.documentElement.scrollTop || document.body.scrollTop;
             if (t <= 148) {
                 setHide(true)
             } else {
                 setHide(false)
             }
-        })
-        return () => { window.removeEventListener("scroll", () => { }) }
+        }
+        window.addEventListener("scroll", cb.bind(this))
+        return () => { window.removeEventListener("scroll", cb.bind(this)) }
     }, [])
     return (
         <ToTop
@@ -47,7 +57,10 @@ export default () => {
                 }
             }}
         >
-            t
+            <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
+                <title>ionicons-v5-a</title>
+                <TopIcon points='112 328 256 184 400 328' />
+            </svg>
         </ToTop>
     )
 }

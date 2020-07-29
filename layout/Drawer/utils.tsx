@@ -3,7 +3,7 @@ import React from 'react'
 const Headmaster = ({ config: { name, image, intro } }) => {
     return (
         <div className="our-headmaster card">
-            <img className="lijun" src={image} />
+            {/*<img loading="lazy" className="lijun" src={image} />*/}
             <div className="headmaster-title">
                 <img alt={name} src="/static/icon/person-outline.svg" width="20" height="20" />
                 &nbsp;&nbsp;{name}
