@@ -11,11 +11,12 @@ export default class extends React.Component {
         window.loadHide = () => loading.style.display = 'none';
     }
     render() {
-        const { config, allPosts } = this.props;
+        const { config, allPosts, correctPage } = this.props;
+        console.log(correctPage)
         return (
             <>
                 <Head>
-                    <title>{config.title}</title>
+                    <title>{`${correctPage ? (`${correctPage} - `): ''}${config.title}`}</title>
                 </Head>
                 <div ref={r => this.loading = r} style={{ display: 'inline-block' }} className="header-liner"></div>
                 <Header allPosts={allPosts} config={config} />

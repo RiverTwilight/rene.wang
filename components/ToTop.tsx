@@ -1,26 +1,36 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 
+const iconPublic = `
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:48px;
+`
 const ToTop = styled.button`
     position: fixed;
     right: 10px;
     bottom: 10px;
     width: 40px;
     height: 40px;
+    background: #fff;
     outline: none;
     border: none;
     transition: 0.5s all;
-    ${props => props.hide && css`
-        bottom: -50px
+    ${(props: { hide: boolean }) => props.hide && css`
+        bottom: -50px;
+        polyline {
+            stroke: none;
+            ${iconPublic}
+        }
     `}
-`
-
-const TopIcon = styled.polyline`
-    fill:none;
-    stroke:#000;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    stroke-width:48px
+    polyline {
+        stroke:#000;
+        ${iconPublic}
+    }
+    &: hover{
+        background: #dcc9c9;
+    }
 `
 
 declare global {
@@ -59,7 +69,7 @@ export default () => {
         >
             <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
                 <title>ionicons-v5-a</title>
-                <TopIcon points='112 328 256 184 400 328' />
+                <polyline points='112 328 256 184 400 328' />
             </svg>
         </ToTop>
     )

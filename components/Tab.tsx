@@ -38,14 +38,14 @@ export default ({ onChange, tabs, activeIndex }: {
                     ))}
                 </Text>
             </nav>
-            <button
+            {/*<button
                 className="tab-showmore"
                 onClick={() => {
                     setExtandTab(!extandTab)
                 }}
             >
                 {!extandTab ? '显示更多' : '收起更多'}
-            </button>
+            </button>*/}
         </div>
     )
 }

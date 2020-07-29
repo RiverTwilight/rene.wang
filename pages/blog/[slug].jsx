@@ -30,7 +30,7 @@ const Progress = styled.div`
 
 export default ({ slug, frontmatter, markdownBody, siteConfig }) => {
     return (
-        <Layout config={siteConfig}>
+        <Layout correctPage={frontmatter.title || slug} config={siteConfig}>
             <Progress width={50} />
             <article style={{
                 marginBottom: '7px'

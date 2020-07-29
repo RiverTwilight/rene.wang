@@ -1,5 +1,5 @@
 import * as React from 'react'
-import IPost from '../type'
+import { IPost } from '../type'
 
 interface SearchState {
     searchIsFocus: boolean;
@@ -24,9 +24,9 @@ const SearchResult = ({ data, isHide, left, kwd }: { kwd: string, isHide: boolea
                 <div className="hotwords-subtitle">
                     搜索结果
                 </div>
-                {data.filter(post => post.defaultTitle.toLowerCase().includes(kwd.toLowerCase())).map((post: IPost) => (
+                {data.filter((post: IPost) => post.defaultTitle.toLowerCase().includes(kwd.toLowerCase())).map((post: IPost) => (
                     <a
-                        href={'/posts/' + post.defaultTitle}
+                        href={encodeURI('/post/' + post.defaultTitle)}
                         className="hotwords-item">
                         {post.defaultTitle}
                     </a>
@@ -51,6 +51,11 @@ export default class extends React.Component<SearchProps, SearchState>{
             inputMarginLeft: window.innerWidth > 640 ? this.searchField.getBoundingClientRect().left : ''
         })
     }
+    componentDidUpdate(){
+        document.getElementsByTagName('main')[0].addEventListener('click', () => {
+            this.setState({ searchIsFocus: false })
+        })
+    }
     componentDidMount() {
         this.adjustPos()
         window.onresize = () => {
@@ -60,14 +65,10 @@ export default class extends React.Component<SearchProps, SearchState>{
     render() {
         const { kwd, searchIsFocus, inputMarginLeft } = this.state;
         const { allPosts } = this.props;
-        console.log(allPosts)
         return (
             <>
                 <div ref={r => this.searchField = r} className={`search ${searchIsFocus ? 'search-focus' : ''}`}>
                     <input
-                        onBlur={() => {
-                            this.setState({ searchIsFocus: false })
-                        }}
                         onFocus={() => {
                             this.setState({ searchIsFocus: true })
                         }}
