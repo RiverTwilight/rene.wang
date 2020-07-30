@@ -285,21 +285,3 @@ a {
         }
     }
 }
-
-/** 九宫格 */
-.rows {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    @media (max-width: 640px) {
-        .rows-item {
-            width: 50%;
-        }
-    }
-    @media (min-width: 640px) {
-        .rows-item {
-            width: 33.3333%;
-        }
-    }
-}

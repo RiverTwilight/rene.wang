@@ -1,16 +1,14 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import '../scss/marquee.scss'
 
 interface MarqueeProps {
-    /** 一个图片链接组成的数组 */
     imgList: {
-        url: string
+        url: string // img url
     }[],
     delay?: number
 }
 
-const ToggleIconLeft = styled.polyline`
+const ToggleIcon = styled.polyline`
     fill: transparent;
     stroke:#fff;
     stroke-linecap:round;
@@ -18,12 +16,52 @@ const ToggleIconLeft = styled.polyline`
     stroke-width:48px;
 `
 
-const ToggleIconRight = styled(ToggleIconLeft)`
-    transform:scaleX(-1);
-    -ms-transform:scaleX(-1); 	/* IE 9 */
-    -moz-transform:scaleX(-1); 	/* Firefox */
-    -webkit-transform:scaleX(-1); /* Safari 和 Chrome */
-    -o-transform:scaleX(-1); 
+const Marquee = styled.div`
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
+    overflow: hidden;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    button {
+        position: absolute;
+        border: 0;
+        height: 50px;
+        width: 30px;
+        background: rgba(0, 0, 0, 0.5);
+        transform: translate(0, -50%);
+        top: 50%;
+    }
+    .marquee-next {
+        right: 0;
+    }
+    .marquee-prev {
+        left: 0;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        width: 9999px;
+        transition: all 0.5s;
+        li {
+            float: left;
+            width: 694px;
+            height: 200px;
+            list-style: none;
+            line-height: 200px;
+            font-size: 36px;
+            transition: 0.5s width;
+            -webkit-transition: width 0.5s;
+        }
+    }
 `
 
 /**
@@ -70,16 +108,17 @@ export default class extends React.Component<MarqueeProps, { index: number; time
         clearInterval(this.state.timer)
     }
     render() {
-        const { index } = this.state
+        const { index } = this.state;
+        const { imgList } = this.props;
         return (
-            <div className="marquee">
+            <Marquee>
                 <button
                     onClick={() => {
-                        this.setTimer()//重新计时提高用户体验
+                        this.setTimer() // Reset timer for user-friendly
                         this.togglePrev()
                     }} className="marquee-prev">
                     <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
-                        <ToggleIconLeft points='328 112 184 256 328 400' />
+                        <ToggleIcon points='328 112 184 256 328 400' />
                     </svg>
                 </button>
                 <button
@@ -89,19 +128,19 @@ export default class extends React.Component<MarqueeProps, { index: number; time
                     }}
                     className="marquee-next">
                     <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
-                        <ToggleIconRight points='328 112 184 256 328 400' />
+                        <ToggleIcon points="184 112 328 256 184 400" />
                     </svg>
                 </button>
                 <div className="marquee-auto">
                     <ul>
-                        {this.props.imgList.map((poster, i) => (
+                        {imgList.map((poster, i) => (
                             <li style={{ width: index === i ? '694px' : '0' }} key={i}>
-                                <img className="poster" src={poster.url} />
+                                <img src={poster.url} />
                             </li>
                         ))}
                     </ul>
                 </div>
-            </div>
+            </Marquee>
         )
     }
 }

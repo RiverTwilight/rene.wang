@@ -12,7 +12,6 @@ export default class extends React.Component {
     }
     render() {
         const { config, allPosts, correctPage } = this.props;
-        console.log(correctPage)
         return (
             <>
                 <Head>

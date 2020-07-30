@@ -1,11 +1,12 @@
 import React from 'react'
+import PersonIcon from '../../static/icon/person-outline'
 
 const Headmaster = ({ config: { name, image, intro } }) => {
     return (
         <div className="our-headmaster card">
             {/*<img loading="lazy" className="lijun" src={image} />*/}
             <div className="headmaster-title">
-                <img alt={name} src="/static/icon/person-outline.svg" width="20" height="20" />
+                <PersonIcon />
                 &nbsp;&nbsp;{name}
             </div>
             <div className="headmaster-content">
