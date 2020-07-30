@@ -26,6 +26,16 @@ const Progress = styled.div`
 `
 
 const ReadMore = ({ allPosts, correctIndex }) => {
+
+    // 选取当前文章附近的三篇文章
+    const data = allPosts
+        .slice(correctIndex - 3, correctIndex)
+        .map(post => {
+            return {
+                title: post.frontmatter.title || post.slug,
+                href: '/blog/' + encodeURI(post.slug)
+            }
+        })
     return (
         <div className="our-headmaster card">
             <div className="headmaster-title">
@@ -34,7 +44,11 @@ const ReadMore = ({ allPosts, correctIndex }) => {
             </div>
             <div className="headmaster-content">
                 <List
-                    items={allPosts.slice(correctIndex - 3, correctIndex).map(post => post.frontmatter.title || post.slug)}
+                    items={data.map(item => (
+                        <a href={item.href}>
+                            {item.title}
+                        </a>
+                    ))}
                 />
             </div>
         </div>
