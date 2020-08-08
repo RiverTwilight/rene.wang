@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <style>
+        @keyframes typing {
+            from {
+                width: 105%;
+            }
+
+            to {
+                width: 0;
+                border-left: 0px white solid;
+
+            }
+
+        }
+
+        @keyframes cursor {
+            from{
+                border-left: 2px white solid;
+            }
+
+            to{
+                border-left: 2px white solid;
+                border-left: 0px white solid;
+            }
+        }
+
+        .container {
+            position: relative;
+            background: #000;
+            font-family: Consolas, monospace;
+        }
+
+        .typing {
+            position: absolute;
+            top: 0;
+            margin: 0;
+            z-index: -1;
+        }
+
+        .hiders {
+            margin: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .hiders p {
+            border-left: 2px white solid;
+            position: relative;
+            clear: both;
+            margin: 0;
+            float: right;
+            /* makes animation go left-to-right */
+            width: 0;
+            /* graceful degradation: if animation doesn't work, these are invisible by default */
+            background: black;
+            /* same as page background */
+            animation: typing 2s steps(30, end);
+            animation-fill-mode: both;
+            /* load first keyframe on page load, leave on last frame at end */
+        }
+
+        .hiders p:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .hiders p:nth-child(3) {
+            animation-delay: 4s;
+        }
+
+        .hiders p:nth-child(4) {
+            animation-delay: 6s;
+        }
+
+        .hiders p:nth-child(5) {
+            animation-delay: 8s;
+        }
+    </style>
+</head>
+
+<body style="
+        background: #000;
+        color: #fff;
+    ">
+    <div class="container">
+        <!-- container div is required to set absolute positions within it, so that .typing and .hiders exactly overlap -->
+
+        <p class="typing">
+            This paragraph of text will be animated with a "typewriter" style effect, 
+            and it will continue to work even
+            if it splits across multiple lines. 
+            Well, in This paragraph of text will be animated with a "typewriter"
+            style effect
+        </p>
+
+
+        <div class="hiders">
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+
+    </div>
+</body>
+
+</html>

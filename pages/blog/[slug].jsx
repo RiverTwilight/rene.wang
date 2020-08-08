@@ -24,12 +24,29 @@ const Progress = styled.div`
     background-color: rgba(63,81,181,.2);
     border-radius: 2px;
 `
+const Cover = styled.div`
+    margin-top: -19px;
+    margin-left: -19px;
+    margin-right: -19px;
+    img{
+        object-fit: cover;
+        width: 100%;
+        max-height: 40vh;
+    }
+`
 
 const ReadMore = ({ allPosts, correctIndex }) => {
 
-    // 选取当前文章附近的三篇文章
-    const data = allPosts
-        .slice(correctIndex - 3, correctIndex)
+    const randomIndex = (min, max) => {
+        let randomNum = Math.random() * (max - min) + min;
+        return Math.round(randomNum);
+    }
+    // 随机选取三篇文章
+    const data = [
+        allPosts[randomIndex(0, (allPosts.length - 1) / 3)],
+        allPosts[randomIndex((allPosts.length - 1) / 3, 2 * (allPosts.length - 1) / 3)],
+        allPosts[randomIndex(2 * (allPosts.length - 1) / 3, (allPosts.length - 1))],
+    ]
         .map(post => {
             return {
                 title: post.frontmatter.title || post.slug,
@@ -67,6 +84,9 @@ export default ({ index, allPosts, slug, frontmatter, markdownBody, siteConfig }
             <article style={{
                 marginBottom: '7px'
             }} className="p-a-2 typo bg-white">
+                <Cover>
+                    {frontmatter.cover && <ImgaeBlock src={frontmatter.cover} />}
+                </Cover>
                 <h1 className="text-center">
                     {frontmatter.title || slug}
                 </h1>
@@ -125,7 +145,6 @@ export async function getStaticProps({ ...ctx }) {
 
     const index = posts.map((post, i) => post.defaultTitle === slug).indexOf(true)
 
-    console.log(index)
     return {
         props: {
             allPosts: posts,

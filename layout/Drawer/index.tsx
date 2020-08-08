@@ -6,7 +6,7 @@ const LoveIcon = styled.svg`
     display: inline-block;
     width: 0.944444rem;
     color: rgb(255, 85, 85);
-    transform: translateY(-10%);
+    transform: translateY(10%);
 `
 
 interface DrawerProps {

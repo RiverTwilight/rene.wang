@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 interface MarqueeProps {
     imgList: {
-        url: string // img url
+        url: string, // img url,
+        href: string
     }[],
     delay?: number
 }
@@ -135,7 +136,7 @@ export default class extends React.Component<MarqueeProps, { index: number; time
                     <ul>
                         {imgList.map((poster, i) => (
                             <li style={{ width: index === i ? '694px' : '0' }} key={i}>
-                                <img src={poster.url} />
+                                <a href={poster.href}><img src={poster.url} /></a>
                             </li>
                         ))}
                     </ul>
