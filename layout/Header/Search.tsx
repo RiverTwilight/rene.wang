@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { IPost } from '../type'
 
 interface SearchState {
     searchIsFocus: boolean;
