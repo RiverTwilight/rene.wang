@@ -6,6 +6,11 @@ interface Window {
     scrollListener: any
 }
 
+interface ICurrentPage {
+    text: string,
+    path: string
+}
+
 type IPost = {
     slug: string,
     defaultTitle: string,

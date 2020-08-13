@@ -35,7 +35,7 @@ export default ({ icon, title, children }:{
     children: React.ReactChildren,
     title: string
 }) => (
-    <Card>
+    <Card className="card">
         <div className="title">
             {icon}&nbsp;&nbsp;{title}
         </div>

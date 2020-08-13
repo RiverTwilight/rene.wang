@@ -3,6 +3,7 @@ import matter from 'gray-matter'
 import glob from 'glob'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
+import Gitalk from 'gitalk'
 import Layout from '../../layout/index'
 import CodeBlock from '../../components/CodeBlock'
 import ImgaeBlock from '../../components/LazyloadImage'
@@ -11,7 +12,6 @@ import Card from '../../components/Card'
 import HeadingBlock from '../../components/HeadingBlock'
 import List from '../../components/List'
 import BookIcon from '../../static/icon/book-outline'
-import Gitalk from 'gitalk'
 import '../../scss/typo.scss'
 
 const Progress = styled.div`
@@ -72,18 +72,24 @@ const ReadMore = ({ allPosts }) => {
  * @todo
  */
 
-export default ({ index, allPosts, slug, frontmatter, markdownBody, siteConfig }) => {
+export default ({ allPosts, slug, frontmatter, markdownBody, siteConfig }) => {
     siteConfig.gitalk && React.useEffect(() => {
-        const gitalk = new Gitalk(siteConfig.gitalk)
+        const gitalk = new Gitalk(Object.assign(siteConfig.gitalk, {
+            "id": "/blog/" + encodeURI(slug),
+            "distractionFreeMode": false
+        }))
         gitalk.render('gitalk-container')
     })
     return (
-        <Layout allPosts={allPosts} currentPage={frontmatter.title || slug} config={siteConfig}>
+        <Layout allPosts={allPosts} currentPage={{
+            text: frontmatter.title || slug,
+            path: '/blog'
+        }} config={siteConfig}>
             <link href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.6.2/gitalk.min.css" rel="stylesheet"></link>
             <Progress width={50} />
             <article style={{
                 marginBottom: '7px'
-            }} className="p-a-2 typo bg-white">
+            }} className="p-a-2 card typo bg-white">
                 <Cover>
                     {frontmatter.cover && <ImgaeBlock src={frontmatter.cover} />}
                 </Cover>
@@ -146,12 +152,11 @@ export async function getStaticProps({ ...ctx }) {
     const data = matter(content.default)
     const config = await import(`../../data/config.json`);
 
-    const index = posts.map((post, i) => post.defaultTitle === slug).indexOf(true)
+    // const index = posts.map((post, i) => post.defaultTitle === slug).indexOf(true)
 
     return {
         props: {
             allPosts: posts,
-            index,
             slug,
             frontmatter: data.data,
             markdownBody: data.content,
