@@ -147,8 +147,9 @@ export async function getStaticProps({ ...ctx }) {
         return data
     })(require.context('../../posts', true, /\.md$/))
 
-    const { slug } = ctx.params
-    const content = await import(`../../posts/${slug}.md`)
+    const { id } = ctx.params;
+    const currentFileName = posts[id].slug;
+    const content = await import(`../../posts/${currentFileName}.md`)
     const data = matter(content.default)
     const config = await import(`../../data/config.json`);
 
@@ -157,7 +158,7 @@ export async function getStaticProps({ ...ctx }) {
     return {
         props: {
             allPosts: posts,
-            slug,
+            slug: currentFileName,
             frontmatter: data.data,
             markdownBody: data.content,
             siteConfig: config.default
@@ -179,8 +180,8 @@ export async function getStaticPaths() {
     )
 
     // create paths with `slug` param
-    const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
-
+    // const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
+    const paths = blogSlugs.map((slug, i) => `/blog/${i}`)
     return {
         paths,
         fallback: false,

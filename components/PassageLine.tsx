@@ -8,22 +8,22 @@ import '../scss/typo.scss'
  * 单个文章组件
  */
 
-export default ({ slug, title, cover, summary, date }: Readonly<{
+export default ({ id, title, cover, summary, date }: Readonly<{
     title: string;
     summary: string;
-    slug: string;
+    id: number;
     /**封面 */
     cover?: string;
     date?: string;
 }>) => {
     const [expand, setExpand] = React.useState(false);
     return (
-        <div id={encodeURI(slug)} className={"passage-item"}>
+        <div key={id} className={"passage-item"}>
             <div className="passage-item-header">
-                <a href={'/blog/' + slug} className="passage-item-header-title">
+                <a href={'/blog/' + id} className="passage-item-header-title">
                     {title.replace('&nbsp;', ' ')}
                 </a>
-                <meta itemProp="url" content={"https://blog.yungeeker.com//blog/" + slug} />
+                <meta itemProp="url" content={"https://blog.yungeeker.com/blog/" + id} />
                 <meta itemProp="name" content={title} />
                 <div className="passage-item-header-date">{date}</div>
             </div>
@@ -46,7 +46,7 @@ export default ({ slug, title, cover, summary, date }: Readonly<{
             <div onClick={() => {
                 setExpand(!expand);
                 if (expand) {
-                    window.location.hash = encodeURI(slug)
+                    window.location.hash = String(id)
                 }
             }} className={`passage-item-action ${expand ? 'passage-item-action-sticky' : ''}`}>
                 <span className="passage-item-readmore">{expand ? "收起" : "展开全文"}</span>
