@@ -17,6 +17,7 @@ type IPost = {
     frontmatter: {
         date: string
     },
+    id: number,
     markdownBody: string
 }
 

@@ -25,7 +25,7 @@ const SearchResult = ({ data, isHide, left, kwd }: { kwd: string, isHide: boolea
                 </div>
                 {data.filter((post: IPost) => post.defaultTitle.toLowerCase().includes(kwd.toLowerCase())).map((post: IPost) => (
                     <a
-                        href={encodeURI('/blog/' + post.defaultTitle)}
+                        href={'/blog/' + post.id}
                         className="hotwords-item">
                         {post.defaultTitle}
                     </a>

@@ -29,6 +29,7 @@ export default ({ onChange, tabs, activeIndex }: {
                 <Text language={0} dictionary={tabs}>
                     {tabEles.map(tab => (
                         <a
+                            key={tab.tabName}
                             onClick={_ => {
                                 onChange(tab.tabName)
                             }}

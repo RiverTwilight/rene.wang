@@ -51,7 +51,7 @@ const ReadMore = ({ allPosts }) => {
         .map(post => {
             return {
                 title: post.frontmatter.title || post.slug,
-                href: '/blog/' + encodeURI(post.slug)
+                href: '/blog/' + post.id
             }
         })
     return (
@@ -72,10 +72,10 @@ const ReadMore = ({ allPosts }) => {
  * @todo
  */
 
-export default ({ allPosts, slug, frontmatter, markdownBody, siteConfig }) => {
+export default ({ index, allPosts, slug, frontmatter, markdownBody, siteConfig }) => {
     siteConfig.gitalk && React.useEffect(() => {
         const gitalk = new Gitalk(Object.assign(siteConfig.gitalk, {
-            "id": "/blog/" + encodeURI(slug),
+            "id": "/blog/" + index,
             "distractionFreeMode": false
         }))
         gitalk.render('gitalk-container')
@@ -83,7 +83,7 @@ export default ({ allPosts, slug, frontmatter, markdownBody, siteConfig }) => {
     return (
         <Layout allPosts={allPosts} currentPage={{
             text: frontmatter.title || slug,
-            path: '/blog'
+            path: '/blog/' + index
         }} config={siteConfig}>
             <link href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.6.2/gitalk.min.css" rel="stylesheet"></link>
             <Progress width={50} />
@@ -142,6 +142,7 @@ export async function getStaticProps({ ...ctx }) {
                 defaultTitle: slug,
                 frontmatter: document.data,
                 slug: slug,
+                id: index
             }
         })
         return data
@@ -159,6 +160,7 @@ export async function getStaticProps({ ...ctx }) {
         props: {
             allPosts: posts,
             slug: currentFileName,
+            index: id,
             frontmatter: data.data,
             markdownBody: data.content,
             siteConfig: config.default
