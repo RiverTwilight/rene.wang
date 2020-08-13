@@ -1,7 +1,9 @@
 import React from 'react'
 import PersonIcon from '../../static/icon/person-outline'
 
-const Headmaster = ({ config: { name, image, intro } }) => {
+const Headmaster = ({ config: { name, image, intro } }: {
+    config: ISiteConfig["author"]
+}) => {
     return (
         <div className="our-headmaster card">
             {/*<img loading="lazy" className="lijun" src={image} />*/}

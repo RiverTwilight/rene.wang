@@ -19,10 +19,12 @@ $headerTextColor: #8590a6;
     display: -ms-flexbox;
     display: flex;
 }
+
 /****整个头部****/
 .app-header {
     position: fixed;
     padding-top: 3px;
+    transition: margin-top .5s;
     @include stickToTop();
     z-index: 100;
     @media (min-width: 640px) {
@@ -34,7 +36,10 @@ $headerTextColor: #8590a6;
     box-shadow: 0 1px 3px #1a1a1a1a;
     background-clip: content-box;
     .app-header-space{
-        width: 150px;
+        width: 300px;
+        @media screen and (max-width: 640px) {
+            width: 95px
+        }
     }
     .app-header-inner {
         position: relative;
@@ -44,7 +49,7 @@ $headerTextColor: #8590a6;
         @media screen and (max-width: 640px) {
             width: 98%;
         }
-        height: 52px;
+        height: 50px;
         margin: 0 auto;
         -webkit-box-align: center;
         -ms-flex-align: center;
@@ -53,6 +58,12 @@ $headerTextColor: #8590a6;
         transition: -webkit-transform 0.3s;
         transition: transform 0.3s;
         transition: transform 0.3s, -webkit-transform 0.3s;
+        .app-header-inner-subtitle{
+            font-size: 25px;
+            @media screen and (max-width: 640px) {
+                font-size: 18px;
+            }
+        }
         .logo{
             z-index: 1;
         }

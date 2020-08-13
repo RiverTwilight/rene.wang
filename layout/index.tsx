@@ -4,21 +4,20 @@ import Header from './Header'
 import Drawer from './Drawer'
 import '../scss/App.scss'
 
-export default class extends React.Component {
-    componentDidMount() {
-        const { loading } = this
-        window.loadShow = () => loading.style.display = 'inline-block';
-        window.loadHide = () => loading.style.display = 'none';
-    }
+class Layout extends React.Component<{
+    config: ISiteConfig,
+    allPosts,
+    currentPage: string
+}> {
     render() {
-        const { config, allPosts, correctPage } = this.props;
+        const { config, allPosts, currentPage } = this.props;
         return (
             <>
                 <Head>
-                    <title>{`${correctPage ? (`${correctPage} - `): ''}${config.title}`}</title>
+                    <title>{`${currentPage ? (`${currentPage} - `): ''}${config.title}`}</title>
                 </Head>
-                <div ref={r => this.loading = r} style={{ display: 'inline-block' }} className="header-liner"></div>
-                <Header allPosts={allPosts} config={config} />
+                <div style={{ display: 'inline-block' }} className="header-liner"></div>
+                <Header {...this.props} />
                 <main className="main">
                     <div className="container">
                         <div className="container-left">
@@ -33,3 +32,5 @@ export default class extends React.Component {
         )
     }
 }
+
+export default Layout

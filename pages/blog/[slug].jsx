@@ -7,9 +7,11 @@ import Layout from '../../layout/index'
 import CodeBlock from '../../components/CodeBlock'
 import ImgaeBlock from '../../components/LazyloadImage'
 import ToTop from '../../components/ToTop'
+import Card from '../../components/Card'
 import HeadingBlock from '../../components/HeadingBlock'
 import List from '../../components/List'
 import BookIcon from '../../static/icon/book-outline'
+import Gitalk from 'gitalk'
 import '../../scss/typo.scss'
 
 const Progress = styled.div`
@@ -35,8 +37,7 @@ const Cover = styled.div`
     }
 `
 
-const ReadMore = ({ allPosts, correctIndex }) => {
-
+const ReadMore = ({ allPosts }) => {
     const randomIndex = (min, max) => {
         let randomNum = Math.random() * (max - min) + min;
         return Math.round(randomNum);
@@ -54,21 +55,15 @@ const ReadMore = ({ allPosts, correctIndex }) => {
             }
         })
     return (
-        <div className="our-headmaster card">
-            <div className="headmaster-title">
-                <BookIcon />
-                &nbsp;&nbsp;阅读更多
-            </div>
-            <div className="headmaster-content">
-                <List
-                    items={data.map(item => (
-                        <a href={item.href}>
-                            {item.title}
-                        </a>
-                    ))}
-                />
-            </div>
-        </div>
+        <Card title="阅读更多" icon={<BookIcon />}>
+            <List
+                items={data.map(item => (
+                    <a href={item.href}>
+                        {item.title}
+                    </a>
+                ))}
+            />
+        </Card>
     )
 }
 
@@ -78,8 +73,13 @@ const ReadMore = ({ allPosts, correctIndex }) => {
  */
 
 export default ({ index, allPosts, slug, frontmatter, markdownBody, siteConfig }) => {
+    siteConfig.gitalk && React.useEffect(() => {
+        const gitalk = new Gitalk(siteConfig.gitalk)
+        gitalk.render('gitalk-container')
+    })
     return (
-        <Layout correctPage={frontmatter.title || slug} config={siteConfig}>
+        <Layout allPosts={allPosts} currentPage={frontmatter.title || slug} config={siteConfig}>
+            <link href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.6.2/gitalk.min.css" rel="stylesheet"></link>
             <Progress width={50} />
             <article style={{
                 marginBottom: '7px'
@@ -108,7 +108,10 @@ export default ({ index, allPosts, slug, frontmatter, markdownBody, siteConfig }
                 </ReactMarkdown>
                 <div className="typo-split">END</div>
             </article>
-            <ReadMore correctIndex={index} allPosts={allPosts} />
+            <Card title="评论" icon={BookIcon}>
+                <div id="gitalk-container"></div>
+            </Card>
+            <ReadMore allPosts={allPosts} />
             <ToTop />
         </Layout>
     )

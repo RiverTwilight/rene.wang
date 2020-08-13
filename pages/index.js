@@ -67,7 +67,7 @@ export default class extends React.Component {
         const { allPosts, siteConfig } = this.props;
         const { channel, page } = this.state;
         return (
-            <Layout allPosts={allPosts} config={siteConfig}>
+            <Layout currentPage="首页" allPosts={allPosts} config={siteConfig}>
                 <Marquee
                     //如果网站配置里没有海报，那么使用带有封面的文章
                     imgList={siteConfig.poster || allPosts
