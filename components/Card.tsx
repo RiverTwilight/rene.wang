@@ -31,7 +31,7 @@ const Card = styled.div`
 `
 
 export default ({ icon, title, children }:{
-    icon: React.Component,
+    icon: string,
     children: React.ReactChildren,
     title: string
 }) => (

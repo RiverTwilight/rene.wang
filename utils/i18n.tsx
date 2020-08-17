@@ -1,6 +1,7 @@
 import * as React from 'react'
 /**
  * 多语言组件
+ * @author rivertwilight
  * 若props包含子节点作为词典Provider，不包含作为Consumer
  */
 
@@ -10,12 +11,8 @@ const { Provider, Consumer } = React.createContext({
 });
 
 interface Pro {
-    dictionary: {
-        [dicIndex: string]: {
-            [langIndex: number]: string
-        }
-    };
-    language: number;
+    dictionary: dictionary
+    language: lang;
     children: JSX.Element | JSX.Element[] | null;
 }
 

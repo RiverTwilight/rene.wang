@@ -58,19 +58,26 @@ export async function getStaticProps() {
 }
 
 export default class extends React.Component {
-    postsPerPage = 5;
     constructor(props) {
         super(props);
         this.state = {
             channel: "all",
-            page: 1
+            page: 1,
+            lang: props.siteConfig.defaultLanguage
+        }
+    }
+    componentDidMount() {
+        if (localStorage.lang) {
+            this.setState({
+                lang: localStorage.lang
+            })
         }
     }
     render() {
         const { allPosts, siteConfig } = this.props;
-        const { channel, page } = this.state;
+        const { channel, lang } = this.state;
         return (
-            <Layout currentPage={{
+            <Layout lang={lang} currentPage={{
                 text: "首页",
                 path: "/"
             }} allPosts={allPosts} config={siteConfig}>
@@ -84,10 +91,11 @@ export default class extends React.Component {
                         }))}
                 />
                 <Tab
+                    lang={lang}
                     tabs={Object.assign({
                         all: {
-                            1: 'All Posts',
-                            0: '全部'
+                            'en': 'All Posts',
+                            'zh': '全部'
                         }
                     }, siteConfig.categories)}
                     activeIndex={channel}
@@ -100,7 +108,7 @@ export default class extends React.Component {
                 <div className="card passage-list">
                     {allPosts
                         .filter(post => [...Object.values(post.frontmatter.categories || []), 'all'].includes(channel))
-                        .slice(0, page * this.postsPerPage)
+                        /*.slice(0, page * this.postsPerPage)*/
                         .map((post, i) => (
                             <PassageItem
                                 key={post.slug}
@@ -111,13 +119,13 @@ export default class extends React.Component {
                                 date={post.frontmatter.date}
                             />
                         ))}
-                    <div style={{
+                    {/*<div style={{
                         display: page === Math.ceil(allPosts.length / this.postsPerPage) ? 'none' : ''
                     }} onClick={() => {
                         this.setState({ page: page + 1 })
                     }} className="bg-white passage-more">
                         加载更多
-                    </div>
+                    </div>*/}
                 </div>
             </Layout>
         )

@@ -7,14 +7,17 @@ import '../scss/App.scss'
 class Layout extends React.Component<{
     config: ISiteConfig,
     allPosts: IPost[],
-    currentPage: ICurrentPage
+    currentPage: ICurrentPage,
+    lang: lang
+}, {
+
 }> {
     render() {
-        const { config, allPosts, currentPage } = this.props;
+        const { config, allPosts, currentPage, lang } = this.props;
         return (
             <>
                 <Head>
-                    <title>{`${currentPage ? (`${currentPage.text} - `): ''}${config.title}`}</title>
+                    <title>{`${currentPage ? (`${currentPage.text} - `) : ''}${config.title}`}</title>
                 </Head>
                 <div style={{ display: 'inline-block' }} className="header-liner"></div>
                 <Header {...this.props} />

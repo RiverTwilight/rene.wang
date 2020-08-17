@@ -1,5 +1,20 @@
 {
-    "nav":[{
-        
-    }]
+    "nav": {
+        "homePage": {
+            "zh": "首页",
+            "en": "Home"
+        },
+        "search": {
+
+        }
+    },
+    "articleItem":{
+        "showMore": {
+            "zh": "展开全文",
+            "en": "Show more"
+        },
+        "showLess": {
+            "zh": "收起"
+        }
+    }
 }

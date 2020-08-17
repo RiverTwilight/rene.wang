@@ -8,10 +8,11 @@ type tabsType = {
     }
 }
 
-export default ({ onChange, tabs, activeIndex }: {
+const Tab = ({ onChange, tabs, activeIndex, lang }: {
     onChange(index: keyof tabsType): void;
     activeIndex: keyof tabsType;
-    tabs: tabsType
+    tabs: tabsType,
+    lang: lang
 }) => {
     const [extandTab, setExtandTab] = useState(false);
     const tabEles = Object.keys(tabs).map(tab => {
@@ -26,11 +27,11 @@ export default ({ onChange, tabs, activeIndex }: {
     return (
         <div className="header-tab card">
             <nav className={`tab ${extandTab ? 'tab-extend' : ''}`}>
-                <Text language={0} dictionary={tabs}>
+                <Text language={lang} dictionary={tabs}>
                     {tabEles.map(tab => (
                         <a
                             key={tab.tabName}
-                            onClick={_ => {
+                            onClick={() => {
                                 onChange(tab.tabName)
                             }}
                             className={activeIndex === tab.tabName ? 'tab-active' : ''}>
@@ -50,3 +51,5 @@ export default ({ onChange, tabs, activeIndex }: {
         </div>
     )
 }
+
+export default Tab

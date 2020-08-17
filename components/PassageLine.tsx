@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ReactMarkdown from 'react-markdown'
 import CodeBlock from '../components/CodeBlock'
+import Button from '../components/Button'
 import '../scss/passageLine.scss'
 import '../scss/typo.scss'
 
@@ -43,6 +44,9 @@ export default ({ id, title, cover, summary, date }: Readonly<{
                     </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>
             </div>
+            <Button
+                text=""
+            />
             <div onClick={() => {
                 setExpand(!expand);
                 if (expand) {

@@ -11,7 +11,7 @@ import ToTop from '../../components/ToTop'
 import Card from '../../components/Card'
 import HeadingBlock from '../../components/HeadingBlock'
 import List from '../../components/List'
-import BookIcon from '../../static/icon/book-outline'
+import ChatsBubbles from '../../components/Icons/ChatsBubbles'
 import '../../scss/typo.scss'
 
 const Progress = styled.div`
@@ -55,7 +55,7 @@ const ReadMore = ({ allPosts }) => {
             }
         })
     return (
-        <Card title="阅读更多" icon={<BookIcon />}>
+        <Card title="阅读更多" icon="book-outline">
             <List
                 items={data.map(item => (
                     <a href={item.href}>
@@ -81,7 +81,7 @@ export default ({ index, allPosts, slug, frontmatter, markdownBody, siteConfig }
         gitalk.render('gitalk-container')
     })
     return (
-        <Layout allPosts={allPosts} currentPage={{
+        <Layout lang="zh" allPosts={allPosts} currentPage={{
             text: frontmatter.title || slug,
             path: '/blog/' + index
         }} config={siteConfig}>
@@ -114,7 +114,7 @@ export default ({ index, allPosts, slug, frontmatter, markdownBody, siteConfig }
                 </ReactMarkdown>
                 <div className="typo-split">END</div>
             </article>
-            <Card title="评论" icon={BookIcon}>
+            <Card title="评论" icon={<ChatsBubbles />}>
                 <div id="gitalk-container"></div>
             </Card>
             <ReadMore allPosts={allPosts} />

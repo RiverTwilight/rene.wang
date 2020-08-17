@@ -11,6 +11,15 @@ interface ICurrentPage {
     path: string
 }
 
+// 词典
+type dictionary = {
+    [dicIndex: string]: {
+        [langIndex: number]: string
+    }
+};
+
+type lang = 'zh' | 'en' | 'jp'
+
 type IPost = {
     slug: string,
     defaultTitle: string,

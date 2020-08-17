@@ -2,8 +2,10 @@ import * as React from 'react'
 import styled from 'styled-components'
 import Search from './Search'
 import Text from '../../utils/i18n'
+import { nav } from '../../data/i18n.json'
 import ActiveLink from '../../utils/AcitiveLink'
 import '../../scss/header.scss'
+import { LinkTargetResolver } from 'react-markdown'
 
 /**
  * 头部
@@ -17,19 +19,13 @@ const ShareIcon = styled.path`
     stroke-width:48px;
 `
 
-const Menu = (): React.ReactElement => {
-    const dic = {
-        home: {
-            1: 'Home',
-            0: '首页'
-        }
-    }
+const Menu = ({ lang }): React.ReactElement => {
     return (
         <ul className="app-header-list">
-            <Text dictionary={dic} language={0} >
+            <Text dictionary={nav} language={lang} >
                 {[
                     {
-                        text: <Text home />,
+                        text: <Text homePage />,
                         to: '/'
                     }
                 ].map(item => (
@@ -45,9 +41,9 @@ const Menu = (): React.ReactElement => {
 class Language extends React.Component
     <
     {
-        list: string[];
-        cb(newLang: number): void;
-        value: number
+        list: { text: string, code: lang }[];
+        cb(newLang: lang): void;
+        value: lang
     }, {
         isShowUl: boolean;
         style: {};
@@ -55,7 +51,7 @@ class Language extends React.Component
     >
 {
     input: any
-    constructor(props: Readonly<{ list: string[]; cb(newLang: number): void; value: number }>) {
+    constructor(props) {
         super(props);
         this.state = {
             isShowUl: false,
@@ -88,17 +84,17 @@ class Language extends React.Component
                                 })
                             })
                         }}
-                    >{list[value]}</button>
+                    >{list.filter(lang => lang.code === value)[0].text}</button>
                     <div style={Object.assign({
                         display: isShowUl ? 'block' : 'none'
                     }, style)}>
                         <span className="arrow-up"></span>
                         <ul className="card">
-                            {list.map((item, i) => (
-                                <li key={item} onClick={_ => {
-                                    cb && cb(i);
+                            {list.map(({ code, text }) => (
+                                <li key={code} onClick={_ => {
+                                    cb && cb(code);
                                     this.setState({ isShowUl: false })
-                                }}>{item}</li>
+                                }}>{text}</li>
                             ))}
                         </ul>
                     </div>
@@ -126,7 +122,7 @@ const SubHeader = ({ currentPage, siteConfig }) => (
     </div>
 )
 
-const MainHeader = ({ siteConfig, allPosts }) => (
+const MainHeader = ({ siteConfig, allPosts, lang }) => (
     <div
         className="app-header-inner">
         <a href="/" className="logo hidden-sm-down">
@@ -135,41 +131,47 @@ const MainHeader = ({ siteConfig, allPosts }) => (
         <a href="/" className="logo hidden-md-up">
             <img alt={siteConfig.title} className="logo-small" src={siteConfig.logo.small} />
         </a>
-        <Menu />
+        <Menu lang={lang} />
         <div className="app-header-space"></div>
         <Search allPosts={allPosts} />
-        {/**<Language
+        <Language
             value={lang}
             cb={lang => {
-                localStorage.setItem('language', String(lang));
+                localStorage.setItem('lang', lang);
                 window.location.reload()
             }}
-            list={['简体中文', 'English']}
-        />**/}
+            list={[{
+                text: '简体中文',
+                code: 'zh'
+            }, {
+                text: 'English',
+                code: "en"
+
+            }]}
+        />
     </div>
 )
 
-export default class extends React.Component<
+class Header extends React.Component<
     {
         config: any;
         allPosts: any,
-        currentPage?: ICurrentPage
+        currentPage?: ICurrentPage,
+        lang: lang,
     },
     {
-        lang: number,
         subHeader: boolean
     }>{
 
     constructor(props: any) {
         super(props);
         this.state = {
-            lang: /*parseInt(localStorage.language) ||*/ 0,
             subHeader: false
         }
     }
     handleScroll() {
         const t1 = document.documentElement.scrollTop || document.body.scrollTop;
-        if (!window.scrollListener) {
+        if (!window.scrollListener && this.props.currentPage.path.match(/\/blog\/\d+/)) {
             window.scrollListener = setTimeout(() => {
                 let t2 = document.documentElement.scrollTop || document.body.scrollTop;
                 if (t2 - t1 > 70) {
@@ -185,12 +187,9 @@ export default class extends React.Component<
     activeMonitor() {
         window.addEventListener('scroll', this.handleScroll.bind(this))
     }
-    componentDidMount() {
-        this.activeMonitor()
-    }
     render() {
-        const { lang, subHeader } = this.state;
-        const { config, allPosts, currentPage } = this.props;
+        const { subHeader } = this.state;
+        const { lang, config, allPosts, currentPage } = this.props;
         return (
             <>
                 <div
@@ -198,11 +197,12 @@ export default class extends React.Component<
                         marginTop: subHeader ? '-50px' : '',
                         height: !subHeader ? '50px' : ''
                     } : {
-                        marginTop: '',
-                        height: '50px'
-                    }}
+                            marginTop: '',
+                            height: '50px'
+                        }}
                     className="app-header">
                     <MainHeader
+                        lang={lang}
                         siteConfig={config}
                         allPosts={allPosts}
                     />
@@ -215,3 +215,5 @@ export default class extends React.Component<
         )
     }
 }
+
+export default Header

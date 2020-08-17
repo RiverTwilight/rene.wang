@@ -7,6 +7,7 @@
         "large": "/static/image/logo-large.png",
         "small": "/static/image/logo-small.png"
     },
+    "defaultLanguage": "zh",
     "author": {
         "name": "江村暮",
         "image": "/static/image/author.jpg",
@@ -19,16 +20,16 @@
     },
     "categories": {
         "Life": {
-            "1": "Life",
-            "0": "生活"
+            "en": "Life",
+            "zh": "生活"
         },
         "FrontEnd": {
-            "1": "Front End",
-            "0": "前端"
+            "en": "Front End",
+            "zh": "前端"
         },
         "Feeling": {
-            "1": "Feeling",
-            "0": "随感"
+            "en": "Feeling",
+            "zh": "随感"
         }
     },
     "gitalk": {
