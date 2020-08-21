@@ -12,6 +12,7 @@ import Card from '../../components/Card'
 import HeadingBlock from '../../components/HeadingBlock'
 import List from '../../components/List'
 import ChatsBubbles from '../../components/Icons/ChatsBubbles'
+import BookOutline from '../../components/Icons/BookOutline'
 import '../../scss/typo.scss'
 
 const Progress = styled.div`
@@ -55,7 +56,7 @@ const ReadMore = ({ allPosts }) => {
             }
         })
     return (
-        <Card title="阅读更多" icon="book-outline">
+        <Card title="阅读更多" icon={<BookOutline />}>
             <List
                 items={data.map(item => (
                     <a href={item.href}>

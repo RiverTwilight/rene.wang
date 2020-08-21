@@ -27,7 +27,7 @@ class Layout extends React.Component<{
                             {this.props.children}
                         </div>
                         <div className="container-right">
-                            <Drawer config={config} />
+                            <Drawer lang={lang} config={config} />
                         </div>
                     </div>
                 </main>

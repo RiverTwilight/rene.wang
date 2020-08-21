@@ -1,9 +1,9 @@
 import * as React from 'react'
-import ReactMarkdown from 'react-markdown'
-import CodeBlock from '../components/CodeBlock'
-import Button from '../components/Button'
+// import ReactMarkdown from 'react-markdown'
+// import CodeBlock from '../components/CodeBlock'
+import LazyLoad from 'react-lazyload'
 import '../scss/passageLine.scss'
-import '../scss/typo.scss'
+//  '../scss/typo.scss'
 
 /**
  * 单个文章组件
@@ -31,10 +31,10 @@ export default ({ id, title, cover, summary, date }: Readonly<{
             <div className={`passage-item-content ${!expand && "passage-item-content-close"}`}>
                 <div style={{ display: (cover && !expand) ? 'block' : 'none' }} className="passage-item-content-cover">
                     <div className="passage-item-content-cover-inner">
-                        <img alt={title.replace('&nbsp;', ' ')} src={cover} />
+                        <LazyLoad><img alt={title.replace('&nbsp;', ' ')} src={cover} /></LazyLoad>
                     </div>
                 </div>
-                <div className="typo passage-item-content-text">
+                {/*<div className="typo passage-item-content-text">
                     {expand ? <ReactMarkdown
                         renderers={{
                             code: CodeBlock
@@ -42,18 +42,19 @@ export default ({ id, title, cover, summary, date }: Readonly<{
                         escapeHtml={false}
                         source={summary}>
                     </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
-                </div>
+                </div>*/}
+                <div className="typo passage-item-content-text">{summary.replace(/\<[^\>]+\>/g, '')}</div>
             </div>
-            <Button
-                text=""
-            />
-            <div onClick={() => {
+            {/*<div onClick={() => {
                 setExpand(!expand);
                 if (expand) {
                     window.location.hash = String(id)
                 }
             }} className={`passage-item-action ${expand ? 'passage-item-action-sticky' : ''}`}>
                 <span className="passage-item-readmore">{expand ? "收起" : "展开全文"}</span>
+            </div>*/}
+            <div className={`passage-item-action`}>
+                <a href={"/blog/" + id} className="passage-item-readmore">阅读全文</a>
             </div>
         </div>
     )

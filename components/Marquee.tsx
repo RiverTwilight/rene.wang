@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import LazyLoad from 'react-lazyload'
 
 interface MarqueeProps {
     imgList: {
@@ -136,7 +137,9 @@ export default class extends React.Component<MarqueeProps, { index: number; time
                     <ul>
                         {imgList.map((poster, i) => (
                             <li style={{ width: index === i ? '694px' : '0' }} key={i}>
-                                <a href={poster.href}><img src={poster.url} /></a>
+                                <a href={poster.href}>
+                                    <LazyLoad><img src={poster.url} /></LazyLoad>
+                                </a>
                             </li>
                         ))}
                     </ul>

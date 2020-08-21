@@ -5,7 +5,6 @@ import Text from '../../utils/i18n'
 import { nav } from '../../data/i18n.json'
 import ActiveLink from '../../utils/AcitiveLink'
 import '../../scss/header.scss'
-import { LinkTargetResolver } from 'react-markdown'
 
 /**
  * 头部
@@ -28,7 +27,7 @@ const Menu = ({ lang }): React.ReactElement => {
                         text: <Text homePage />,
                         to: '/'
                     }
-                ].map(item => (
+                ].map((item, i) => (
                     <ActiveLink activeClassName="app-header-list-item-active" href={item.to}>
                         <a className="app-header-list-item">{item.text}</a>
                     </ActiveLink>
@@ -38,78 +37,12 @@ const Menu = ({ lang }): React.ReactElement => {
     )
 }
 
-class Language extends React.Component
-    <
-    {
-        list: { text: string, code: lang }[];
-        cb(newLang: lang): void;
-        value: lang
-    }, {
-        isShowUl: boolean;
-        style: {};
-    }
-    >
-{
-    input: any
-    constructor(props) {
-        super(props);
-        this.state = {
-            isShowUl: false,
-            style: {}
-        }
-    }
-    componentDidMount() {
-        this.setState({
-            style: {
-                position: "fixed",
-                top: this.input.getBoundingClientRect().top + this.input.style.height,
-                left: this.input.getBoundingClientRect().left
-            }
-        })
-    }
-    render() {
-        const { isShowUl, style } = this.state
-        const { list, cb, value } = this.props;
-        return (
-            <>
-                <div className="select language">
-                    <button
-                        className=""
-                        ref={r => this.input = r}
-                        onClick={() => {
-                            this.setState({ isShowUl: true }, () => {
-                                document.body.addEventListener('click', () => {
-                                    this.setState({ isShowUl: false });
-                                    document.body.removeEventListener('click', () => { })
-                                })
-                            })
-                        }}
-                    >{list.filter(lang => lang.code === value)[0].text}</button>
-                    <div style={Object.assign({
-                        display: isShowUl ? 'block' : 'none'
-                    }, style)}>
-                        <span className="arrow-up"></span>
-                        <ul className="card">
-                            {list.map(({ code, text }) => (
-                                <li key={code} onClick={_ => {
-                                    cb && cb(code);
-                                    this.setState({ isShowUl: false })
-                                }}>{text}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            </>
-        )
-    }
-}
-
 const SubHeader = ({ currentPage, siteConfig }) => (
     <div
         className="app-header-inner"
     >
-        <a href="/" className="logo hidden-sm-down">
-            <img alt={siteConfig.title} className="logo-large" src={siteConfig.logo.large} />
+        <a href="/" className="logo hidden-md-up">
+            <img alt={siteConfig.title} className="logo-small" src={siteConfig.logo.small} />
         </a>
         <h2 className="app-header-inner-subtitle" >{currentPage.text}</h2>
         <div className="app-header-space"></div>
@@ -134,21 +67,6 @@ const MainHeader = ({ siteConfig, allPosts, lang }) => (
         <Menu lang={lang} />
         <div className="app-header-space"></div>
         <Search allPosts={allPosts} />
-        <Language
-            value={lang}
-            cb={lang => {
-                localStorage.setItem('lang', lang);
-                window.location.reload()
-            }}
-            list={[{
-                text: '简体中文',
-                code: 'zh'
-            }, {
-                text: 'English',
-                code: "en"
-
-            }]}
-        />
     </div>
 )
 
@@ -169,7 +87,7 @@ class Header extends React.Component<
             subHeader: false
         }
     }
-    handleScroll() {
+    handleScroll = () => {
         const t1 = document.documentElement.scrollTop || document.body.scrollTop;
         if (!window.scrollListener && this.props.currentPage.path.match(/\/blog\/\d+/)) {
             window.scrollListener = setTimeout(() => {
@@ -184,8 +102,11 @@ class Header extends React.Component<
             }, 400)
         }
     }
+    componentDidMount(){
+        this.activeMonitor()
+    }
     activeMonitor() {
-        window.addEventListener('scroll', this.handleScroll.bind(this))
+        window.addEventListener('scroll', this.handleScroll)
     }
     render() {
         const { subHeader } = this.state;

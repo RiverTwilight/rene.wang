@@ -66,6 +66,7 @@ export default () => {
                     window.history.pushState(null, '', '#')//兼容
                 }
             }}
+            className="card"
         >
             <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 512 512'>
                 <title>ionicons-v5-a</title>
