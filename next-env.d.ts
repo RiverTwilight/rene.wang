@@ -33,6 +33,7 @@ type IPost = {
 interface ISiteConfig {
     title: string,
     keywords: string[],
+    description: string,
     author: {
         name: string,
         image?: string,

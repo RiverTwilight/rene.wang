@@ -30,17 +30,6 @@ export default class extends Document {
                     <link rel="icon" href="/static/image/favicon.ico" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
-                    <meta name="description" content={description} />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content={title} />
-                    <meta property="og:url" content="https://blog.yungeeker.com/index.html" />
-                    <meta property="og:site_name" content={title} />
-                    <meta property="og:description" content={description} />
-                    <meta property="og:locale" content="zh_CN" />
-                    <meta property="article:author" content={author.name} />
-                    <meta property="article:tag" content={author.name} />
-                    <meta property="article:tag" content="云极客" />
-                    <meta name="twitter:card" content="summary" />
                     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
                     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
                     <meta name="renderer" content="webkit" />
