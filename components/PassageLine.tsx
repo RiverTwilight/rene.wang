@@ -1,7 +1,6 @@
 import * as React from "react";
 // import ReactMarkdown from 'react-markdown'
 // import CodeBlock from '../components/CodeBlock'
-//@ts-expect-error
 import LazyLoad from "react-lazyload";
 import "../scss/passageLine.scss";
 //  '../scss/typo.scss'

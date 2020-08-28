@@ -1,10 +1,7 @@
 import * as React from "react";
-//@ts-expect-error
 import styled from "styled-components";
 import Search from "./Search";
-//@ts-expect-error
 import Logo from "../../static/logo.svg";
-//@ts-expect-error
 import LogoLarge from "../../static/logo&title-small.svg";
 import Text from "../../utils/i18n";
 import { nav } from "../../data/i18n.json";
