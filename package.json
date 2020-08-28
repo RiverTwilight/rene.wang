@@ -4,7 +4,6 @@
   "description": "A Responsive, Fast, i18n and Markdown Blog base on Next.js.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build && next export",
     "start": "next start -p 4000"
@@ -12,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@svgr/webpack": "^5.4.0",
     "@zeit/next-sass": "^1.0.1",
     "gitalk": "^1.6.2",
     "glob": "^7.1.6",
@@ -25,7 +25,8 @@
     "react-lazyload": "^3.0.0",
     "react-markdown": "^4.3.1",
     "react-syntax-highlighter": "^12.2.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@types/node": "^13.13.4",

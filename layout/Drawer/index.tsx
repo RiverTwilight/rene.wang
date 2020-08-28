@@ -74,8 +74,8 @@ export default class extends React.Component<DrawerProps, DrawerState> {
                 <div ref={r => this.copyright = r} className={`copyright`}>
                     <Language
                         value={lang}
-                        cb={lang => {
-                            localStorage.setItem('lang', lang);
+                        cb={newLang => {
+                            localStorage.setItem('lang', newLang);
                             window.location.reload()
                         }}
                         list={[{

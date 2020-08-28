@@ -70,11 +70,11 @@ class Language extends React.Component
 const Language = ({ list, cb, value }) => {
     return (
         <div>|
-            {list.map(l => (
+            {list.map((l: { value: string | number; text: React.ReactNode }) => (
                 <a
                     key={l.value}
                     onClick={() => {
-                        cb(l.value)
+                        cb(l.code)
                     }}
                 >&nbsp;{l.text}&nbsp;|</a>
             ))}

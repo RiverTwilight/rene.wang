@@ -9,16 +9,42 @@ class Layout extends React.Component<
 		config: ISiteConfig;
 		allPosts: IPost[];
 		currentPage: ICurrentPage;
-		lang: lang;
 	},
-	{}
+	{
+		lang: lang;
+	}
 > {
+	constructor(props) {
+		super(props);
+		this.state = {
+			lang: props.config.defaultLanguage,
+		};
+	}
+	componentDidMount() {
+		if (localStorage.lang) {
+			this.setState({
+				lang: localStorage.lang,
+			});
+		}
+	}
 	render() {
-		const { config, currentPage, lang } = this.props;
+		const { config, currentPage } = this.props;
+		const { lang } = this.state;
 		const { description, author, title } = config;
 		const showTitle = `${
 			currentPage ? `${currentPage.text} - ` : ""
 		}${title}`;
+		const childrenWithProps = React.Children.map(
+			this.props.children,
+			(child) => {
+				// checking isValidElement is the safe way and avoids a typescript error too
+				const props = { lang };
+				if (React.isValidElement(child)) {
+					return React.cloneElement(child, props);
+				}
+				return child;
+			}
+		);
 		return (
 			<>
 				<Head>
@@ -42,11 +68,11 @@ class Layout extends React.Component<
 					style={{ display: "inline-block" }}
 					className="header-liner"
 				></div>
-				<Header {...this.props} />
+				<Header lang={lang} {...this.props} />
 				<main className="main">
 					<div className="container">
 						<div className="container-left">
-							{this.props.children}
+							{childrenWithProps}
 						</div>
 						<div className="container-right">
 							<Drawer lang={lang} config={config} />

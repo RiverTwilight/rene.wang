@@ -1,0 +1,61 @@
+Arguments: 
+  F:\nodejs\node.exe C:\Users\RiverTwilight\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add uuid
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;F:\nodejs\;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\jre\bin;C:\Users\RiverTwilight\AppData\Local\Microsoft\WindowsApps;F:\Microsoft VS Code\bin;C:\Users\RiverTwilight\AppData\Roaming\npm;C:\Users\RiverTwilight\AppData\Local\Android\Sdk\platform-tools;C:\Users\RiverTwilight\AppData\Local\Android\Sdk\emulator;C:\Users\RiverTwilight\AppData\Local\Android\Sdk\tools;C:\Users\RiverTwilight\AppData\Local\Android\Sdk\tools\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\jre\bin;
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  14.5.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'H:\Bob\Web\Projects\NBlog\node_modules\node-sass\vendor\win32-x64-83\binding.node'
+
+npm manifest: 
+  {
+    "name": "nblog",
+    "version": "1.0.0",
+    "description": "A Responsive, Fast, i18n and Markdown Blog base on Next.js.",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "next",
+      "build": "next build && next export",
+      "start": "next start -p 4000"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@zeit/next-sass": "^1.0.1",
+      "gitalk": "^1.6.2",
+      "glob": "^7.1.6",
+      "gray-matter": "^4.0.2",
+      "next": "^9.4.2",
+      "node-sass": "^4.14.0",
+      "raw-loader": "^4.0.1",
+      "react": "^16.13.1",
+      "react-content-loader": "^5.0.4",
+      "react-dom": "^16.13.1",
+      "react-lazyload": "^3.0.0",
+      "react-markdown": "^4.3.1",
+      "react-syntax-highlighter": "^12.2.1",
+      "styled-components": "^5.1.1"
+    },
+    "devDependencies": {
+      "@types/node": "^13.13.4",
+      "@types/react": "^16.9.34",
+      "@types/styled-components": "^5.1.2",
+      "typescript": "^3.8.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

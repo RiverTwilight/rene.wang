@@ -1,10 +1,15 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import Search from './Search'
-import Text from '../../utils/i18n'
-import { nav } from '../../data/i18n.json'
-import ActiveLink from '../../utils/AcitiveLink'
-import '../../scss/header.scss'
+import * as React from "react";
+//@ts-expect-error
+import styled from "styled-components";
+import Search from "./Search";
+//@ts-expect-error
+import Logo from "../../static/logo.svg";
+//@ts-expect-error
+import LogoLarge from "../../static/logo&title-small.svg";
+import Text from "../../utils/i18n";
+import { nav } from "../../data/i18n.json";
+import ActiveLink from "../../utils/AcitiveLink";
+import "../../scss/header.scss";
 
 /**
  * 头部
@@ -12,129 +17,112 @@ import '../../scss/header.scss'
  */
 
 const ShareIcon = styled.path`
-    fill: #1DA1F2;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    stroke-width:48px;
-`
+	fill: #1da1f2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 48px;
+`;
 
 const Menu = ({ lang }): React.ReactElement => {
-    return (
-        <ul className="app-header-list">
-            <Text dictionary={nav} language={lang} >
-                {[
-                    {
-                        text: <Text homePage />,
-                        to: '/'
-                    }
-                ].map((item, i) => (
-                    <ActiveLink activeClassName="app-header-list-item-active" href={item.to}>
-                        <a className="app-header-list-item">{item.text}</a>
-                    </ActiveLink>
-                ))}
-            </Text>
-        </ul>
-    )
-}
-
-const SubHeader = ({ currentPage, siteConfig }) => (
-    <div
-        className="app-header-inner"
-    >
-        <a href="/" className="logo hidden-md-up">
-            <img alt={siteConfig.title} className="logo-small" src={siteConfig.logo.small} />
-        </a>
-        <h2 className="app-header-inner-subtitle" >{currentPage.text}</h2>
-        <div className="app-header-space"></div>
-        <a target="_blank" href={`https://twitter.com/intent/tweet?url=${siteConfig.root}${currentPage.path}`}>
-            <svg height="25" width="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <title>ionicons-v5_logos</title>
-                <ShareIcon d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z" />
-            </svg>
-        </a>
-    </div>
-)
+	return (
+		<ul className="app-header-list">
+			<Text dictionary={nav} language={lang}>
+				{[
+					{
+						text: <Text homePage />,
+						to: "/",
+					},
+				].map((item, i) => (
+					<ActiveLink
+						activeClassName="app-header-list-item-active"
+						href={item.to}
+					>
+						<a className="app-header-list-item">{item.text}</a>
+					</ActiveLink>
+				))}
+			</Text>
+		</ul>
+	);
+};
 
 const MainHeader = ({ siteConfig, allPosts, lang }) => (
-    <div
-        className="app-header-inner">
-        <a href="/" className="logo hidden-sm-down">
-            <img alt={siteConfig.title} className="logo-large" src={siteConfig.logo.large} />
-        </a>
-        <a href="/" className="logo hidden-md-up">
-            <img alt={siteConfig.title} className="logo-small" src={siteConfig.logo.small} />
-        </a>
-        <Menu lang={lang} />
-        <div className="app-header-space"></div>
-        <Search allPosts={allPosts} />
-    </div>
-)
+	<div className="app-header-inner">
+		<a href="/" className="logo-large hidden-sm-down">
+			<LogoLarge />
+		</a>
+		<a href="/" className="logo-small hidden-md-up">
+			<Logo />
+		</a>
+		<Menu lang={lang} />
+		<div className="app-header-space"></div>
+		<Search allPosts={allPosts} />
+	</div>
+);
 
 class Header extends React.Component<
-    {
-        config: any;
-        allPosts: any,
-        currentPage?: ICurrentPage,
-        lang: lang,
-    },
-    {
-        subHeader: boolean
-    }>{
-
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            subHeader: false
-        }
-    }
-    handleScroll = () => {
-        const t1 = document.documentElement.scrollTop || document.body.scrollTop;
-        if (!window.scrollListener && this.props.currentPage.path.match(/\/blog\/\d+/)) {
-            window.scrollListener = setTimeout(() => {
-                let t2 = document.documentElement.scrollTop || document.body.scrollTop;
-                if (t2 - t1 > 70) {
-                    this.setState({ subHeader: true })
-                } else if (t2 - t1 < -70) {
-                    this.setState({ subHeader: false })
-                }
-                clearTimeout(window.scrollListener)
-                window.scrollListener = null
-            }, 400)
-        }
-    }
-    componentDidMount(){
-        this.activeMonitor()
-    }
-    activeMonitor() {
-        window.addEventListener('scroll', this.handleScroll)
-    }
-    render() {
-        const { subHeader } = this.state;
-        const { lang, config, allPosts, currentPage } = this.props;
-        return (
-            <>
-                <div
-                    style={this.props.currentPage.path.match(/\/blog\/\d+/) ? {
-                        marginTop: subHeader ? '-50px' : '',
-                        height: !subHeader ? '50px' : ''
-                    } : {
-                            marginTop: '',
-                            height: '50px'
-                        }}
-                    className="app-header">
-                    <MainHeader
-                        lang={lang}
-                        siteConfig={config}
-                        allPosts={allPosts}
-                    />
-                    <SubHeader
-                        siteConfig={config}
-                        currentPage={currentPage}
-                    />
-                </div>
-            </>
-        )
-    }
+	{
+		config: any;
+		allPosts: any;
+		currentPage?: ICurrentPage;
+		lang: lang;
+	},
+	{
+		subHeader: boolean;
+	}
+> {
+	t1 = 0;
+	constructor(props: any) {
+		super(props);
+		this.state = {
+			subHeader: false,
+		};
+	}
+	handleScroll = () => {
+		if (!window.scrollListener) {
+			window.scrollListener = setTimeout(() => {
+				let t2 =
+					document.documentElement.scrollTop ||
+					document.body.scrollTop;
+				if (t2 > this.t1) {
+					this.setState({ subHeader: true });
+				} else if (t2 < this.t1) {
+					this.setState({ subHeader: false });
+				}
+				clearTimeout(window.scrollListener);
+				window.scrollListener = null;
+				this.t1 = t2;
+			}, 100);
+		}
+	};
+	componentDidMount() {
+		this.props.currentPage.path.match(/\/blog\/\S+/) &&
+			this.activeMonitor();
+	}
+	activeMonitor() {
+		this.t1 = document.documentElement.scrollTop || document.body.scrollTop;
+		window.addEventListener("scroll", this.handleScroll);
+	}
+	render() {
+		const { subHeader } = this.state;
+		const { lang, config, allPosts, currentPage } = this.props;
+		return (
+			<>
+				<div
+					style={{
+						marginTop: subHeader ? "-50px" : "",
+						height: !subHeader ? "50px" : "",
+					}}
+					className="app-header"
+				>
+					<MainHeader
+						lang={lang}
+						siteConfig={config}
+						allPosts={allPosts}
+					/>
+				</div>
+			</>
+		);
+	}
 }
 
-export default Header
+export default Header;
