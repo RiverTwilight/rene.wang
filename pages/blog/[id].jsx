@@ -8,7 +8,7 @@ import Gitalk from "gitalk";
 import Layout from "../../layout/index";
 import CodeBlock from "../../components/CodeBlock";
 import ImgaeBlock from "../../components/LazyloadImage";
-import ToTop from "../../components/ToTop";
+// import ToTop from "../../components/ToTop";
 import Card from "../../components/Card";
 import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../components/PassageLine";
@@ -133,9 +133,9 @@ const ReadMore = ({ allPosts, categories, currentId }) => {
 
 /**
  * 文章详情
- * @todo
  */
 
+// TODO 目录
 const Post = ({ id, allPosts, siteConfig }) => {
 	siteConfig.gitalk &&
 		React.useEffect(() => {
@@ -149,6 +149,15 @@ const Post = ({ id, allPosts, siteConfig }) => {
 		});
 	const currentFile = allPosts.filter((post) => post.id === id)[0];
 	const { slug, frontmatter, markdownBody } = currentFile;
+	const generateCatalog = (post) => {
+		return post.match(/\#+\s(.+)/g).map((tit) => {
+			return {
+				title: tit.substr(tit.lastIndexOf("#") + 1).trim(),
+				level: tit.lastIndexOf("#"),
+			};
+		});
+	};
+
 	return (
 		<Layout
 			allPosts={allPosts}
@@ -157,6 +166,7 @@ const Post = ({ id, allPosts, siteConfig }) => {
 				path: "/blog/" + id,
 			}}
 			config={siteConfig}
+			catalog={generateCatalog(markdownBody)}
 		>
 			<link
 				href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.6.2/gitalk.min.css"
@@ -198,7 +208,7 @@ const Post = ({ id, allPosts, siteConfig }) => {
 				categories={frontmatter.categories}
 				allPosts={allPosts}
 			/>
-			<ToTop />
+			{/* <ToTop /> */}
 		</Layout>
 	);
 };

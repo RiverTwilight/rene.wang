@@ -35,9 +35,9 @@ export default ({
 	title,
 	children,
 }: {
-	icon: string;
-	children: React.ReactChildren;
-	title: string;
+	icon?: string;
+	children?: any;
+	title?: string;
 }) => (
 	<Card className="card">
 		<div className="title">

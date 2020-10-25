@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Drawer from "./Drawer";
+import Catalog from "../components/Catalog";
 import "../scss/App.scss";
 
 class Layout extends React.Component<
@@ -9,6 +10,7 @@ class Layout extends React.Component<
 		config: ISiteConfig;
 		allPosts: IPost[];
 		currentPage: ICurrentPage;
+		catalog?: any[];
 	},
 	{
 		lang: lang;
@@ -28,7 +30,7 @@ class Layout extends React.Component<
 		}
 	}
 	render() {
-		const { config, currentPage } = this.props;
+		const { config, currentPage, catalog } = this.props;
 		const { lang } = this.state;
 		const { description, author, title } = config;
 		const showTitle = `${
@@ -76,6 +78,7 @@ class Layout extends React.Component<
 						</div>
 						<div className="container-right">
 							<Drawer lang={lang} config={config} />
+							{catalog && <Catalog catalog={catalog} />}
 						</div>
 					</div>
 				</main>

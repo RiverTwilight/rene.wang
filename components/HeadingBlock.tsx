@@ -14,6 +14,7 @@ function Heading({ level = 'h1', children, ...props }) {
     return <Tag className="typo-heading" {...props}>{children}</Tag>;
 }
 
+// TODO 监听阅读部分变化
 export default class extends PureComponent<{ level: string }> {
     renderHtml = () => {
         const { level, children } = this.props;

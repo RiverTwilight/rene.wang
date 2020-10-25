@@ -39,15 +39,15 @@ export default class extends React.Component<DrawerProps, DrawerState> {
         }
     }
     componentDidMount() {
-        window.innerWidth >= 640 && window.addEventListener('scroll', () => {
-            const t = document.documentElement.scrollTop || document.body.scrollTop;
-            console.log(t)
-            if (t > 500) {
-                this.setState({ copyrightFixed: true })
-            } else {
-                this.setState({ copyrightFixed: false })
-            }
-        })
+        // window.innerWidth >= 640 && window.addEventListener('scroll', () => {
+        //     const t = document.documentElement.scrollTop || document.body.scrollTop;
+        //     console.log(t)
+        //     if (t > 500) {
+        //         this.setState({ copyrightFixed: true })
+        //     } else {
+        //         this.setState({ copyrightFixed: false })
+        //     }
+        // })
         //将初始状态保存以便固定
         var toTop = document.documentElement.scrollTop || document.body.scrollTop;
         this.setState({
