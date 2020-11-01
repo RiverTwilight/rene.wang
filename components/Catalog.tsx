@@ -2,13 +2,30 @@ import * as React from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
 
-const List = styled.div`
-	padding: 0 10px;
+const Switch = styled.button`
+	@media (min-width: 1024px) {
+		display: none;
+	}
+	@media (max-width: 1024px) {
+		position: fixed;
+		top: 40px;
+		left: 0;
+		right: 0;
+	}
+`;
+
+const Warpper = styled.div`
 	@media (max-width: 1024px) {
 		position: fixed;
 		top: 20px;
+		left: 0;
+		right: 0;
 		${(props: { expand: boolean }) => props.expand && ""}
 	}
+`;
+
+const List = styled.div`
+	padding: 0 10px;
 `;
 
 const CataItem = styled.a`
@@ -45,8 +62,11 @@ export default ({
 		</CataItem>
 	);
 	return (
-		<Card title="目录">
-			<List expand={expand}>{catalog.map(Title)}</List>
-		</Card>
+		<Warpper expand={expand}>
+			<Card title="目录">
+				<List>{catalog.map(Title)}</List>
+			</Card>
+			<Switch />
+		</Warpper>
 	);
 };
