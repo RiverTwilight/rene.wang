@@ -1,15 +1,11 @@
-import * as React from 'react'
-import LazyLoad from 'react-lazyload'
+import * as React from "react";
+import Image from "next/image";
 
-export default ({ src, alt }: {
-    src: string,
-    alt?: string
-}) => {
-    console.log(src)
-    return (
-        <LazyLoad height={100}>
-            <img src={src} />
-            <div className="typo-img-caption">{alt}</div>
-        </LazyLoad>
-    )
-}
+export default ({ src, alt }: { src: string; alt?: string }) => {
+	return (
+		<>
+			<Image unsized alt={alt} src={src} />
+			<div className="typo-img-caption">{alt}</div>
+		</>
+	);
+};
