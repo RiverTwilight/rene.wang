@@ -1,8 +1,12 @@
 {
     "nav": {
         "homePage": {
-            "zh": "首页",
+            "zh": "满心",
             "en": "Home"
+        },
+        "secondPage":{
+            "zh": "欢喜",
+            "en": "Home" 
         },
         "search": {
 

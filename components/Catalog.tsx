@@ -8,19 +8,22 @@ const Switch = styled.button`
 	}
 	@media (max-width: 1024px) {
 		position: fixed;
-		top: 40px;
-		left: 0;
-		right: 0;
+		bottom: 50px;
+		right: 50px;
+		
 	}
 `;
 
 const Warpper = styled.div`
 	@media (max-width: 1024px) {
 		position: fixed;
-		top: 20px;
+		top: 56px;
 		left: 0;
 		right: 0;
-		${(props: { expand: boolean }) => props.expand && ""}
+		max-height: 300px;
+		overflow-y: scroll;
+		transition: all .3s;
+		${(props: { collapse: boolean }) => props.collapse && "top: -310px;"}
 	}
 `;
 
@@ -51,7 +54,7 @@ export default ({
 		level: number;
 	}[];
 }) => {
-	const [expand, setExpand] = React.useState(false);
+	const [collapse, setCollapse] = React.useState(true);
 	const Title = (props, index) => (
 		<CataItem
 			href={`#${props.title}`}
@@ -61,12 +64,17 @@ export default ({
 			{props.title}
 		</CataItem>
 	);
+	const handleClick = () => {
+		setCollapse(!collapse);
+	};
 	return (
-		<Warpper expand={expand}>
-			<Card title="目录">
-				<List>{catalog.map(Title)}</List>
-			</Card>
-			<Switch />
-		</Warpper>
+		<>
+			<Warpper collapse={collapse}>
+				<Card title="目录">
+					<List>{catalog.map(Title)}</List>
+				</Card>
+			</Warpper>
+			<Switch onClick={handleClick}>目录</Switch>
+		</>
 	);
 };

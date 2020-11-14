@@ -150,7 +150,8 @@ const Post = ({ id, allPosts, siteConfig }) => {
 	const currentFile = allPosts.filter((post) => post.id === id)[0];
 	const { slug, frontmatter, markdownBody } = currentFile;
 	const generateCatalog = (post) => {
-		return post.match(/\#+\s(.+)/g).map((tit) => {
+		var matchTitle = post.match(/\#+\s(.+)/g) || [];
+		return matchTitle.map((tit) => {
 			return {
 				title: tit.substr(tit.lastIndexOf("#") + 1).trim(),
 				level: tit.lastIndexOf("#"),

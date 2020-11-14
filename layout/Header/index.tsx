@@ -29,6 +29,10 @@ const Menu = ({ lang }): React.ReactElement => {
 						text: <Text homePage />,
 						to: "/",
 					},
+					{
+						text: <Text secondPage />,
+						to: "/special",
+					},
 				].map((item, i) => (
 					<ActiveLink
 						activeClassName="app-header-list-item-active"
