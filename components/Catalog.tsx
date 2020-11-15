@@ -1,16 +1,21 @@
 import * as React from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
+import ListOutline from "../static/icon/list-outline.svg";
 
 const Switch = styled.button`
+	border: 1px solid #bac0cd;
+	outline: none;
+	border-radius: 3px;
+	width: 40px;
+	height: 40px;
 	@media (min-width: 1024px) {
 		display: none;
 	}
 	@media (max-width: 1024px) {
 		position: fixed;
-		bottom: 50px;
-		right: 50px;
-		
+		bottom: 26px;
+		right: 26px;
 	}
 `;
 
@@ -22,7 +27,7 @@ const Warpper = styled.div`
 		right: 0;
 		max-height: 300px;
 		overflow-y: scroll;
-		transition: all .3s;
+		transition: all 0.3s;
 		${(props: { collapse: boolean }) => props.collapse && "top: -310px;"}
 	}
 `;
@@ -70,11 +75,13 @@ export default ({
 	return (
 		<>
 			<Warpper collapse={collapse}>
-				<Card title="目录">
+				<Card icon={<ListOutline />} title="目录">
 					<List>{catalog.map(Title)}</List>
 				</Card>
 			</Warpper>
-			<Switch onClick={handleClick}>目录</Switch>
+			<Switch className="card" onClick={handleClick}>
+				<ListOutline />
+			</Switch>
 		</>
 	);
 };

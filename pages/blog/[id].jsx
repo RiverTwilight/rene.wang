@@ -118,8 +118,9 @@ const ReadMore = ({ allPosts, categories, currentId }) => {
 	});
 	return (
 		<Card title="阅读更多" icon={<BookOutline />}>
-			{data.slice(0, 3).map((item) => (
+			{data.slice(0, 3).map((item, i) => (
 				<PostItem
+					key={i}
 					id={item.id}
 					title={item.frontmatter.title || item.slug}
 					summary={item.markdownBody.substr(0, 200)}
@@ -135,7 +136,6 @@ const ReadMore = ({ allPosts, categories, currentId }) => {
  * 文章详情
  */
 
-// TODO 目录
 const Post = ({ id, allPosts, siteConfig }) => {
 	siteConfig.gitalk &&
 		React.useEffect(() => {
@@ -151,12 +151,18 @@ const Post = ({ id, allPosts, siteConfig }) => {
 	const { slug, frontmatter, markdownBody } = currentFile;
 	const generateCatalog = (post) => {
 		var matchTitle = post.match(/\#+\s(.+)/g) || [];
-		return matchTitle.map((tit) => {
-			return {
-				title: tit.substr(tit.lastIndexOf("#") + 1).trim(),
-				level: tit.lastIndexOf("#"),
-			};
-		});
+		return [
+			{
+				title: frontmatter.title || slug,
+				level: 0,
+			},
+			...matchTitle.map((tit) => {
+				return {
+					title: tit.substr(tit.lastIndexOf("#") + 1).trim(),
+					level: tit.lastIndexOf("#"),
+				};
+			}),
+		];
 	};
 
 	return (
