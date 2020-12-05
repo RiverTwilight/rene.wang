@@ -83,7 +83,7 @@ class HomePage extends React.Component {
 				config={siteConfig}
 				locale={locale}
 			>
-				<Marquee
+				{/* <Marquee
 					// 如果网站配置里没有海报，那么使用带有封面的文章
 					imgList={
 						siteConfig.poster ||
@@ -94,7 +94,7 @@ class HomePage extends React.Component {
 								href: "/blog/" + blog.id,
 							}))
 					}
-				/>
+				/> */}
 				<Tab
 					lang={locale}
 					tabs={siteConfig.categories}

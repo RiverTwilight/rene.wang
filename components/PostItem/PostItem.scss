@@ -8,7 +8,7 @@
 }
 
 .passage-item {
-    overflow: auto;
+	overflow: auto;
 	border-bottom: 1px solid #ebebeb;
 	padding: 4px 2px;
 	.passage-item-header {
@@ -45,6 +45,9 @@
 		.passage-item-content-text {
 			img {
 				width: 100%;
+			}
+			p {
+				margin: 0;
 			}
 		}
 	}

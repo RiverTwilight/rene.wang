@@ -1,20 +1,20 @@
 {
     "nav": {
         "homePage": {
-            "zh-CN": "满心",
+            "zh-CN": "博客",
             "en-US": "Home"
         },
         "secondPage":{
-            "zh-CN": "欢喜",
+            "zh-CN": "寂静地",
             "en-US": "Special" 
         },
         "search": {
 
         }
     },
-    "articleItem":{
+    "postItem":{
         "showMore": {
-            "zh-CN": "展开全文",
+            "zh-CN": "阅读全文",
             "en-US": "Show more"
         },
         "showLess": {

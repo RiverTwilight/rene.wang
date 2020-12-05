@@ -1,13 +1,15 @@
 import React from "react";
 import Layout from "../layout/index";
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
 	return {
-		props: {},
+		props: {
+			locale,
+		},
 	};
 }
 
-class HomePage extends React.Component {
+class SpecialPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -16,13 +18,14 @@ class HomePage extends React.Component {
 		};
 	}
 	render() {
-		const { allPosts, siteConfig, lang } = this.props;
+		const { allPosts, siteConfig } = this.props;
 		return (
 			<Layout
 				currentPage={{
 					text: "欢喜",
 					path: "/special",
 				}}
+				locale={locale}
 				allPosts={allPosts}
 				config={siteConfig}
 			></Layout>
@@ -30,4 +33,4 @@ class HomePage extends React.Component {
 	}
 }
 
-export default HomePage;
+export default SpecialPage;

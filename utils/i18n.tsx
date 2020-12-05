@@ -12,7 +12,7 @@ const { Provider, Consumer } = React.createContext({
 
 interface Pro {
     dictionary: dictionary
-    language: lang;
+    language: string;
     children: JSX.Element | JSX.Element[] | null;
 }
 

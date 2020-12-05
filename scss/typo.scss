@@ -6,76 +6,78 @@
  * =============================================================================
  */
 .typo {
-    h1 {
-        font-size: 25px;
-        font-weight: bold;
-    }
+	h1 {
+		font-size: 25px;
+		font-weight: bold;
+	}
 
-    .typo-meta {
-        color: $grey;
-        text-align: center;
-        margin-top: -5px;
-    }
-    .highlight {
-        margin: 0 -5px;
-    }
-    & > p {
-        font-family: 'SimSun', 'Arial Narrow', Arial, sans-serif;
-        line-height: 1.6;
-        color: rgb(82, 74, 74);
-        img {
-            width: 95%;
-            margin: 0 auto;
-            display: block;
-            border-radius: 3px !important;
-        }
-        .typo-img-caption{
-            margin-top: 5px;
-            text-align: center;
-            color: #c4a3a3;
-            font-size: small;
-        }
-        code {
-            background: #f1e4e4;
-            color: $themeColor;
-            border-radius: 3px;
-            padding: 3px;
-        }
-    }
-    blockquote {
-        margin: 5px;
-        p {
-            border-left: $themeColor 4px solid;
-            padding-left: 9px;
-        }
-    }
-    a {
-        color: $themeColor;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-    .typo-heading {
-        a {
-            display: none;
-        }
-        &:hover {
-            a {
-                display: inline;
-            }
-        }
-    }
+	.typo-meta {
+		color: $grey;
+		text-align: center;
+		margin-top: -5px;
+	}
+	.highlight {
+		margin: 0 -5px;
+	}
+	& > p {
+		font-family: "SimSun", "Arial Narrow", Arial, sans-serif;
+		line-height: 1.6;
+		color: rgb(82, 74, 74);
+		img {
+			width: 95%;
+			margin: 0 auto;
+			display: block;
+			border-radius: 3px !important;
+		}
+		.typo-img-caption {
+			margin-top: 5px;
+			text-align: center;
+			color: #c4a3a3;
+			font-size: small;
+		}
+		code {
+			background: #f1e4e4;
+			color: $themeColor;
+			border-radius: 3px;
+			padding: 3px;
+		}
+	}
+	blockquote {
+		margin: 5px;
+		p {
+			border-left: $themeColor 4px solid;
+			padding-left: 9px;
+		}
+	}
+	a {
+		color: $themeColor;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.typo-heading {
+		a {
+			display: none;
+		}
+		&:hover {
+			a {
+				display: inline;
+			}
+		}
+	}
 }
 
 .typo-detail {
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
+	margin-top: 5px;
+	display: flex;
+	justify-content: center;
 }
 
 .typo-split {
-    border-bottom: 1px solid $grey;
-    text-align: center;
-    padding-top: 5px;
-    color: $grey;
+	svg {
+		margin-left: -20px;
+		margin-right: -20px;
+		margin-bottom: -24px;
+		opacity: 0.7;
+	}
 }

@@ -1,8 +1,10 @@
 import * as React from "react";
-// import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from "react-markdown";
 // import CodeBlock from '../components/CodeBlock'
 import LazyLoad from "react-lazyload";
 import Link from "next/link";
+import Text from "../../utils/i18n";
+import { postItem } from "../../data/i18n.json";
 //  '../scss/typo.scss'
 
 /**
@@ -64,8 +66,10 @@ export default ({
                         source={summary}>
                     </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>*/}
-				<div className="typo passage-item-content-text">
-					{summary.replace(/\<[^\>]+\>/g, "")}
+				<div className="passage-item-content-text">
+					<ReactMarkdown allowedTypes={["paragraph", "text"]}>
+						{summary.replace(/\<[^\>]+\>/g, "")}
+					</ReactMarkdown>
 				</div>
 			</div>
 			{/*<div onClick={() => {
@@ -76,11 +80,15 @@ export default ({
             }} className={`passage-item-action ${expand ? 'passage-item-action-sticky' : ''}`}>
                 <span className="passage-item-readmore">{expand ? "收起" : "展开全文"}</span>
             </div>*/}
-			<div className={`passage-item-action`}>
-				<Link href={"/blog/" + id} locale={lang}>
-					<a className="passage-item-readmore">阅读全文</a>
-				</Link>
-			</div>
+			<Text dictionary={postItem} language={lang}>
+				<div className={`passage-item-action`}>
+					<Link href={"/blog/" + id} locale={lang}>
+						<a className="passage-item-readmore">
+							<Text showMore />
+						</a>
+					</Link>
+				</div>
+			</Text>
 		</div>
 	);
 };

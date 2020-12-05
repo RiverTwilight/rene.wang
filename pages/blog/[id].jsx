@@ -14,6 +14,7 @@ import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../components/PostItem";
 import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
 import BookOutline from "../../static/icon/book-outline.svg";
+import Wave from "../../static/wave.svg";
 import "../../scss/typo.scss";
 
 export async function getStaticProps({ locale, locales, ...ctx }) {
@@ -53,7 +54,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			allPosts: posts,
 			id,
 			siteConfig: config.default,
-			locale
+			locale,
 		},
 	};
 }
@@ -80,11 +81,11 @@ export async function getStaticPaths({ locale }) {
 					"1b671a64-40d5-491e-99b0-da01ff1f3341"
 				).substr(0, 8)}`,
 			},
-			locale: 'zh-CN'
+			locale: "zh-CN",
 		};
 	});
 
-	console.log(paths)
+	console.log(paths);
 	return {
 		paths,
 		fallback: false,
@@ -215,7 +216,9 @@ const Post = ({ id, allPosts, siteConfig, locale }) => {
 					escapeHtml={false}
 					source={markdownBody}
 				></ReactMarkdown>
-				<div className="typo-split">END</div>
+				<div className="typo-split">
+					<Wave />
+				</div>
 			</article>
 			<Card title="评论" icon={<ChatsBubbles />}>
 				<div id="gitalk-container"></div>
