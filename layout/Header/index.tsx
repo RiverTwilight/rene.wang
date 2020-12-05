@@ -65,7 +65,7 @@ class Header extends React.Component<
 		config: any;
 		allPosts: any;
 		currentPage?: ICurrentPage;
-		lang: lang;
+		lang?: string;
 	},
 	{
 		subHeader: boolean;

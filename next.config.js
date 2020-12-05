@@ -18,4 +18,8 @@ module.exports = withSass({
 		});
 		return config;
 	},
+	i18n: {
+		locales: ["en-US", "zh-CN"],
+		defaultLocale: "zh-CN",
+	},
 });

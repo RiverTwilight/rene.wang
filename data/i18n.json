@@ -1,12 +1,12 @@
 {
     "nav": {
         "homePage": {
-            "zh": "满心",
-            "en": "Home"
+            "zh-CN": "满心",
+            "en-US": "Home"
         },
         "secondPage":{
-            "zh": "欢喜",
-            "en": "Home" 
+            "zh-CN": "欢喜",
+            "en-US": "Special" 
         },
         "search": {
 
@@ -14,11 +14,11 @@
     },
     "articleItem":{
         "showMore": {
-            "zh": "展开全文",
-            "en": "Show more"
+            "zh-CN": "展开全文",
+            "en-US": "Show more"
         },
         "showLess": {
-            "zh": "收起"
+            "zh-CN": "收起"
         }
     }
 }

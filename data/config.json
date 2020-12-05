@@ -7,7 +7,6 @@
         "large": "/static/image/logo-large.png",
         "small": "/static/image/logo-small.png"
     },
-    "defaultLanguage": "zh",
     "author": {
         "name": "江村暮",
         "image": "/static/image/author.jpg",
@@ -19,17 +18,21 @@
         ]
     },
     "categories": {
+        "all": {
+            "en-US": "All Posts",
+            "zh-CN": "全部"
+        },
         "Life": {
-            "en": "Life",
-            "zh": "生活"
+            "en-US": "Life",
+            "zh-CN": "生活"
         },
         "FrontEnd": {
-            "en": "Front End",
-            "zh": "前端"
+            "en-US": "Front End",
+            "zh-CN": "前端"
         },
         "Feeling": {
-            "en": "Feeling",
-            "zh": "随感"
+            "en-US": "Feeling",
+            "zh-CN": "随感"
         }
     },
     "gitalk": {

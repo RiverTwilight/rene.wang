@@ -11,12 +11,12 @@ import ImgaeBlock from "../../components/LazyloadImage";
 // import ToTop from "../../components/ToTop";
 import Card from "../../components/Card";
 import HeadingBlock from "../../components/HeadingBlock";
-import PostItem from "../../components/PassageLine";
+import PostItem from "../../components/PostItem";
 import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
 import BookOutline from "../../static/icon/book-outline.svg";
 import "../../scss/typo.scss";
 
-export async function getStaticProps({ ...ctx }) {
+export async function getStaticProps({ locale, locales, ...ctx }) {
 	const posts = ((context) => {
 		const keys = context.keys();
 		const values = keys.map(context);
@@ -45,6 +45,9 @@ export async function getStaticProps({ ...ctx }) {
 	})(require.context("../../posts", true, /\.md$/));
 
 	const { id } = ctx.params;
+
+	console.log(locale);
+
 	const config = await import(`../../data/config.json`);
 
 	return {
@@ -56,7 +59,7 @@ export async function getStaticProps({ ...ctx }) {
 	};
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locale }) {
 	//get all .md files in the posts dir
 	const blogs = glob.sync("posts/**/*.md", {
 		stat: true,
@@ -69,14 +72,19 @@ export async function getStaticPaths() {
 
 	// create paths with `slug` param
 	// const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
-	const paths = blogSlugs.map(
-		(slug) =>
-			`/blog/${uuidv5(
-				slug,
-				"1b671a64-40d5-491e-99b0-da01ff1f3341"
-			).substr(0, 8)}`
-	);
-	console.log(paths);
+	const paths = blogSlugs.map((slug) => {
+		return {
+			params: {
+				id: `${uuidv5(
+					slug,
+					"1b671a64-40d5-491e-99b0-da01ff1f3341"
+				).substr(0, 8)}`,
+			},
+			locale: 'en-US'
+		};
+	});
+
+	console.log(paths)
 	return {
 		paths,
 		fallback: false,
@@ -95,6 +103,7 @@ const Progress = styled.div`
 	background-color: rgba(63, 81, 181, 0.2);
 	border-radius: 2px;
 `;
+
 const Cover = styled.div`
 	margin-top: -19px;
 	margin-left: -19px;
@@ -137,16 +146,16 @@ const ReadMore = ({ allPosts, categories, currentId }) => {
  */
 
 const Post = ({ id, allPosts, siteConfig }) => {
-	siteConfig.gitalk &&
-		React.useEffect(() => {
-			const gitalk = new Gitalk(
-				Object.assign(siteConfig.gitalk, {
-					id: "/blog/" + id,
-					distractionFreeMode: false,
-				})
-			);
-			gitalk.render("gitalk-container");
-		});
+	// siteConfig.gitalk &&
+	// 	React.useEffect(() => {
+	// 		const gitalk = new Gitalk(
+	// 			Object.assign(siteConfig.gitalk, {
+	// 				id: "/blog/" + id,
+	// 				distractionFreeMode: false,
+	// 			})
+	// 		);
+	// 		gitalk.render("gitalk-container");
+	// 	});
 	const currentFile = allPosts.filter((post) => post.id === id)[0];
 	const { slug, frontmatter, markdownBody } = currentFile;
 	const generateCatalog = (post) => {

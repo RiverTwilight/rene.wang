@@ -12,7 +12,7 @@ const LoveIcon = styled.svg`
 
 interface DrawerProps {
     config: any,
-    lang: lang
+    lang: string
 }
 
 interface DrawerState {
@@ -74,17 +74,12 @@ export default class extends React.Component<DrawerProps, DrawerState> {
                 <div ref={r => this.copyright = r} className={`copyright`}>
                     <Language
                         value={lang}
-                        cb={newLang => {
-                            localStorage.setItem('lang', newLang);
-                            window.location.reload()
-                        }}
                         list={[{
                             text: '简体中文',
-                            code: 'zh'
+                            code: 'zh-CN'
                         }, {
                             text: 'English',
-                            code: "en"
-
+                            code: "en-US"
                         }]}
                     />
                     Made With

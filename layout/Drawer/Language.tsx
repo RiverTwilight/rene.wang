@@ -1,4 +1,6 @@
-import * as React from 'react'
+import * as React from "react";
+import { useRouter } from "next/router";
+
 /*
 class Language extends React.Component
     <
@@ -67,19 +69,23 @@ class Language extends React.Component
 }
 */
 
-const Language = ({ list, cb, value }) => {
-    return (
-        <div>|
-            {list.map((l: { code: string | number; text: React.ReactNode }) => (
-                <a
-                    key={l.code}
-                    onClick={() => {
-                        cb(l.code)
-                    }}
-                >&nbsp;{l.text}&nbsp;|</a>
-            ))}
-        </div>
-    )
-}
+const Language = ({ list, value }) => {
+	const router = useRouter();
+	return (
+		<div>
+			|
+			{list.map((l: { code: string; text: React.ReactNode }) => (
+				<a
+					key={l.code}
+					onClick={() => {
+						router.push("/", "/", { locale: l.code });
+					}}
+				>
+					&nbsp;{l.text}&nbsp;|
+				</a>
+			))}
+		</div>
+	);
+};
 
-export default Language
+export default Language;

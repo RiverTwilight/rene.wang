@@ -2,7 +2,9 @@ import React from "react";
 import Layout from "../layout/index";
 
 export async function getStaticProps() {
-
+	return {
+		props: {},
+	};
 }
 
 class HomePage extends React.Component {
@@ -15,7 +17,6 @@ class HomePage extends React.Component {
 	}
 	render() {
 		const { allPosts, siteConfig, lang } = this.props;
-		const { channel } = this.state;
 		return (
 			<Layout
 				currentPage={{

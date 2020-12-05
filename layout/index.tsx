@@ -11,15 +11,14 @@ class Layout extends React.Component<
 		allPosts: IPost[];
 		currentPage: ICurrentPage;
 		catalog?: any[];
+		locale?: string;
 	},
 	{
-		lang: lang;
 	}
 > {
 	constructor(props) {
 		super(props);
 		this.state = {
-			lang: props.config.defaultLanguage,
 		};
 	}
 	componentDidMount() {
@@ -30,8 +29,7 @@ class Layout extends React.Component<
 		}
 	}
 	render() {
-		const { config, currentPage, catalog } = this.props;
-		const { lang } = this.state;
+		const { config, currentPage, catalog, locale } = this.props;
 		const { description, author, title } = config;
 		const showTitle = `${
 			currentPage ? `${currentPage.text} - ` : ""
@@ -40,7 +38,7 @@ class Layout extends React.Component<
 			this.props.children,
 			(child) => {
 				// checking isValidElement is the safe way and avoids a typescript error too
-				const props = { lang };
+				const props = { locale };
 				if (React.isValidElement(child)) {
 					return React.cloneElement(child, props);
 				}
@@ -64,20 +62,25 @@ class Layout extends React.Component<
 					<meta property="article:tag" content={author.name} />
 					<meta property="article:tag" content="云极客" />
 					<meta name="twitter:card" content="summary" />
+					<meta name="viewport" content="viewport-fit=cover" />
+					<meta
+						name="viewport"
+						content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0"
+					/>
 					<title>{showTitle}</title>
 				</Head>
 				<div
 					style={{ display: "inline-block" }}
 					className="header-liner"
 				></div>
-				<Header lang={lang} {...this.props} />
+				<Header lang={locale} {...this.props} />
 				<main className="main">
 					<div className="container">
 						<div className="container-left">
 							{childrenWithProps}
 						</div>
 						<div className="container-right">
-							<Drawer lang={lang} config={config} />
+							<Drawer lang={locale} config={config} />
 							{catalog && <Catalog catalog={catalog} />}
 						</div>
 					</div>

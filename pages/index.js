@@ -1,12 +1,12 @@
 import React from "react";
 import matter from "gray-matter";
-import PassageItem from "../components/PassageLine";
+import PostItem from "../components/PostItem";
 import Marquee from "../components/Marquee";
 import Tab from "../components/Tab";
 import Layout from "../layout/index";
 import { v5 as uuidv5 } from "uuid";
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale, locales }) {
 	//get posts & context from folder
 	const posts = ((context) => {
 		const keys = context.keys();
@@ -57,6 +57,7 @@ export async function getStaticProps() {
 		props: {
 			allPosts: sortedPosts,
 			siteConfig: config.default,
+			locale
 		},
 	};
 }
@@ -70,7 +71,7 @@ class HomePage extends React.Component {
 		};
 	}
 	render() {
-		const { allPosts, siteConfig, lang } = this.props;
+		const { allPosts, siteConfig, locale } = this.props;
 		const { channel } = this.state;
 		return (
 			<Layout
@@ -80,6 +81,7 @@ class HomePage extends React.Component {
 				}}
 				allPosts={allPosts}
 				config={siteConfig}
+				locale={locale}
 			>
 				<Marquee
 					// 如果网站配置里没有海报，那么使用带有封面的文章
@@ -94,16 +96,8 @@ class HomePage extends React.Component {
 					}
 				/>
 				<Tab
-					lang={lang}
-					tabs={Object.assign(
-						{
-							all: {
-								en: "All Posts",
-								zh: "全部",
-							},
-						},
-						siteConfig.categories
-					)}
+					lang={locale}
+					tabs={siteConfig.categories}
 					activeIndex={channel}
 					onChange={(index) => {
 						this.setState({
@@ -123,7 +117,7 @@ class HomePage extends React.Component {
 						)
 						/*.slice(0, page * this.postsPerPage)*/
 						.map((post, i) => (
-							<PassageItem
+							<PostItem
 								id={post.id}
 								title={post.frontmatter.title || post.slug}
 								summary={post.markdownBody}
