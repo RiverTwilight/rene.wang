@@ -57,7 +57,7 @@ export async function getStaticProps({ locale, locales }) {
 		props: {
 			allPosts: sortedPosts,
 			siteConfig: config.default,
-			locale
+			locale,
 		},
 	};
 }
@@ -118,6 +118,7 @@ class HomePage extends React.Component {
 						/*.slice(0, page * this.postsPerPage)*/
 						.map((post, i) => (
 							<PostItem
+								lang={locale}
 								id={post.id}
 								title={post.frontmatter.title || post.slug}
 								summary={post.markdownBody}

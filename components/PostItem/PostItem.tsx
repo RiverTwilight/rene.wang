@@ -2,6 +2,7 @@ import * as React from "react";
 // import ReactMarkdown from 'react-markdown'
 // import CodeBlock from '../components/CodeBlock'
 import LazyLoad from "react-lazyload";
+import Link from "next/link";
 //  '../scss/typo.scss'
 
 /**
@@ -14,6 +15,7 @@ export default ({
 	cover,
 	summary,
 	date,
+	lang,
 }: Readonly<{
 	title: string;
 	summary: string;
@@ -21,6 +23,7 @@ export default ({
 	/**封面 */
 	cover?: string;
 	date?: string;
+	lang?: string;
 }>) => {
 	// const [expand, setExpand] = React.useState(false);
 	return (
@@ -74,9 +77,9 @@ export default ({
                 <span className="passage-item-readmore">{expand ? "收起" : "展开全文"}</span>
             </div>*/}
 			<div className={`passage-item-action`}>
-				<a href={"/blog/" + id} className="passage-item-readmore">
-					阅读全文
-				</a>
+				<Link href={"/blog/" + id} locale={lang}>
+					<a className="passage-item-readmore">阅读全文</a>
+				</Link>
 			</div>
 		</div>
 	);

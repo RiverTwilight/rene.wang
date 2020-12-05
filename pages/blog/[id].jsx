@@ -46,8 +46,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 
 	const { id } = ctx.params;
 
-	console.log(locale);
-
 	const config = await import(`../../data/config.json`);
 
 	return {
@@ -55,10 +53,12 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			allPosts: posts,
 			id,
 			siteConfig: config.default,
+			locale
 		},
 	};
 }
 
+// TODO 文章i18n
 export async function getStaticPaths({ locale }) {
 	//get all .md files in the posts dir
 	const blogs = glob.sync("posts/**/*.md", {
@@ -80,7 +80,7 @@ export async function getStaticPaths({ locale }) {
 					"1b671a64-40d5-491e-99b0-da01ff1f3341"
 				).substr(0, 8)}`,
 			},
-			locale: 'en-US'
+			locale: 'zh-CN'
 		};
 	});
 
@@ -145,7 +145,7 @@ const ReadMore = ({ allPosts, categories, currentId }) => {
  * 文章详情
  */
 
-const Post = ({ id, allPosts, siteConfig }) => {
+const Post = ({ id, allPosts, siteConfig, locale }) => {
 	// siteConfig.gitalk &&
 	// 	React.useEffect(() => {
 	// 		const gitalk = new Gitalk(
@@ -181,6 +181,7 @@ const Post = ({ id, allPosts, siteConfig }) => {
 				text: frontmatter.title || slug,
 				path: "/blog/" + id,
 			}}
+			locale={locale}
 			config={siteConfig}
 			catalog={generateCatalog(markdownBody)}
 		>
