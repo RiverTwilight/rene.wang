@@ -1,10 +1,13 @@
 import React from "react";
-import Layout from "../layout/index";
+import Layout from "../components/Layout";
 
 export async function getStaticProps({ locale }) {
+	const config = await import(`../data/config.json`);
+
 	return {
 		props: {
 			locale,
+			siteConfig: config.default,
 		},
 	};
 }
@@ -18,7 +21,7 @@ class SpecialPage extends React.Component {
 		};
 	}
 	render() {
-		const { allPosts, siteConfig } = this.props;
+		const { allPosts, siteConfig, locale } = this.props;
 		return (
 			<Layout
 				currentPage={{

@@ -129,6 +129,7 @@ class HomePage extends React.Component {
 								date={post.frontmatter.date}
 							/>
 						))}
+					<div className="bg-white passage-more">查看全部文章</div>
 					{/*<div style={{
                         display: page === Math.ceil(allPosts.length / this.postsPerPage) ? 'none' : ''
                     }} onClick={() => {
