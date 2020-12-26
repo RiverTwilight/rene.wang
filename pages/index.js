@@ -1,7 +1,7 @@
 import React from "react";
 import matter from "gray-matter";
 import PostItem from "../components/PostItem";
-import Marquee from "../components/Marquee";
+// import Marquee from "../components/Marquee";
 import Tab from "../components/Tab";
 import Layout from "../layout/index";
 import { v5 as uuidv5 } from "uuid";
@@ -30,6 +30,7 @@ export async function getStaticProps({ locale, locales }) {
 				frontmatter: document.data,
 				markdownBody: document.content,
 				slug: slug,
+				locale: key.split("/")[1],
 			};
 		});
 		return data;
@@ -107,14 +108,16 @@ class HomePage extends React.Component {
 				/>
 				<div className="card passage-list">
 					{allPosts
-						.filter((post) =>
-							[
-								...Object.values(
-									post.frontmatter.categories || []
-								),
-								"all",
-							].includes(channel)
-						)
+						.filter((post) => {
+							return (
+								[
+									...Object.values(
+										post.frontmatter.categories || []
+									),
+									"all",
+								].includes(channel) && post.locale === locale
+							);
+						})
 						/*.slice(0, page * this.postsPerPage)*/
 						.map((post, i) => (
 							<PostItem

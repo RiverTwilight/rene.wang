@@ -59,7 +59,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 	};
 }
 
-// TODO 文章i18n
 export async function getStaticPaths({ locale }) {
 	//get all .md files in the posts dir
 	const blogs = glob.sync("posts/**/*.md", {
@@ -68,9 +67,8 @@ export async function getStaticPaths({ locale }) {
 
 	//remove path and extension to leave filename only
 	const blogSlugs = blogs.map((file) =>
-		file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
+		file.split("/")[2].replace(/ /g, "-").slice(0, -3).trim()
 	);
-
 	// create paths with `slug` param
 	// const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
 	const paths = blogSlugs.map((slug) => {
@@ -81,11 +79,10 @@ export async function getStaticPaths({ locale }) {
 					"1b671a64-40d5-491e-99b0-da01ff1f3341"
 				).substr(0, 8)}`,
 			},
-			locale: "zh-CN",
+			locale,
 		};
 	});
 
-	console.log(paths);
 	return {
 		paths,
 		fallback: false,
