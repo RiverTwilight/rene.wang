@@ -5,7 +5,7 @@ import { v5 as uuidv5 } from "uuid";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import Gitalk from "gitalk";
-import Layout from "../../layout/index";
+import Layout from "../../components/Layout";
 import CodeBlock from "../../components/CodeBlock";
 import ImgaeBlock from "../../components/LazyloadImage";
 // import ToTop from "../../components/ToTop";

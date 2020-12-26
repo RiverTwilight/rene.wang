@@ -3,7 +3,7 @@ import matter from "gray-matter";
 import PostItem from "../components/PostItem";
 // import Marquee from "../components/Marquee";
 import Tab from "../components/Tab";
-import Layout from "../layout/index";
+import Layout from "../components/Layout";
 import { v5 as uuidv5 } from "uuid";
 
 export async function getStaticProps({ locale, locales }) {

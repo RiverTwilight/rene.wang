@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import Header from "./Header";
-import Drawer from "./Drawer";
-import Catalog from "../components/Catalog";
-import "../scss/App.scss";
+import Header from "../Header";
+import Drawer from "../Drawer";
+import Catalog from "../Catalog";
+import "./App.scss";
 
 class Layout extends React.Component<
 	{

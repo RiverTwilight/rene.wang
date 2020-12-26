@@ -43,6 +43,10 @@
 		padding: 5px 0;
 		line-height: 1.67;
 		.passage-item-content-text {
+			cursor: pointer;
+			&:hover{
+				color: #888888
+			}
 			img {
 				width: 100%;
 			}

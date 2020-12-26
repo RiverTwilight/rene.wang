@@ -66,11 +66,13 @@ export default ({
                         source={summary}>
                     </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>*/}
-				<div className="passage-item-content-text">
-					<ReactMarkdown allowedTypes={["paragraph", "text"]}>
-						{summary.replace(/\<[^\>]+\>/g, "")}
-					</ReactMarkdown>
-				</div>
+				<Link href={"/blog/" + id} locale={lang}>
+					<div className="passage-item-content-text">
+						<ReactMarkdown allowedTypes={["paragraph", "text"]}>
+							{summary.replace(/\<[^\>]+\>/g, "")}
+						</ReactMarkdown>
+					</div>
+				</Link>
 			</div>
 			{/*<div onClick={() => {
                 setExpand(!expand);

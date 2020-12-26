@@ -56,7 +56,7 @@ const MainHeader = ({ siteConfig, allPosts, lang }) => (
 		</a>
 		<Menu lang={lang} />
 		<div className="app-header-space"></div>
-		<Search allPosts={allPosts} />
+		<Search locale={lang} allPosts={allPosts} />
 	</div>
 );
 
