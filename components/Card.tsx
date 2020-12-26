@@ -35,7 +35,7 @@ export default ({
 	title,
 	children,
 }: {
-	icon?: string;
+	icon?: any;
 	children?: any;
 	title?: string;
 }) => (
