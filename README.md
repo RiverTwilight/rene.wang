@@ -17,6 +17,7 @@
 *   catagories: 目录配置
 
 ### 静态资源
+
 ### 样式
 
 暂不支持自定义样式
@@ -32,12 +33,29 @@
 
 ## 部署
 
-本系统是纯静态的，可以**零成本部署**。推荐使用[Vercel](https://vercel.com)。
+由于 Nextjs 的 i18n 功能不支持静态导出，需要部署到服务器上，可以使用 github action 轻松部署。
 
-将本仓库 fork 至你的 hub 账户下，绑定 vercel 即可快速部署。仓库的任何更新都会自动部署。
+### 0.服务器配置
 
-你也可以自己部署，执行以下命令即可：
+确保服务器已安装 Node.js、 git 和 pm2。
 
+在服务器下创建/app/ygk-blog 目录，并执行`git init`初始化仓库。
+
+### 1.Github 仓库配置
+
+在 github 创建一个远程仓库，并在`setting`->`Secrets`下添加服务器信息。
+
+-   SSH_HOST：服务器 IP
+-   SSH_USERNAME：服务器用户名
+-   SSH_PORT：SSH 端口（默认 443）
+-   SSH_PASS：服务器用户密码
+
+在 Github 仓库的 `Deploy Keys` 下添加服务器 git 公钥（[生成方法](https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5)）。
+ 
 ```sh
-npm run deploy
+vim ~/.ssh/id_rsa.pub
 ```
+
+### 2.推送代码
+
+在 github 上所有 master 分支的更新都会自动部署到服务器。大功告成！

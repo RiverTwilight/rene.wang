@@ -17,6 +17,8 @@ import BookOutline from "../../static/icon/book-outline.svg";
 import Wave from "../../static/wave.svg";
 import "../../scss/typo.scss";
 
+// TODO 性能优化
+
 export async function getStaticProps({ locale, locales, ...ctx }) {
 	const posts = ((context) => {
 		const keys = context.keys();
