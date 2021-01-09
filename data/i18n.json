@@ -1,24 +1,25 @@
 {
-    "nav": {
-        "homePage": {
-            "zh-CN": "博客",
-            "en-US": "Home"
-        },
-        "secondPage":{
-            "zh-CN": "寂静地",
-            "en-US": "Special" 
-        },
-        "search": {
-
-        }
-    },
-    "postItem":{
-        "showMore": {
-            "zh-CN": "阅读全文",
-            "en-US": "Show more"
-        },
-        "showLess": {
-            "zh-CN": "收起"
-        }
-    }
+	"nav": {
+		"homePage": {
+			"zh-CN": "博客",
+			"en-US": "Home"
+		},
+		"secondPage": {
+			"zh-CN": "寂静地",
+			"en-US": "Special"
+		},
+		"search": {}
+	},
+	"postItem": {
+		"showMore": {
+			"zh-CN": "阅读全文",
+			"en-US": "Show more"
+		},
+		"showLess": {
+			"zh-CN": "收起"
+		}
+	},
+	"postList": {
+		"allPosts": { "zh-CN": "查看全部文章", "en-US": "All Posts" }
+	}
 }
