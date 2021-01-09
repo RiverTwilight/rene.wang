@@ -19,6 +19,7 @@ jobs:
                   port: ${{ secrets.SSH_PORT }}
                   script: |
                       cd /app/ygk-blog
+                      rm -rf package-lock.json
                       git pull origin master
                       npm install --production
                       npm run build
