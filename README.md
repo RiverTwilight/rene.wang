@@ -47,8 +47,8 @@
 
 -   SSH_HOST：服务器 IP
 -   SSH_USERNAME：服务器用户名
--   SSH_PORT：SSH 端口（默认 443）
--   SSH_PASS：服务器用户密码
+-   SSH_PORT：SSH 端口（默认 22）
+-   SSH_PASSWORD：服务器用户密码
 
 在 Github 仓库的 `Deploy Keys` 下添加服务器 git 公钥（[生成方法](https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5)）。
  
