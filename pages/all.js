@@ -12,6 +12,7 @@ export async function getStaticProps({ locale }) {
 	};
 }
 
+// TODO 全部文章
 class SpecialPage extends React.Component {
 	constructor(props) {
 		super(props);
@@ -25,7 +26,7 @@ class SpecialPage extends React.Component {
 		return (
 			<Layout
 				currentPage={{
-					text: "欢喜",
+					text: "全部文章",
 					path: "/special",
 				}}
 				locale={locale}

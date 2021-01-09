@@ -12,6 +12,7 @@ export async function getStaticProps({ locale }) {
 	};
 }
 
+// TODO 特别页面
 class SpecialPage extends React.Component {
 	constructor(props) {
 		super(props);

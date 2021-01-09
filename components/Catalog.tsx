@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import ListOutline from "../static/icon/list-outline.svg";
 
-// TODO 样式美化
 const Switch = styled.button`
 	margin: 1rem 0 0;
 	padding: 0;
