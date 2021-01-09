@@ -5,11 +5,17 @@ import ListOutline from "../static/icon/list-outline.svg";
 
 // TODO 样式美化
 const Switch = styled.button`
-	border: 1px solid #bac0cd;
-	outline: none;
-	border-radius: 3px;
-	width: 40px;
-	height: 40px;
+	margin: 1rem 0 0;
+	padding: 0;
+	width: 3.33rem;
+	height: 3.33rem;
+	line-height: 1;
+	color: #909090;
+	background-color: #fff;
+	border: 1px solid #f1f1f1;
+	border-radius: 50%;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
 	@media (min-width: 1024px) {
 		display: none;
 	}
@@ -22,14 +28,16 @@ const Switch = styled.button`
 
 const Warpper = styled.div`
 	@media (max-width: 1024px) {
+		.card {
+			height: 100vh;
+		}
 		position: fixed;
 		top: 56px;
 		left: 0;
 		right: 0;
-		max-height: 300px;
 		overflow-y: scroll;
 		transition: all 0.3s;
-		${(props: { collapse: boolean }) => props.collapse && "top: -310px;"}
+		${(props: { collapse: boolean }) => props.collapse && "top: -100vh;"}
 	}
 `;
 
