@@ -23,4 +23,5 @@ jobs:
                       git pull origin master
                       npm install --production
                       npm run build
+                      kill $(lsof -t -i:4000)
                       npm start
