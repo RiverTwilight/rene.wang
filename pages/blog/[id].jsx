@@ -194,7 +194,7 @@ const Post = ({ id, allPosts, siteConfig, locale }) => {
 				style={{
 					marginBottom: "7px",
 				}}
-				className="p-a-2 card typo bg-white"
+				className="p-a-2 card  bg-white"
 			>
 				<Cover>
 					{frontmatter.cover && (
@@ -202,21 +202,25 @@ const Post = ({ id, allPosts, siteConfig, locale }) => {
 					)}
 				</Cover>
 				<h1 className="text-center">{frontmatter.title || slug}</h1>
-				<div className="typo-meta">最后更新于{frontmatter.date}</div>
-				<div className="typo-detail">
-					<div className="typo-detail-date"></div>
-				</div>
-				<ReactMarkdown
-					renderers={{
-						code: CodeBlock,
-						heading: HeadingBlock,
-						image: ImgaeBlock,
-					}}
-					escapeHtml={false}
-					source={markdownBody}
-				></ReactMarkdown>
-				<div className="typo-split">
-					<Wave />
+				<div className="typo">
+					<div className="typo-meta">
+						最后更新于{frontmatter.date}
+					</div>
+					<div className="typo-detail">
+						<div className="typo-detail-date"></div>
+					</div>
+					<ReactMarkdown
+						renderers={{
+							code: CodeBlock,
+							heading: HeadingBlock,
+							image: ImgaeBlock,
+						}}
+						escapeHtml={false}
+						source={markdownBody}
+					></ReactMarkdown>
+					<div className="typo-split">
+						<Wave />
+					</div>
 				</div>
 			</article>
 			<Card title="评论" icon={<ChatsBubbles />}>

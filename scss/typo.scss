@@ -1,5 +1,9 @@
 @import "./global.scss";
 
+@mixin colorBadage {
+	color: $themeColor;
+}
+
 /**
  * =============================================================================
  * ************   排版   ************
@@ -10,7 +14,30 @@
 		font-size: 25px;
 		font-weight: bold;
 	}
-
+	h2 {
+		position: relative;
+		font-size: 20px;
+		border-left: 4px solid;
+		padding: 0 0 0 10px;
+		margin: 30px 0;
+		@include colorBadage();
+	}
+	h3 {
+		font-size: 16px;
+		@include colorBadage();
+	}
+	ul,
+	ol {
+		padding-left: 28px;
+	}
+	ol li {
+		padding-left: 6px;
+	}
+	ol li,
+	ul li {
+		margin-bottom: 0;
+		list-style: inherit;
+	}
 	.typo-meta {
 		color: $grey;
 		text-align: center;
@@ -20,8 +47,10 @@
 		margin: 0 -5px;
 	}
 	& > p {
-		line-height: 1.6;
-		color: rgb(82, 74, 74);
+		color: #595959;
+		font-size: 15px;
+		line-height: 2;
+		font-weight: 400;
 		img {
 			width: 95%;
 			margin: 0 auto;
@@ -33,12 +62,6 @@
 			text-align: center;
 			color: #c4a3a3;
 			font-size: small;
-		}
-		code {
-			background: #f1e4e4;
-			color: $themeColor;
-			border-radius: 3px;
-			padding: 3px;
 		}
 	}
 	blockquote {

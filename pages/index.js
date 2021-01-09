@@ -5,13 +5,16 @@ import PostItem from "../components/PostItem";
 import Tab from "../components/Tab";
 import Layout from "../components/Layout";
 import { v5 as uuidv5 } from "uuid";
+import Link from "next/link";
+import Text from "../utils/i18n";
+import { postList } from "../data/i18n.json";
 
 export async function getStaticProps({ locale, locales }) {
 	//get posts & context from folder
 	const posts = ((context) => {
 		const keys = context.keys();
 		const values = keys.map(context);
-		const data = keys.map((key, index) => {
+		const data = keys.splice(0, 15).map((key, index) => {
 			// Create slug from filename
 			const slug = key
 				.replace(/^.*[\\\/]/, "")
@@ -28,7 +31,9 @@ export async function getStaticProps({ locale, locales }) {
 				),
 				defaultTitle: slug,
 				frontmatter: document.data,
-				markdownBody: document.content,
+				markdownBody: `${document.content.substr(0, 200)}${
+					document.content.length >= 200 ? "..." : ""
+				}`,
 				slug: slug,
 				locale: key.split("/")[1],
 			};
@@ -38,11 +43,6 @@ export async function getStaticProps({ locale, locales }) {
 
 	const sortedPosts = posts
 		.sort((a, b) => {
-			let yearA = a.frontmatter.date.split("/")[0],
-				yearB = b.frontmatter.date.split("/")[0];
-			return yearA - yearB;
-		})
-		.sort((a, b) => {
 			let dayA = a.frontmatter.date.split("/")[2],
 				dayB = b.frontmatter.date.split("/")[2];
 			return dayB - dayA;
@@ -51,6 +51,11 @@ export async function getStaticProps({ locale, locales }) {
 			let monthA = a.frontmatter.date.split("/")[1],
 				monthB = b.frontmatter.date.split("/")[1];
 			return monthB - monthA;
+		})
+		.sort((a, b) => {
+			let yearA = a.frontmatter.date.split("/")[0],
+				yearB = b.frontmatter.date.split("/")[0];
+			return yearB - yearA;
 		});
 
 	const config = await import(`../data/config.json`);
@@ -129,7 +134,13 @@ class HomePage extends React.Component {
 								date={post.frontmatter.date}
 							/>
 						))}
-					<div className="bg-white passage-more">查看全部文章</div>
+					<Text dictionary={postList} language={locale}>
+						<Link href="/all">
+							<div className="bg-white passage-more">
+								<Text allPosts />
+							</div>
+						</Link>
+					</Text>
 					{/*<div style={{
                         display: page === Math.ceil(allPosts.length / this.postsPerPage) ? 'none' : ''
                     }} onClick={() => {

@@ -100,8 +100,8 @@ class Header extends React.Component<
 			this.activeMonitor();
 	}
 	activeMonitor() {
-		this.t1 = document.documentElement.scrollTop || document.body.scrollTop;
-		window.addEventListener("scroll", this.handleScroll);
+		// this.t1 = document.documentElement.scrollTop || document.body.scrollTop;
+		// window.addEventListener("scroll", this.handleScroll);
 	}
 	render() {
 		const { subHeader } = this.state;
