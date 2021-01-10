@@ -34,7 +34,7 @@ class SpecialPage extends React.Component {
 				config={siteConfig}
 			>
 				<div class="p-a-2 card bg-white">
-					全部文章
+					<h3>全部文章</h3>
 				</div>
 			</Layout>
 		);
