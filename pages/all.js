@@ -27,12 +27,16 @@ class SpecialPage extends React.Component {
 			<Layout
 				currentPage={{
 					text: "全部文章",
-					path: "/special",
+					path: "/all",
 				}}
 				locale={locale}
 				allPosts={allPosts}
 				config={siteConfig}
-			></Layout>
+			>
+				<div class="p-a-2 card bg-white">
+					全部文章
+				</div>
+			</Layout>
 		);
 	}
 }

@@ -24,4 +24,4 @@ jobs:
                       npm install --production
                       npm run build
                       kill $(lsof -t -i:4000)
-                      npm start
+                      pm2 restart ygk-blog || pm2 start npm --name "ygk-blog" -- start
