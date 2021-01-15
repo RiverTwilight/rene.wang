@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const Card = styled.div`
+const StyledCard = styled.div`
 	background: #fff;
 	margin-bottom: 10px;
 	.image {
@@ -30,19 +30,23 @@ const Card = styled.div`
 	}
 `;
 
-export default ({
+const Card = ({
 	icon,
 	title,
 	children,
+	className = "",
 }: {
 	icon?: any;
 	children?: any;
 	title?: string;
+	className?: string;
 }) => (
-	<Card className="card">
+	<StyledCard className={`card ${className}`}>
 		<div className="title">
 			{icon}&nbsp;&nbsp;{title}
 		</div>
 		<div className="content">{children}</div>
-	</Card>
+	</StyledCard>
 );
+
+export default Card;

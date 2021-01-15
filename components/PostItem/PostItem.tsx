@@ -1,14 +1,15 @@
 import * as React from "react";
 import ReactMarkdown from "react-markdown";
 // import CodeBlock from '../components/CodeBlock'
-import LazyLoad from "react-lazyload";
 import Link from "next/link";
+import Image from "next/image";
 import Text from "../../utils/i18n";
 import { postItem } from "../../data/i18n.json";
 //  '../scss/typo.scss'
 
 /**
  * 单个文章组件
+ * // TODO 图片优化
  */
 
 export default ({
@@ -36,7 +37,7 @@ export default ({
 				</a>
 				<meta
 					itemProp="url"
-					content={"https://blog.yungeeker.com/blog/" + id}
+					content={`https://ygk-blog.yunser.com/blog/${id}`}
 				/>
 				<meta itemProp="name" content={title} />
 				<div className="passage-item-header-date">{date}</div>
@@ -44,19 +45,17 @@ export default ({
 			<div
 				className={`passage-item-content ${"passage-item-content-close"}`}
 			>
-				<div
-					style={{ display: cover ? "block" : "none" }}
-					className="passage-item-content-cover"
-				>
-					<div className="passage-item-content-cover-inner">
-						<LazyLoad>
-							<img
+				{cover && (
+					<div className="passage-item-content-cover">
+						<div className="passage-item-content-cover-inner">
+							<Image
+								unsized
 								alt={title.replace("&nbsp;", " ")}
 								src={cover}
 							/>
-						</LazyLoad>
+						</div>
 					</div>
-				</div>
+				)}
 				{/*<div className="typo passage-item-content-text">
                     {expand ? <ReactMarkdown
                         renderers={{

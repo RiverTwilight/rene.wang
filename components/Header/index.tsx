@@ -6,7 +6,7 @@ import LogoLarge from "../../static/logo&title-small.svg";
 import Text from "../../utils/i18n";
 import { nav } from "../../data/i18n.json";
 import ActiveLink from "../../utils/AcitiveLink";
-import "../../scss/header.scss";
+import "./header.scss";
 
 /**
  * 头部
@@ -68,14 +68,14 @@ class Header extends React.Component<
 		lang?: string;
 	},
 	{
-		subHeader: boolean;
+		showHeader: boolean;
 	}
 > {
 	t1 = 0;
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			subHeader: false,
+			showHeader: true,
 		};
 	}
 	handleScroll = () => {
@@ -85,9 +85,9 @@ class Header extends React.Component<
 					document.documentElement.scrollTop ||
 					document.body.scrollTop;
 				if (t2 > this.t1) {
-					this.setState({ subHeader: true });
+					this.setState({ showHeader: false });
 				} else if (t2 < this.t1) {
-					this.setState({ subHeader: false });
+					this.setState({ showHeader: true });
 				}
 				clearTimeout(window.scrollListener);
 				window.scrollListener = null;
@@ -96,31 +96,32 @@ class Header extends React.Component<
 		}
 	};
 	componentDidMount() {
-		this.props.currentPage.path.match(/\/blog\/\S+/) &&
-			this.activeMonitor();
+		this.activeMonitor();
+	}
+	componentWillUnmount() {
+		this.destoryMonitor();
+	}
+	destoryMonitor() {
+		window.removeEventListener("scroll", this.handleScroll);
 	}
 	activeMonitor() {
-		// this.t1 = document.documentElement.scrollTop || document.body.scrollTop;
-		// window.addEventListener("scroll", this.handleScroll);
+		this.t1 = document.documentElement.scrollTop || document.body.scrollTop;
+		window.addEventListener("scroll", this.handleScroll);
 	}
 	render() {
-		const { subHeader } = this.state;
+		const { showHeader: subHeader } = this.state;
 		const { lang, config, allPosts, currentPage } = this.props;
 		return (
 			<>
-				<div
-					style={{
-						marginTop: subHeader ? "-50px" : "",
-						height: !subHeader ? "50px" : "",
-					}}
-					className="app-header"
-				>
-					<MainHeader
-						lang={lang}
-						siteConfig={config}
-						allPosts={allPosts}
-					/>
-				</div>
+				{subHeader && (
+					<div className="app-header">
+						<MainHeader
+							lang={lang}
+							siteConfig={config}
+							allPosts={allPosts}
+						/>
+					</div>
+				)}
 			</>
 		);
 	}

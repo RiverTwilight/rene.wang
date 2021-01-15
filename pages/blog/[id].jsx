@@ -4,7 +4,7 @@ import glob from "glob";
 import { v5 as uuidv5 } from "uuid";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import Gitalk from "gitalk";
+// import Gitalk from "gitalk";
 import Layout from "../../components/Layout";
 import CodeBlock from "../../components/CodeBlock";
 import ImgaeBlock from "../../components/LazyloadImage";
@@ -12,7 +12,7 @@ import ImgaeBlock from "../../components/LazyloadImage";
 import Card from "../../components/Card";
 import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../components/PostItem";
-import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
+// import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
 import BookOutline from "../../static/icon/book-outline.svg";
 import Wave from "../../static/wave.svg";
 import "../../scss/typo.scss";
@@ -124,7 +124,7 @@ const ReadMore = ({ allPosts, categories, currentId }) => {
 		});
 	});
 	return (
-		<Card title="阅读更多" icon={<BookOutline />}>
+		<Card className="br-all" title="阅读更多" icon={<BookOutline />}>
 			{data.slice(0, 3).map((item, i) => (
 				<PostItem
 					key={i}
@@ -141,6 +141,7 @@ const ReadMore = ({ allPosts, categories, currentId }) => {
 
 /**
  * 文章详情
+ * // FIXME 评论模块
  */
 
 const Post = ({ id, allPosts, siteConfig, locale }) => {
@@ -183,16 +184,17 @@ const Post = ({ id, allPosts, siteConfig, locale }) => {
 			config={siteConfig}
 			catalog={generateCatalog(markdownBody)}
 		>
-			<link
+			{/* <link
 				href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.6.2/gitalk.min.css"
 				rel="stylesheet"
-			></link>
+			></link> */}
+			{/* <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css"></link> */}
 			<Progress width={50} />
 			<article
 				style={{
 					marginBottom: "7px",
 				}}
-				className="p-a-2 card  bg-white"
+				className="p-a-2 card br-all  bg-white"
 			>
 				<Cover>
 					{frontmatter.cover && (
@@ -221,9 +223,9 @@ const Post = ({ id, allPosts, siteConfig, locale }) => {
 					</div>
 				</div>
 			</article>
-			<Card title="评论" icon={<ChatsBubbles />}>
+			{/* <Card title="评论" icon={<ChatsBubbles />}>
 				<div id="gitalk-container"></div>
-			</Card>
+			</Card> */}
 			<ReadMore
 				currentId={id}
 				categories={frontmatter.categories}

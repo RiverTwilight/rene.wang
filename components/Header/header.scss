@@ -1,4 +1,4 @@
-@import "./global.scss";
+@import "../../scss/global.scss";
 
 /**
  * =============================================================================
@@ -22,18 +22,17 @@ $headerTextColor: #8590a6;
 
 /****整个头部****/
 .app-header {
+	background: #f6f6f6;
+	margin: 0px;
+	height: 50px;
 	position: fixed;
-	padding-top: 2px;
-	transition: margin-top 0.5s;
 	@include stickToTop();
 	z-index: 100;
 	@media (min-width: 640px) {
+		height: 50px;
 		min-width: 1032px;
 	}
 	overflow: hidden;
-	background: #fff;
-	-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-	box-shadow: 0 1px 3px #1a1a1a1a;
 	background-clip: content-box;
 	.app-header-space {
 		width: 300px;
@@ -46,10 +45,10 @@ $headerTextColor: #8590a6;
 		justify-content: space-around;
 		@include flexLayout();
 		width: 80%;
+		height: 50px;
 		@media screen and (max-width: 640px) {
 			width: 98%;
 		}
-		height: 50px;
 		margin: 0 auto;
 		-webkit-box-align: center;
 		-ms-flex-align: center;
@@ -108,15 +107,14 @@ $headerTextColor: #8590a6;
 		padding: 14px 0px 14px 0px;
 	}
 	.app-header-list-item-active {
+		border-radius: 30px;
 		@media (min-width: 640px) {
 			font-weight: 600;
 			color: black;
-			border-bottom: 3px solid $themeColor;
 		}
 		@media (max-width: 640px) {
 			font-weight: 400;
 			color: $themeColor;
-			border-bottom: 2px solid $themeColor;
 		}
 	}
 }
@@ -131,10 +129,10 @@ $headerTextColor: #8590a6;
 		width: auto;
 	}
 	border: 1px solid #ebebeb;
-	background: #f6f6f6;
+	background: #fff;
 	padding: 0 4px 0 10px;
 	@include flexLayout();
-	border-radius: 40px;
+	border-radius: 30px;
 	transition: 0.2s border;
 	-webkit-transition: border 0.2s; /* Safari */
 	transition: 0.2s margin;
@@ -169,9 +167,12 @@ $headerTextColor: #8590a6;
 	position: fixed;
 	width: 260px;
 	@media (max-width: 640px) {
+		left: 0px !important;
+		right: 0px;
 		width: auto;
 		max-height: 50%;
 		overflow-y: auto;
+		padding: auto 8px;
 	}
 	top: 60px;
 	padding: 10px;

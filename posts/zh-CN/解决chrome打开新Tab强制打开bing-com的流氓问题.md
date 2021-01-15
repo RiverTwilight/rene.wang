@@ -1,6 +1,5 @@
 ---
 date: 2020/06/25
-cover: https://bgr.com/wp-content/uploads/2019/11/google-chrome-chromebook.jpg?quality=70&strip=all
 categories:
 - SoftWare
 ---

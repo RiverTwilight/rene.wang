@@ -69,10 +69,10 @@ class Layout extends React.Component<
 					/>
 					<title>{showTitle}</title>
 				</Head>
-				<div
+				{/* <div
 					style={{ display: "inline-block" }}
 					className="header-liner"
-				></div>
+				></div> */}
 				<Header lang={locale} {...this.props} />
 				<main className="main">
 					<div className="container">

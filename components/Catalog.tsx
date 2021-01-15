@@ -29,6 +29,7 @@ const Warpper = styled.div`
 	@media (max-width: 1024px) {
 		.card {
 			height: 100vh;
+			border-radius: 30px;
 		}
 		position: fixed;
 		top: 56px;

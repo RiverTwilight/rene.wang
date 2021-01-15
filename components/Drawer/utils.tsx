@@ -8,7 +8,7 @@ const Headmaster = ({
 	config: ISiteConfig["author"];
 }) => {
 	return (
-		<div className="our-headmaster card">
+		<div className="our-headmaster card br-all">
 			{/*<img loading="lazy" className="lijun" src={image} />*/}
 			<div className="headmaster-title">
 				<PersonIcon />
@@ -37,7 +37,7 @@ const Headmaster = ({
 
 const CardMenu = () => {
 	return (
-		<div className="card-menu card">
+		<div className="card-menu br-all card">
 			{[
 				{
 					text: "云极客工具",

@@ -22,7 +22,6 @@
     "react": "^16.13.1",
     "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
-    "react-lazyload": "^3.0.0",
     "react-markdown": "^4.3.1",
     "react-syntax-highlighter": "^12.2.1",
     "styled-components": "^5.1.1",
