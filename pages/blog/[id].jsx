@@ -110,6 +110,7 @@ const Cover = styled.div`
 		object-fit: cover;
 		width: 100%;
 		max-height: 40vh;
+		border-radius: 30px 30px 0px 0px;
 	}
 `;
 

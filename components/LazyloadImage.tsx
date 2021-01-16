@@ -5,7 +5,7 @@ export default ({ src, alt }: { src: string; alt?: string }) => {
 	return (
 		<>
 			<Image unsized alt={alt} src={src} />
-			<div className="typo-img-caption">{alt}</div>
+			{alt && <div className="typo-img-caption">{alt}</div>}
 		</>
 	);
 };

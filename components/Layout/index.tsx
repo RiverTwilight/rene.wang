@@ -5,6 +5,7 @@ import Drawer from "../Drawer";
 import Catalog from "../Catalog";
 import "./App.scss";
 
+// TODO RSS
 class Layout extends React.Component<
 	{
 		config: ISiteConfig;
