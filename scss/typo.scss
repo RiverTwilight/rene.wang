@@ -27,6 +27,15 @@
 		font-size: 16px;
 		@include colorBadage();
 	}
+	ul {
+		list-style: disc outside;
+		margin-left: 2em;
+		margin-top: 1em;
+	}
+	li {
+		line-height: 2;
+		color: #595959;
+	}
 	ul,
 	ol {
 		padding-left: 28px;
@@ -38,6 +47,16 @@
 	ul li {
 		margin-bottom: 0;
 		list-style: inherit;
+	}
+	blockquote {
+		background: #fff9f9;
+		margin: 2em 0;
+		padding: 2px 20px;
+		border-left: 4px solid #b2aec5;
+		&:p {
+			color: #666;
+			line-height: 2;
+		}
 	}
 	.typo-meta {
 		color: $grey;
@@ -63,13 +82,6 @@
 			text-align: center;
 			color: #c4a3a3;
 			font-size: small;
-		}
-	}
-	blockquote {
-		margin: 5px;
-		p {
-			border-left: $themeColor 4px solid;
-			padding-left: 9px;
 		}
 	}
 	a {

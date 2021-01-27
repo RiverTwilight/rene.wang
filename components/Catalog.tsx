@@ -26,10 +26,12 @@ const Switch = styled.button`
 `;
 
 const Warpper = styled.div`
+	.card {
+		border-radius: 30px;
+	}
 	@media (max-width: 1024px) {
 		.card {
 			height: 100vh;
-			border-radius: 30px;
 		}
 		position: fixed;
 		top: 56px;

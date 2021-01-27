@@ -1,0 +1,80 @@
+@import "../../scss/global.scss";
+
+/************校长介绍**************/
+.our-headmaster {
+	background: #fff;
+	margin-bottom: 10px;
+	.lijun {
+		object-fit: cover;
+		width: 100%;
+	}
+	.headmaster-title {
+		display: flex;
+		padding: 5px 8px;
+		font-size: 17px;
+		border-bottom: 1px solid #e5f2ff;
+	}
+	.headmaster-content {
+		padding: 5px 8px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		.headmaster-content-text {
+			padding-left: 5px;
+			min-width: 200px;
+			color: #888888;
+		}
+		.headmaster-content-title {
+			font-weight: bold;
+		}
+	}
+}
+
+.card-menu {
+	margin-right: 0;
+	display: flex;
+	background: #fff;
+	flex-wrap: wrap;
+	overflow: visible;
+	.card-menu-item {
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		cursor: pointer;
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 33.3333%;
+		flex: 0 0 33.3333%;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		height: 94px;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		display: flex;
+	}
+}
+
+.card-menu-item-text {
+	margin-top: 10px;
+	color: #444;
+	font-size: 16px;
+}
+
+.card-menu-item-icon {
+	color: #8590a6;
+	margin-bottom: 4px;
+}
+
+/**********版权信息********/
+.copyright {
+	color: #8590a6;
+	padding: 5px 1px;
+	a {
+		&:hover {
+			color: $themeColor;
+			cursor: pointer;
+		}
+	}
+}
