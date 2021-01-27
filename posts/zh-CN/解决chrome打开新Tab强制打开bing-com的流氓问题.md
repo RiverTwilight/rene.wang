@@ -2,6 +2,7 @@
 date: 2020/06/25
 categories:
 - SoftWare
+- Life
 ---
 
 ## 问题背景

@@ -217,30 +217,40 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 						<ImgaeBlock src={frontmatter.cover} />
 					)}
 				</Cover>
-				<div itemscope itemtype="http://schema.org/Blog">
-					<h1 itemprop="headline" className="text-center">
+				<div itemScope itemType="http://schema.org/Article">
+					<h1 itemProp="headline" className="text-center">
 						{frontmatter.title || slug}
 					</h1>
 					<div className="typo">
 						<div className="typo-meta">
-							最后更新于{frontmatter.date}&nbsp;分类:
-							{frontmatter.categories.map(
-								(cate) =>
-									`${siteConfig.categories[cate][locale]}`
-							)}
+							最后更新于
+							<span itemProp="dateCreated">
+								{frontmatter.date}
+							</span>
+							&nbsp;分类:
+							{frontmatter.categories
+								? frontmatter.categories.map(
+										(cate) =>
+											`${siteConfig.categories[cate][locale]} `
+								  )
+								: "未分类"}
 						</div>
 						<div className="typo-detail">
 							<div className="typo-detail-date"></div>
 						</div>
-						<ReactMarkdown
-							renderers={{
-								code: CodeBlock,
-								heading: HeadingBlock,
-								image: ImgaeBlock,
-							}}
-							escapeHtml={false}
-							source={markdownBody}
-						></ReactMarkdown>
+						<div itemProp="articleBody">
+							{" "}
+							<ReactMarkdown
+								renderers={{
+									code: CodeBlock,
+									heading: HeadingBlock,
+									image: ImgaeBlock,
+								}}
+								escapeHtml={false}
+								source={markdownBody}
+							></ReactMarkdown>
+						</div>
+
 						{/* <div className="typo-split">
 							<Wave />
 						</div> */}

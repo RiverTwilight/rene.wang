@@ -90,7 +90,7 @@ export default ({
 					<List>{catalog.map(Title)}</List>
 				</Card>
 			</Warpper>
-			<Switch className="card" onClick={handleClick}>
+			<Switch onClick={handleClick}>
 				<ListOutline />
 			</Switch>
 		</>

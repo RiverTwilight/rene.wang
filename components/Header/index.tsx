@@ -46,6 +46,7 @@ const Menu = ({ lang }): React.ReactElement => {
 	);
 };
 
+// TODO 单独的搜索页面
 const MainHeader = ({ siteConfig, allPosts, lang }) => (
 	<div className="app-header-inner">
 		<a href="/" className="logo-large hidden-sm-down">
