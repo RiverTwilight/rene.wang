@@ -26,10 +26,12 @@ const Switch = styled.button`
 `;
 
 const Warpper = styled.div`
+	.card {
+		border-radius: 30px;
+	}
 	@media (max-width: 1024px) {
 		.card {
 			height: 100vh;
-			border-radius: 30px;
 		}
 		position: fixed;
 		top: 56px;
@@ -88,7 +90,7 @@ export default ({
 					<List>{catalog.map(Title)}</List>
 				</Card>
 			</Warpper>
-			<Switch className="card" onClick={handleClick}>
+			<Switch onClick={handleClick}>
 				<ListOutline />
 			</Switch>
 		</>

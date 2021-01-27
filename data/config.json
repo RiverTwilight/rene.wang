@@ -33,6 +33,10 @@
 		"Feeling": {
 			"en-US": "Feeling",
 			"zh-CN": "随感"
+		},
+		"SoftWare": {
+			"en-US": "SofeWare",
+			"zh-CN": "软件开发"
 		}
 	},
 	"gitalk": {

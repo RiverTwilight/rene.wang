@@ -9,7 +9,6 @@ import { postItem } from "../../data/i18n.json";
 
 /**
  * 单个文章组件
- * // TODO 图片优化
  */
 
 export default ({

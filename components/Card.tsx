@@ -10,7 +10,7 @@ const StyledCard = styled.div`
 	}
 	.title {
 		display: flex;
-		padding: 5px 8px;
+		padding: 5px 15px;
 		font-size: 17px;
 		border-bottom: 1px solid #e5f2ff;
 	}

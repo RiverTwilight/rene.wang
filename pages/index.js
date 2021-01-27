@@ -9,7 +9,6 @@ import Link from "next/link";
 import Text from "../utils/i18n";
 import { postList } from "../data/i18n.json";
 
-// FIXME 双月份排序算法
 export async function getStaticProps({ locale, locales }) {
 	//get posts & context from folder
 	const posts = ((context) => {
@@ -51,6 +50,7 @@ export async function getStaticProps({ locale, locales }) {
 		.sort((a, b) => {
 			let monthA = a.frontmatter.date.split("/")[1],
 				monthB = b.frontmatter.date.split("/")[1];
+			console.log(monthA, monthB)
 			return monthB - monthA;
 		})
 		.sort((a, b) => {

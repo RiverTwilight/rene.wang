@@ -1,6 +1,7 @@
 import React from "react";
 import PersonIcon from "../../static/icon/person-outline";
 import Ygktool from "../../static/ygktool_logo.svg";
+import "./Drawer.scss";
 
 const Headmaster = ({
 	config: { name, image, intro },
