@@ -20,6 +20,7 @@ export async function getStaticProps({ locale, locales }) {
 	return {
 		props: {
 			allPosts: sortedPosts.slice(0, 10),
+			postNumber: sortedPosts.length,
 			siteConfig: config.default,
 			locale,
 		},
@@ -35,7 +36,7 @@ class HomePage extends React.Component {
 		};
 	}
 	render() {
-		const { allPosts, siteConfig, locale } = this.props;
+		const { allPosts, siteConfig, locale, postNumber } = this.props;
 		const { channel } = this.state;
 		return (
 			<Layout
@@ -95,7 +96,7 @@ class HomePage extends React.Component {
 					<Text dictionary={postList} language={locale}>
 						<Link href="/all">
 							<div className="bg-white passage-more">
-								<Text allPosts />
+								<Text allPosts={[postNumber]} />
 							</div>
 						</Link>
 					</Text>

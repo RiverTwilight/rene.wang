@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react";
 /**
  * 多语言组件
  * @author rivertwilight
@@ -6,35 +6,52 @@ import * as React from 'react'
  */
 
 const { Provider, Consumer } = React.createContext({
-    dictionary: {},
-    language: null
+	dictionary: {},
+	language: null,
 });
 
 interface Pro {
-    dictionary: dictionary
-    language: string;
-    children: JSX.Element | JSX.Element[] | null;
+	dictionary: dictionary;
+	language: string;
+	children: JSX.Element | JSX.Element[] | null;
 }
 
 interface Con {
-    [dicIndex: string]: true;
+	[dicIndex: string]: true;
 }
 
-export default function Text({ dictionary, language, children, ...props }: Pro | Con): JSX.Element {
-    if (children) {
-        return (
-            <Provider value={{ language, dictionary }}>
-                {children}
-            </Provider>
-        )
-    }
-    const key = Object.keys(props).filter(item => JSON.stringify(props[item]) === 'true')[0];
-    return (
-        <Consumer>
-            {value => (
-                value.dictionary[key][value.language]
-            )}
-        </Consumer>
-    )
+export default function Text({
+	dictionary,
+	language,
+	children,
+	...props
+}: Pro | Con): JSX.Element {
+	if (children) {
+		return <Provider value={{ language, dictionary }}>{children}</Provider>;
+	}
+	const key = Object.keys(props).filter(
+		(item) =>
+			Object.prototype.toString.call(props[item]) ===
+				"[object Boolean]" ||
+			Object.prototype.toString.call(props[item]) === "[object Array]"
+	)[0];
+	return (
+		<Consumer>
+			{(value) => {
+				if (
+					Object.prototype.toString.call(props[key]) ===
+					"[object Array]"
+				) {
+					let templeStr = value.dictionary[key][value.language];
+					let i = 0;
+					while (templeStr.match(/\%s/)) {
+						templeStr = templeStr.replace(/\%s/, props[key][i]);
+						i++;
+					}
+					return templeStr;
+				}
+				return value.dictionary[key][value.language];
+			}}
+		</Consumer>
+	);
 }
-

@@ -15,7 +15,7 @@ export async function getStaticProps({ locale, locales }) {
 	};
 }
 
-export default SpecialPage = ({ allPosts, siteConfig, locale }) => (
+const AllPost = ({ allPosts, siteConfig, locale }) => (
 	<Layout
 		currentPage={{
 			text: "全部文章",
@@ -44,3 +44,5 @@ export default SpecialPage = ({ allPosts, siteConfig, locale }) => (
 		</div>
 	</Layout>
 );
+
+export default AllPost;

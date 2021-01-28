@@ -45,7 +45,6 @@ export default function getAllPosts(
 		.sort((a, b) => {
 			let monthA = a.frontmatter.date.split("/")[1],
 				monthB = b.frontmatter.date.split("/")[1];
-			console.log(monthA, monthB);
 			return monthB - monthA;
 		})
 		.sort((a, b) => {
