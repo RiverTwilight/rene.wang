@@ -25,7 +25,7 @@ const AllPost = ({ allPosts, siteConfig, locale }) => (
 		allPosts={allPosts}
 		config={siteConfig}
 	>
-		<div class="p-a-2 card passage-list">
+		<div class="p-a-2 card br-all bg-white passage-list">
 			<h3>全部文章</h3>
 			<div className="typo">
 				{allPosts.map((post) => (

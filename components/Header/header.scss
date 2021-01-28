@@ -199,28 +199,3 @@ $headerTextColor: #8590a6;
 		}
 	}
 }
-
-/**语言切换菜单***/
-.language {
-	margin-left: 15px;
-	button {
-		outline: none;
-		border-style: none;
-		cursor: pointer;
-		background: transparent;
-		color: $headerTextColor;
-		font-size: 14px;
-	}
-}
-
-.arrow-up {
-	width: 32px;
-	height: 16px;
-	-webkit-transform: translate(-50%, -100%);
-	transform: translate(-50%, -100%);
-	position: absolute;
-	overflow: hidden;
-	pointer-events: none;
-	left: 67px;
-	top: 0px;
-}

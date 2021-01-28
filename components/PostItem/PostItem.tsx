@@ -31,9 +31,13 @@ export default ({
 	return (
 		<div key={id} className={"passage-item"}>
 			<div className="passage-item-header">
-				<a href={"/blog/" + id} className="passage-item-header-title">
-					{title.replace("&nbsp;", " ")}
-				</a>
+				<Link href={"/blog/" + id} locale={lang}>
+					<a
+						className="passage-item-header-title"
+					>
+						{title.replace("&nbsp;", " ")}
+					</a>
+				</Link>
 				<meta
 					itemProp="url"
 					content={`https://ygk-blog.yunser.com/blog/${id}`}

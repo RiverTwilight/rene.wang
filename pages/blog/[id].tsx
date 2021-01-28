@@ -1,7 +1,5 @@
 import React from "react";
-import matter from "gray-matter";
 import glob from "glob";
-import { v5 as uuidv5 } from "uuid";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 // import Gitalk from "gitalk";
@@ -85,19 +83,6 @@ export async function getStaticPaths({ locale }) {
 		fallback: false,
 	};
 }
-
-const Progress = styled.div`
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	display: block;
-	width: 100%;
-	height: 4px;
-	overflow: hidden;
-	background-color: rgba(63, 81, 181, 0.2);
-	border-radius: 2px;
-`;
 
 const Cover = styled.div`
 	margin-top: -19px;
@@ -183,50 +168,53 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 					marginBottom: "7px",
 				}}
 				className="p-a-2 card br-all bg-white"
+				itemScope
+				itemType="http://schema.org/Article"
 			>
 				<Cover>
 					{frontmatter.cover && (
-						<ImgaeBlock src={frontmatter.cover} />
+						<>
+							<ImgaeBlock src={frontmatter.cover} />
+							<meta
+								itemProp="thumbnailUrl"
+								content={frontmatter.cover}
+							></meta>
+						</>
 					)}
 				</Cover>
-				<div itemScope itemType="http://schema.org/Article">
-					<h1 itemProp="headline" className="text-center">
-						{frontmatter.title || slug}
-					</h1>
-					<div className="typo">
-						<div className="typo-meta">
-							最后更新于
-							<span itemProp="dateCreated">
-								{frontmatter.date}
-							</span>
-							&nbsp;分类:
-							{frontmatter.categories
-								? frontmatter.categories.map(
-										(cate) =>
-											`${siteConfig.categories[cate][locale]} `
-								  )
-								: "未分类"}
-						</div>
-						<div className="typo-detail">
-							<div className="typo-detail-date"></div>
-						</div>
-						<div itemProp="articleBody">
-							{" "}
-							<ReactMarkdown
-								renderers={{
-									code: CodeBlock,
-									heading: HeadingBlock,
-									image: ImgaeBlock,
-								}}
-								escapeHtml={false}
-								source={markdownBody}
-							></ReactMarkdown>
-						</div>
 
-						{/* <div className="typo-split">
+				<h1 itemProp="headline" className="text-center">
+					{frontmatter.title || slug}
+				</h1>
+				<div className="typo">
+					<div className="typo-meta">
+						最后更新于
+						<span itemProp="dateCreated">{frontmatter.date}</span>
+						&nbsp;分类:
+						{frontmatter.categories
+							? frontmatter.categories.map(
+									(cate) =>
+										`${siteConfig.categories[cate][locale]} `
+							  )
+							: "未分类"}
+					</div>
+					<div className="typo-detail">
+						<div className="typo-detail-date"></div>
+					</div>
+					<div itemProp="articleBody">
+						<ReactMarkdown
+							renderers={{
+								code: CodeBlock,
+								heading: HeadingBlock,
+								image: ImgaeBlock,
+							}}
+							escapeHtml={false}
+							source={markdownBody}
+						></ReactMarkdown>
+					</div>
+					{/* <div className="typo-split">
 							<Wave />
 						</div> */}
-					</div>
 				</div>
 			</article>
 			{/* <Card title="评论" icon={<ChatsBubbles />}>
