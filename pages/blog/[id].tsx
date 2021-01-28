@@ -12,6 +12,8 @@ import ImgaeBlock from "../../components/LazyloadImage";
 import Card from "../../components/Card";
 import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../components/PostItem";
+import getAllPosts from "../../utils/getAllPosts";
+import getPostId from "../../utils/getPostId";
 // import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
 import BookOutline from "../../static/icon/book-outline.svg";
 // import Wave from "../../static/wave.svg";
@@ -23,7 +25,7 @@ import "../../scss/typo.scss";
  * @param {Array} categories 当前文章的目录
  * @param {String} currentId
  */
-const getRecommendPost = (allPosts, categories, currentId) => {
+const getRecommendPost = (allPosts: IPost[], categories: any[], currentId) => {
 	let data = [];
 	allPosts.forEach((post) => {
 		categories.forEach((cate) => {
@@ -38,37 +40,10 @@ const getRecommendPost = (allPosts, categories, currentId) => {
 
 export async function getStaticProps({ locale, locales, ...ctx }) {
 	const { id: currentId } = ctx.params;
-	const posts = ((context) => {
-		const keys = context.keys();
-		const values = keys.map(context);
-		const data = keys.map((key, index) => {
-			// Create slug from filename
-			const slug = key
-				.replace(/^.*[\\\/]/, "")
-				.split(".")
-				.slice(0, -1)
-				.join(".");
-			const value = values[index];
-			// Parse yaml metadata & markdownbody in document
-			const document = matter(value.default);
-			let id = uuidv5(
-				slug,
-				"1b671a64-40d5-491e-99b0-da01ff1f3341"
-			).substr(0, 8);
-			return {
-				defaultTitle: slug,
-				frontmatter: document.data,
-				slug: slug,
-				markdownBody: document.content,
-				id,
-			};
-		});
-		return data;
-	})(require.context("../../posts", true, /\.md$/));
 
+	const posts = getAllPosts();
 	const config = await import(`../../data/config.json`);
-
-	const currentPost = posts.filter((post) => post.id === currentId)[0];
+	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
 	return {
 		props: {
 			recommendPost: getRecommendPost(
@@ -96,13 +71,10 @@ export async function getStaticPaths({ locale }) {
 	);
 	// create paths with `slug` param
 	// const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
-	const paths = blogSlugs.map((slug) => {
+	const paths = blogSlugs.map((slug: string) => {
 		return {
 			params: {
-				id: `${uuidv5(
-					slug,
-					"1b671a64-40d5-491e-99b0-da01ff1f3341"
-				).substr(0, 8)}`,
+				id: getPostId(slug),
 			},
 			locale,
 		};
@@ -139,7 +111,7 @@ const Cover = styled.div`
 	}
 `;
 
-const ReadMore = ({ data }) => {
+const ReadMore = ({ data }: any) => {
 	return (
 		<Card className="br-all" title="阅读更多" icon={<BookOutline />}>
 			{data.map((item, i) => (

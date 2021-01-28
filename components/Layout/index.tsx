@@ -8,9 +8,13 @@ import "./App.scss";
 // TODO RSS
 class Layout extends React.Component<
 	{
+		/**网站配置 */
 		config: ISiteConfig;
+		/**全部文章 */
 		allPosts: IPost[];
+		/** 当前页面 */
 		currentPage: ICurrentPage;
+		/**目录 */
 		catalog?: any[];
 		locale?: string;
 	},
@@ -19,15 +23,6 @@ class Layout extends React.Component<
 > {
 	constructor(props) {
 		super(props);
-		this.state = {
-		};
-	}
-	componentDidMount() {
-		if (localStorage.lang) {
-			this.setState({
-				lang: localStorage.lang,
-			});
-		}
 	}
 	render() {
 		const { config, currentPage, catalog, locale } = this.props;
@@ -54,7 +49,7 @@ class Layout extends React.Component<
 					<meta property="og:title" content={showTitle} />
 					<meta
 						property="og:url"
-						content="https://blog.yungeeker.com/index.html"
+						content="https://ygk-blog.yunser.com"
 					/>
 					<meta property="og:site_name" content={showTitle} />
 					<meta property="og:description" content={description} />

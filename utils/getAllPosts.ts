@@ -1,7 +1,12 @@
-import { v5 as uuidv5 } from "uuid";
 import matter from "gray-matter";
+import getPostId from "./getPostId";
 
-export default function getAllPosts({ locale, locales }) {
+export default function getAllPosts(
+	pocessRes: {
+		/**文档内容处理函数 */
+		markdownBody?: (content: string) => string;
+	} = {}
+) {
 	//get posts & context from folder
 	const posts = ((context) => {
 		const keys = context.keys();
@@ -17,20 +22,18 @@ export default function getAllPosts({ locale, locales }) {
 			// Parse yaml metadata & markdownbody in document
 			const document = matter(value.default);
 			return {
-				id: uuidv5(slug, "1b671a64-40d5-491e-99b0-da01ff1f3341").substr(
-					0,
-					8
-				),
+				id: getPostId(slug),
 				defaultTitle: slug,
 				frontmatter: document.data,
-				markdownBody: `${document.content.substr(0, 200)}${
-					document.content.length >= 200 ? "..." : ""
-				}`,
+				markdownBody: pocessRes.hasOwnProperty("markdownBody")
+					? pocessRes.markdownBody(document.content)
+					: document.content,
 				slug: slug,
 				locale: key.split("/")[1],
 			};
 		});
 		return data;
+		//@ts-expect-error
 	})(require.context("../posts", true, /\.md$/));
 
 	const sortedPosts = posts
@@ -51,5 +54,5 @@ export default function getAllPosts({ locale, locales }) {
 			return yearB - yearA;
 		});
 
-	return sortedPosts
+	return sortedPosts;
 }

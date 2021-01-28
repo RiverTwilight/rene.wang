@@ -24,10 +24,13 @@ type IPost = {
     slug: string,
     defaultTitle: string,
     frontmatter: {
-        date: string
+        date: string,
+        /** 目录 */
+        categories?: string[]
     },
     id: number,
-    markdownBody: string
+    /** 文章 */
+    markdownBody?: string
 }
 
 interface ISiteConfig {
