@@ -8,113 +8,14 @@
 	border-radius: 0px 0px 30px 30px;
 }
 
-.passage-item {
-	overflow: auto;
-	border-bottom: 1px solid #ebebeb;
-	padding: 4px 2px;
-	.passage-item-header {
-		padding-top: 10px;
-		display: flex;
-		justify-content: space-between;
-		.passage-item-header-title {
-			font: {
-				size: 18px;
-				weight: 600;
-				style: bold;
-			}
-			line-height: 1.5;
-			color: #1a1a1a;
-			margin: {
-				top: -4px;
-				bottom: -4px;
-			}
-			cursor: pointer;
-			max-width: 80%;
-			&:hover {
-				color: $themeColor;
-			}
-		}
-		.passage-item-header-date {
-			color: #888888;
-			font-weight: 100;
-			margin-top: -2px;
-		}
-	}
-	.passage-item-content {
-		padding: 5px 0;
-		line-height: 1.67;
-		.passage-item-content-text {
-			cursor: pointer;
-			&:hover{
-				color: #888888
-			}
-			img {
-				width: 100%;
-			}
-			p {
-				margin: 0;
-				display: contents;
-			}
-		}
-	}
-	.passage-item-content-cover {
-		padding-top: 8px;
-
-		.passage-item-content-cover-inner img {
-			object-fit: cover;
-			width: 180px;
-			height: 105px;
-			@media screen and (max-width: 640px) {
-				width: 162px;
-				height: 90px;
-			}
-			overflow: hidden;
-			background-position: 50%;
-			background-size: cover;
-			border-radius: 4px;
-			margin-right: 5px;
-		}
-	}
-	.passage-item-content-close {
-		.passage-item-content-text {
-			max-height: 105px;
-			overflow: hidden;
-		}
-		display: flex;
-	}
-	.passage-item-readmore {
-		cursor: pointer;
-		padding: 2px 5px;
-		&:hover {
-			color: rgb(129, 207, 119);
-		}
-		color: $themeColor;
-	}
-}
-
-.passage-item-action {
+.people-item {
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 35vh;
 	display: flex;
-	flex-direction: row-reverse;
-	height: 40px;
-	align-items: center;
-	background: #fff;
-}
-
-.passage-item-action-sticky {
-	margin-left: -6px;
-	margin-right: -6px;
-	bottom: 0;
-	position: sticky;
-	border-top: #1a1a1a1a 2px solid;
-}
-
-.passage-more {
-	margin-top: 10px;
-	display: flex;
-	padding: 4px 0;
-	justify-content: center;
-	cursor: pointer;
-	&:hover {
-		color: #444;
+	flex-direction: column-reverse;
+	& > .people-item-content {
+		padding: 5px 10px;
+		background: rgba(255, 255, 255, 0.8);
 	}
 }

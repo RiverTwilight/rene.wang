@@ -5984,11 +5984,6 @@ react-is@16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1598573881850&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
-react-lazyload@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npm.taobao.org/react-lazyload/download/react-lazyload-3.0.0.tgz#f9741daa823d95ddb4dd59527ca6b8845d1b4c3e"
-  integrity sha1-+XQdqoI9ld203VlSfKa4hF0bTD4=
-
 react-markdown@^4.3.1:
   version "4.3.1"
   resolved "https://registry.npm.taobao.org/react-markdown/download/react-markdown-4.3.1.tgz#39f0633b94a027445b86c9811142d05381300f2f"

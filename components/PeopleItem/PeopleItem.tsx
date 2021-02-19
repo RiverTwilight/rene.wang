@@ -32,12 +32,15 @@ export default ({
 	const LINK = "/people/" + id;
 	return (
 		<Link href={LINK} locale={lang}>
-			<div key={key} className={"people-item"}>
+			<div key={key} className={"people-item card br-all"}>
 				{portrait && (
-					<div className="people-item-portrait">
-						<div className="people-item-portrait-inner">
-							<Image unsized alt={nickname} src={portrait} />
-						</div>
+					<div className="people-item-protrait">
+						<Image
+							height="unsized"
+							alt="Picture of the author"
+							width="unsized"
+							src={portrait}
+						/>
 					</div>
 				)}
 				<div className={`people-item-content`}>
