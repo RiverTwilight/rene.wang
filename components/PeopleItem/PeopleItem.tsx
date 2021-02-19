@@ -47,8 +47,10 @@ export default ({
 				)}
 				<div className={`people-item-content`}>
 					<div className="people-item-content-header">
-						<Link href={LINK} className="people-item-header-title">
-							{nickname}
+						<Link href={LINK}>
+							<a className="people-item-header-title">
+								{nickname}
+							</a>
 						</Link>
 						{link && (
 							<a href={link} className="people-item-header-link">
