@@ -9,12 +9,16 @@ import { postList } from "../data/i18n.json";
 import getAllPosts from "../utils/getAllPosts";
 
 export async function getStaticProps({ locale, locales }) {
-	const sortedPosts = getAllPosts({
-		markdownBody: (content) =>
-			`${content.substr(0, 200)}${
-				content.length >= 200 ? "..." : ""
-			}`,
-	});
+	const sortedPosts = getAllPosts(
+		{
+			markdownBody: (content) =>
+				`${content.substr(0, 200)}${
+					content.length >= 200 ? "..." : ""
+				}`,
+		},
+		require.context("../posts", true, /\.md$/),
+		true
+	);
 
 	const config = await import(`../data/config.json`);
 	return {

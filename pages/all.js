@@ -8,7 +8,11 @@ export async function getStaticProps({ locale, locales }) {
 
 	return {
 		props: {
-			allPosts: getAllPosts({ locale, locales }),
+			allPosts: getAllPosts(
+				{},
+				require.context("../posts", true, /\.md$/),
+				true
+			),
 			locale,
 			siteConfig: config.default,
 		},

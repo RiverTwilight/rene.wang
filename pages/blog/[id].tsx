@@ -1,5 +1,4 @@
 import React from "react";
-import glob from "glob";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 // import Gitalk from "gitalk";
@@ -11,6 +10,7 @@ import Card from "../../components/Card";
 import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../components/PostItem";
 import getAllPosts from "../../utils/getAllPosts";
+import getPaths from "../../utils/getPaths";
 import getPostId from "../../utils/getPostId";
 // import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
 import BookOutline from "../../static/icon/book-outline.svg";
@@ -39,7 +39,9 @@ const getRecommendPost = (allPosts: IPost[], categories: any[], currentId) => {
 export async function getStaticProps({ locale, locales, ...ctx }) {
 	const { id: currentId } = ctx.params;
 
-	const posts = getAllPosts();
+	const posts = getAllPosts({
+		id: getPostId
+	}, "path", true);
 	const config = await import(`../../data/config.json`);
 	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
 	return {
@@ -58,28 +60,8 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 }
 
 export async function getStaticPaths({ locale }) {
-	//get all .md files in the posts dir
-	const blogs = glob.sync("posts/**/*.md", {
-		stat: true,
-	});
-
-	//remove path and extension to leave filename only
-	const blogSlugs = blogs.map((file) =>
-		file.split("/")[2].replace(/ /g, "-").slice(0, -3).trim()
-	);
-	// create paths with `slug` param
-	// const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
-	const paths = blogSlugs.map((slug: string) => {
-		return {
-			params: {
-				id: getPostId(slug),
-			},
-			locale,
-		};
-	});
-
 	return {
-		paths,
+		paths: getPaths(locale, getPostId, "posts/**/*.md"),
 		fallback: false,
 	};
 }
