@@ -1,6 +1,9 @@
 import React from "react";
 import getPaths from "../../utils/getPaths";
 import getAllPosts from "../../utils/getAllPosts";
+import Layout from "../../components/Layout";
+import ReactMarkdown from "react-markdown";
+import "../../scss/typo.scss"
 
 export async function getStaticPaths({ locale }) {
 	return {
@@ -28,7 +31,24 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 	};
 }
 
-export default function People({ currentPost, id }) {
+export default function People({ currentPost, id, locale, siteConfig }) {
 	console.log(currentPost);
-	return <></>;
+	const { frontmatter } = currentPost;
+	return (
+		<Layout
+			allPosts={[]}
+			currentPage={{
+				text: frontmatter.title || id,
+				path: "/blog/" + id,
+			}}
+			locale={locale}
+			config={siteConfig}
+		>
+			<div className="p-a-2 card br-all bg-white">
+				<ReactMarkdown
+					source={currentPost.markdownBody}
+				></ReactMarkdown>
+			</div>
+		</Layout>
+	);
 }

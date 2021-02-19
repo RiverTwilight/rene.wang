@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 // import CodeBlock from '../components/CodeBlock'
 import Link from "next/link";
 import Image from "next/image";
+import LinkIcon from "../../static/icon/Link.svg";
 import Text from "../../utils/i18n";
 import { postItem } from "../../data/i18n.json";
 //  '../scss/typo.scss'
@@ -26,37 +27,42 @@ export default ({
 		nickname: string;
 		portrait: string;
 		date: string;
+		link: string;
+		review: string;
 	};
 }) => {
-	const { nickname, portrait, date } = frontmatter;
+	const { nickname, portrait, link, review } = frontmatter;
 	const LINK = "/people/" + id;
 	return (
 		<Link href={LINK} locale={lang}>
 			<div key={key} className={"people-item card br-all"}>
 				{portrait && (
-					<div className="people-item-protrait">
+					<div className="people-item-protrait br-above">
 						<Image
-							height="unsized"
 							alt="Picture of the author"
-							width="unsized"
+							unsized
 							src={portrait}
 						/>
 					</div>
 				)}
 				<div className={`people-item-content`}>
 					<div className="people-item-content-header">
-						<a className="people-item-header-title">{nickname}</a>
+						<Link href={LINK} className="people-item-header-title">
+							{nickname}
+						</Link>
+						{link && (
+							<a href={link} className="people-item-header-link">
+								<LinkIcon />
+							</a>
+						)}
 						<meta
 							itemProp="url"
 							content={`https://ygk-blog.yunser.com/people/${id}`}
 						/>
 						<meta itemProp="name" content={nickname} />
-						<div className="people-item-header-date">{date}</div>
 					</div>
 					<div className="people-item-content-text">
-						<ReactMarkdown allowedTypes={["paragraph", "text"]}>
-							{body.replace(/\<[^\>]+\>/g, "")}
-						</ReactMarkdown>
+						<p>{review}</p>
 					</div>
 				</div>
 			</div>
