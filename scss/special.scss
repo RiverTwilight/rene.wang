@@ -1,4 +1,5 @@
-.people{
-    display: grid;
-    grid-template-rows: 50% 50%
+.people-list{
+    flex: 2;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }

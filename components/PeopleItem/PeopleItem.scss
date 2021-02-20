@@ -2,9 +2,12 @@
 
 .people-item {
 	height: 35vh;
+	// &:nth-child(even){
+	// }
+	margin-top: 5px;
+	flex: 0 0 100%;
 	@media (min-width: 1024px) {
-		float: left;
-		width: 50%;
+		flex: 0 0 48%;
 	}
 	flex-direction: column;
 	& > .people-item-protrait {

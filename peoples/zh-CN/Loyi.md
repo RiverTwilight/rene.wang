@@ -1,9 +1,9 @@
 ---
-portrait: https://i.loli.net/2021/02/19/nZxQEp2C95vGgDJ.jpg
+portrait: https://i.loli.net/2021/02/20/JkaGSuoyCTwOxNi.jpg
 date: 2020/8/27
-review: 乐观向上的 100%阳光女孩，博主的同学。来自天府之城成都。
-nickname: Anna
-link: https://weibo.com/u/5760756447
+review: おたく、趣味で書くこと、音楽。
+nickname: Loyi
+link: http://wpa.qq.com/msgrd?v=3&uin=3133695410&site=qq&menu=yes
 ---
 
 Storybook

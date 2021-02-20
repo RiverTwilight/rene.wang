@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import PeopleItem from "../components/PeopleItem";
 import getAllPosts from "../utils/getAllPosts";
+import "../scss/special.scss"
 
 export async function getStaticProps({ locale }) {
 	const config = await import(`../data/config.json`);
@@ -39,16 +40,19 @@ class SpecialPage extends React.Component {
 				allPosts={allPeoples}
 				config={siteConfig}
 			>
-				<div className="P(10px) Bgc(white) card Br(30px) poeple-list">
-					{allPeoples.map((people, i) => (
-						<PeopleItem
-							key={i}
-							lang={locale}
-							id={people.id}
-							frontmatter={people.frontmatter}
-							body={people.markdownBody}
-						/>
-					))}
+				<div className="P(10px) Bgc(white) card Br(30px)">
+					<h2>朋友们</h2>
+					<div className="Dis(flex) people-list">
+						{allPeoples.map((people, i) => (
+							<PeopleItem
+								key={i}
+								lang={locale}
+								id={people.id}
+								frontmatter={people.frontmatter}
+								body={people.markdownBody}
+							/>
+						))}
+					</div>
 				</div>
 			</Layout>
 		);
