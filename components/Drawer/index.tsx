@@ -67,11 +67,11 @@ export default class extends React.Component<DrawerProps, DrawerState> {
             <div
                 ref={r => this.drawer = r}
                 style={drawerStyle}
-                className={`${copyrightFixed ? "is-fixed" : ""}`}
+                className={`${copyrightFixed ? "Pos(fixed)" : ""}`}
             >
                 <Headmaster config={this.props.config.author} />
                 <CardMenu />
-                <div ref={r => this.copyright = r} className={`copyright`}>
+                <div ref={r => this.copyright = r} className={`Textc(secondary) copyright`}>
                     <Language
                         value={lang}
                         list={[{

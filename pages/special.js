@@ -39,7 +39,7 @@ class SpecialPage extends React.Component {
 				allPosts={allPeoples}
 				config={siteConfig}
 			>
-				<div className="p-a-2 card br-all passage-list">
+				<div className="P(10px) Bgc(white) card Br(30px) poeple-list">
 					{allPeoples.map((people, i) => (
 						<PeopleItem
 							key={i}

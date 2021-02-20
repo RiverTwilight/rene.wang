@@ -25,14 +25,12 @@ $headerTextColor: #8590a6;
 	background: #f6f6f6;
 	margin: 0px;
 	height: 50px;
-	position: fixed;
 	@include stickToTop();
 	z-index: 100;
 	@media (min-width: 640px) {
 		height: 50px;
 		min-width: 1032px;
 	}
-	overflow: hidden;
 	background-clip: content-box;
 	.app-header-space {
 		width: 300px;
@@ -67,7 +65,6 @@ $headerTextColor: #8590a6;
 			z-index: 1;
 		}
 		.logo-large {
-			cursor: pointer;
 			width: 180px;
 			height: 45px;
 		}
@@ -190,7 +187,6 @@ $headerTextColor: #8590a6;
 		align-content: space-between;
 		.hotwords-item {
 			font-size: 16px;
-			cursor: pointer;
 			width: 100%;
 			margin: 10px 0;
 			&:hover {

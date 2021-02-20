@@ -12,24 +12,53 @@ body {
 }
 /**
  * =============================================================================
- * ************   全局样式   ************
+ * ************   Atomic Css   ************
  * =============================================================================
  */
-.color-green {
-	background: lightgreen !important;
+.Bgc\(red\) {
+	background: red !important;
 }
-.color-yellow {
-	background: rgb(182, 212, 71) !important;
+
+.Bgc\(white\) {
+	background: white !important;
 }
-.color-red {
-	background: lightsalmon !important;
+
+.Textc\(secondary\) {
+	color: #8590a6;
 }
-.p-a-1 {
+
+.Textc\(primary\) {
+	color: $themeColor;
+}
+
+.Textc\(primary\)\:h :hover {
+	color: $themeColor;
+}
+
+.Textc\(secondary\)\:h :hover {
+	color: #8590a6;
+}
+
+.Texta\(center\) {
+	text-align: center;
+}
+
+.Overf\(hidden\) {
+	overflow: hidden;
+}
+
+.Cur\(pointer\) {
+	cursor: pointer;
+}
+
+.P\(10px\) {
 	padding: 10px;
 }
-.p-a-2 {
+
+.P\(20px\) {
 	padding: 20px;
 }
+
 .card {
 	-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 	box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
@@ -37,16 +66,20 @@ body {
 	box-sizing: border-box;
 }
 
-.br-all {
+.Br\(30px\) {
 	border-radius: 30px;
 }
 
-.br-above {
+.Br\(3px\) {
+	border-radius: 3px;
+}
+
+.Bra\(30px\) {
 	border-radius: 30px 30px 0px 0px;
 }
 
-.text-center {
-	text-align: center;
+.Dis\(flex\) {
+	display: flex;
 }
 
 button {
@@ -58,17 +91,10 @@ a {
 	text-decoration: none;
 }
 
-.is-fixed {
+.Pos\(fixed\) {
 	position: fixed;
 }
 
-.img-round {
-	border-radius: 3px !important;
-}
-
-.bg-white {
-	background: white;
-}
 /**
  * =============================================================================
  * ************   响应式工具   ************
@@ -148,37 +174,6 @@ a {
 	}
 }
 
-/*********下拉选择************/
-.select {
-	z-index: 2;
-
-	input {
-		color: transparent; /*隐藏光标*/
-		text-shadow: 0 0 0 #8590a6;
-		cursor: pointer;
-		outline: none;
-		border: 0;
-		padding: 5px;
-		font-size: 0.95em;
-	}
-	ul {
-		max-width: 200px;
-		background: #fff;
-		cursor: pointer;
-		padding-inline-start: 0px;
-		border-radius: 3px;
-		transform: translate(-25%, -0);
-		li {
-			-webkit-font-smoothing: subpixel-antialiased;
-			list-style-type: none;
-			padding: 10px 25px;
-			&:hover {
-				background: #ebebeb;
-			}
-		}
-	}
-}
-
 /**
  * =============================================================================
  * ************   主体   ************
@@ -209,9 +204,4 @@ a {
 		padding: 0 10px;
 		margin: 10px auto;
 	}
-}
-
-.main-info {
-	background: white;
-	border-radius: 3px;
 }

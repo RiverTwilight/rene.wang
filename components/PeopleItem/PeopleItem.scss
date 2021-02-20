@@ -1,16 +1,11 @@
 @import "../../scss/global.scss";
 
-/************文章列表******************/
-.passage-list {
-	background: #fff;
-	padding: 5px;
-	margin-bottom: 7px;
-	border-radius: 0px 0px 30px 30px;
-}
-
 .people-item {
 	height: 35vh;
-	display: flex;
+	@media (min-width: 1024px) {
+		float: left;
+		width: 50%;
+	}
 	flex-direction: column;
 	& > .people-item-protrait {
 		height: 17.5vh;
@@ -23,11 +18,9 @@
 	}
 	& > .people-item-content {
 		padding: 5px 10px;
-		background: rgba(255, 255, 255, 0.8);
 		.people-item-content-header {
 			font-size: xx-large;
 			font-weight: 600;
-			display: flex;
 			justify-content: space-between;
 		}
 	}

@@ -2,7 +2,6 @@
 
 /************文章列表******************/
 .passage-list {
-	background: #fff;
 	padding: 5px;
 	margin-bottom: 7px;
 	border-radius: 0px 0px 30px 30px;
@@ -14,7 +13,6 @@
 	padding: 4px 2px;
 	.passage-item-header {
 		padding-top: 10px;
-		display: flex;
 		justify-content: space-between;
 		.passage-item-header-title {
 			font: {
@@ -28,14 +26,12 @@
 				top: -4px;
 				bottom: -4px;
 			}
-			cursor: pointer;
 			max-width: 80%;
 			&:hover {
 				color: $themeColor;
 			}
 		}
 		.passage-item-header-date {
-			color: #888888;
 			font-weight: 100;
 			margin-top: -2px;
 		}
@@ -44,10 +40,6 @@
 		padding: 5px 0;
 		line-height: 1.67;
 		.passage-item-content-text {
-			cursor: pointer;
-			&:hover{
-				color: #888888
-			}
 			img {
 				width: 100%;
 			}
@@ -78,26 +70,20 @@
 	.passage-item-content-close {
 		.passage-item-content-text {
 			max-height: 105px;
-			overflow: hidden;
 		}
-		display: flex;
 	}
 	.passage-item-readmore {
-		cursor: pointer;
 		padding: 2px 5px;
 		&:hover {
 			color: rgb(129, 207, 119);
 		}
-		color: $themeColor;
 	}
 }
 
 .passage-item-action {
-	display: flex;
 	flex-direction: row-reverse;
 	height: 40px;
 	align-items: center;
-	background: #fff;
 }
 
 .passage-item-action-sticky {
@@ -110,10 +96,8 @@
 
 .passage-more {
 	margin-top: 10px;
-	display: flex;
 	padding: 4px 0;
 	justify-content: center;
-	cursor: pointer;
 	&:hover {
 		color: #444;
 	}

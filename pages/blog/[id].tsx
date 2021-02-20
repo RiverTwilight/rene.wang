@@ -39,9 +39,13 @@ const getRecommendPost = (allPosts: IPost[], categories: any[], currentId) => {
 export async function getStaticProps({ locale, locales, ...ctx }) {
 	const { id: currentId } = ctx.params;
 
-	const posts = getAllPosts({
-		id: getPostId
-	}, "path", true);
+	const posts = getAllPosts(
+		{
+			id: getPostId,
+		},
+		require.context("../../posts", true, /\.md$/),
+		true
+	);
 	const config = await import(`../../data/config.json`);
 	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
 	return {
@@ -80,7 +84,7 @@ const Cover = styled.div`
 
 const ReadMore = ({ data }: any) => {
 	return (
-		<Card className="br-all" title="阅读更多" icon={<BookOutline />}>
+		<Card className="Br(30px)" title="阅读更多" icon={<BookOutline />}>
 			{data.map((item, i) => (
 				<PostItem
 					key={i}
@@ -149,7 +153,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 				style={{
 					marginBottom: "7px",
 				}}
-				className="p-a-2 card br-all bg-white"
+				className="P(20px) card Br(30px) Bgc(white)"
 				itemScope
 				itemType="http://schema.org/Article"
 			>
@@ -165,11 +169,11 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 					)}
 				</Cover>
 
-				<h1 itemProp="headline" className="text-center">
+				<h1 itemProp="headline" className="Texta(center)">
 					{frontmatter.title || slug}
 				</h1>
 				<div className="typo">
-					<div className="typo-meta">
+					<div className="typo-meta Textc(secondary) Texta(center)">
 						最后更新于
 						<span itemProp="dateCreated">{frontmatter.date}</span>
 						&nbsp;分类:

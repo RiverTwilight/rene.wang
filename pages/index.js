@@ -7,6 +7,7 @@ import Link from "next/link";
 import Text from "../utils/i18n";
 import { postList } from "../data/i18n.json";
 import getAllPosts from "../utils/getAllPosts";
+import getPostId from "../utils/getPostId";
 
 export async function getStaticProps({ locale, locales }) {
 	const sortedPosts = getAllPosts(
@@ -15,6 +16,7 @@ export async function getStaticProps({ locale, locales }) {
 				`${content.substr(0, 200)}${
 					content.length >= 200 ? "..." : ""
 				}`,
+			id: getPostId
 		},
 		require.context("../posts", true, /\.md$/),
 		true
@@ -74,7 +76,7 @@ class HomePage extends React.Component {
 						});
 					}}
 				/>
-				<div className="card passage-list">
+				<div className="card Bgc(white) passage-list">
 					{allPosts
 						.filter((post) => {
 							return (
@@ -99,7 +101,7 @@ class HomePage extends React.Component {
 						))}
 					<Text dictionary={postList} language={locale}>
 						<Link href="/all">
-							<div className="bg-white passage-more">
+							<div className="Bgc(white) passage-more Cur(pointer) Dis(flex)">
 								<Text allPosts={[postNumber]} />
 							</div>
 						</Link>

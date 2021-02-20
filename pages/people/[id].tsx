@@ -44,7 +44,7 @@ export default function People({ currentPost, id, locale, siteConfig }) {
 			locale={locale}
 			config={siteConfig}
 		>
-			<div className="p-a-2 card br-all bg-white">
+			<div className="p-a-2 card Br(30px) bg-white">
 				<ReactMarkdown
 					source={currentPost.markdownBody}
 				></ReactMarkdown>

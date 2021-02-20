@@ -32,8 +32,6 @@
 
 .card-menu {
 	margin-right: 0;
-	display: flex;
-	background: #fff;
 	flex-wrap: wrap;
 	overflow: visible;
 	.card-menu-item {
@@ -52,7 +50,6 @@
 		-webkit-box-pack: center;
 		-ms-flex-pack: center;
 		justify-content: center;
-		display: flex;
 	}
 }
 
@@ -63,13 +60,11 @@
 }
 
 .card-menu-item-icon {
-	color: #8590a6;
 	margin-bottom: 4px;
 }
 
 /**********版权信息********/
 .copyright {
-	color: #8590a6;
 	padding: 5px 1px;
 	a {
 		&:hover {

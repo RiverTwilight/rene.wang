@@ -9,7 +9,7 @@ const Headmaster = ({
 	config: ISiteConfig["author"];
 }) => {
 	return (
-		<div className="our-headmaster card br-all">
+		<div className="our-headmaster card Br(30px)">
 			{/*<img loading="lazy" className="lijun" src={image} />*/}
 			<div className="headmaster-title">
 				<PersonIcon />
@@ -38,7 +38,7 @@ const Headmaster = ({
 
 const CardMenu = () => {
 	return (
-		<div className="card-menu br-all card">
+		<div className="card-menu Dis(flex) Bgc(white) Br(30px) card">
 			{[
 				{
 					text: "云极客工具",
@@ -46,7 +46,7 @@ const CardMenu = () => {
 					href: "https://www.ygktool.cn",
 				},
 			].map((item) => (
-				<a key={item.text} href={item.href} className="card-menu-item">
+				<a key={item.text} href={item.href} className="Dis(flex) card-menu-item">
 					{item.icon}
 					<div className="card-menu-item-text">{item.text}</div>
 				</a>

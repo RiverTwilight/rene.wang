@@ -76,7 +76,8 @@ const Language = ({ list, value }) => {
 			|
 			{list.map((l: { code: string; text: React.ReactNode }) => (
 				<a
-					key={l.code}
+                    key={l.code}
+                    className="Textc(primary):h "
 					onClick={() => {
 						router.push("/", "/", { locale: l.code });
 					}}

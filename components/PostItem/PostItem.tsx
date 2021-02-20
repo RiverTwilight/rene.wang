@@ -30,11 +30,9 @@ export default ({
 	// const [expand, setExpand] = React.useState(false);
 	return (
 		<div key={id} className={"passage-item"}>
-			<div className="passage-item-header">
+			<div className="passage-item-header Dis(flex)">
 				<Link href={"/blog/" + id} locale={lang}>
-					<a
-						className="passage-item-header-title"
-					>
+					<a className="passage-item-header-title Cur(pointer)">
 						{title.replace("&nbsp;", " ")}
 					</a>
 				</Link>
@@ -43,10 +41,12 @@ export default ({
 					content={`https://ygk-blog.yunser.com/blog/${id}`}
 				/>
 				<meta itemProp="name" content={title} />
-				<div className="passage-item-header-date">{date}</div>
+				<div className="passage-item-header-date Textc(secondary)">
+					{date}
+				</div>
 			</div>
 			<div
-				className={`passage-item-content ${"passage-item-content-close"}`}
+				className={`passage-item-content Textc(secondary):h ${"passage-item-content-close Dis(flex)"}`}
 			>
 				{cover && (
 					<div className="passage-item-content-cover">
@@ -69,7 +69,7 @@ export default ({
                     </ReactMarkdown> : summary.replace(/\<[^\>]+\>/g, '')}
                 </div>*/}
 				<Link href={"/blog/" + id} locale={lang}>
-					<div className="passage-item-content-text">
+					<div className="passage-item-content-text Cur(pointer) Overf(hidden)">
 						<ReactMarkdown allowedTypes={["paragraph", "text"]}>
 							{summary.replace(/\<[^\>]+\>/g, "")}
 						</ReactMarkdown>
@@ -85,9 +85,9 @@ export default ({
                 <span className="passage-item-readmore">{expand ? "收起" : "展开全文"}</span>
             </div>*/}
 			<Text dictionary={postItem} language={lang}>
-				<div className={`passage-item-action`}>
+				<div className={`passage-item-action Dis(flex)`}>
 					<Link href={"/blog/" + id} locale={lang}>
-						<a className="passage-item-readmore">
+						<a className="passage-item-readmore Textc(primary)">
 							<Text showMore />
 						</a>
 					</Link>

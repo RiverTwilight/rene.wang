@@ -35,7 +35,7 @@ export default ({
 	const LINK = "/people/" + id;
 	return (
 		<Link href={LINK} locale={lang}>
-			<div key={key} className={"people-item card br-all"}>
+			<div key={key} className={"people-item card Br(30px)"}>
 				{portrait && (
 					<div className="people-item-protrait br-above">
 						<Image
@@ -46,7 +46,7 @@ export default ({
 					</div>
 				)}
 				<div className={`people-item-content`}>
-					<div className="people-item-content-header">
+					<div className="people-item-content-header Dis(flex)">
 						<Link href={LINK}>
 							<a className="people-item-header-title">
 								{nickname}
