@@ -43,6 +43,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		{
 			id: getPostId,
 		},
+		//@ts-expect-error
 		require.context("../../posts", true, /\.md$/),
 		true
 	);
