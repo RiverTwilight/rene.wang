@@ -1,14 +1,11 @@
 import * as React from "react";
-import ReactMarkdown from "react-markdown";
 // import CodeBlock from '../components/CodeBlock'
 import Link from "next/link";
 import Image from "next/image";
-import LinkIcon from "../../static/icon/Link.svg";
-import Text from "../../utils/i18n";
-import { postItem } from "../../data/i18n.json";
+import LinkIcon from "../../static/icon/link.svg";
 //  '../scss/typo.scss'
 
-/**
+/**l
  * 单个人物组件
  */
 
