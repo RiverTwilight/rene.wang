@@ -57,6 +57,7 @@ class Layout extends React.Component<
 					<meta property="article:author" content={author.name} />
 					<meta property="article:tag" content={author.name} />
 					<meta property="article:tag" content="云极客" />
+					<meta name="google-site-verification" content="3yqvRLDwkcm7nwNQ5bSG06I4wQ5ASf23HUtcyZIaz3I" />
 					<meta name="twitter:card" content="summary" />
 					<meta name="viewport" content="viewport-fit=cover" />
 					<meta
