@@ -9,7 +9,9 @@ export async function getStaticProps({ locale, locales }) {
 	return {
 		props: {
 			allPosts: getAllPosts(
-				{},
+				{
+					id: getPostId
+				},
 				require.context("../posts", true, /\.md$/),
 				true
 			),
@@ -29,7 +31,7 @@ const AllPost = ({ allPosts, siteConfig, locale }) => (
 		allPosts={allPosts}
 		config={siteConfig}
 	>
-		<div class="p-a-2 card Br(30px) bg-white passage-list">
+		<div class="P(20px) card Br(30px) Bgc(white) passage-list">
 			<h3>全部文章</h3>
 			<div className="typo">
 				{allPosts.map((post) => (
