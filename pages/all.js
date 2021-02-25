@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import Link from "next/link";
 import getAllPosts from "../utils/getAllPosts";
+import getPostId from "../utils/getPostId";
 
 export async function getStaticProps({ locale, locales }) {
 	const config = await import(`../data/config.json`);
@@ -10,7 +11,7 @@ export async function getStaticProps({ locale, locales }) {
 		props: {
 			allPosts: getAllPosts(
 				{
-					id: getPostId
+					id: getPostId,
 				},
 				require.context("../posts", true, /\.md$/),
 				true
