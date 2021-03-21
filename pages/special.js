@@ -20,6 +20,7 @@ export async function getStaticProps({ locale }) {
 }
 
 // TODO 特别页面
+// FIXME 链接无法点击
 class SpecialPage extends React.Component {
 	constructor(props) {
 		super(props);

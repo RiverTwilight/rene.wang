@@ -25,7 +25,7 @@ categories:
 
 地图请使用 java 版 1.12.2forge 进入。
 
-> 存档下载地址：[https://pan.baidu.com/s/13zG8Xm6yR-Exu1QUKJZaFw](https://pan.baidu.com/s/13zG8Xm6yR-Exu1QUKJZaFw)
+> 存档下载地址：[百度网盘](https://pan.baidu.com/s/13zG8Xm6yR-Exu1QUKJZaFw)
 >
 > 提取码：**5jwg**
 
@@ -35,7 +35,7 @@ categories:
 
 此步骤不可跳过，否则会出现大量方块丢失。
 
-> 家具 Mod 下载地址： https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg
+> 家具 Mod 下载地址： [百度网盘](https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg)
 >
 > 提取码：**lgau**
 
@@ -43,7 +43,7 @@ categories:
 
 ### 2. 安装光影(可选)
 
-> 家具 Mod 下载地址： https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg
+> 家具 Mod 下载地址： [百度网盘](https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg)
 >
 > 提取码：**lgau**
 

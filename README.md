@@ -51,7 +51,7 @@
 -   SSH_PASSWORD：服务器用户密码
 
 在 Github 仓库的 `Deploy Keys` 下添加服务器 git 公钥（[生成方法](https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5)）。
- 
+
 ```sh
 vim ~/.ssh/id_rsa.pub
 ```
@@ -59,3 +59,12 @@ vim ~/.ssh/id_rsa.pub
 ### 2.推送代码
 
 在 github 上所有 master 分支的更新都会自动部署到服务器。大功告成！
+
+## 贡献
+
+### Atomic css
+
+| 写法       | 可选参数    | 说明     |
+| ---------- | ----------- | -------- |
+| Bgc(color) | white green | 背景颜色 |
+| P(padding) | 10px 20px   | 间距     |

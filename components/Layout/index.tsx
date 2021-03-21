@@ -49,7 +49,7 @@ class Layout extends React.Component<
 					<meta property="og:title" content={showTitle} />
 					<meta
 						property="og:url"
-						content="https://ygk-blog.yunser.com"
+						content={config.root}
 					/>
 					<meta property="og:site_name" content={showTitle} />
 					<meta property="og:description" content={description} />

@@ -37,6 +37,7 @@ interface ISiteConfig {
     title: string,
     keywords: string[],
     description: string,
+    root: string,
     author: {
         name: string,
         image?: string,
