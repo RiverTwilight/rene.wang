@@ -1,0 +1,84 @@
+.warpper {
+	position: relative;
+	z-index: 1000;
+	margin: 0 auto;
+	margin-right: -10px;
+	margin-left: -10px;
+	overflow: hidden;
+	background: black;
+	color: white;
+	// &:before {
+	// 	background-image: url("/static/image/galaxy.jpeg");
+	// 	content: " ";
+	// 	display: block;
+	// 	position: absolute;
+	// 	left: 0;
+	// 	top: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	opacity: 0.6;
+	// 	background-position: 50% 0;
+	// 	background-size: cover;
+	// }
+	.content {
+		#header {
+			img {
+				height: 40vh;
+				width: 100%;
+				object-fit: cover;
+				-webkit-mask: linear-gradient(#000, transparent);
+				mask: linear-gradient(#000, transparent);
+			}
+			animation: fadeIn 2s;
+			height: 80vh;
+			overflow: hidden;
+			box-sizing: border-box;
+			padding: 0;
+			position: relative;
+			margin-bottom: 1.4rem;
+
+			.title {
+				display: -webkit-box;
+				display: flex;
+				-webkit-box-align: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				justify-content: center;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				flex-direction: column;
+				padding: 0.1rem 0;
+				box-sizing: border-box;
+				h1 {
+					font-size: 30px;
+				}
+			}
+		}
+		#post {
+			padding: 0 0.6rem;
+		}
+	}
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(20vh);
+        visibility: hidden;
+        transition: opacity 1200ms ease-out, transform 600ms ease-out,
+          visibility 1200ms ease-out;
+        will-change: opacity, transform, visibility;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+      }
+      
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
