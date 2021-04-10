@@ -7,19 +7,6 @@
 	overflow: hidden;
 	background: black;
 	color: white;
-	// &:before {
-	// 	background-image: url("/static/image/galaxy.jpeg");
-	// 	content: " ";
-	// 	display: block;
-	// 	position: absolute;
-	// 	left: 0;
-	// 	top: 0;
-	// 	width: 100%;
-	// 	height: 100%;
-	// 	opacity: 0.6;
-	// 	background-position: 50% 0;
-	// 	background-size: cover;
-	// }
 	.content {
 		#header {
 			img {
@@ -55,23 +42,29 @@
 			}
 		}
 		#post {
-			padding: 0 0.6rem;
+			padding: 0 0.8rem;
+			h2 {
+				margin-top: 10vh;
+			}
+			img {
+				-webkit-mask: linear-gradient(transparent, #000, transparent);
+				mask: linear-gradient(transparent, #000, transparent);
+			}
 		}
 	}
-    .fade-in-section {
-        opacity: 0;
-        transform: translateY(20vh);
-        visibility: hidden;
-        transition: opacity 1200ms ease-out, transform 600ms ease-out,
-          visibility 1200ms ease-out;
-        will-change: opacity, transform, visibility;
-      }
-      .fade-in-section.is-visible {
-        opacity: 1;
-        transform: none;
-        visibility: visible;
-      }
-      
+	.fade-in-section {
+		opacity: 0;
+		transform: translateY(20vh);
+		visibility: hidden;
+		transition: opacity 1200ms ease-out, transform 600ms ease-out,
+			visibility 1200ms ease-out;
+		will-change: opacity, transform, visibility;
+	}
+	.fade-in-section.is-visible {
+		opacity: 1;
+		transform: none;
+		visibility: visible;
+	}
 }
 
 @keyframes fadeIn {
