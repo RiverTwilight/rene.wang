@@ -4,12 +4,12 @@
 	"description": "开发日志、技术文章以及生活随感。",
 	"keywords": [],
 	"logo": {
-		"large": "/static/image/logo-large.png",
-		"small": "/static/image/logo-small.png"
+		"large": "/public/static/image/logo-large.png",
+		"small": "/public/static/image/logo-small.png"
 	},
 	"author": {
 		"name": "江村暮",
-		"image": "/static/image/author.jpg",
+		"image": "/public/static/image/author.jpg",
 		"intro": [
 			{
 				"title": "关于作者",

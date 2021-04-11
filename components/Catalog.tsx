@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
-import ListOutline from "../static/icon/list-outline.svg";
+import ListOutline from "../public/static/icon/list-outline.svg";
 
 const Switch = styled.button`
 	margin: 1rem 0 0;

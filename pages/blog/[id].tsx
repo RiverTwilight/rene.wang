@@ -12,9 +12,9 @@ import PostItem from "../../components/PostItem";
 import getAllPosts from "../../utils/getAllPosts";
 import getPaths from "../../utils/getPaths";
 import getPostId from "../../utils/getPostId";
-// import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
-import BookOutline from "../../static/icon/book-outline.svg";
-// import Wave from "../../static/wave.svg";
+// import ChatsBubbles from "../../public/static/icon/chatbubble-outline.svg";
+import BookOutline from "../../public/static/icon/book-outline.svg";
+// import Wave from "../../public/static/wave.svg";
 import "../../scss/typo.scss";
 
 /**

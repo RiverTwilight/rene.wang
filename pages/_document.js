@@ -27,7 +27,7 @@ export default class extends Document {
 			<Html>
 				<Head>
 					<meta charSet="utf-8" />
-					<link rel="icon" href="/static/image/favicon.ico" />
+					<link rel="icon" href="/public/static/image/favicon.ico" />
 					<meta name="theme-color" content="#000000" />
 					<link
 						rel="apple-touch-icon"
