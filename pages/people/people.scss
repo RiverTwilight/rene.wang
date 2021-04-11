@@ -1,12 +1,19 @@
+@mixin clearMargin($mar) {
+	@media only screen and (max-width: 600px) {
+		margin-right: -$mar;
+		margin-left: -$mar;
+	}
+}
+
 .warpper {
 	position: relative;
 	z-index: 1000;
 	margin: 0 auto;
-	margin-right: -10px;
-	margin-left: -10px;
+	padding-bottom: 30vh;
 	overflow: hidden;
 	background: black;
 	color: white;
+	@include clearMargin(10px);
 	.content {
 		#header {
 			img {
@@ -38,17 +45,26 @@
 				box-sizing: border-box;
 				h1 {
 					font-size: 30px;
+					letter-spacing: 0.2rem
 				}
 			}
 		}
 		#post {
 			padding: 0 0.8rem;
-			h2 {
-				margin-top: 10vh;
+			p {
+				line-height: 26px;
+				letter-spacing: 0.4rem;
 			}
 			img {
 				-webkit-mask: linear-gradient(transparent, #000, transparent);
 				mask: linear-gradient(transparent, #000, transparent);
+			}
+			h2 {
+				margin-top: 10vh;
+			}
+
+			hr {
+				width: 50%;
 			}
 		}
 	}

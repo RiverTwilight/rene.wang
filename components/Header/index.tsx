@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 import Search from "./Search";
-import Logo from "../../public/static/logo.svg";
-import LogoLarge from "../../public/static/logo&title-small.svg";
+import Logo from "../../static/logo.svg";
+import LogoLarge from "../../static/logo&title-small.svg";
 import Text from "../../utils/i18n";
 import { nav } from "../../data/i18n.json";
 import ActiveLink from "../../utils/AcitiveLink";

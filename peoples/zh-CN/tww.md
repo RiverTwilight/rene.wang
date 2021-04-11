@@ -1,10 +1,11 @@
 ---
 portrait: https://i.loli.net/2021/02/19/nZxQEp2C95vGgDJ.jpg
-cover: /public/static/image/galaxy.jpeg
+cover: /static/image/galaxy.jpeg
 date: 2020/8/27
 review: 乐观向上的 100%阳光女孩，博主的同学。来自天府之城成都。
 nickname: 涂五岁
 link: https://weibo.com/u/5760756447
+bgm: https://music.163.com/song/media/outer/url?id=1409136605.mp3
 ---
 
 爱你的人和你爱的人，如何抉择？这真是个老掉牙的选择题。

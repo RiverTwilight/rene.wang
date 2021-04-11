@@ -36,20 +36,12 @@ export default function People({ currentPost, id, locale, siteConfig }) {
 	const {
 		frontmatter: { nickname, title, cover },
 	} = currentPost;
-	const [isVisible, setVisible] = React.useState(false);
-	const domRef = React.useRef();
-	React.useEffect(() => {
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => setVisible(entry.isIntersecting));
-		});
-		observer.observe(domRef.current);
-		return () => observer.unobserve(domRef.current);
-	}, []);
+
 	return (
 		<Layout
 			allPosts={[]}
 			currentPage={{
-				text: title || id,
+				text: nickname || id,
 				path: "/blog/" + id,
 			}}
 			locale={locale}
@@ -64,21 +56,49 @@ export default function People({ currentPost, id, locale, siteConfig }) {
 							<h1>{nickname}</h1>
 						</div>
 					</section>
-					<section
-						className={`fade-in-section ${
-							isVisible ? "is-visible" : ""
-						}`}
-						ref={domRef}
-						id="post"
-					>
+					<section id="post">
 						<ReactMarkdown
 							source={currentPost.markdownBody}
 							escapeHtml={false}
+							renderers={{
+								paragraph: ({ children }) => {
+									const [
+										isVisible,
+										setVisible,
+									] = React.useState(false);
+									const domRef = React.useRef();
+									React.useEffect(() => {
+										const observer = new IntersectionObserver(
+											(entries) => {
+												entries.forEach((entry) =>
+													setVisible(
+														entry.isIntersecting
+													)
+												);
+											}
+										);
+										observer.observe(domRef.current);
+										return () =>
+											observer.unobserve(domRef.current);
+									}, []);
+									return (
+										<p
+											className={`fade-in-section ${
+												isVisible ? "is-visible" : ""
+											}`}
+											ref={domRef}
+										>
+											{children}
+										</p>
+									);
+								},
+							}}
 						></ReactMarkdown>
 					</section>
 				</div>
 				<audio
 					autoPlay
+					loop
 					src="http://music.163.com/song/media/outer/url?id=1409136605.mp3"
 				></audio>
 			</div>

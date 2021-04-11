@@ -76,6 +76,7 @@ class Layout extends React.Component<
 						<div className="container-left">
 							{childrenWithProps}
 						</div>
+						<br />
 						<div className="container-right">
 							<Drawer lang={locale} config={config} />
 							{catalog && <Catalog catalog={catalog} />}
