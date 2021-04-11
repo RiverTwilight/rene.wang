@@ -34,7 +34,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 
 export default function People({ currentPost, id, locale, siteConfig }) {
 	const {
-		frontmatter: { nickname, title, cover },
+		frontmatter: { nickname, title, cover,bgm },
 	} = currentPost;
 
 	return (
@@ -99,7 +99,7 @@ export default function People({ currentPost, id, locale, siteConfig }) {
 				<audio
 					autoPlay
 					loop
-					src="http://music.163.com/song/media/outer/url?id=1409136605.mp3"
+					src={bgm || "http://music.163.com/song/media/outer/url?id=1409136605.mp3"}
 				></audio>
 			</div>
 		</Layout>
