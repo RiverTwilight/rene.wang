@@ -1,3 +1,4 @@
+/*//HACK 使用grid布局*/
 @mixin clearMargin($mar) {
 	@media only screen and (max-width: 600px) {
 		margin-right: -$mar;
@@ -45,7 +46,7 @@
 				box-sizing: border-box;
 				h1 {
 					font-size: 30px;
-					letter-spacing: 0.2rem
+					letter-spacing: 0.2rem;
 				}
 			}
 		}
