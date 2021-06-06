@@ -21,5 +21,7 @@ export default (locale, processId: (id: string) => string, path: string) => {
 		};
 	});
 
+	console.log(paths)
+
 	return paths;
 };

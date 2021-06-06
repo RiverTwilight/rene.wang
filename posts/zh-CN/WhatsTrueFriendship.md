@@ -1,4 +1,5 @@
 ---
+title: 真正的友情是什么样子的
 date: 2021/6/5
 categories:
     - Feeling

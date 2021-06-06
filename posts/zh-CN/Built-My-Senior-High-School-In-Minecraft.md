@@ -1,4 +1,5 @@
 ---
+title: 在Minecraft中还原烟台开发区高级中学
 date: 2021/2/25
 cover: https://i.loli.net/2021/02/25/kZ4PH8xyYc5K2Sj.png
 categories:

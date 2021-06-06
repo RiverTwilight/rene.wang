@@ -1,4 +1,5 @@
 ---
+title: 过去的一年·2019
 date: 2020/6/13
 cover: https://i.loli.net/2020/06/13/otfj7B38JYCHRyS.jpg
 categories: 

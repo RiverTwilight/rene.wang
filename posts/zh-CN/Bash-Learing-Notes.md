@@ -1,4 +1,5 @@
 ---
+title: bash学习笔记
 date: 2020/8/27
 categories:
     - FrontEnd
