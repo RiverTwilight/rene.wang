@@ -33,6 +33,7 @@ export async function getStaticProps({ locale, locales }) {
 	};
 }
 
+// TODO 使用custom app + context管理站点配置
 class HomePage extends React.Component {
 	constructor(props) {
 		super(props);

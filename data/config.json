@@ -1,6 +1,6 @@
 {
 	"title": "江村暮的博客",
-	"root": "https://ygk-blog.yunser.com",
+	"root": "https://blog.yungeeker.com",
 	"description": "开发日志、技术文章以及生活随感。",
 	"keywords": [],
 	"logo": {
@@ -10,10 +10,12 @@
 	"author": {
 		"name": "江村暮",
 		"image": "/static/image/author.jpg",
+		"twitter": "https://twitter.com/rea1DonandTrump",
+		"github": "https://github.com/RiverTwilight",
 		"intro": [
 			{
 				"title": "关于作者",
-				"content": "一个高中生，坐标蓉城。喜欢写代码、骑车、画画，唱歌。\n\n知乎：@江村暮\n Twitter:@rea1DonandTrump"
+				"content": "2022届高考生，坐标蓉城。喜欢写代码、骑车、画画，唱歌。"
 			}
 		]
 	},

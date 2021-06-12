@@ -48,7 +48,7 @@ const Menu = ({ lang }): React.ReactElement => {
 	);
 };
 
-const Contact = ({ github = "https://github.com" }: { github?: string }) => {
+const Contact = ({ github = "https://github.com", twitter }: { github?: string, twitter?: string }) => {
 	return (
 		<div className="Dis(flex)">
 			<a
@@ -58,7 +58,7 @@ const Contact = ({ github = "https://github.com" }: { github?: string }) => {
 				<GithubLogo />
 			</a>
 			<a
-				href={github}
+				href={twitter}
 				className="app-header-icon app-header-item Cur(pointer)"
 			>
 				<TwitterLogo />
@@ -81,7 +81,7 @@ const MainHeader = ({ siteConfig, allPosts, lang }) => (
 		</a>
 		<Menu lang={lang} />
 		<div className="app-header-space"></div>
-		<Contact />
+		<Contact twitter={siteConfig.author.twitter} github={siteConfig.author.github} />
 		{/* <Search locale={lang} allPosts={allPosts} /> */}
 	</div>
 );
