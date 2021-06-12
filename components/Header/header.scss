@@ -33,17 +33,32 @@ $headerTextColor: #8590a6;
 	}
 	background-clip: content-box;
 	.app-header-space {
-		width: 300px;
+		width: 500px;
 		@media screen and (max-width: 640px) {
 			width: 95px;
 		}
 	}
+	.app-header-item {
+		margin-right: 20px;
+		padding-top: 5px;
+	}
+	.app-header-icon {
+		width: 30px;
+		@media screen and (max-width: 640px) {
+			width: 25px;
+		}
+		svg {
+			fill: #8590a6;
+			&:hover {
+				fill: black;
+			}
+		}
+	}
 	.app-header-inner {
 		position: relative;
-		justify-content: space-around;
-		@include flexLayout();
 		width: 80%;
 		height: 50px;
+		justify-content: space-between;
 		@media screen and (max-width: 640px) {
 			width: 98%;
 		}
@@ -65,7 +80,7 @@ $headerTextColor: #8590a6;
 			z-index: 1;
 		}
 		.logo-large {
-			width: 180px;
+			width: 239x;
 			height: 45px;
 		}
 		.logo-small svg {
@@ -85,8 +100,10 @@ $headerTextColor: #8590a6;
 }
 
 /****头部导航栏****/
-.app-header-list {
+.app-header-nav {
 	@include flexLayout();
+	align-items: center;
+	flex-direction: row !important;
 	@media screen and (max-width: 640px) {
 		margin-left: -38px;
 		margin-right: 3px;
@@ -95,24 +112,16 @@ $headerTextColor: #8590a6;
 	.app-header-list-item {
 		flex-shrink: 0;
 		font-size: 0.95em;
-		list-style-type: none;
-		margin: 15px;
-		@media screen and (max-width: 640px) {
-			margin: 15px 5px;
-		}
+		white-space: nowrap;
+		margin: 10px;
 		color: #8590a6;
-		padding: 14px 0px 14px 0px;
+		padding: 14px 0px;
 	}
 	.app-header-list-item-active {
+		font-size: 1.3em;
 		border-radius: 30px;
-		@media (min-width: 640px) {
-			font-weight: 600;
-			color: black;
-		}
-		@media (max-width: 640px) {
-			font-weight: 400;
-			color: $themeColor;
-		}
+		color: black;
+		font-weight: 600;
 	}
 }
 

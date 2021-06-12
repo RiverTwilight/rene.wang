@@ -1,7 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
-import Search from "./Search";
+// import Search from "./Search";
 import Logo from "../../static/logo.svg";
+import GithubLogo from "../../static/icon/logo-github.svg";
+import TwitterLogo from "../../static/icon/logo-twitter.svg";
 import LogoLarge from "../../static/logo&title-small.svg";
 import Text from "../../utils/i18n";
 import { nav } from "../../data/i18n.json";
@@ -22,7 +24,7 @@ const ShareIcon = styled.path`
 
 const Menu = ({ lang }): React.ReactElement => {
 	return (
-		<ul className="app-header-list">
+		<nav className="app-header-item app-header-nav">
 			<Text dictionary={nav} language={lang}>
 				{[
 					{
@@ -42,22 +44,45 @@ const Menu = ({ lang }): React.ReactElement => {
 					</ActiveLink>
 				))}
 			</Text>
-		</ul>
+		</nav>
+	);
+};
+
+const Contact = ({ github = "https://github.com" }: { github?: string }) => {
+	return (
+		<div className="Dis(flex)">
+			<a
+				href={github}
+				className="app-header-icon app-header-item Cur(pointer)"
+			>
+				<GithubLogo />
+			</a>
+			<a
+				href={github}
+				className="app-header-icon app-header-item Cur(pointer)"
+			>
+				<TwitterLogo />
+			</a>
+		</div>
 	);
 };
 
 // TODO 单独的搜索页面
 const MainHeader = ({ siteConfig, allPosts, lang }) => (
-	<div className="app-header-inner">
-		<a href="/" className="logo-large Cur(pointer) hidden-sm-down">
+	<div className="app-header-inner Dis(flex)">
+		<a
+			href="/"
+			className="app-header-item logo-large Cur(pointer) hidden-sm-down"
+		>
 			<LogoLarge />
 		</a>
-		<a href="/" className="logo-small hidden-md-up">
+		<a href="/" className="app-header-item logo-small hidden-md-up">
 			<Logo />
 		</a>
 		<Menu lang={lang} />
 		<div className="app-header-space"></div>
-		<Search locale={lang} allPosts={allPosts} />
+		<Contact />
+		{/* <Search locale={lang} allPosts={allPosts} /> */}
 	</div>
 );
 

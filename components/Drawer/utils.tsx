@@ -9,7 +9,7 @@ const Headmaster = ({
 	config: ISiteConfig["author"];
 }) => {
 	return (
-		<div className="our-headmaster card Br(30px)">
+		<div className="our-headmaster card Bra(30px)">
 			{/*<img loading="lazy" className="lijun" src={image} />*/}
 			<div className="headmaster-title">
 				<PersonIcon />
@@ -22,9 +22,9 @@ const Headmaster = ({
 						content: React.ReactNode;
 					}) => (
 						<>
-							<div className="headmaster-content-title">
+							{/* <div className="headmaster-content-title">
 								{int.title}:
-							</div>
+							</div> */}
 							<div className="headmaster-content-text">
 								{int.content}
 							</div>
@@ -38,7 +38,7 @@ const Headmaster = ({
 
 const CardMenu = () => {
 	return (
-		<div className="card-menu Dis(flex) Bgc(white) Br(30px) card">
+		<div className="card-menu Dis(flex) Bgc(white) Bru(30px) card">
 			{[
 				{
 					text: "云极客工具",

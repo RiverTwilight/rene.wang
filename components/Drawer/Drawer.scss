@@ -10,12 +10,15 @@
 	}
 	.headmaster-title {
 		display: flex;
-		padding: 5px 8px;
+		padding: 10px;
 		font-size: 17px;
 		border-bottom: 1px solid #e5f2ff;
+		svg{
+			stroke: green;
+		}
 	}
 	.headmaster-content {
-		padding: 5px 8px;
+		padding: 10px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: flex-start;
