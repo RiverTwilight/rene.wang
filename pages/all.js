@@ -16,6 +16,10 @@ export async function getStaticProps({ locale, locales }) {
 				require.context("../posts", true, /\.md$/),
 				true
 			),
+			currentPage: {
+				title: "全部文章",
+				path: "/all",
+			},
 			locale,
 			siteConfig: config.default,
 		},

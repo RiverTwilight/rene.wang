@@ -7,6 +7,7 @@ import Text from "../utils/i18n";
 import { postList } from "../data/i18n.json";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
+import Image from "next/image";
 
 export async function getStaticProps({ locale, locales }) {
 	const sortedPosts = getAllPosts(
@@ -61,6 +62,7 @@ class HomePage extends React.Component {
 							}))
 					}
 				/> */}
+				<Image unsized alt="My favorite charactor" src="/static/image/bilibili.png" />
 				<Tab
 					lang={locale}
 					tabs={siteConfig.categories}
