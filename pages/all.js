@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../components/Layout";
 import Link from "next/link";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
@@ -27,15 +26,7 @@ export async function getStaticProps({ locale, locales }) {
 }
 
 const AllPost = ({ allPosts, siteConfig, locale }) => (
-	<Layout
-		currentPage={{
-			text: "全部文章",
-			path: "/all",
-		}}
-		locale={locale}
-		allPosts={allPosts}
-		config={siteConfig}
-	>
+	<>
 		<div class="P(20px) card Br(30px) Bgc(white) passage-list">
 			<h3>全部文章</h3>
 			<div className="typo">
@@ -53,7 +44,7 @@ const AllPost = ({ allPosts, siteConfig, locale }) => (
 				))}
 			</div>
 		</div>
-	</Layout>
+	</>
 );
 
 export default AllPost;
