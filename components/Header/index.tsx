@@ -74,7 +74,7 @@ const Contact = ({
 };
 
 // TODO 单独的搜索页面
-const MainHeader = ({ siteConfig, allPosts, lang }) => (
+const MainHeader = ({ siteConfig, lang }) => (
 	<div className="app-header-inner Dis(flex)">
 		<a
 			href="/"
@@ -145,16 +145,12 @@ class Header extends React.Component<
 	}
 	render() {
 		const { showHeader: subHeader } = this.state;
-		const { lang, siteConfig, allPosts, currentPage } = this.props;
+		const { lang, siteConfig } = this.props;
 		return (
 			<>
 				{subHeader && (
 					<div className="app-header Dis(flex) Pos(fixed)">
-						<MainHeader
-							lang={lang}
-							siteConfig={siteConfig}
-							allPosts={allPosts}
-						/>
+						<MainHeader lang={lang} siteConfig={siteConfig} />
 					</div>
 				)}
 			</>
