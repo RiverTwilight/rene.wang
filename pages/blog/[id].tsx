@@ -57,6 +57,10 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 				currentId
 			),
 			currentPost,
+			currentPage: {
+				title: currentPost.frontmatter.title || currentPost.slug,
+				path: "/blog/" + currentPost.id,
+			},
 			id: currentId,
 			siteConfig: config.default,
 			locale,
@@ -134,16 +138,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 	};
 
 	return (
-		<Layout
-			allPosts={[]}
-			currentPage={{
-				text: frontmatter.title || slug,
-				path: "/blog/" + id,
-			}}
-			locale={locale}
-			config={siteConfig}
-			catalog={generateCatalog(markdownBody)}
-		>
+		<>
 			{/* <link
 				href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.6.2/gitalk.min.css"
 				rel="stylesheet"
@@ -213,7 +208,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 				data={recommendPost}
 			/>
 			{/* <ToTop /> */}
-		</Layout>
+		</>
 	);
 };
 

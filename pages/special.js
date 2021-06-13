@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import PeopleItem from "../components/PeopleItem";
 import getAllPosts from "../utils/getAllPosts";
-import "../scss/special.scss"
+import "../scss/special.scss";
 
 export async function getStaticProps({ locale }) {
 	const config = await import(`../data/config.json`);
@@ -15,6 +15,10 @@ export async function getStaticProps({ locale }) {
 			locale,
 			allPeoples,
 			siteConfig: config.default,
+			currentPage: {
+				title: "寂静地",
+				path: "/special",
+			},
 		},
 	};
 }
@@ -31,15 +35,7 @@ class SpecialPage extends React.Component {
 	render() {
 		const { allPeoples, siteConfig, locale } = this.props;
 		return (
-			<Layout
-				currentPage={{
-					text: "寂静地",
-					path: "/special",
-				}}
-				locale={locale}
-				allPosts={allPeoples}
-				config={siteConfig}
-			>
+			<>
 				<div className="P(10px) Bgc(white) card Br(30px)">
 					<h2>朋友们</h2>
 					<div className="Dis(flex) people-list">
@@ -54,7 +50,7 @@ class SpecialPage extends React.Component {
 						))}
 					</div>
 				</div>
-			</Layout>
+			</>
 		);
 	}
 }

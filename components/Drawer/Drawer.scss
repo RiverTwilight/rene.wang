@@ -13,7 +13,7 @@
 		padding: 10px;
 		font-size: 17px;
 		border-bottom: 1px solid #e5f2ff;
-		svg{
+		svg {
 			stroke: green;
 		}
 	}
@@ -68,11 +68,17 @@
 
 /**********版权信息********/
 .copyright {
+	justify-content: center;
 	padding: 5px 1px;
+	box-sizing: border-box;
 	a {
 		&:hover {
 			color: $themeColor;
 			cursor: pointer;
 		}
+	}
+	.copyright-inner {
+		flex-direction: column;
+		align-items: center;
 	}
 }

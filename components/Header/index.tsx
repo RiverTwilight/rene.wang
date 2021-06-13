@@ -8,7 +8,7 @@ import LogoLarge from "../../static/logo&title-small.svg";
 import Text from "../../utils/i18n";
 import { nav } from "../../data/i18n.json";
 import ActiveLink from "../../utils/AcitiveLink";
-import "./header.scss";
+import "./Header.scss";
 
 /**
  * 头部
@@ -48,7 +48,13 @@ const Menu = ({ lang }): React.ReactElement => {
 	);
 };
 
-const Contact = ({ github = "https://github.com", twitter }: { github?: string, twitter?: string }) => {
+const Contact = ({
+	github = "https://github.com",
+	twitter,
+}: {
+	github?: string;
+	twitter?: string;
+}) => {
 	return (
 		<div className="Dis(flex)">
 			<a
@@ -81,15 +87,18 @@ const MainHeader = ({ siteConfig, allPosts, lang }) => (
 		</a>
 		<Menu lang={lang} />
 		<div className="app-header-space"></div>
-		<Contact twitter={siteConfig.author.twitter} github={siteConfig.author.github} />
+		<Contact
+			twitter={siteConfig.author.twitter}
+			github={siteConfig.author.github}
+		/>
 		{/* <Search locale={lang} allPosts={allPosts} /> */}
 	</div>
 );
 
 class Header extends React.Component<
 	{
-		config: any;
-		allPosts: any;
+		siteConfig: any;
+		// allPosts: any;
 		currentPage?: ICurrentPage;
 		lang?: string;
 	},
@@ -136,14 +145,14 @@ class Header extends React.Component<
 	}
 	render() {
 		const { showHeader: subHeader } = this.state;
-		const { lang, config, allPosts, currentPage } = this.props;
+		const { lang, siteConfig, allPosts, currentPage } = this.props;
 		return (
 			<>
 				{subHeader && (
 					<div className="app-header Dis(flex) Pos(fixed)">
 						<MainHeader
 							lang={lang}
-							siteConfig={config}
+							siteConfig={siteConfig}
 							allPosts={allPosts}
 						/>
 					</div>

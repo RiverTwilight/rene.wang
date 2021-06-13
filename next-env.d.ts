@@ -7,7 +7,7 @@ interface Window {
 }
 
 interface ICurrentPage {
-    text: string,
+    title: string,
     path: string
 }
 

@@ -2,7 +2,6 @@ import React from "react";
 import PostItem from "../components/PostItem";
 // import Marquee from "../components/Marquee";
 import Tab from "../components/Tab";
-import Layout from "../components/Layout";
 import Link from "next/link";
 import Text from "../utils/i18n";
 import { postList } from "../data/i18n.json";
@@ -16,7 +15,7 @@ export async function getStaticProps({ locale, locales }) {
 				`${content.substr(0, 200)}${
 					content.length >= 200 ? "..." : ""
 				}`,
-			id: getPostId
+			id: getPostId,
 		},
 		require.context("../posts", true, /\.md$/),
 		true
@@ -26,6 +25,10 @@ export async function getStaticProps({ locale, locales }) {
 	return {
 		props: {
 			allPosts: sortedPosts.slice(0, 10),
+			currentPage:{
+				title: "首页",
+				path: "/"
+			},
 			postNumber: sortedPosts.length,
 			siteConfig: config.default,
 			locale,
@@ -33,7 +36,6 @@ export async function getStaticProps({ locale, locales }) {
 	};
 }
 
-// TODO 使用custom app + context管理站点配置
 class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
@@ -46,15 +48,7 @@ class HomePage extends React.Component {
 		const { allPosts, siteConfig, locale, postNumber } = this.props;
 		const { channel } = this.state;
 		return (
-			<Layout
-				currentPage={{
-					text: "首页",
-					path: "/",
-				}}
-				allPosts={allPosts}
-				config={siteConfig}
-				locale={locale}
-			>
+			<>
 				{/* <Marquee
 					// 如果网站配置里没有海报，那么使用带有封面的文章
 					imgList={
@@ -115,7 +109,7 @@ class HomePage extends React.Component {
                         加载更多
                     </div>*/}
 				</div>
-			</Layout>
+			</>
 		);
 	}
 }

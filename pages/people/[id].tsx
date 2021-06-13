@@ -28,25 +28,21 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			id: currentId,
 			siteConfig: config.default,
 			locale,
+			currentPage: {
+				title: currentPost.nickname || currentPost.id,
+				path: "/blog/" + currentPost.id,
+			},
 		},
 	};
 }
 
-export default function People({ currentPost, id, locale, siteConfig }) {
+export default function People({ currentPost }) {
 	const {
-		frontmatter: { nickname, title, cover,bgm },
+		frontmatter: { nickname, cover, bgm },
 	} = currentPost;
 
 	return (
-		<Layout
-			allPosts={[]}
-			currentPage={{
-				text: nickname || id,
-				path: "/blog/" + id,
-			}}
-			locale={locale}
-			config={siteConfig}
-		>
+		<>
 			<div className="P() card Br(30px) warpper">
 				<div className="content">
 					<section id="header">
@@ -99,9 +95,12 @@ export default function People({ currentPost, id, locale, siteConfig }) {
 				<audio
 					autoPlay
 					loop
-					src={bgm || "http://music.163.com/song/media/outer/url?id=1409136605.mp3"}
+					src={
+						bgm ||
+						"http://music.163.com/song/media/outer/url?id=1409136605.mp3"
+					}
 				></audio>
 			</div>
-		</Layout>
+		</>
 	);
 }
