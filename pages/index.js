@@ -22,16 +22,14 @@ export async function getStaticProps({ locale, locales }) {
 		true
 	);
 
-	const config = await import(`../data/config.json`);
 	return {
 		props: {
 			allPosts: sortedPosts.slice(0, 10),
-			currentPage:{
+			currentPage: {
 				title: "首页",
-				path: "/"
+				path: "/",
 			},
 			postNumber: sortedPosts.length,
-			siteConfig: config.default,
 			locale,
 		},
 	};
@@ -62,7 +60,13 @@ class HomePage extends React.Component {
 							}))
 					}
 				/> */}
-				<Image unsized alt="My favorite charactor" src="/static/image/bilibili.png" />
+				<div className="Dis(flex) index-poster">
+					<Image
+						unsized
+						alt="My favorite charactor"
+						src="/static/image/bilibili.png"
+					/>
+				</div>
 				<Tab
 					lang={locale}
 					tabs={siteConfig.categories}

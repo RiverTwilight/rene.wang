@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout";
+import siteConfig from "../data/config.json";
 import "./App.scss";
 
 function MyApp({ Component, pageProps }) {
@@ -7,7 +8,6 @@ function MyApp({ Component, pageProps }) {
 		currentPage = {
 			title: "404",
 		},
-		siteConfig,
 		locale,
 	} = pageProps;
 
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
 				locale={locale}
 				currentPage={currentPage}
 			>
-				<Component {...pageProps} />
+				<Component {...pageProps} siteConfig={siteConfig} />
 			</Layout>
 		</>
 	);

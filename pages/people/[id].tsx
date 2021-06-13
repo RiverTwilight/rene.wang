@@ -1,7 +1,6 @@
 import React from "react";
 import getPaths from "../../utils/getPaths";
 import getAllPosts from "../../utils/getAllPosts";
-import Layout from "../../components/Layout";
 import ReactMarkdown from "react-markdown";
 import "../../scss/typo.scss";
 import "./people.scss";
@@ -20,13 +19,11 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		//@ts-expect-error
 		require.context("../../peoples", true, /\.md$/)
 	);
-	const config = await import(`../../data/config.json`);
 	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
 	return {
 		props: {
 			currentPost,
 			id: currentId,
-			siteConfig: config.default,
 			locale,
 			currentPage: {
 				title: currentPost.nickname || currentPost.id,

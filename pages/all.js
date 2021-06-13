@@ -4,8 +4,6 @@ import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 
 export async function getStaticProps({ locale, locales }) {
-	const config = await import(`../data/config.json`);
-
 	return {
 		props: {
 			allPosts: getAllPosts(
@@ -20,12 +18,11 @@ export async function getStaticProps({ locale, locales }) {
 				path: "/all",
 			},
 			locale,
-			siteConfig: config.default,
 		},
 	};
 }
 
-const AllPost = ({ allPosts, siteConfig, locale }) => (
+const AllPost = ({ allPosts, locale }) => (
 	<>
 		<div class="P(20px) card Br(30px) Bgc(white) passage-list">
 			<h3>全部文章</h3>

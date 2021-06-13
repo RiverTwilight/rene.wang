@@ -1,11 +1,9 @@
 import React from "react";
-import Layout from "../components/Layout";
 import PeopleItem from "../components/PeopleItem";
 import getAllPosts from "../utils/getAllPosts";
 import "../scss/special.scss";
 
 export async function getStaticProps({ locale }) {
-	const config = await import(`../data/config.json`);
 	const allPeoples = getAllPosts(
 		{},
 		require.context("../peoples", true, /\.md$/)
@@ -14,7 +12,6 @@ export async function getStaticProps({ locale }) {
 		props: {
 			locale,
 			allPeoples,
-			siteConfig: config.default,
 			currentPage: {
 				title: "寂静地",
 				path: "/special",
@@ -33,7 +30,7 @@ class SpecialPage extends React.Component {
 		};
 	}
 	render() {
-		const { allPeoples, siteConfig, locale } = this.props;
+		const { allPeoples, locale } = this.props;
 		return (
 			<>
 				<div className="P(10px) Bgc(white) card Br(30px)">

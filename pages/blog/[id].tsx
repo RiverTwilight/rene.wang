@@ -2,7 +2,6 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 // import Gitalk from "gitalk";
-import Layout from "../../components/Layout";
 import CodeBlock from "../../components/CodeBlock";
 import ImgaeBlock from "../../components/LazyloadImage";
 // import ToTop from "../../components/ToTop";
@@ -47,7 +46,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		require.context("../../posts", true, /\.md$/),
 		true
 	);
-	const config = await import(`../../data/config.json`);
 	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
 	return {
 		props: {
@@ -62,7 +60,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 				path: "/blog/" + currentPost.id,
 			},
 			id: currentId,
-			siteConfig: config.default,
 			locale,
 		},
 	};
