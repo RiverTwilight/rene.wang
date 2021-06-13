@@ -3,7 +3,6 @@ import Head from "next/head";
 import Header from "../Header";
 import Drawer from "../Drawer";
 import Catalog from "../Catalog";
-import siteConfig from "../../data/config.json";
 
 const Layout = (props: {
 	/**网站配置 */
@@ -17,7 +16,7 @@ const Layout = (props: {
 	locale?: string;
 	children: JSX.Element | JSX.Element[];
 }) => {
-	const { currentPage, catalog, locale, children } = props;
+	const { currentPage,siteConfig, catalog, locale, children } = props;
 	const { description, author, title } = siteConfig;
 	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title}`;
 	// const childrenWithProps = React.Children.map(props.children, (child) => {
