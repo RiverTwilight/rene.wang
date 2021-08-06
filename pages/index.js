@@ -68,10 +68,15 @@ class HomePage extends React.Component {
                             );
                         })
                         .map((post, i) => (
-                            <ListItem
-                                primary={post.frontmatter.title || post.slug}
-                                second={post.frontmatter.date}
-                            ></ListItem>
+                            <Link href={"/blog/" + post.id}>
+                                <ListItem
+                                    primary={
+                                        post.frontmatter.title || post.slug
+                                    }
+                                    second={post.frontmatter.date}
+                                ></ListItem>
+                            </Link>
+
                             // <PostItem
                             // 	lang={locale}
                             // 	id={post.id}

@@ -14,7 +14,6 @@ import getPostId from "../../utils/getPostId";
 // import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
 import BookOutline from "../../static/icon/book-outline.svg";
 // import Wave from "../../static/wave.svg";
-import "../../scss/typo.scss";
 
 /**
  * 获取相关文章，包含相同标签
