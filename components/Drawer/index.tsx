@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Headmaster, CardMenu } from "./utils";
 import Language from "./Language";
+import { Card } from "kindyle"
 
 const LoveIcon = styled.svg`
 	display: inline-block;
@@ -72,7 +73,7 @@ export default class extends React.Component<DrawerProps, DrawerState> {
 			  }
 			: {};
 		return (
-			<div
+			<Card
 				ref={(r) => (this.drawer = r)}
 				style={drawerStyle}
 				className={`${copyrightFixed ? "Pos(fixed)" : ""}`}
@@ -118,7 +119,7 @@ export default class extends React.Component<DrawerProps, DrawerState> {
 						</div>
 					</div>
 				</div>
-			</div>
+			</Card>
 		);
 	}
 }

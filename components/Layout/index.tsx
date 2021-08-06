@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "../Header";
 import Drawer from "../Drawer";
 import Catalog from "../Catalog";
+import { Container } from "kindyle"
 
 const Layout = (props: {
 	/**网站配置 */
@@ -16,7 +17,7 @@ const Layout = (props: {
 	locale?: string;
 	children: JSX.Element | JSX.Element[];
 }) => {
-	const { currentPage,siteConfig, catalog, locale, children } = props;
+	const { currentPage, siteConfig, catalog, locale, children } = props;
 	const { description, author, title } = siteConfig;
 	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title}`;
 	// const childrenWithProps = React.Children.map(props.children, (child) => {
@@ -52,21 +53,20 @@ const Layout = (props: {
 				/>
 				<title>{showTitle}</title>
 			</Head>
-			{/* <div
-					style={{ display: "inline-block" }}
-					className="header-liner"
-				></div> */}
-			<Header lang={locale} siteConfig={siteConfig} />
-			<main className="main">
-				<div className="container">
-					<div className="container-left">{children}</div>
-					<br />
-					<div className="container-right">
-						<Drawer lang={locale} config={siteConfig} />
-						{catalog && <Catalog catalog={catalog} />}
+			<Container>
+				<Header lang={locale} siteConfig={siteConfig} />
+				<div className="main">
+					<div className="container">
+						<div className="container-left">{children}</div>
+						<br />
+						<div className="container-right">
+							<Drawer lang={locale} config={siteConfig} />
+							{catalog && <Catalog catalog={catalog} />}
+						</div>
 					</div>
 				</div>
-			</main>
+			</Container>
+
 		</>
 	);
 };

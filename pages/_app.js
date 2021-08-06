@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import siteConfig from "../data/config.json";
-import "./App.scss";
+import "./App.css";
 
 function MyApp({ Component, pageProps }) {
 	const {
