@@ -57,12 +57,7 @@ const Layout = (props: {
 				<Header lang={locale} siteConfig={siteConfig} />
 				<div className="main">
 					<div className="container">
-						<div className="container-left">{children}</div>
-						<br />
-						<div className="container-right">
-							<Drawer lang={locale} config={siteConfig} />
-							{catalog && <Catalog catalog={catalog} />}
-						</div>
+						{children}
 					</div>
 				</div>
 			</Container>

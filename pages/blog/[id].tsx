@@ -1,19 +1,16 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-// import Gitalk from "gitalk";
 import CodeBlock from "../../components/CodeBlock";
 import ImgaeBlock from "../../components/LazyloadImage";
-// import ToTop from "../../components/ToTop";
-import Card from "../../components/Card";
 import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../components/PostItem";
 import getAllPosts from "../../utils/getAllPosts";
 import getPaths from "../../utils/getPaths";
 import getPostId from "../../utils/getPostId";
-// import ChatsBubbles from "../../static/icon/chatbubble-outline.svg";
 import BookOutline from "../../static/icon/book-outline.svg";
-// import Wave from "../../static/wave.svg";
+import { Typography } from "kindyle";
+import { IPost } from "../../types";
 
 /**
  * 获取相关文章，包含相同标签
@@ -106,16 +103,6 @@ const ReadMore = ({ data }: any) => {
  */
 
 const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
-	// siteConfig.gitalk &&
-	// 	React.useEffect(() => {
-	// 		const gitalk = new Gitalk(
-	// 			Object.assign(siteConfig.gitalk, {
-	// 				id: "/blog/" + id,
-	// 				distractionFreeMode: false,
-	// 			})
-	// 		);
-	// 		gitalk.render("gitalk-container");
-	// 	});
 	const { slug, frontmatter, markdownBody } = currentPost;
 	const generateCatalog = (post) => {
 		var matchTitle = post.match(/\#+\s(.+)/g) || [];
@@ -141,63 +128,56 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 			></link> */}
 			{/* <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css"></link> */}
 			{/* <Progress width={50} /> */}
-			<article
-				style={{
-					marginBottom: "7px",
-				}}
-				className="P(20px) card Br(30px) Bgc(white)"
+
+			<Typography
 				itemScope
 				itemType="http://schema.org/Article"
-			>
-				<Cover>
-					{frontmatter.cover && (
-						<>
-							<ImgaeBlock src={frontmatter.cover} />
-							<meta
-								itemProp="thumbnailUrl"
-								content={frontmatter.cover}
-							></meta>
-						</>
-					)}
-				</Cover>
+			></Typography>
+			<Cover>
+				{frontmatter.cover && (
+					<>
+						<ImgaeBlock src={frontmatter.cover} />
+						<meta
+							itemProp="thumbnailUrl"
+							content={frontmatter.cover}
+						></meta>
+					</>
+				)}
+			</Cover>
 
-				<h1 itemProp="headline" className="Texta(center)">
-					{frontmatter.title || slug}
-				</h1>
-				<div className="typo">
-					<div className="typo-meta Textc(secondary) Texta(center)">
-						最后更新于
-						<span itemProp="dateCreated">{frontmatter.date}</span>
-						&nbsp;分类:
-						{frontmatter.categories
-							? frontmatter.categories.map(
-									(cate) =>
-										`${siteConfig.categories[cate][locale]} `
-							  )
-							: "未分类"}
-					</div>
-					<div className="typo-detail">
-						<div className="typo-detail-date"></div>
-					</div>
-					<div itemProp="articleBody">
-						<ReactMarkdown
-							renderers={{
-								code: CodeBlock,
-								heading: HeadingBlock,
-								image: ImgaeBlock,
-							}}
-							escapeHtml={false}
-							source={markdownBody}
-						></ReactMarkdown>
-					</div>
-					{/* <div className="typo-split">
+			<h1 itemProp="headline">
+				{frontmatter.title || slug}
+			</h1>
+			<div className="typo">
+				<div className="typo-meta Textc(secondary) Texta(center)">
+					最后更新于
+					<span itemProp="dateCreated">{frontmatter.date}</span>
+					&nbsp;分类:
+					{frontmatter.categories
+						? frontmatter.categories.map(
+								(cate) =>
+									`${siteConfig.categories[cate][locale]} `
+						  )
+						: "未分类"}
+				</div>
+				<div className="typo-detail">
+					<div className="typo-detail-date"></div>
+				</div>
+				<div itemProp="articleBody">
+					<ReactMarkdown
+						renderers={{
+							code: CodeBlock,
+							heading: HeadingBlock,
+							image: ImgaeBlock,
+						}}
+						escapeHtml={false}
+						source={markdownBody}
+					></ReactMarkdown>
+				</div>
+				{/* <div className="typo-split">
 							<Wave />
 						</div> */}
-				</div>
-			</article>
-			{/* <Card title="评论" icon={<ChatsBubbles />}>
-				<div id="gitalk-container"></div>
-			</Card> */}
+			</div>
 			<ReadMore
 				currentId={id}
 				categories={frontmatter.categories}

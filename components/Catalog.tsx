@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import Card from "../components/Card";
 import ListOutline from "../static/icon/list-outline.svg";
 
 const Switch = styled.button`
@@ -85,14 +84,14 @@ export default ({
 	};
 	return (
 		<>
-			<Warpper collapse={collapse}>
+			{/* <Warpper collapse={collapse}>
 				<Card icon={<ListOutline />} title="目录">
 					<List>{catalog.map(Title)}</List>
 				</Card>
 			</Warpper>
 			<Switch onClick={handleClick}>
 				<ListOutline />
-			</Switch>
+			</Switch> */}
 		</>
 	);
 };
