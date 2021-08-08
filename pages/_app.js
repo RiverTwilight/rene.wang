@@ -1,6 +1,8 @@
 import React from "react";
 import Layout from "../components/Layout";
 import siteConfig from "../data/config.json";
+import { Container } from "kindyle";
+
 import "./App.css";
 
 function MyApp({ Component, pageProps }) {
@@ -13,7 +15,8 @@ function MyApp({ Component, pageProps }) {
 	} = pageProps;
 
 	return (
-		<>
+		<Container dark>
+		
 			<Layout
 				siteConfig={siteConfig}
 				locale={locale}
@@ -22,7 +25,7 @@ function MyApp({ Component, pageProps }) {
 			>
 				<Component {...pageProps} siteConfig={siteConfig} />
 			</Layout>
-		</>
+		</Container>
 	);
 }
 

@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-
 // SEO 问题
 export default class extends Document {
 	static async getInitialProps(ctx) {

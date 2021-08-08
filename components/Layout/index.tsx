@@ -53,17 +53,15 @@ const Layout = (props: {
 				/>
 				<title>{showTitle}</title>
 			</Head>
-			<Container dark>
-				<Header
-					menuItems={menuItems}
-					lang={locale}
-					currentPage={currentPage}
-					siteConfig={siteConfig}
-				/>
-				<div className="main">
-					<div className="container">{children}</div>
-				</div>
-			</Container>
+			<Header
+				menuItems={menuItems}
+				lang={locale}
+				currentPage={currentPage}
+				siteConfig={siteConfig}
+			/>
+			<div className="main">
+				<div className="container">{children}</div>
+			</div>
 		</>
 	);
 };

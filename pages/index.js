@@ -9,6 +9,7 @@ import {
 	EllipsisVerticalIcon,
 	Card,
 	CardContent,
+	CardAction,
 	CardMedia,
 	CardTitle,
 } from "kindyle";
@@ -66,6 +67,14 @@ class HomePage extends React.Component {
 								{allPosts[0].frontmatter.title || post.slug}
 							</CardTitle>
 							{allPosts[0].frontmatter.summary}
+							<CardAction>
+								<Button
+									href={"/blog/" + allPosts[0].id}
+									component={Link}
+								>
+									阅读
+								</Button>
+							</CardAction>
 						</CardContent>
 					</Card>
 				</div>
@@ -80,7 +89,7 @@ class HomePage extends React.Component {
 						});
 					}}
 				/>
-				
+
 				<div>
 					{allPosts
 						.slice(1) // 剔除已经置顶的最新文章
