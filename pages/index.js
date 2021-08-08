@@ -1,10 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Text from "../utils/i18n";
-import { postList } from "../data/i18n.json";
-import getAllPosts from "../utils/getAllPosts";
-import getPostId from "../utils/getPostId";
-import Tab from "../components/Tab"
+import Tab from "../components/Tab";
 import {
 	Button,
 	ListItem,
@@ -12,7 +8,14 @@ import {
 	ListItemText,
 	EllipsisVerticalIcon,
 	Card,
+	CardContent,
+	CardMedia,
+	CardTitle,
 } from "kindyle";
+import Text from "../utils/i18n";
+import { postList } from "../data/i18n.json";
+import getAllPosts from "../utils/getAllPosts";
+import getPostId from "../utils/getPostId";
 
 export async function getStaticProps({ locale, locales }) {
 	const sortedPosts = getAllPosts(
@@ -53,6 +56,20 @@ class HomePage extends React.Component {
 		const { channel } = this.state;
 		return (
 			<>
+				<div className="P(10px)">
+					<Card>
+						<CardMedia>
+							<img src="/earth.jpg"></img>
+						</CardMedia>
+						<CardContent>
+							<CardTitle>
+								{allPosts[0].frontmatter.title || post.slug}
+							</CardTitle>
+							{allPosts[0].frontmatter.summary}
+						</CardContent>
+					</Card>
+				</div>
+
 				<Tab
 					lang={locale}
 					tabs={siteConfig.categories}
@@ -63,8 +80,10 @@ class HomePage extends React.Component {
 						});
 					}}
 				/>
-				<div className="passage-list">
+				
+				<div>
 					{allPosts
+						.slice(1) // 剔除已经置顶的最新文章
 						.filter((post) => {
 							return (
 								[
@@ -75,12 +94,9 @@ class HomePage extends React.Component {
 								].includes(channel) && post.locale === locale
 							);
 						})
-						.map((post, i) => (
+						.map((post) => (
 							<Link href={"/blog/" + post.id}>
-								<ListItem
-									component="a"
-									href="https://github.com"
-								>
+								<ListItem>
 									<ListItemText
 										primary={
 											post.frontmatter.title || post.slug
@@ -92,15 +108,6 @@ class HomePage extends React.Component {
 									</ListItemIcon>
 								</ListItem>
 							</Link>
-
-							// <PostItem
-							// 	lang={locale}
-							// 	id={post.id}
-							// 	title={post.frontmatter.title || post.slug}
-							// 	summary={post.markdownBody}
-							// 	cover={post.frontmatter.cover}
-							// 	date={post.frontmatter.date}
-							// />
 						))}
 					<br />
 					<Text dictionary={postList} language={locale}>

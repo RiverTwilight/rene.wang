@@ -1,4 +1,6 @@
 import * as React from "react";
+import { TDictionary } from "../types"
+
 /**
  * 多语言组件
  * @author rivertwilight
@@ -11,7 +13,7 @@ const { Provider, Consumer } = React.createContext({
 });
 
 interface Pro {
-	dictionary: dictionary;
+	dictionary: TDictionary;
 	language: string;
 	children: JSX.Element | JSX.Element[] | null;
 }

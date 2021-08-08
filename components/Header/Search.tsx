@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import { IPost } from "../../types"
 
 interface SearchState {
 	searchIsFocus: boolean;

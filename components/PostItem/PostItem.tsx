@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as React from "react";
 import ReactMarkdown from "react-markdown";
 // import CodeBlock from '../components/CodeBlock'

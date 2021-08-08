@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
 			title: "404",
 		},
 		locale,
+		menuItems = [],
 	} = pageProps;
 
 	return (
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }) {
 				siteConfig={siteConfig}
 				locale={locale}
 				currentPage={currentPage}
+				menuItems={menuItems}
 			>
 				<Component {...pageProps} siteConfig={siteConfig} />
 			</Layout>

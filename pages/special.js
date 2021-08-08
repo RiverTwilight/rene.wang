@@ -1,7 +1,6 @@
 import React from "react";
 import PeopleItem from "../components/PeopleItem";
 import getAllPosts from "../utils/getAllPosts";
-import "../scss/special.scss";
 
 export async function getStaticProps({ locale }) {
 	const allPeoples = getAllPosts(

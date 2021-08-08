@@ -1,23 +1,23 @@
 import React from "react";
 import Head from "next/head";
 import Header from "../Header";
-import Drawer from "../Drawer";
-import Catalog from "../Catalog";
-import { Container } from "kindyle"
+import { Container } from "kindyle";
+import { ICurrentPage, ISiteConfig } from "../../types";
 
 const Layout = (props: {
 	/**网站配置 */
 	siteConfig: ISiteConfig;
 	/**全部文章 */
-	allPosts: IPost[];
+	allPosts: ISiteConfig[];
 	/** 当前页面 */
 	currentPage: ICurrentPage;
 	/**目录 */
 	catalog?: any[];
 	locale?: string;
 	children: JSX.Element | JSX.Element[];
+	menuItems: any[];
 }) => {
-	const { currentPage, siteConfig, catalog, locale, children } = props;
+	const { currentPage, siteConfig, locale, children, menuItems } = props;
 	const { description, author, title } = siteConfig;
 	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title}`;
 	// const childrenWithProps = React.Children.map(props.children, (child) => {
@@ -53,15 +53,17 @@ const Layout = (props: {
 				/>
 				<title>{showTitle}</title>
 			</Head>
-			<Container>
-				<Header lang={locale} siteConfig={siteConfig} />
+			<Container dark>
+				<Header
+					menuItems={menuItems}
+					lang={locale}
+					currentPage={currentPage}
+					siteConfig={siteConfig}
+				/>
 				<div className="main">
-					<div className="container">
-						{children}
-					</div>
+					<div className="container">{children}</div>
 				</div>
 			</Container>
-
 		</>
 	);
 };

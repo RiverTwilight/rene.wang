@@ -8,8 +8,8 @@ import PostItem from "../../components/PostItem";
 import getAllPosts from "../../utils/getAllPosts";
 import getPaths from "../../utils/getPaths";
 import getPostId from "../../utils/getPostId";
-import BookOutline from "../../static/icon/book-outline.svg";
-import { Typography } from "kindyle";
+// import BookOutline from "../../static/icon/book-outline.svg";
+import { Typography, TimeBar } from "kindyle";
 import { IPost } from "../../types";
 
 /**
@@ -18,12 +18,17 @@ import { IPost } from "../../types";
  * @param {Array} categories 当前文章的目录
  * @param {String} currentId
  */
-const getRecommendPost = (allPosts: IPost[], categories: any[], currentId) => {
+const getRecommendPost = (
+	allPosts: IPost[],
+	categories: any[],
+	currentId: string
+) => {
 	let data = [];
 	allPosts.forEach((post) => {
 		categories.forEach((cate) => {
 			post.frontmatter.categories.includes(cate) &&
 				!data.includes(post) &&
+				//@ts-expect-error
 				currentId !== post.id &&
 				data.push(post);
 		});
@@ -54,9 +59,10 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			currentPage: {
 				title: currentPost.frontmatter.title || currentPost.slug,
 				path: "/blog/" + currentPost.id,
+				currentPost,
 			},
 			id: currentId,
-			locale,
+			locale
 		},
 	};
 }
@@ -80,27 +86,22 @@ const Cover = styled.div`
 	}
 `;
 
-const ReadMore = ({ data }: any) => {
-	return (
-		<Card className="Br(30px)" title="阅读更多" icon={<BookOutline />}>
-			{data.map((item, i) => (
-				<PostItem
-					key={i}
-					id={item.id}
-					title={item.frontmatter.title || item.slug}
-					summary={item.markdownBody.substr(0, 200)}
-					cover={item.frontmatter.cover}
-					date={item.frontmatter.date}
-				/>
-			))}
-		</Card>
-	);
-};
-
-/**
- * 文章详情
- * // FIXME 评论模块
- */
+// const ReadMore = ({ data }: any) => {
+// 	return (
+// 		<Card className="Br(30px)" title="阅读更多" icon={<BookOutline />}>
+// 			{data.map((item, i) => (
+// 				<PostItem
+// 					key={i}
+// 					id={item.id}
+// 					title={item.frontmatter.title || item.slug}
+// 					summary={item.markdownBody.substr(0, 200)}
+// 					cover={item.frontmatter.cover}
+// 					date={item.frontmatter.date}
+// 				/>
+// 			))}
+// 		</Card>
+// 	);
+// };
 
 const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 	const { slug, frontmatter, markdownBody } = currentPost;
@@ -120,70 +121,59 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 		];
 	};
 
+	// TODO 右上角菜单显示 AboutThisBook
+
 	return (
 		<>
-			{/* <link
-				href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.6.2/gitalk.min.css"
-				rel="stylesheet"
-			></link> */}
-			{/* <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css"></link> */}
-			{/* <Progress width={50} /> */}
+			<TimeBar />
 
-			<Typography
-				itemScope
-				itemType="http://schema.org/Article"
-			></Typography>
-			<Cover>
-				{frontmatter.cover && (
-					<>
-						<ImgaeBlock src={frontmatter.cover} />
-						<meta
-							itemProp="thumbnailUrl"
-							content={frontmatter.cover}
-						></meta>
-					</>
-				)}
-			</Cover>
+			<Typography itemScope itemType="http://schema.org/Article">
+				<Cover>
+					{frontmatter.cover && (
+						<>
+							<ImgaeBlock src={frontmatter.cover} />
+							<meta
+								itemProp="thumbnailUrl"
+								content={frontmatter.cover}
+							/>
+						</>
+					)}
+				</Cover>
 
-			<h1 itemProp="headline">
-				{frontmatter.title || slug}
-			</h1>
-			<div className="typo">
-				<div className="typo-meta Textc(secondary) Texta(center)">
-					最后更新于
-					<span itemProp="dateCreated">{frontmatter.date}</span>
-					&nbsp;分类:
-					{frontmatter.categories
-						? frontmatter.categories.map(
-								(cate) =>
-									`${siteConfig.categories[cate][locale]} `
-						  )
-						: "未分类"}
+				<h1 itemProp="headline">{frontmatter.title || slug}</h1>
+				<div className="typo">
+					<div className="typo-meta Textc(secondary) Texta(center)">
+						最后更新于
+						<span itemProp="dateCreated">{frontmatter.date}</span>
+						&nbsp;分类:
+						{frontmatter.categories
+							? frontmatter.categories.map(
+									(cate) =>
+										`${siteConfig.categories[cate][locale]} `
+							  )
+							: "未分类"}
+					</div>
+					<div className="typo-detail">
+						<div className="typo-detail-date"></div>
+					</div>
+					<div itemProp="articleBody">
+						<ReactMarkdown
+							renderers={{
+								code: CodeBlock,
+								heading: HeadingBlock,
+								image: ImgaeBlock,
+							}}
+							escapeHtml={false}
+							source={markdownBody}
+						></ReactMarkdown>
+					</div>
 				</div>
-				<div className="typo-detail">
-					<div className="typo-detail-date"></div>
-				</div>
-				<div itemProp="articleBody">
-					<ReactMarkdown
-						renderers={{
-							code: CodeBlock,
-							heading: HeadingBlock,
-							image: ImgaeBlock,
-						}}
-						escapeHtml={false}
-						source={markdownBody}
-					></ReactMarkdown>
-				</div>
-				{/* <div className="typo-split">
-							<Wave />
-						</div> */}
-			</div>
-			<ReadMore
+				{/* <ReadMore
 				currentId={id}
 				categories={frontmatter.categories}
 				data={recommendPost}
-			/>
-			{/* <ToTop /> */}
+			/> */}
+			</Typography>
 		</>
 	);
 };

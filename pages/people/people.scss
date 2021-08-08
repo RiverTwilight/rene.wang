@@ -1,4 +1,3 @@
-/*//HACK 使用grid布局*/
 @mixin clearMargin($mar) {
 	@media only screen and (max-width: 600px) {
 		margin-right: -$mar;

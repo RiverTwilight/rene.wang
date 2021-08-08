@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as React from "react";
 import {
 	ActionGroup,
@@ -10,77 +11,77 @@ import {
 	ActionBar,
 	ActionBarMenu,
 	HomeOutlineIcon,
-	CogSharpIcon
+	CogSharpIcon,
 } from "kindyle";
 import Text from "../../utils/i18n";
 import { nav } from "../../data/i18n.json";
 import ActiveLink from "../../utils/AcitiveLink";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+import { ICurrentPage, ISiteConfig } from "../../types";
 
 /**
  * 头部
- * @todo 分离各个组件rr
  */
 
-const Menu = ({ lang }): React.ReactElement => {
-	return (
-		<nav className="app-header-item app-header-nav">
-			<Text dictionary={nav} language={lang}>
-				{[
-					{
-						text: <Text homePage />,
-						to: "/",
-					},
-					{
-						text: <Text secondPage />,
-						to: "/special",
-					},
-				].map((item, i) => (
-					<ActiveLink
-						activeClassName="app-header-list-item-active"
-						href={item.to}
-					>
-						<a className="app-header-list-item">{item.text}</a>
-					</ActiveLink>
-				))}
-			</Text>
-		</nav>
-	);
-};
+interface IHeader {
+	siteConfig: ISiteConfig;
+	currentPage?: ICurrentPage;
+	lang?: string;
+}
 
-const MainHeader = ({ siteConfig }) => {
-	const router = useRouter()
+const MainHeader = ({ siteConfig, menuItems, currentPage }: IHeader) => {
+	const router = useRouter();
+	const pageMenuItems = currentPage.path.match(/\/blog\/.+/)
+		? [
+				{
+					textPrimary: "About This Book",
+				},
+		  ]
+		: [];
 	return (
 		<Navbar>
 			<StatuBar battery={86} deviceName="My Kindle" />
 			<ActionBar>
 				<ActionGroup>
-					<ActionItem onClick={() => {
-						router.push('/')
-					}}>
-						<HomeOutlineIcon />
-						home
-					</ActionItem>
-					<ActionItem onClick={() => {
-						router.back()
-					}}>
-						<ArrowBackSharpIcon />
-						BACK
-					</ActionItem>
-					<ActionItem>
-						<CogSharpIcon />
-						settings
-					</ActionItem>
+					<Text dictionary={nav} language="en-US">
+						<ActionItem
+							onClick={() => {
+								router.push("/");
+							}}
+						>
+							<HomeOutlineIcon />
+							<Text homePage />
+						</ActionItem>
+						<ActionItem
+							onClick={() => {
+								router.back();
+							}}
+						>
+							<ArrowBackSharpIcon />
+							BACK
+						</ActionItem>
+						<ActionItem>
+							<CogSharpIcon />
+							settings
+						</ActionItem>
+					</Text>
 				</ActionGroup>
 				<ActionBarSpace />
 				<ActionGroup>
 					<SearchBar />
 					<ActionBarMenu
 						items={[
+							...menuItems,
+							...pageMenuItems,
 							{
 								textPrimary: "Github",
 								component: "a",
-								href: siteConfig.author.twitter
+								href: siteConfig.author.github,
+							},
+							{
+								textPrimary: "Twitter",
+								component: "a",
+								href: siteConfig.author.twitter,
 							},
 							{
 								textPrimary: "Expermintal Browser",
@@ -90,16 +91,11 @@ const MainHeader = ({ siteConfig }) => {
 				</ActionGroup>
 			</ActionBar>
 		</Navbar>
-	)
-}
+	);
+};
 
 class Header extends React.Component<
-	{
-		siteConfig: any;
-		// allPosts: any;
-		currentPage?: ICurrentPage;
-		lang?: string;
-	},
+	IHeader,
 	{
 		showHeader: boolean;
 	}
@@ -143,14 +139,7 @@ class Header extends React.Component<
 	}
 	render() {
 		const { showHeader: subHeader } = this.state;
-		const { lang, siteConfig } = this.props;
-		return (
-			<>
-				{subHeader && (
-					<MainHeader siteConfig={siteConfig} />
-				)}
-			</>
-		);
+		return <>{subHeader && <MainHeader {...this.props} />}</>;
 	}
 }
 

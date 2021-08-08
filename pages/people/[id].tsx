@@ -1,9 +1,8 @@
+//@ts-nocheck
 import React from "react";
 import getPaths from "../../utils/getPaths";
 import getAllPosts from "../../utils/getAllPosts";
 import ReactMarkdown from "react-markdown";
-import "../../scss/typo.scss";
-import "./people.scss";
 
 export async function getStaticPaths({ locale }) {
 	return {
@@ -16,7 +15,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 	const { id: currentId } = ctx.params;
 	const posts = getAllPosts(
 		{},
-		//@ts-expect-error
 		require.context("../../peoples", true, /\.md$/)
 	);
 	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
@@ -55,21 +53,20 @@ export default function People({ currentPost }) {
 							escapeHtml={false}
 							renderers={{
 								paragraph: ({ children }) => {
-									const [
-										isVisible,
-										setVisible,
-									] = React.useState(false);
+									const [isVisible, setVisible] =
+										React.useState(false);
 									const domRef = React.useRef();
 									React.useEffect(() => {
-										const observer = new IntersectionObserver(
-											(entries) => {
-												entries.forEach((entry) =>
-													setVisible(
-														entry.isIntersecting
-													)
-												);
-											}
-										);
+										const observer =
+											new IntersectionObserver(
+												(entries) => {
+													entries.forEach((entry) =>
+														setVisible(
+															entry.isIntersecting
+														)
+													);
+												}
+											);
 										observer.observe(domRef.current);
 										return () =>
 											observer.unobserve(domRef.current);

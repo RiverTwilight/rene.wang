@@ -1,6 +1,7 @@
 ---
 title: 七天不使用互联网，我的经历和感受
 date: 2021/8/6
+summary: 我们要让自己静下来
 categories:
     - Life
 ---

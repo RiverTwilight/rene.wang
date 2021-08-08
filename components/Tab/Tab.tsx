@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React, { useState } from "react";
 import { Tab, TabItem } from "kindyle";
 import Text from "../../utils/i18n";
