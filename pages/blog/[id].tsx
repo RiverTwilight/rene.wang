@@ -2,7 +2,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import CodeBlock from "../../components/CodeBlock";
-import ImgaeBlock from "../../components/LazyloadImage";
+import ImageBlock from "../../components/LazyloadImage";
 import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../components/PostItem";
 import getAllPosts from "../../utils/getAllPosts";
@@ -48,6 +48,12 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		true
 	);
 	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
+	console.log(
+		posts.filter((post: any) => {
+			console.log(post.id, currentId);
+			return post.id === currentId;
+		})
+	);
 	return {
 		props: {
 			recommendPost: getRecommendPost(
@@ -62,7 +68,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 				currentPost,
 			},
 			id: currentId,
-			locale
+			locale,
 		},
 	};
 }
@@ -75,9 +81,6 @@ export async function getStaticPaths({ locale }) {
 }
 
 const Cover = styled.div`
-	margin-top: -19px;
-	margin-left: -19px;
-	margin-right: -19px;
 	img {
 		object-fit: cover;
 		width: 100%;
@@ -131,7 +134,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 				<Cover>
 					{frontmatter.cover && (
 						<>
-							<ImgaeBlock src={frontmatter.cover} />
+							<ImageBlock src={frontmatter.cover} />
 							<meta
 								itemProp="thumbnailUrl"
 								content={frontmatter.cover}
@@ -161,7 +164,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 							renderers={{
 								code: CodeBlock,
 								heading: HeadingBlock,
-								image: ImgaeBlock,
+								image: ImageBlock,
 							}}
 							escapeHtml={false}
 							source={markdownBody}

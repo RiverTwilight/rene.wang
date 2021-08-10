@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import Header from "../Header";
-import { Container } from "kindyle";
 import { ICurrentPage, ISiteConfig } from "../../types";
 
 const Layout = (props: {

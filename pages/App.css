@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	/*transform: translate3d(0, 0, 0); */
+	transform: translate3d(0, 0, 0);
 	font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell,
 		Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
 		Hiragino Sans GB, Microsoft YaHei, Arial;
@@ -16,7 +16,6 @@ body {
 .main {
 	padding: 85px 0px 30px 0px;
 	min-height: 100vh;
-
 }
 
 @media (min-width: 1000px) {
@@ -24,12 +23,10 @@ body {
 		display: flex;
 		justify-content: center;
 	}
-    .container {
-        width: 800px;
-    }
+	.container {
+		width: 800px;
+	}
 }
-
-
 
 .center {
 	margin: 0 auto;
@@ -85,13 +82,6 @@ body {
 	padding: 20px;
 }
 
-.card {
-	-webkit-box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-	box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
 .Br\(30px\) {
 	border-radius: 30px;
 }
@@ -110,15 +100,6 @@ body {
 
 .Dis\(flex\) {
 	display: flex;
-}
-
-button {
-	outline: none;
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
 }
 
 .Pos\(fixed\) {

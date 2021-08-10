@@ -1,16 +1,22 @@
 import React from "react";
 import Link from "next/link";
+import { Typography } from "kindyle";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 
 export async function getStaticProps({ locale, locales }) {
+	// require.context doesn't support dynamic import'
+	const requireFunc = {
+		"en-US": require.context("../posts/en-US", true, /\.md$/),
+		"zh-CN": require.context("../posts/zh-CN", true, /\.md$/),
+	}[locale];
 	return {
 		props: {
 			allPosts: getAllPosts(
 				{
 					id: getPostId,
 				},
-				require.context("../posts", true, /\.md$/),
+				requireFunc,
 				true
 			),
 			currentPage: {
@@ -24,23 +30,22 @@ export async function getStaticProps({ locale, locales }) {
 
 const AllPost = ({ allPosts, locale }) => (
 	<>
-		<div class="P(20px) card Br(30px) Bgc(white) passage-list">
-			<h3>全部文章</h3>
-			<div className="typo">
-				{allPosts.map((post) => (
-					<>
-						<Link
-							href={"/blog/" + post.id}
-							locale={locale}
-							key={post.id}
-						>
-							<a>{post.frontmatter.title || post.slug}</a>
-						</Link>
-						<br></br>
-					</>
-				))}
-			</div>
-		</div>
+		<Typography>
+			<h1>全部文章</h1>
+			<ul></ul>
+			{allPosts.map((post) => (
+				<li>
+					<Link
+						href={"/blog/" + post.id}
+						locale={locale}
+						key={post.id}
+					>
+						{post.frontmatter.title || post.slug}
+					</Link>
+					<br></br>
+				</li>
+			))}
+		</Typography>
 	</>
 );
 

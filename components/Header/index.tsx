@@ -15,7 +15,6 @@ import {
 } from "kindyle";
 import Text from "../../utils/i18n";
 import { nav } from "../../data/i18n.json";
-import ActiveLink from "../../utils/AcitiveLink";
 import { useRouter } from "next/router";
 import { ICurrentPage, ISiteConfig } from "../../types";
 
@@ -31,13 +30,16 @@ interface IHeader {
 
 const MainHeader = ({ siteConfig, menuItems, currentPage }: IHeader) => {
 	const router = useRouter();
-	const pageMenuItems = currentPage.path.match(/\/blog\/.+/)
-		? [
-				{
-					textPrimary: "About This Book",
-				},
-		  ]
-		: [];
+
+	var pageMenuItems = [];
+	if (currentPage.path.match(/\/blog\/.+/)) {
+		pageMenuItems.push({
+			textPrimary: "About This Book",
+		});
+	} else if (currentPage.path.match(/\/blog\/.+/)) {
+		// ...
+	}
+
 	return (
 		<Navbar>
 			<StatuBar battery={86} deviceName="My Kindle" />
@@ -73,6 +75,12 @@ const MainHeader = ({ siteConfig, menuItems, currentPage }: IHeader) => {
 						items={[
 							...menuItems,
 							...pageMenuItems,
+							{
+								textPrimary: "Friends",
+								onClick: () => {
+									router.push("/special");
+								},
+							},
 							{
 								textPrimary: "Github",
 								component: "a",
@@ -125,7 +133,9 @@ class Header extends React.Component<
 		}
 	};
 	componentDidMount() {
-		this.activeMonitor();
+		if (this.props.currentPage.path.match(/\/blog\/.+/)) {
+			this.activeMonitor();
+		}
 	}
 	componentWillUnmount() {
 		this.destoryMonitor();

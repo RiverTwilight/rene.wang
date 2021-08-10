@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import siteConfig from "../data/config.json";
 import { Container } from "kindyle";
@@ -6,6 +6,18 @@ import { Container } from "kindyle";
 import "./App.css";
 
 function MyApp({ Component, pageProps }) {
+	const [dark, setDark] = useState(false);
+
+	useEffect(() => {
+		if (localStorage.getItem("dark")) {
+			setDark(localStorage.getItem("dark"));
+		}
+		window.setDark = (state) => {
+			setDark(state);
+		};
+		console.log("Some global functions to nerds: Window.setDark()");
+	}, []);
+
 	const {
 		currentPage = {
 			title: "404",
@@ -15,8 +27,7 @@ function MyApp({ Component, pageProps }) {
 	} = pageProps;
 
 	return (
-		<Container dark>
-		
+		<Container dark={dark}>
 			<Layout
 				siteConfig={siteConfig}
 				locale={locale}

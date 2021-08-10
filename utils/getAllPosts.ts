@@ -9,13 +9,13 @@ export default function getAllPosts(
 	/**Node的require函数，请以./src/utils为主目录计算相对路径，如'path' */
 	requireFunc: any,
 	/**是否排序 */
-	sort: boolean = false
+	sort: boolean = false,
 ) {
 	//get posts & context from folder
 	const posts = ((context) => {
 		const keys = context.keys();
 		const values = keys.map(context);
-		const data = keys.splice(0, 15).map((key, index) => {
+		const data = keys.map((key, index) => {
 			// Create slug from filename
 			const slug = key
 				.replace(/^.*[\\\/]/, "")

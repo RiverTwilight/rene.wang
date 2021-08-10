@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import LinkIcon from "../../static/icon/link.svg";
+import LinkIcon from "../../public/icon/link.svg";
 
 /**
  * 单个人物组件
