@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import Image from "next/image";
 import Text from "../../utils/i18n";
-import { postItem } from "../../data/i18n.json";
+import { postItem } from "../../i18n.json";
 //  '../scss/typo.scss'
 
 /**

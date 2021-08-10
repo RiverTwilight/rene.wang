@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as React from "react";
-import MainHeader from "./MainHeader"
+import MainHeader from "./MainHeader";
 
 /**
  * 头部
@@ -39,6 +39,13 @@ class Header extends React.Component<
 	componentDidMount() {
 		if (this.props.currentPage.path.match(/\/blog\/.+/)) {
 			this.activeMonitor();
+		}
+	}
+	componentDidUpdate() {
+		if (this.props.currentPage.path.match(/\/blog\/.+/)) {
+			this.activeMonitor();
+		} else {
+			this.destoryMonitor();
 		}
 	}
 	componentWillUnmount() {

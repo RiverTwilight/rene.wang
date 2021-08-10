@@ -41,7 +41,7 @@ export default class extends Document {
 						name="keywords"
 						content={config.keywords.join(",")}
 					/> */}
-					<link rel="icon" href="/static/image/favicon.ico" />
+					<link rel="icon" href="/public/image/favicon.ico" />
 					<meta name="theme-color" content="#000000" />
 					<link
 						rel="apple-touch-icon"

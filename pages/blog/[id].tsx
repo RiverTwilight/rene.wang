@@ -65,6 +65,9 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			currentPage: {
 				title: currentPost.frontmatter.title || currentPost.slug,
 				path: "/blog/" + currentPost.id,
+				description:
+					currentPost.frontmatter.summary ||
+					currentPost.markdownBody.slice(0, 100),
 				currentPost,
 			},
 			id: currentId,
@@ -129,7 +132,6 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 	return (
 		<>
 			<TimeBar />
-
 			<Typography itemScope itemType="http://schema.org/Article">
 				<Cover>
 					{frontmatter.cover && (
@@ -144,32 +146,28 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 				</Cover>
 
 				<h1 itemProp="headline">{frontmatter.title || slug}</h1>
-				<div className="typo">
-					<div className="typo-meta Textc(secondary) Texta(center)">
-						最后更新于
-						<span itemProp="dateCreated">{frontmatter.date}</span>
-						&nbsp;分类:
-						{frontmatter.categories
-							? frontmatter.categories.map(
-									(cate) =>
-										`${siteConfig.categories[cate][locale]} `
-							  )
-							: "未分类"}
-					</div>
-					<div className="typo-detail">
-						<div className="typo-detail-date"></div>
-					</div>
-					<div itemProp="articleBody">
-						<ReactMarkdown
-							renderers={{
-								code: CodeBlock,
-								heading: HeadingBlock,
-								image: ImageBlock,
-							}}
-							escapeHtml={false}
-							source={markdownBody}
-						></ReactMarkdown>
-					</div>
+				<div className="Textc(secondary)">
+					最后更新于
+					<span itemProp="dateCreated">{frontmatter.date}</span>
+					&nbsp;分类:
+					{frontmatter.categories
+						? frontmatter.categories.map(
+								(cate) =>
+									`${siteConfig.categories[cate][locale]} `
+						  )
+						: "未分类"}
+				</div>
+				<br />
+				<div itemProp="articleBody">
+					<ReactMarkdown
+						renderers={{
+							code: CodeBlock,
+							heading: HeadingBlock,
+							image: ImageBlock,
+						}}
+						escapeHtml={false}
+						source={markdownBody}
+					></ReactMarkdown>
 				</div>
 				{/* <ReadMore
 				currentId={id}

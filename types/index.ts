@@ -18,6 +18,7 @@ interface Window {
 export interface ICurrentPage {
 	title: string;
 	path: string;
+	description?: string;
 }
 
 // 词典
@@ -27,7 +28,7 @@ export type TDictionary = {
 	};
 };
 
-export type TLang = "zh" | "en" | "jp";
+export type TLang = "zh-CN" | "en-US" | "jp";
 
 export interface ISiteConfig {
 	title: string;

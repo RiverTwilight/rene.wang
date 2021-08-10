@@ -2,11 +2,11 @@ module.exports = {
 	title: "江村暮的博客",
 	root: "https://blog.yungeeker.com",
 	description: "开发日志、技术文章以及生活随感。",
-	keywords: [],
-	logo: {
-		large: "/static/image/logo-large.png",
-		small: "/static/image/logo-small.png",
-	},
+	keywords: ["江村暮的博客", "RiverTwilight", "过气码农"],
+	// logo: {
+	// 	large: "/static/image/logo-large.png",
+	// 	small: "/static/image/logo-small.png",
+	// },
 	author: {
 		name: "江村暮",
 		image: "/static/image/author.jpg",
@@ -42,11 +42,11 @@ module.exports = {
 			"zh-CN": "软件开发",
 		},
 	},
-	gitalk: {
-		clientID: "ecaa627dee7516573aed",
-		clientSecret: "03c76d614cc2bc51f7773dffed8a9ae17131e4f7",
-		repo: "Blog-Comment",
-		owner: "RiverTwilight",
-		admin: ["RiverTwilight"],
-	},
+	// gitalk: {
+	// 	clientID: "ecaa627dee7516573aed",
+	// 	clientSecret: "03c76d614cc2bc51f7773dffed8a9ae17131e4f7",
+	// 	repo: "Blog-Comment",
+	// 	owner: "RiverTwilight",
+	// 	admin: ["RiverTwilight"],
+	// },
 };

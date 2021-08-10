@@ -13,7 +13,7 @@ import {
 	CogSharpIcon,
 } from "kindyle";
 import Text from "../../utils/i18n";
-import { nav } from "../../data/i18n.json";
+import { nav } from "../../i18n.json";
 import { useRouter } from "next/router";
 import { ICurrentPage, ISiteConfig } from "../../types";
 
