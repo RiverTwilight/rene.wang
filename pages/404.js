@@ -1,5 +1,5 @@
 // export async function getServerSideProps() {
-// 	const config = await import(`../data/config.json`);
+// 	const config = await import(`../config.json`);
 
 // 	return {
 // 		props: {

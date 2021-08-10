@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Tab from "../components/Tab";
 import {
 	Button,
@@ -60,7 +61,13 @@ class HomePage extends React.Component {
 				<div className="P(10px)">
 					<Card>
 						<CardMedia>
-							<img src="/earth.jpg"></img>
+							{allPosts[0].frontmatter.cover && (
+								<Image
+									alt="Cover"
+									layout="fill"
+									src="/earth.jpg"
+								></Image>
+							)}
 						</CardMedia>
 						<CardContent>
 							<CardTitle>
@@ -105,7 +112,11 @@ class HomePage extends React.Component {
 						})
 						.map((post) => (
 							<Link href={"/blog/" + post.id}>
-								<ListItem>
+								<ListItem
+									style={{
+										cursor: "pointer",
+									}}
+								>
 									<ListItemText
 										primary={
 											post.frontmatter.title || post.slug
@@ -120,11 +131,9 @@ class HomePage extends React.Component {
 						))}
 					<br />
 					<Text dictionary={postList} language={locale}>
-						<Link href="/all">
-							<Button className="center">
-								<Text allPosts={[postNumber]} />
-							</Button>
-						</Link>
+						<Button component={Link} href="/all" className="center">
+							<Text allPosts={[postNumber]} />
+						</Button>
 					</Text>
 				</div>
 			</>

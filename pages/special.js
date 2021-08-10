@@ -32,10 +32,10 @@ class SpecialPage extends React.Component {
 		const { allPeoples, locale } = this.props;
 		return (
 			<>
-				<div className="P(10px) Bgc(white) card Br(30px)">
+				<div className="P(10px)">
 					<h2>朋友们</h2>
 					<div className="Dis(flex) people-list">
-						{allPeoples.map((people, i) => (
+						{/* {allPeoples.map((people, i) => (
 							<PeopleItem
 								key={i}
 								lang={locale}
@@ -43,7 +43,7 @@ class SpecialPage extends React.Component {
 								frontmatter={people.frontmatter}
 								body={people.markdownBody}
 							/>
-						))}
+						))} */}
 					</div>
 				</div>
 			</>

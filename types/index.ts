@@ -12,38 +12,40 @@ export type IPost = {
 };
 
 interface Window {
-    scrollListener: any
+	scrollListener: any;
 }
 
 export interface ICurrentPage {
-    title: string,
-    path: string
+	title: string;
+	path: string;
 }
 
 // 词典
 export type TDictionary = {
-    [dicIndex: string]: {
-        [langIndex: number]: string
-    }
+	[dicIndex: string]: {
+		[langIndex: number]: string;
+	};
 };
 
-export type TLang = 'zh' | 'en' | 'jp'
+export type TLang = "zh" | "en" | "jp";
 
 export interface ISiteConfig {
-    title: string,
-    keywords: string[],
-    description: string,
-    root: string,
-    author: {
-        name: string,
-        image?: string,
-        intro: {
-            title: string,
-            content: string
-        }[]
-    }
+	title: string;
+	keywords: string[];
+	description: string;
+	root: string;
+	author: {
+		name: string;
+		image?: string;
+		github?: string;
+		twitter?: string;
+		intro: {
+			title: string;
+			content: string;
+		}[];
+	};
 }
 
-declare module '*.svg' {
-    const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+declare module "*.svg" {
+	const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
 }

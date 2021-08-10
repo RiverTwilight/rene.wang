@@ -14,11 +14,11 @@ export default class extends Document {
 
 		// Run the parent `getInitialProps`, it now includes the custom `renderPage`
 		const initialProps = await Document.getInitialProps(ctx);
-		const config = await import(`../data/config.json`);
+		// const config = await import(`../site.config.js`);
 
 		return {
 			...initialProps,
-			config: config.default,
+			// config: config.default,
 		};
 	}
 	render() {
