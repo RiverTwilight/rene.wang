@@ -10,6 +10,12 @@
 		},
 		"search": {}
 	},
+	"menu":{
+		"about":{
+			"zh-CN": "关于",
+			"en-US": "About"
+		}
+	},
 	"postItem": {
 		"showMore": {
 			"zh-CN": "阅读全文",

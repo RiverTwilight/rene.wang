@@ -78,6 +78,7 @@ class HomePage extends React.Component {
 								<Button
 									href={"/blog/" + allPosts[0].id}
 									component={Link}
+									variant="outline"
 								>
 									阅读
 								</Button>
@@ -131,7 +132,12 @@ class HomePage extends React.Component {
 						))}
 					<br />
 					<Text dictionary={postList} language={locale}>
-						<Button component={Link} href="/all" className="center">
+						<Button
+							variant="outline"
+							component={Link}
+							href="/all"
+							className="center"
+						>
 							<Text allPosts={[postNumber]} />
 						</Button>
 					</Text>

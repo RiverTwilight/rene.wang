@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
@@ -28,7 +29,6 @@ const getRecommendPost = (
 		categories.forEach((cate) => {
 			post.frontmatter.categories.includes(cate) &&
 				!data.includes(post) &&
-				//@ts-expect-error
 				currentId !== post.id &&
 				data.push(post);
 		});
@@ -43,7 +43,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		{
 			id: getPostId,
 		},
-		//@ts-expect-error
 		require.context("../../posts", true, /\.md$/),
 		true
 	);
