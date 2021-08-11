@@ -15,7 +15,7 @@ import {
 	CardTitle,
 } from "kindyle";
 import Text from "../utils/i18n";
-import { postList } from "../i18n.json";
+import { postList, postItem } from "../i18n.json";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 
@@ -75,13 +75,15 @@ class HomePage extends React.Component {
 							</CardTitle>
 							{allPosts[0].frontmatter.summary}
 							<CardAction>
-								<Button
-									href={"/blog/" + allPosts[0].id}
-									component={Link}
-									variant="outline"
-								>
-									阅读
-								</Button>
+								<Text dictionary={postItem} language={locale}>
+									<Button
+										href={"/blog/" + allPosts[0].id}
+										component={Link}
+										variant="outline"
+									>
+										<Text readMore />
+									</Button>
+								</Text>
 							</CardAction>
 						</CardContent>
 					</Card>

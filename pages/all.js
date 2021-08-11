@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Typography } from "kindyle";
+import { Typography, Card } from "kindyle";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 
@@ -32,19 +32,19 @@ const AllPost = ({ allPosts, locale }) => (
 	<>
 		<Typography>
 			<h1>全部文章</h1>
-			<ul></ul>
-			{allPosts.map((post) => (
-				<li>
-					<Link
-						href={"/blog/" + post.id}
-						locale={locale}
-						key={post.id}
-					>
-						{post.frontmatter.title || post.slug}
-					</Link>
-					<br></br>
-				</li>
-			))}
+			<ul>
+				{allPosts.map((post) => (
+					<li>
+						<Link
+							href={"/blog/" + post.id}
+							locale={locale}
+							key={post.id}
+						>
+							{post.frontmatter.title || post.slug}
+						</Link>
+					</li>
+				))}
+			</ul>
 		</Typography>
 	</>
 );

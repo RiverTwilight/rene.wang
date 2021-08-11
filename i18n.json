@@ -17,9 +17,9 @@
 		}
 	},
 	"postItem": {
-		"showMore": {
+		"readMore": {
 			"zh-CN": "阅读全文",
-			"en-US": "Show more"
+			"en-US": "Read More"
 		},
 		"showLess": {
 			"zh-CN": "收起"
