@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
 		currentPage = {
 			title: "404",
 		},
-		locale,
+		locale = "zh-CN",
 		menuItems = [],
 	} = pageProps;
 

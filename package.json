@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start -p 4000"
   },
   "author": "",
@@ -14,13 +14,14 @@
     "@svgr/webpack": "^5.5.0",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
-    "kindyle": "^1.0.1",
+    "kindyle": "^1.0.2",
     "next": "^11.0.1",
+    "postcss": "^8.3.6",
     "raw-loader": "^4.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^4.3.1",
-    "react-syntax-highlighter": "^12.2.1",
+    "react-syntax-highlighter": "^15.4.4",
     "styled-components": "^5.1.1",
     "uuid": "^8.3.0"
   },

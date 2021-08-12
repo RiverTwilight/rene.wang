@@ -16,7 +16,13 @@ const Layout = (props: {
 	children: JSX.Element | JSX.Element[];
 	menuItems: any[];
 }) => {
-	const { currentPage, siteConfig, locale, children, menuItems } = props;
+	const {
+		currentPage,
+		siteConfig,
+		locale,
+		children,
+		menuItems,
+	} = props;
 	const { author, title } = siteConfig;
 	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title}`;
 	const showDescription = currentPage.description || siteConfig.description;

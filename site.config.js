@@ -3,13 +3,9 @@ module.exports = {
 	root: "https://blog.yungeeker.com",
 	description: "开发日志、技术文章以及生活随感。",
 	keywords: ["江村暮的博客", "RiverTwilight", "过气码农"],
-	// logo: {
-	// 	large: "/static/image/logo-large.png",
-	// 	small: "/static/image/logo-small.png",
-	// },
 	author: {
 		name: "江村暮",
-		image: "/static/image/author.jpg",
+		image: "/public/image/author.jpg",
 		twitter: "https://twitter.com/rea1DonandTrump",
 		github: "https://github.com/RiverTwilight",
 		intro: [

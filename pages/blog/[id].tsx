@@ -47,12 +47,12 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		true
 	);
 	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
-	console.log(
-		posts.filter((post: any) => {
-			console.log(post.id, currentId);
-			return post.id === currentId;
-		})
-	);
+	// console.log(
+	// 	posts.filter((post: any) => {
+	// 		console.log(post.id, currentId);
+	// 		return post.id === currentId;
+	// 	})
+	// );
 	return {
 		props: {
 			recommendPost: getRecommendPost(

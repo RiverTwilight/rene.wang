@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Typography, Card } from "kindyle";
+import { Typography } from "kindyle";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 

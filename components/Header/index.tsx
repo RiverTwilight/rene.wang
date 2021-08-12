@@ -37,19 +37,21 @@ class Header extends React.Component<
 		}
 	};
 	componentDidMount() {
-		if (this.props.currentPage.path.match(/\/blog\/.+/)) {
-			this.activeMonitor();
-		}
+		this.initialMonitor();
 	}
 	componentDidUpdate() {
-		if (this.props.currentPage.path.match(/\/blog\/.+/)) {
+		this.initialMonitor();
+	}
+	componentWillUnmount() {
+		this.destoryMonitor();
+	}
+	initialMonitor() {
+		const { currentPage } = this.props;
+		if (currentPage.path && currentPage.path.match(/\/blog\/.+/)) {
 			this.activeMonitor();
 		} else {
 			this.destoryMonitor();
 		}
-	}
-	componentWillUnmount() {
-		this.destoryMonitor();
 	}
 	destoryMonitor() {
 		window.removeEventListener("scroll", this.handleScroll);

@@ -40,12 +40,14 @@ const MainHeader = ({ siteConfig, menuItems, currentPage, lang }: IHeader) => {
 	};
 
 	var pageMenuItems = [];
-	if (currentPage.path.match(/\/blog\/.+/)) {
-		pageMenuItems.push({
-			textPrimary: "About This Book",
-		});
-	} else if (currentPage.path.match(/\/blog\/.+/)) {
-		// ...
+	if (currentPage.path) {
+		if (currentPage.path.match(/\/blog\/.+/)) {
+			pageMenuItems.push({
+				textPrimary: "About This Book",
+			});
+		} else if (currentPage.path.match(/\/blog\/.+/)) {
+			// ...
+		}
 	}
 
 	return (
