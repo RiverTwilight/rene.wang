@@ -75,15 +75,18 @@ class HomePage extends React.Component {
 							</CardTitle>
 							{allPosts[0].frontmatter.summary}
 							<CardAction>
-								<Text dictionary={postItem} language={locale}>
-									<Button
-										href={"/blog/" + allPosts[0].id}
-										component={Link}
-										variant="outline"
+								<Button
+									href={"/blog/" + allPosts[0].id}
+									component={Link}
+									variant="outline"
+								>
+									<Text
+										dictionary={postItem}
+										language={locale}
 									>
 										<Text readMore />
-									</Button>
-								</Text>
+									</Text>
+								</Button>
 							</CardAction>
 						</CardContent>
 					</Card>
