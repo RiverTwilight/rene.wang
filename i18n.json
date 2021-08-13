@@ -10,7 +10,7 @@
 		},
 		"search": {}
 	},
-	"menu":{
+	"navbarMenu":{
 		"about":{
 			"zh-CN": "关于",
 			"en-US": "About"

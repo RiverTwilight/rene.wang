@@ -17,7 +17,7 @@ import {
 	CogSharpIcon,
 } from "kindyle";
 import Text from "../../utils/i18n";
-import { nav, menu } from "../../i18n.json";
+import { nav, navbarMenu } from "../../i18n.json";
 import { useRouter } from "next/router";
 import { ICurrentPage, ISiteConfig } from "../../types";
 
@@ -94,7 +94,7 @@ const MainHeader = ({ siteConfig, menuItems, currentPage, lang }: IHeader) => {
 							<Button>CLOSE</Button>
 						</DialogAction>
 					</Dialog>
-					<Text dictionary={menu} language={lang}>
+					<Text dictionary={navbarMenu} language={lang}>
 						<ActionBarMenu
 							items={[
 								...menuItems,
