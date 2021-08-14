@@ -4,17 +4,15 @@
 
 ## 配置
 
-配置文件位于 `/data/config.json`
+配置文件位于 `./site.config.js`
 
 -   title:博客名称
-
-*   root:博客根网址
-
-*   author: 作者信息
+-   root:博客根网址
+-   author: 作者信息
     -   name:名称
     -   image:玉照
     -   intro:介绍
-*   catagories: 目录配置
+-   catagories: 目录配置
 
 ### 静态资源
 
@@ -33,7 +31,9 @@
 
 ## 部署
 
-由于 Nextjs 的 i18n 功能不支持静态导出，需要部署到服务器上，可以使用 github action 轻松部署。
+~~由于 Nextjs 的 i18n 功能不支持静态导出，需要部署到服务器上，可以使用 github action 轻松部署。~~
+
+有两种部署方式，[Vercel](https://vercel.com/)和自己的服务器，vercel只需FORK仓库并按提示走就可以了，如果要部署到自己的服务器请继续阅读:
 
 ### 0.服务器配置
 
@@ -43,7 +43,7 @@
 
 ### 1.Github 仓库配置
 
-在 github 创建一个远程仓库，并在`setting`->`Secrets`下添加服务器信息。
+在 github 创建一个仓库，并在`setting`->`Secrets`下添加服务器信息。
 
 -   SSH_HOST：服务器 IP
 -   SSH_USERNAME：服务器用户名
