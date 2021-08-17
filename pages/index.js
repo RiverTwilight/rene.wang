@@ -13,7 +13,7 @@ import {
 	CardAction,
 	CardMedia,
 	CardTitle,
-} from "kindyle";
+} from "kindle-ui";
 import Text from "../utils/i18n";
 import { postList, postItem } from "../i18n.json";
 import getAllPosts from "../utils/getAllPosts";

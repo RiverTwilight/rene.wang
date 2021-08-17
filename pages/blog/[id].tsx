@@ -10,7 +10,7 @@ import getAllPosts from "../../utils/getAllPosts";
 import getPaths from "../../utils/getPaths";
 import getPostId from "../../utils/getPostId";
 // import BookOutline from "../../static/icon/book-outline.svg";
-import { Typography, TimeBar } from "kindyle";
+import { Typography, TimeBar } from "kindle-ui";
 import { IPost } from "../../types";
 
 /**

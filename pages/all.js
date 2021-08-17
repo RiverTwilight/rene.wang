@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Typography } from "kindyle";
+import { Typography } from "kindle-ui";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 
