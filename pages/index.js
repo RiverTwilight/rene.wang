@@ -75,8 +75,8 @@ class HomePage extends React.Component {
 							</CardTitle>
 							{allPosts[0].frontmatter.summary}
 							<CardAction>
-								<Link passHref href={"/blog/" + allPosts[0].id}>
-									<Button component={"a"} variant="outline">
+								<Link href={"/blog/" + allPosts[0].id}>
+									<Button variant="outline">
 										<Text
 											dictionary={postItem}
 											language={locale}
@@ -147,4 +147,5 @@ class HomePage extends React.Component {
 	}
 }
 
+// TODO 友链
 export default HomePage;
