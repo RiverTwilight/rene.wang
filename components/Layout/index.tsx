@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "../Header";
+import RelatedLink from "../RelatedLink"
 import { ICurrentPage, ISiteConfig } from "../../types";
 
 const Layout = (props: {
@@ -16,13 +17,7 @@ const Layout = (props: {
 	children: JSX.Element | JSX.Element[];
 	menuItems: any[];
 }) => {
-	const {
-		currentPage,
-		siteConfig,
-		locale,
-		children,
-		menuItems,
-	} = props;
+	const { currentPage, siteConfig, locale, children, menuItems } = props;
 	const { author, title } = siteConfig;
 	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title}`;
 	const showDescription = currentPage.description || siteConfig.description;
@@ -73,7 +68,11 @@ const Layout = (props: {
 				siteConfig={siteConfig}
 			/>
 			<div className="main">
-				<div className="container">{children}</div>
+				<div className="container">
+					{children}
+					<hr></hr>
+					<RelatedLink />
+				</div>
 			</div>
 		</>
 	);

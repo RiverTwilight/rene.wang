@@ -1,7 +1,7 @@
 //@ts-nocheck
 
 import React, { useState } from "react";
-import { Tab, TabItem } from "kindyle";
+import { Tab, TabItem } from "kindle-ui";
 import Text from "../../utils/i18n";
 
 type tabsType = {

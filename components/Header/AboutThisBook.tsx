@@ -1,1 +1,1 @@
-import { Menu } from "kindyle";
+import { Menu } from "kindle-ui";

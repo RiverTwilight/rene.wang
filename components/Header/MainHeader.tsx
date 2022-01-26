@@ -15,7 +15,7 @@ import {
 	ActionBarMenu,
 	HomeOutlineIcon,
 	CogSharpIcon,
-} from "kindyle";
+} from "kindle-ui";
 import Text from "../../utils/i18n";
 import { nav, navbarMenu } from "../../i18n.json";
 import { useRouter } from "next/router";

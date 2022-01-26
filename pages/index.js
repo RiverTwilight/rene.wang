@@ -13,7 +13,7 @@ import {
 	CardAction,
 	CardMedia,
 	CardTitle,
-} from "kindyle";
+} from "kindle-ui";
 import Text from "../utils/i18n";
 import { postList, postItem } from "../i18n.json";
 import getAllPosts from "../utils/getAllPosts";
@@ -75,18 +75,16 @@ class HomePage extends React.Component {
 							</CardTitle>
 							{allPosts[0].frontmatter.summary}
 							<CardAction>
-								<Button
-									href={"/blog/" + allPosts[0].id}
-									component={Link}
-									variant="outline"
-								>
-									<Text
-										dictionary={postItem}
-										language={locale}
-									>
-										<Text readMore />
-									</Text>
-								</Button>
+								<Link href={"/blog/" + allPosts[0].id}>
+									<Button variant="outline">
+										<Text
+											dictionary={postItem}
+											language={locale}
+										>
+											<Text readMore />
+										</Text>
+									</Button>
+								</Link>
 							</CardAction>
 						</CardContent>
 					</Card>
@@ -117,7 +115,7 @@ class HomePage extends React.Component {
 							);
 						})
 						.map((post) => (
-							<Link href={"/blog/" + post.id}>
+							<Link passHref href={"/blog/" + post.id}>
 								<ListItem
 									style={{
 										cursor: "pointer",
@@ -137,14 +135,11 @@ class HomePage extends React.Component {
 						))}
 					<br />
 					<Text dictionary={postList} language={locale}>
-						<Button
-							variant="outline"
-							component={Link}
-							href="/all"
-							className="center"
-						>
-							<Text allPosts={[postNumber]} />
-						</Button>
+						<Link passHref href="/all">
+							<Button variant="outline" className="center">
+								<Text allPosts={[postNumber]} />
+							</Button>
+						</Link>
 					</Text>
 				</div>
 			</>
@@ -152,4 +147,5 @@ class HomePage extends React.Component {
 	}
 }
 
+// TODO 友链
 export default HomePage;

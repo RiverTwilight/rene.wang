@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import siteConfig from "../site.config.js";
-import { Container } from "kindyle";
-
+import { Container } from "kindle-ui";
 import "./App.css";
 
 function MyApp({ Component, pageProps }) {
-	const [dark, setDark] = useState(false);
+	const [colorTheme, setColorTheme] = useState("light");
 
 	useEffect(() => {
-		if (localStorage.getItem("dark")) {
-			setDark(localStorage.getItem("dark"));
+		if (localStorage.getItem("colorTheme")) {
+			setColorTheme(localStorage.getItem("colorTheme"));
 		}
-		window.setDark = (state) => {
-			setDark(state);
+		window.setColorTheme = (state) => {
+			setColorTheme(state);
 		};
-		console.log("Some global functions to nerds: Window.setDark()");
+		console.log("Some global functions to nerds: Window.setColorTheme()");
 	}, []);
 
 	const {
@@ -27,7 +26,7 @@ function MyApp({ Component, pageProps }) {
 	} = pageProps;
 
 	return (
-		<Container dark={dark}>
+		<Container dark={colorTheme === "dark"}>
 			<Layout
 				siteConfig={siteConfig}
 				locale={locale}
