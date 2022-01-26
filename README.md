@@ -1,4 +1,6 @@
-# NBlog
+# Rene.wang
+
+这是我的的[博客](https://rene.wang)的源代码。
 
 灵感来源于这篇 [文章](https://dev.to/tinacms/creating-a-markdown-blog-with-next-js-52hk)
 
