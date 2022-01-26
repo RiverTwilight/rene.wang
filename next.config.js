@@ -25,7 +25,7 @@ module.exports = {
 		return config;
 	},
 	i18n: {
-		locales: ["en-US", "zh-CN"],
-		defaultLocale: "zh-CN",
+		locales: ["zh", "en-US"],
+		defaultLocale: "zh",
 	},
 };

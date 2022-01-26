@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-// SEO 问题
+
 export default class extends Document {
 	static async getInitialProps(ctx) {
 		const originalRenderPage = ctx.renderPage;
@@ -22,31 +22,16 @@ export default class extends Document {
 		};
 	}
 	render() {
-		// const { title, description, author } = this.props.config;
 		return (
 			<Html>
 				<Head>
 					<meta charSet="utf-8" />
-					{/* <meta
-						name="description"
-						content="云极客工具，励志做最轻盈最好用的在线工具。以工匠精神打造功能丰富的在线工具，无需下载即可免费使用"
-					/>
-					<meta
-						itemprop="description"
-						name="description"
-						content={config.description}
-					/>
-					<meta itemprop="name" content="云极客工具" />
-					<meta
-						name="keywords"
-						content={config.keywords.join(",")}
-					/> */}
-					<link rel="icon" href="/public/image/favicon.ico" />
 					<meta name="theme-color" content="#000000" />
 					<link
 						rel="apple-touch-icon"
-						href="%PUBLIC_URL%/logo192.png"
+						href="/logo/apple-touch-icon.png"
 					/>
+					<link rel="icon" href="/logo/favicon.ico" sizes="any" />
 					<meta name="renderer" content="webkit" />
 					<meta name="force-rendering" content="webkit" />
 					<meta
