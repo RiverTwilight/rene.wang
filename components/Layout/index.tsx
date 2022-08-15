@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "../Header";
-import RelatedLink from "../RelatedLink"
+import RelatedLink from "../RelatedLink";
 import { ICurrentPage, ISiteConfig } from "../../types";
 
 const Layout = (props: {
@@ -39,7 +39,7 @@ const Layout = (props: {
 					name="description"
 					content={showDescription}
 				/>
-				<meta itemProp="name" content="云极客工具" />
+				<meta itemProp="name" content={showTitle} />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content={showTitle} />
 				<meta property="og:url" content={siteConfig.root} />

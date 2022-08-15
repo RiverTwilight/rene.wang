@@ -20,6 +20,7 @@ import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 
 export async function getStaticProps({ locale, locales }) {
+	// const sortedPosts = [];
 	const sortedPosts = getAllPosts(
 		{
 			markdownBody: (content) =>
@@ -56,39 +57,44 @@ class HomePage extends React.Component {
 	render() {
 		const { allPosts, siteConfig, locale, postNumber } = this.props;
 		const { channel } = this.state;
+
+		console.log(locale);
+
 		return (
 			<>
-				<div className="P(10px)">
-					<Card>
-						<CardMedia>
-							{allPosts[0].frontmatter.cover && (
-								<Image
-									alt="Cover"
-									layout="fill"
-									src="/earth.jpg"
-								></Image>
-							)}
-						</CardMedia>
-						<CardContent>
-							<CardTitle>
-								{allPosts[0].frontmatter.title || post.slug}
-							</CardTitle>
-							{allPosts[0].frontmatter.summary}
-							<CardAction>
-								<Link href={"/blog/" + allPosts[0].id}>
-									<Button variant="outline">
-										<Text
-											dictionary={postItem}
-											language={locale}
-										>
-											<Text readMore />
-										</Text>
-									</Button>
-								</Link>
-							</CardAction>
-						</CardContent>
-					</Card>
-				</div>
+				{allPosts.length && (
+					<div className="P(10px)">
+						<Card>
+							<CardMedia>
+								{allPosts[0].frontmatter.cover && (
+									<Image
+										alt="Cover"
+										layout="fill"
+										src="/earth.jpg"
+									></Image>
+								)}
+							</CardMedia>
+							<CardContent>
+								<CardTitle>
+									{allPosts[0].frontmatter.title || post.slug}
+								</CardTitle>
+								{allPosts[0].frontmatter.summary}
+								<CardAction>
+									<Link href={"/blog/" + allPosts[0].id}>
+										<Button variant="outline">
+											<Text
+												dictionary={postItem}
+												language={locale}
+											>
+												<Text readMore />
+											</Text>
+										</Button>
+									</Link>
+								</CardAction>
+							</CardContent>
+						</Card>
+					</div>
+				)}
 
 				<Tab
 					lang={locale}

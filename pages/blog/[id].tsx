@@ -157,7 +157,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 						: "未分类"}
 				</div>
 				<br />
-				<div itemProp="articleBody">
+				<article itemProp="articleBody">
 					<ReactMarkdown
 						renderers={{
 							code: CodeBlock,
@@ -167,7 +167,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 						escapeHtml={false}
 						source={markdownBody}
 					></ReactMarkdown>
-				</div>
+				</article>
 				{/* <ReadMore
 				currentId={id}
 				categories={frontmatter.categories}
