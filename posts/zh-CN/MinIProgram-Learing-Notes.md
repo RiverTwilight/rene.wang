@@ -2,7 +2,7 @@
 title: 小程序踩坑记录
 date: 2021/2/20
 categories:
-    - FrontEnd
+    - Programming
 ---
 
 刚花了五天做一个小程序，准备审核的时候发现个人小程序不允许有用户发布内容，心都碎了....

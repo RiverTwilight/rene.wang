@@ -2,7 +2,7 @@
 title: Unity游戏开发学习记录
 date: 2022/8/9
 categories:
-    - FrontEnd
+    - Programming
 ---
 
 ## Day 0

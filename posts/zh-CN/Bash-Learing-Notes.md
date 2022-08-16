@@ -2,7 +2,7 @@
 title: bash学习笔记
 date: 2020/8/27
 categories:
-    - FrontEnd
+    - Programming
 ---
 
 因为最近开始玩 WSL，就想起搁置了好久的学习计划————bash。这篇文章记录一些重点。

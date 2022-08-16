@@ -2,7 +2,6 @@
 title: 解决chrome打开新Tab强制打开bing-com的流氓问题
 date: 2020/06/25
 categories:
-    - SoftWare
     - Life
 ---
 
