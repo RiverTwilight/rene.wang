@@ -70,8 +70,8 @@ const Layout = (props: {
 			<div className="main">
 				<div className="container">
 					{children}
-					<hr></hr>
-					<RelatedLink />
+					<br></br>
+					<RelatedLink locale={locale} />
 				</div>
 			</div>
 		</>

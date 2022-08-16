@@ -25,6 +25,16 @@
 			"zh-CN": "收起"
 		}
 	},
+	"RelatedLinks": {
+		"title": {
+			"zh-CN": "友情链接",
+			"en-US": "Related Links"
+		},
+		"submit": {
+			"zh-CN": "申请",
+			"en-US": "Submit"
+		}
+	},
 	"postList": {
 		"allPosts": { "zh-CN": "查看全部%s篇文章", "en-US": "All %s Posts" }
 	}

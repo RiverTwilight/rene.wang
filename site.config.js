@@ -34,6 +34,12 @@ module.exports = {
 			"zh-CN": "随感",
 		},
 	},
+	relatedLinks: [
+		{
+			title: "AkaraChen",
+			url: "https://akr.moe/",
+		},
+	],
 	// gitalk: {
 	// 	clientID: "ecaa627dee7516573aed",
 	// 	clientSecret: "03c76d614cc2bc51f7773dffed8a9ae17131e4f7",

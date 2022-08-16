@@ -142,13 +142,15 @@ class HomePage extends React.Component {
 							</Link>
 						))}
 					<br />
-					<Text dictionary={postList} language={locale}>
-						<Link passHref href="/all">
-							<Button variant="outline" className="center">
-								<Text allPosts={[postNumber]} />
-							</Button>
-						</Link>
-					</Text>
+					<div className="Dis(flex) JC(center)">
+						<Text dictionary={postList} language={locale}>
+							<Link passHref href="/all">
+								<Button variant="outline" className="center">
+									<Text allPosts={[postNumber]} />
+								</Button>
+							</Link>
+						</Text>
+					</div>
 				</div>
 			</>
 		);

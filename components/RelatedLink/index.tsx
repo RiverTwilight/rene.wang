@@ -1,15 +1,30 @@
 //@ts-nocheck
 import * as React from "react";
-import MainHeader from "./MainHeader";
+import { Card, Typography } from "kindle-ui";
+import dic from "../../i18n.json";
+import { relatedLinks } from "../../site.config";
 
-/**
- * 头部
- */
+const Links = () =>
+	relatedLinks.map(({ title, url }, i) => (
+		<>
+			<a key={title + i} href={url}>
+				{title}
+			</a>
+			&nbsp;
+		</>
+	));
 
-const Links = () => linkList.map((link, i)=>(<a>{link.text}</a>))
-
-const RelatedLink = () => {
-	return <div className="P(10px) Textc(secondary)">Related Links: </div>;
+const RelatedLink = ({ locale = "zh-CN" }) => {
+	return (
+		<Card>
+			<Typography>
+				<div className="P(10px) Textc(secondary)">
+					{dic.RelatedLinks.title[locale]}: <Links />
+					<a href="">{dic.RelatedLinks.submit[locale]}</a>
+				</div>
+			</Typography>
+		</Card>
+	);
 };
 
 export default RelatedLink;
