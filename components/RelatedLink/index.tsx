@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as React from "react";
-import { Card, Typography } from "kindle-ui";
+import { Card, CardTitle, Typography } from "kindle-ui";
 import dic from "../../i18n.json";
 import { relatedLinks } from "../../site.config";
 
@@ -16,14 +16,15 @@ const Links = () =>
 
 const RelatedLink = ({ locale = "zh-CN" }) => {
 	return (
-		<Card>
-			<Typography>
-				<div className="P(10px) Textc(secondary)">
-					{dic.RelatedLinks.title[locale]}: <Links />
+		<div className="P(10px)">
+			<Card>
+				<Typography>
+					<CardTitle>{dic.RelatedLinks.title[locale]}</CardTitle>{" "}
+					<Links />
 					<a href="">{dic.RelatedLinks.submit[locale]}</a>
-				</div>
-			</Typography>
-		</Card>
+				</Typography>
+			</Card>
+		</div>
 	);
 };
 
