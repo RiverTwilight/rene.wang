@@ -26,7 +26,10 @@ class Header extends React.Component<
 				let t2 =
 					document.documentElement.scrollTop ||
 					document.body.scrollTop;
-				if (t2 > this.t1) {
+
+				if (t2 < 120) {
+					this.setState({ showHeader: true });
+				} else if (t2 > this.t1) {
 					this.setState({ showHeader: false });
 				} else if (t2 < this.t1) {
 					this.setState({ showHeader: true });
