@@ -2,8 +2,6 @@
 
 这是我的的[博客](https://rene.wang)的源代码。
 
-灵感来源于这篇 [文章](https://dev.to/tinacms/creating-a-markdown-blog-with-next-js-52hk)
-
 ## 配置
 
 配置文件位于 `./site.config.js`
@@ -24,7 +22,7 @@
 
 ## 写作
 
-将文章放入`/posts`目录即可. NBlog 支持 markdown 和 HTML.
+将 Markdown 文件放入`/posts`目录即可。
 
 ### 文章元数据 frontmatter
 
@@ -35,7 +33,7 @@
 
 ~~由于 Nextjs 的 i18n 功能不支持静态导出，需要部署到服务器上，可以使用 github action 轻松部署。~~
 
-有两种部署方式，[Vercel](https://vercel.com/)和自己的服务器，vercel只需FORK仓库并按提示走就可以了，如果要部署到自己的服务器请继续阅读:
+有两种部署方式，[Vercel](https://vercel.com/)和自己的服务器，vercel 只需 FORK 仓库并按提示走就可以了，如果要部署到自己的服务器请继续阅读:
 
 ### 0.服务器配置
 

@@ -8,7 +8,7 @@ module.exports = {
 	},
 	images: {
 		sizes: [320, 480, 820, 1200, 1600],
-		domains: ["i.loli.net", "bgr.com"],
+		domains: ["i.loli.net", "bgr.com", "mmbiz.qpic.cn"],
 	},
 	webpack: function (config) {
 		config.module.rules.push({

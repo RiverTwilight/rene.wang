@@ -1,6 +1,6 @@
 module.exports = {
 	title: "江村暮的博客",
-	root: "https://blog.yungeeker.com",
+	root: "https://rene.wang",
 	description: "开发日志、技术文章以及生活随感。",
 	keywords: ["江村暮的博客", "RiverTwilight", "过气码农"],
 	author: {
@@ -23,19 +23,15 @@ module.exports = {
 		},
 		Life: {
 			"en-US": "Life",
-			"zh-CN": "生活",
+			"zh-CN": "生活记录",
 		},
-		FrontEnd: {
-			"en-US": "Front End",
-			"zh-CN": "前端",
+		Programming: {
+			"en-US": "Programming",
+			"zh-CN": "程序人生",
 		},
 		Feeling: {
 			"en-US": "Feeling",
 			"zh-CN": "随感",
-		},
-		SoftWare: {
-			"en-US": "SofeWare",
-			"zh-CN": "软件开发",
 		},
 	},
 	// gitalk: {

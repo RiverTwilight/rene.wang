@@ -19,6 +19,8 @@ import { postList, postItem } from "../i18n.json";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 
+const MAX_POST_COUNT = 12;
+
 export async function getStaticProps({ locale, locales }) {
 	// const sortedPosts = [];
 	const sortedPosts = getAllPosts(
@@ -35,7 +37,7 @@ export async function getStaticProps({ locale, locales }) {
 
 	return {
 		props: {
-			allPosts: sortedPosts.slice(0, 10),
+			allPosts: sortedPosts.slice(0, MAX_POST_COUNT),
 			currentPage: {
 				title: "首页",
 				path: "/",
