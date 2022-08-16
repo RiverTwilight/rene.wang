@@ -39,6 +39,10 @@ module.exports = {
 			title: "AkaraChen",
 			url: "https://akr.moe/",
 		},
+		{
+			title: "dky的博客",
+			url: "https://wp.dkymore.com",
+		},
 	],
 	// gitalk: {
 	// 	clientID: "ecaa627dee7516573aed",
