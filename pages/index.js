@@ -31,8 +31,9 @@ export async function getStaticProps({ locale, locales }) {
 				}`,
 			id: getPostId,
 		},
-		require.context("../posts", true, /\.md$/),
-		true
+		require.context("../posts", true, /[\.md|\.config\.js]$/),
+		true,
+		locale
 	);
 
 	return {
