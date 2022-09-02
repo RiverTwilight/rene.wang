@@ -1,6 +1,7 @@
 ---
 title: Before the Tsunami Comes： 8 Tips for Using Internet
 date: 2022/8/17
+pin: false
 categories:
     - Life
 ---

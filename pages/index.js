@@ -22,7 +22,6 @@ import getPostId from "../utils/getPostId";
 const MAX_POST_COUNT = 12;
 
 export async function getStaticProps({ locale, locales }) {
-	// const sortedPosts = [];
 	const sortedPosts = getAllPosts(
 		{
 			markdownBody: (content) =>
@@ -31,14 +30,17 @@ export async function getStaticProps({ locale, locales }) {
 				}`,
 			id: getPostId,
 		},
-		require.context("../posts", true, /[\.md|\.config\.js]$/),
+		require.context("../posts", true, /[\.md|(\.js)]$/),
 		true,
 		locale
 	);
 
+	console.log(sortedPosts);
+
 	return {
 		props: {
-			allPosts: sortedPosts.slice(0, MAX_POST_COUNT),
+			allPosts: sortedPosts,
+			catagories: sortedPosts.map((cata) => cata.name),
 			currentPage: {
 				title: "首页",
 				path: "/",
@@ -53,19 +55,24 @@ class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			channel: "all",
+			activeCatagories: "All",
 			page: 1,
 		};
 	}
 	render() {
-		const { allPosts, siteConfig, locale, postNumber } = this.props;
-		const { channel } = this.state;
+		const { allPosts, siteConfig, locale, postNumber, catagories } =
+			this.props;
+		const { activeCatagories } = this.state;
 
-		console.log(locale);
+		const sorted = activeCatagories
+			? allPosts.find((cata) => cata.name === activeCatagories)
+			: allPosts.map((item) => [...item.children]);
+
+		console.log(sorted);
 
 		return (
 			<>
-				{allPosts.length && (
+				{/* {allPosts.length && (
 					<div className="P(10px)">
 						<Card>
 							<CardMedia>
@@ -97,51 +104,39 @@ class HomePage extends React.Component {
 							</CardContent>
 						</Card>
 					</div>
-				)}
+				)} */}
 
 				<Tab
 					lang={locale}
-					tabs={siteConfig.categories}
+					tabs={categories}
 					activeIndex={channel}
 					onChange={(index) => {
 						this.setState({
-							channel: index,
+							catagories: index,
 						});
 					}}
 				/>
 
 				<div>
-					{allPosts
-						.slice(1) // 剔除已经置顶的最新文章
-						.filter((post) => {
-							return (
-								[
-									...Object.values(
-										post.frontmatter.categories || []
-									),
-									"all",
-								].includes(channel) && post.locale === locale
-							);
-						})
-						.map((post) => (
-							<Link passHref href={"/blog/" + post.id}>
-								<ListItem
-									style={{
-										cursor: "pointer",
-									}}
-								>
-									<ListItemText
-										primary={
-											post.frontmatter.title || post.slug
-										}
-										second={post.frontmatter.date}
-									/>
-									<ListItemIcon onClick={() => {}}>
-										<EllipsisVerticalIcon />
-									</ListItemIcon>
-								</ListItem>
-							</Link>
-						))}
+					{sorted.children.map((post) => (
+						<Link passHref href={"/blog/" + post.id}>
+							<ListItem
+								style={{
+									cursor: "pointer",
+								}}
+							>
+								<ListItemText
+									primary={
+										post.frontmatter.title || post.slug
+									}
+									second={post.frontmatter.date}
+								/>
+								<ListItemIcon onClick={() => {}}>
+									<EllipsisVerticalIcon />
+								</ListItemIcon>
+							</ListItem>
+						</Link>
+					))}
 					<br />
 					<div className="Dis(flex) JC(center)">
 						<Text dictionary={postList} language={locale}>

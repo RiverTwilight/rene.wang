@@ -1,3 +1,4 @@
+import { FILE } from "dns";
 import matter from "gray-matter";
 
 const generateTokens = (path: string): { value: string; type: string }[] => {
@@ -65,7 +66,7 @@ const generateAllFiles = (files: string[]): IFile => {
 
 					currentPosition.children.push({
 						name: token.value,
-						type: "doc",
+						type: /.md$/.test(token.value) ? "doc" : "config",
 						path: file.path,
 					});
 
@@ -87,7 +88,7 @@ const generateAllFiles = (files: string[]): IFile => {
 								currentPosition.children.length - 1
 							];
 
-						console.log("is a folder", currentPosition.name);
+						// console.log("is a folder", currentPosition.name);
 					} else {
 						currentPosition = currentPosition.children.find(
 							(child) => {
@@ -99,8 +100,6 @@ const generateAllFiles = (files: string[]): IFile => {
 			}
 		});
 	});
-
-	// console.log(fileTrees.children[0]);
 
 	return fileTrees;
 };
@@ -124,76 +123,89 @@ export default function getAllPosts(
 	sort: boolean = false,
 	locale: string
 ) {
-	//get posts & context from folder
 	const posts = ((context) => {
 		const keys = context.keys();
 		const values = keys.map(context);
 		const key_value_map = generateMap(keys, values);
 		const localizedTree = generateAllFiles(keys).children.find((child) => {
-			return child.name === "zh-CN";
+			return child.name === locale;
 		});
 
+		console.log(keys);
+
 		const validlization = (files: any[], pocessRes) => {
-			return files.map((item) => {
-				console.log(item.path);
+			return files
+				.filter((item) => item.type !== "config")
+				.map((item) => {
+					if (item.type === "doc") {
+						const slug = item.path
+							.split(".")
+							.slice(0, -1)
+							.join(".")
+							.trim();
+						const id = pocessRes.hasOwnProperty("id")
+							? pocessRes.id(slug)
+							: slug;
 
-				if (/[\.config|\.js]$/.test(item.path)) {
-				} else if (item.type === "doc") {
-					const slug = item.path
-						.split(".")
-						.slice(0, -1)
-						.join(".")
-						.trim();
-					const id = pocessRes.hasOwnProperty("id")
-						? pocessRes.id(slug)
-						: slug;
+						const document = matter(
+							key_value_map[item.path].default
+						);
 
-					const document = matter(key_value_map[item.path].default);
+						const { data: frontmatter, content: markdownBody } =
+							document;
 
-					const { data: frontmatter, content: markdownBody } =
-						document;
+						return {
+							defaultTitle: slug,
+							frontmatter,
+							id,
+							markdownBody,
+							locale,
+						};
+					} else if (item.type === "folder") {
+						const configFile = item.children.find((file) => {
+							return file.type === "config";
+						});
 
-					return {
-						defaultTitle: slug,
-						frontmatter,
-						id,
-						markdownBody,
-						locale,
-					};
-				} else {
-					return {
-						...item,
-						children: validlization(item.children, pocessRes),
-					};
-				}
-			});
+						console.log(
+							"is a folder",
+							item,
+							key_value_map[configFile.path]
+						);
+
+						return {
+							...item,
+							config: key_value_map[configFile.path],
+							children: validlization(item.children, pocessRes),
+						};
+					}
+				});
 		};
 
 		const validlizedTree = validlization(localizedTree.children, pocessRes);
 
-		console.log(validlizedTree);
+		// console.log("server", validlizedTree);
 
 		return validlizedTree;
 	})(requireFunc);
 
-	const sortedPosts = sort
-		? posts
-				.sort((a, b) => {
-					let dayA = a.frontmatter.date.split("/")[2],
-						dayB = b.frontmatter.date.split("/")[2];
-					return dayB - dayA;
-				})
-				.sort((a, b) => {
-					let monthA = a.frontmatter.date.split("/")[1],
-						monthB = b.frontmatter.date.split("/")[1];
-					return monthB - monthA;
-				})
-				.sort((a, b) => {
-					let yearA = a.frontmatter.date.split("/")[0],
-						yearB = b.frontmatter.date.split("/")[0];
-					return yearB - yearA;
-				})
-		: posts;
+	// const sortedPosts = sort
+	// 	? posts
+	// 			.sort((a, b) => {
+	// 				let dayA = a.frontmatter.date.split("/")[2],
+	// 					dayB = b.frontmatter.date.split("/")[2];
+	// 				return dayB - dayA;
+	// 			})
+	// 			.sort((a, b) => {
+	// 				let monthA = a.frontmatter.date.split("/")[1],
+	// 					monthB = b.frontmatter.date.split("/")[1];
+	// 				return monthB - monthA;
+	// 			})
+	// 			.sort((a, b) => {
+	// 				let yearA = a.frontmatter.date.split("/")[0],
+	// 					yearB = b.frontmatter.date.split("/")[0];
+	// 				return yearB - yearA;
+	// 			})
+	// 	: posts;
 
-	return sortedPosts;
+	return posts;
 }
