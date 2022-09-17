@@ -35,8 +35,6 @@ export async function getStaticProps({ locale, locales }) {
 		locale
 	);
 
-	console.log(sortedPosts);
-
 	return {
 		props: {
 			allPosts: sortedPosts,
@@ -68,7 +66,7 @@ class HomePage extends React.Component {
 			? allPosts.find((cata) => cata.name === activeCatagories)
 			: allPosts.map((item) => [...item.children]);
 
-		console.log(sorted);
+		console.log(allPosts);
 
 		return (
 			<>
@@ -108,8 +106,8 @@ class HomePage extends React.Component {
 
 				<Tab
 					lang={locale}
-					tabs={categories}
-					activeIndex={channel}
+					tabs={catagories}
+					activeIndex={activeCatagories}
 					onChange={(index) => {
 						this.setState({
 							catagories: index,

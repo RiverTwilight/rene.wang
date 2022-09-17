@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TDictionary } from "../types"
+import { TDictionary } from "../types";
 
 /**
  * 多语言组件
