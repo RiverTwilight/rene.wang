@@ -16,24 +16,6 @@ module.exports = {
 			},
 		],
 	},
-	categories: {
-		all: {
-			"en-US": "All Posts",
-			"zh-CN": "全部",
-		},
-		Life: {
-			"en-US": "Life",
-			"zh-CN": "生活记录",
-		},
-		Programming: {
-			"en-US": "Programming",
-			"zh-CN": "程序人生",
-		},
-		Feeling: {
-			"en-US": "Feeling",
-			"zh-CN": "随感",
-		},
-	},
 	relatedLinks: [
 		{
 			title: "AkaraChen",
