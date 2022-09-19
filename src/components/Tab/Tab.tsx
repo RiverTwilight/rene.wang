@@ -28,6 +28,7 @@ const HomeTab = ({
 			tabName: tab,
 		};
 	});
+
 	return (
 		<Tab>
 			<Text language={lang} dictionary={tabs}>

@@ -10,16 +10,13 @@ import {
 	EllipsisVerticalIcon,
 	Card,
 	CardContent,
-	CardAction,
-	CardMedia,
 	CardTitle,
 } from "kindle-ui";
 import Text from "../utils/i18n";
-import { postList, postItem } from "../i18n.json";
+import { postList } from "../i18n.json";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
 import getCategories from "../utils/getCategories";
-import siteConfig from "../site.config";
 
 const MAX_POST_COUNT = 12;
 const ENABLE_SORT_BY_DATE = true;
@@ -45,7 +42,7 @@ export async function getStaticProps({ locale, locales }) {
 	return {
 		props: {
 			allPosts,
-			catagories: allCategories,
+			categories: allCategories,
 			currentPage: {
 				title: "首页",
 				path: "/",
@@ -60,17 +57,17 @@ class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeCatagories: "All",
+			activeCategories: "All",
 			page: 1,
 		};
 	}
 	render() {
-		const { allPosts, locale, postNumber, catagories } = this.props;
-		const { activeCatagories } = this.state;
+		const { allPosts, locale, categories } = this.props;
+		const { activeCategories } = this.state;
 
 		const falttedPosts =
-			activeCatagories !== "All"
-				? allPosts.find((cata) => cata.name === activeCatagories)[0]
+			activeCategories !== "All"
+				? allPosts.find((cata) => cata.name === activeCategories)[0]
 						.children
 				: allPosts.map((item) => item.children).flat();
 
@@ -92,55 +89,25 @@ class HomePage extends React.Component {
 				return yearB - yearA;
 			});
 
-		console.log("list", sortedPosts);
-
 		return (
 			<>
-				{/* {allPosts.length && (
-					<div className="P(10px)">
-						<Card>
-							<CardMedia>
-								{allPosts[0].frontmatter.cover && (
-									<Image
-										alt="Cover"
-										layout="fill"
-										src="/earth.jpg"
-									></Image>
-								)}
-							</CardMedia>
-							<CardContent>
-								<CardTitle>
-									{allPosts[0].frontmatter.title || post.slug}
-								</CardTitle>
-								{allPosts[0].frontmatter.summary}
-								<CardAction>
-									<Link href={"/blog/" + allPosts[0].id}>
-										<Button variant="outline">
-											<Text
-												dictionary={postItem}
-												language={locale}
-											>
-												<Text readMore />
-											</Text>
-										</Button>
-									</Link>
-								</CardAction>
-							</CardContent>
-						</Card>
-					</div>
-				)} */}
-
+				<div className="P(10px)">
+					<Card>
+						<CardContent>
+							<CardTitle>精选栏目</CardTitle>
+						</CardContent>
+					</Card>
+				</div>
 				<Tab
 					lang={locale}
-					tabs={catagories}
-					activeIndex={activeCatagories}
+					tabs={["All"]}
+					activeIndex={activeCategories}
 					onChange={(index) => {
 						this.setState({
-							catagories: index,
+							categories: index,
 						});
 					}}
 				/>
-
 				<div>
 					{falttedPosts.map((post) => (
 						<Link passHref href={"/p/" + post.id}>
@@ -172,7 +139,7 @@ class HomePage extends React.Component {
 						<Text dictionary={postList} language={locale}>
 							<Link passHref href="/all">
 								<Button variant="outline" className="center">
-									<Text allPosts={[postNumber]} />
+									<Text allPosts={[falttedPosts.length]} />
 								</Button>
 							</Link>
 						</Text>
