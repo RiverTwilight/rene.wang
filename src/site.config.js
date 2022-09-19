@@ -1,3 +1,4 @@
+//  TODO i18n
 module.exports = {
 	title: "江村暮的博客",
 	root: "https://rene.wang",
@@ -26,11 +27,4 @@ module.exports = {
 			url: "https://wp.dkymore.com",
 		},
 	],
-	// gitalk: {
-	// 	clientID: "ecaa627dee7516573aed",
-	// 	clientSecret: "03c76d614cc2bc51f7773dffed8a9ae17131e4f7",
-	// 	repo: "Blog-Comment",
-	// 	owner: "RiverTwilight",
-	// 	admin: ["RiverTwilight"],
-	// },
 };

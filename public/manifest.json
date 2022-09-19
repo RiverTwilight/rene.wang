@@ -1,10 +1,10 @@
 {
-	"short_name": "云极客工具",
-	"name": "云极客工具",
-    "start_url": "/",
+	"short_name": "江村暮的博客",
+	"name": "江村暮的博客",
+	"start_url": "/",
 	"display": "standalone",
-	"theme_color": "#000",
-	"background_color": "#000",
+	"theme_color": "#fff",
+	"background_color": "#fff",
 	"icons": [
 		{
 			"src": "/favicon.ico",

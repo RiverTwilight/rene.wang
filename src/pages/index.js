@@ -150,5 +150,4 @@ class HomePage extends React.Component {
 	}
 }
 
-// TODO 友链
 export default HomePage;
