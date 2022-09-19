@@ -1,4 +1,3 @@
-import { FILE } from "dns";
 import matter from "gray-matter";
 
 const generateTokens = (path: string): { value: string; type: string }[] => {
@@ -36,7 +35,7 @@ const generateTokens = (path: string): { value: string; type: string }[] => {
 
 interface IFile {
 	name: string;
-	type: "config" | "doc" | "folder";
+	type?: "config" | "doc" | "folder";
 	value?: any;
 	children?: IFile[];
 }
@@ -131,7 +130,7 @@ export default function getAllPosts(
 			return child.name === locale;
 		});
 
-		console.log(keys);
+		// console.log("./zh-CN/Tech/Macisfy-Your-Windows".split("/").pop());
 
 		const validlization = (files: any[], pocessRes) => {
 			return files
@@ -139,9 +138,9 @@ export default function getAllPosts(
 				.map((item) => {
 					if (item.type === "doc") {
 						const slug = item.path
-							.split(".")
-							.slice(0, -1)
-							.join(".")
+							.split("/")
+							.pop() // doc-name.md
+							.split(".")[0] // doc-name
 							.trim();
 						const id = pocessRes.hasOwnProperty("id")
 							? pocessRes.id(slug)
@@ -174,7 +173,9 @@ export default function getAllPosts(
 
 						return {
 							...item,
-							config: key_value_map[configFile.path],
+							config: configFile
+								? key_value_map[configFile.path]
+								: {},
 							children: validlization(item.children, pocessRes),
 						};
 					}
@@ -209,3 +210,5 @@ export default function getAllPosts(
 
 	return posts;
 }
+
+export { generateMap };

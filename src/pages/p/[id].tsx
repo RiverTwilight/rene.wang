@@ -2,17 +2,18 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import CodeBlock from "../../../components/CodeBlock";
-import ImageBlock from "../../../components/LazyloadImage";
-import HeadingBlock from "../../../components/HeadingBlock";
+import CodeBlock from "../../components/CodeBlock";
+import ImageBlock from "../../components/LazyloadImage";
+import HeadingBlock from "../../components/HeadingBlock";
 import PostItem from "../../../components/PostItem";
-import getAllPosts from "../../utils/getAllPosts";
 import getPaths from "../../utils/getPaths";
+import { generateMap } from "../../utils/getAllPosts";
+import getFilename from "../../utils/getFilename";
 import getPostId from "../../utils/getPostId";
 // import BookOutline from "../../static/icon/book-outline.svg";
 import { Typography, TimeBar } from "kindle-ui";
 import { IPost } from "../../types";
-
+import matter from "gray-matter";
 /**
  * 获取相关文章，包含相同标签
  * @param {Array} allPosts
@@ -39,14 +40,17 @@ const getRecommendPost = (
 export async function getStaticProps({ locale, locales, ...ctx }) {
 	const { id: currentId } = ctx.params;
 
-	const posts = getAllPosts(
-		{
-			id: getPostId,
-		},
-		require.context("../../posts", true, /\.md$/),
-		true
+	const currentPost = matter(
+		((context) => {
+			const keys = context
+				.keys()
+				.find((path) => getFilename(path) === currentId);
+			return context(keys).default;
+		})(require.context("../../../posts", true, /\.md$/))
 	);
-	const currentPost = posts.filter((post: any) => post.id === currentId)[0];
+
+	console.log(currentPost);
+
 	// console.log(
 	// 	posts.filter((post: any) => {
 	// 		console.log(post.id, currentId);
@@ -55,19 +59,19 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 	// );
 	return {
 		props: {
-			recommendPost: getRecommendPost(
-				posts,
-				currentPost.frontmatter.categories || ["Unfiled"],
-				currentId
-			),
-			currentPost,
+			// recommendPost: getRecommendPost(
+			// 	posts,
+			// 	currentPost.frontmatter.categories || ["Unfiled"],
+			// 	currentId
+			// ),
+			postContent: currentPost.content,
+			postProps: currentPost.data,
 			currentPage: {
-				title: currentPost.frontmatter.title || currentPost.slug,
-				path: "/blog/" + currentPost.id,
+				title: currentPost.data.title || currentPost.data.slug,
+				path: "/blog/" + currentId,
 				description:
-					currentPost.frontmatter.summary ||
-					currentPost.markdownBody.slice(0, 100),
-				currentPost,
+					currentPost.data.summary ||
+					currentPost.content.slice(0, 100),
 			},
 			id: currentId,
 			locale,
@@ -108,8 +112,7 @@ const Cover = styled.div`
 // 	);
 // };
 
-const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
-	const { slug, frontmatter, markdownBody } = currentPost;
+const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 	const generateCatalog = (post) => {
 		var matchTitle = post.match(/\#+\s(.+)/g) || [];
 		return [
@@ -133,28 +136,28 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 			<TimeBar />
 			<Typography itemScope itemType="http://schema.org/Article">
 				<Cover>
-					{frontmatter.cover && (
+					{postProps.cover && (
 						<>
-							<ImageBlock src={frontmatter.cover} />
+							<ImageBlock src={postProps.cover} />
 							<meta
 								itemProp="thumbnailUrl"
-								content={frontmatter.cover}
+								content={postProps.cover}
 							/>
 						</>
 					)}
 				</Cover>
 
-				<h1 itemProp="headline">{frontmatter.title || slug}</h1>
+				<h1 itemProp="headline">{postProps.title || slug}</h1>
 				<div className="Textc(secondary)">
 					最后更新于
-					<span itemProp="dateCreated">{frontmatter.date}</span>
-					&nbsp;分类:
-					{frontmatter.categories
-						? frontmatter.categories.map(
+					<span itemProp="dateCreated">{postProps.date}</span>
+					{/* &nbsp;分类:
+					{postProps.categories
+						? postProps.categories.map(
 								(cate) =>
 									`${siteConfig.categories[cate][locale]} `
 						  )
-						: "未分类"}
+						: "未分类"} */}
 				</div>
 				<br />
 				<article itemProp="articleBody">
@@ -165,7 +168,7 @@ const Post = ({ id, recommendPost, currentPost, siteConfig, locale }) => {
 							image: ImageBlock,
 						}}
 						escapeHtml={false}
-						source={markdownBody}
+						source={postContent}
 					></ReactMarkdown>
 				</article>
 				{/* <ReadMore

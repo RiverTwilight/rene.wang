@@ -1,10 +1,8 @@
-//@ts-nocheck
-
 import React, { useState } from "react";
 import { Tab, TabItem } from "kindle-ui";
 import Text from "../../utils/i18n";
 
-type tabsType = {
+type TTabs = {
 	[tabName: string]: {
 		[langIndex: string]: string;
 	};
@@ -16,10 +14,10 @@ const HomeTab = ({
 	activeIndex,
 	lang,
 }: {
-	onChange(index: keyof tabsType): void;
-	activeIndex: keyof tabsType;
-	tabs: tabsType;
-	lang?: lang;
+	onChange(index: keyof TTabs): void;
+	activeIndex: keyof TTabs;
+	tabs: TTabs;
+	lang?: string;
 }) => {
 	const tabEles = Object.keys(tabs).map((tab) => {
 		let textProp = {

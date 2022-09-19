@@ -18,11 +18,14 @@ import Text from "../utils/i18n";
 import { postList, postItem } from "../i18n.json";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
+import getCategories from "../utils/getCategories";
+import siteConfig from "../site.config";
 
 const MAX_POST_COUNT = 12;
+const ENABLE_SORT_BY_DATE = true;
 
 export async function getStaticProps({ locale, locales }) {
-	const sortedPosts = getAllPosts(
+	const allPosts = getAllPosts(
 		{
 			markdownBody: (content) =>
 				`${content.substr(0, 200)}${
@@ -30,20 +33,24 @@ export async function getStaticProps({ locale, locales }) {
 				}`,
 			id: getPostId,
 		},
-		require.context("../posts", true, /[\.md|(\.js)]$/),
+		require.context("../../posts", true, /[\.md|(\.js)]$/),
 		true,
 		locale
 	);
 
+	const allCategories = getCategories(
+		require.context("../../posts", true, /\.js$/)
+	);
+
 	return {
 		props: {
-			allPosts: sortedPosts,
-			catagories: sortedPosts.map((cata) => cata.name),
+			allPosts,
+			catagories: allCategories,
 			currentPage: {
 				title: "首页",
 				path: "/",
 			},
-			postNumber: sortedPosts.length,
+			// postNumber: sortedPosts.length,
 			locale,
 		},
 	};
@@ -58,15 +65,34 @@ class HomePage extends React.Component {
 		};
 	}
 	render() {
-		const { allPosts, siteConfig, locale, postNumber, catagories } =
-			this.props;
+		const { allPosts, locale, postNumber, catagories } = this.props;
 		const { activeCatagories } = this.state;
 
-		const sorted = activeCatagories
-			? allPosts.find((cata) => cata.name === activeCatagories)
-			: allPosts.map((item) => [...item.children]);
+		const falttedPosts =
+			activeCatagories !== "All"
+				? allPosts.find((cata) => cata.name === activeCatagories)[0]
+						.children
+				: allPosts.map((item) => item.children).flat();
 
-		console.log(allPosts);
+		const sortedPosts = falttedPosts
+			.sort((a, b) => {
+				console.log("sorting", a);
+				let dayA = a.frontmatter.date.split("/")[2],
+					dayB = b.frontmatter.date.split("/")[2];
+				return dayB - dayA;
+			})
+			.sort((a, b) => {
+				let monthA = a.frontmatter.date.split("/")[1],
+					monthB = b.frontmatter.date.split("/")[1];
+				return monthB - monthA;
+			})
+			.sort((a, b) => {
+				let yearA = a.frontmatter.date.split("/")[0],
+					yearB = b.frontmatter.date.split("/")[0];
+				return yearB - yearA;
+			});
+
+		console.log("list", sortedPosts);
 
 		return (
 			<>
@@ -116,8 +142,8 @@ class HomePage extends React.Component {
 				/>
 
 				<div>
-					{sorted.children.map((post) => (
-						<Link passHref href={"/blog/" + post.id}>
+					{falttedPosts.map((post) => (
+						<Link passHref href={"/p/" + post.id}>
 							<ListItem
 								style={{
 									cursor: "pointer",
@@ -125,9 +151,15 @@ class HomePage extends React.Component {
 							>
 								<ListItemText
 									primary={
-										post.frontmatter.title || post.slug
+										post.frontmatter
+											? post.frontmatter.title
+											: post.slug
 									}
-									second={post.frontmatter.date}
+									second={
+										post.frontmatter
+											? post.frontmatter.date
+											: "1970/01/01"
+									}
 								/>
 								<ListItemIcon onClick={() => {}}>
 									<EllipsisVerticalIcon />

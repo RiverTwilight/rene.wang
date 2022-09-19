@@ -8,8 +8,14 @@ export default (locale, processId: (id: string) => string, path: string) => {
 
 	//remove path and extension to leave filename only
 	const blogSlugs = blogs.map((file) =>
-		file.split("/")[2].replace(/ /g, "-").slice(0, -3).trim()
+		file
+			.split("/")
+			.pop() // doc-name.md
+			.split(".")[0] // doc-name
+			.trim()
 	);
+
+	// console.log("paths", blogSlugs);
 	// create paths with `slug` param
 	// const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
 	const paths = blogSlugs.map((slug: string) => {
