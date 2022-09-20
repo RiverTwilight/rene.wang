@@ -1,12 +1,15 @@
-import { generateAllFiles, generateMap } from "./getAllPosts";
+import { generateMap } from "./getAllPosts";
 
-interface ICategories {
-	name: string;
+export interface ICategory {
+	slug: string;
+	config: {
+		name?: string;
+	};
 }
 
 // 仅支持二维目录
 
-function getCategories(requireFunc, locale): ICategories[] {
+function getCategories(requireFunc, locale): ICategory[] {
 	const categories = ((context) => {
 		const keys = context.keys();
 		const values = keys.map(context);

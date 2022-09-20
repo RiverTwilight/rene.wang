@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Tab from "../components/Tab";
 import {
 	Button,
@@ -16,7 +15,7 @@ import Text from "../utils/i18n";
 import { postList } from "../i18n.json";
 import getAllPosts from "../utils/getAllPosts";
 import getPostId from "../utils/getPostId";
-import getCategories from "../utils/getCategories";
+import getCategories, { ICategory } from "../utils/getCategories";
 
 const MAX_POST_COUNT = 12;
 const ENABLE_SORT_BY_DATE = true;
@@ -55,7 +54,16 @@ export async function getStaticProps({ locale, locales }) {
 	};
 }
 
-class HomePage extends React.Component {
+interface IProps {
+	allPosts: any;
+	allCategories: ICategory[];
+}
+
+interface IState {
+	activeCategory: string;
+}
+
+class HomePage extends React.Component<IProps, IState> {
 	constructor(props) {
 		super(props);
 		this.state = {
