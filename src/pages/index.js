@@ -60,24 +60,22 @@ class HomePage extends React.Component {
 		super(props);
 		this.state = {
 			activeCategory: "All",
-			page: 1,
 		};
 	}
 	render() {
 		const { allPosts, locale, allCategories } = this.props;
 		const { activeCategory } = this.state;
 
-		console.log(
-			"active",
-			allPosts.find((cata) => cata.name === activeCategory)
-		);
+		const falttedPosts = allPosts.map((item) => item.children).flat();
 
-		const falttedPosts =
+		console.log("count", falttedPosts.length);
+
+		const classfiedPosts =
 			activeCategory !== "All"
 				? allPosts.find((cata) => cata.name === activeCategory).children
-				: allPosts.map((item) => item.children).flat();
+				: falttedPosts;
 
-		const sortedPosts = falttedPosts
+		const sortedPosts = classfiedPosts
 			.sort((a, b) => {
 				// console.log("sorting", a);
 				let dayA = a.frontmatter.date.split("/")[2],
@@ -97,7 +95,6 @@ class HomePage extends React.Component {
 
 		const tabs = [{ name: "All", text: "全部" }].concat(
 			allCategories.map((item) => {
-				console.log(item);
 				return { name: item.slug, text: item.config.name };
 			})
 		);
@@ -125,7 +122,7 @@ class HomePage extends React.Component {
 					}}
 				/>
 				<div>
-					{sortedPosts.map((post) => (
+					{sortedPosts.slice(0, MAX_POST_COUNT).map((post) => (
 						<Link passHref href={"/p/" + post.id}>
 							<ListItem
 								style={{

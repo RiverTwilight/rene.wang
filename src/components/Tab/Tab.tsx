@@ -14,7 +14,7 @@ const HomeTab = ({
 	lang,
 }: {
 	onChange(index: keyof TTab): void;
-	activeIndex: keyof TTab;
+	activeIndex: Pick<TTab, "name">;
 	tabs: TTab[];
 	lang?: string;
 }) => {

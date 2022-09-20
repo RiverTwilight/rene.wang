@@ -6,7 +6,6 @@ module.exports = {
 	keywords: ["江村暮的博客", "RiverTwilight", "过气码农"],
 	author: {
 		name: "江村暮",
-		image: "/public/image/author.jpg",
 		twitter: "https://twitter.com/rea1DonandTrump",
 		github: "https://github.com/RiverTwilight",
 		intro: [
@@ -16,6 +15,9 @@ module.exports = {
 					"2022届高考生，坐标蓉城。喜欢写代码、骑车、画画，唱歌。",
 			},
 		],
+	},
+	themeConfig: {
+		featured: [],
 	},
 	relatedLinks: [
 		{
