@@ -1,11 +1,9 @@
-//@ts-nocheck
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import CodeBlock from "../../components/CodeBlock";
 import ImageBlock from "../../components/LazyloadImage";
 import HeadingBlock from "../../components/HeadingBlock";
-import PostItem from "../../../components/PostItem";
 import getPaths from "../../utils/getPaths";
 import { generateMap } from "../../utils/getAllPosts";
 import getFilename from "../../utils/getFilename";

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Tab, TabItem } from "kindle-ui";
 import Text from "../../utils/i18n";
 
-type TTabs = {
-	[tabName: string]: {
-		[langIndex: string]: string;
-	};
+type TTab = {
+	name: string;
+	text: string;
 };
 
 const HomeTab = ({
@@ -14,36 +13,24 @@ const HomeTab = ({
 	activeIndex,
 	lang,
 }: {
-	onChange(index: keyof TTabs): void;
-	activeIndex: keyof TTabs;
-	tabs: TTabs;
+	onChange(index: keyof TTab): void;
+	activeIndex: keyof TTab;
+	tabs: TTab[];
 	lang?: string;
 }) => {
-	const tabEles = Object.keys(tabs).map((tab) => {
-		let textProp = {
-			[tab]: true,
-		};
-		return {
-			text: <Text {...textProp} />,
-			tabName: tab,
-		};
-	});
-
 	return (
 		<Tab>
-			<Text language={lang} dictionary={tabs}>
-				{tabEles.map((tab) => (
-					<TabItem
-						key={tab.tabName}
-						onClick={() => {
-							onChange(tab.tabName);
-						}}
-						active={activeIndex === tab.tabName}
-					>
-						{tab.text}
-					</TabItem>
-				))}
-			</Text>
+			{tabs.map((tab) => (
+				<TabItem
+					key={tab.name}
+					onClick={() => {
+						onChange(tab.name);
+					}}
+					active={activeIndex === tab.name}
+				>
+					{tab.text}
+				</TabItem>
+			))}
 		</Tab>
 	);
 };

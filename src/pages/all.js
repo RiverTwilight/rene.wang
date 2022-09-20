@@ -16,6 +16,7 @@ export async function getStaticProps({ locale, locales }) {
 		},
 		require.context("../../posts", true, /[\.md|(\.js)]$/),
 		true,
+		false,
 		locale
 	);
 

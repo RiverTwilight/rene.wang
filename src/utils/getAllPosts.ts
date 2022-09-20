@@ -120,6 +120,7 @@ export default function getAllPosts(
 	/**Node的require函数，请以./src/utils为主目录计算相对路径，如'path' */
 	requireFunc: any,
 	sort: boolean = false,
+	enableContent: boolean = false,
 	locale: string
 ) {
 	const posts = ((context) => {
@@ -157,7 +158,7 @@ export default function getAllPosts(
 							defaultTitle: slug,
 							frontmatter,
 							id,
-							markdownBody,
+							markdownBody: enableContent ? markdownBody : "",
 							locale,
 						};
 					} else if (item.type === "folder") {
@@ -211,4 +212,4 @@ export default function getAllPosts(
 	return posts;
 }
 
-export { generateMap };
+export { generateMap, generateAllFiles };

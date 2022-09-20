@@ -32,17 +32,19 @@ export async function getStaticProps({ locale, locales }) {
 		},
 		require.context("../../posts", true, /[\.md|(\.js)]$/),
 		true,
+		false,
 		locale
 	);
 
 	const allCategories = getCategories(
-		require.context("../../posts", true, /\.js$/)
+		require.context("../../posts/", true, /\.js$/),
+		locale
 	);
 
 	return {
 		props: {
 			allPosts,
-			categories: allCategories,
+			allCategories,
 			currentPage: {
 				title: "首页",
 				path: "/",
@@ -57,23 +59,27 @@ class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeCategories: "All",
+			activeCategory: "All",
 			page: 1,
 		};
 	}
 	render() {
-		const { allPosts, locale, categories } = this.props;
-		const { activeCategories } = this.state;
+		const { allPosts, locale, allCategories } = this.props;
+		const { activeCategory } = this.state;
+
+		console.log(
+			"active",
+			allPosts.find((cata) => cata.name === activeCategory)
+		);
 
 		const falttedPosts =
-			activeCategories !== "All"
-				? allPosts.find((cata) => cata.name === activeCategories)[0]
-						.children
+			activeCategory !== "All"
+				? allPosts.find((cata) => cata.name === activeCategory).children
 				: allPosts.map((item) => item.children).flat();
 
 		const sortedPosts = falttedPosts
 			.sort((a, b) => {
-				console.log("sorting", a);
+				// console.log("sorting", a);
 				let dayA = a.frontmatter.date.split("/")[2],
 					dayB = b.frontmatter.date.split("/")[2];
 				return dayB - dayA;
@@ -89,6 +95,15 @@ class HomePage extends React.Component {
 				return yearB - yearA;
 			});
 
+		const tabs = [{ name: "All", text: "全部" }].concat(
+			allCategories.map((item) => {
+				console.log(item);
+				return { name: item.slug, text: item.config.name };
+			})
+		);
+
+		console.log(tabs);
+
 		return (
 			<>
 				<div className="P(10px)">
@@ -100,16 +115,17 @@ class HomePage extends React.Component {
 				</div>
 				<Tab
 					lang={locale}
-					tabs={["All"]}
-					activeIndex={activeCategories}
+					tabs={tabs}
+					activeIndex={activeCategory}
 					onChange={(index) => {
+						console.log(index);
 						this.setState({
-							categories: index,
+							activeCategory: index,
 						});
 					}}
 				/>
 				<div>
-					{falttedPosts.map((post) => (
+					{sortedPosts.map((post) => (
 						<Link passHref href={"/p/" + post.id}>
 							<ListItem
 								style={{

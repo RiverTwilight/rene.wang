@@ -1,7 +1,4 @@
 module.exports = {
-	title: {
-		"zh-CN": "生活",
-		"en-US": "生活",
-	},
+	name: "程序人生",
 	description: "生活",
 };
