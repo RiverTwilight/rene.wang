@@ -17,7 +17,11 @@ module.exports = {
 		],
 	},
 	themeConfig: {
-		featured: [],
+		featured: [
+			{
+				url: "",
+			},
+		],
 	},
 	relatedLinks: [
 		{
@@ -27,6 +31,10 @@ module.exports = {
 		{
 			title: "dky的博客",
 			url: "https://wp.dkymore.com",
+		},
+		{
+			title: "辉晨雨幕",
+			url: "https://gloridust.xyz/",
 		},
 	],
 };
