@@ -14,7 +14,7 @@
     "@svgr/webpack": "^5.5.0",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
-    "kindle-ui": "^1.0.3",
+    "kindle-ui": "^1.0.4",
     "next": "^12.1.0",
     "postcss": "^8.3.6",
     "raw-loader": "^4.0.1",

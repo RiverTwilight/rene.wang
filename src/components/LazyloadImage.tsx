@@ -6,7 +6,8 @@ export default ({ src, alt }: { src: string; alt?: string }) => {
 
 	return (
 		<>
-			<div
+			<figure
+				role="group"
 				style={{
 					position: "relative",
 					paddingTop,
@@ -16,6 +17,7 @@ export default ({ src, alt }: { src: string; alt?: string }) => {
 					src={src}
 					layout="fill"
 					objectFit="contain"
+					aria-describedby=""
 					onLoad={({ target }) => {
 						const { naturalWidth, naturalHeight } =
 							target as HTMLImageElement;
@@ -25,8 +27,12 @@ export default ({ src, alt }: { src: string; alt?: string }) => {
 					}}
 				/>
 
-				{alt && <div className="center">{alt}</div>}
-			</div>
+				{alt && (
+					<div id="" className="center">
+						{alt}
+					</div>
+				)}
+			</figure>
 		</>
 	);
 };

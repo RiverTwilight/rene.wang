@@ -10,6 +10,8 @@ import {
 	Card,
 	CardContent,
 	CardTitle,
+	Grid,
+	GridItem,
 } from "kindle-ui";
 import Text from "../utils/i18n";
 import { postList } from "../i18n.json";
@@ -113,8 +115,11 @@ class HomePage extends React.Component<IProps, IState> {
 			<>
 				<div className="P(10px)">
 					<Card>
+						<CardTitle>精选栏目</CardTitle>
 						<CardContent>
-							<CardTitle>精选栏目</CardTitle>
+							<Grid>
+								<GridItem src="https://cdn.sspai.com/2022/09/14/323d5392b32276f64959c20977cbe81a.png?imageMogr2/auto-orient/quality/95/thumbnail/!800x400r/gravity/Center/crop/800x400/interlace/1" />
+							</Grid>
 						</CardContent>
 					</Card>
 				</div>
