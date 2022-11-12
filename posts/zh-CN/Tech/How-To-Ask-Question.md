@@ -7,7 +7,7 @@ date: 2022/7/19
 
 编程遇到问题，太正常不过了。
 
-为别人解决问题也可以提高自己的技术，但是**让别人\*\***回答一个低质量、不走心的问题无疑是浪费双方时间\*\*。
+为别人解决问题也可以提高自己的技术，但是**让别人回答一个低质量、不走心的问题无疑是浪费双方时间**。
 
 ![](https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGweKtPFd70m0HvFop2Bh2jBlYJbv4eriaAjwHwfenKt4pw9oJ4PG5OHA/640?wx_fmt=jpeg)
 

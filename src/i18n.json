@@ -36,6 +36,6 @@
 		}
 	},
 	"postList": {
-		"allPosts": { "zh-CN": "查看全部%s篇文章", "en-US": "All %s Posts" }
+		"allPosts": { "zh-CN": "查看全部 %s 篇文章", "en-US": "All %s Posts" }
 	}
 }

@@ -190,25 +190,6 @@ export default function getAllPosts(
 		return validlizedTree;
 	})(requireFunc);
 
-	// const sortedPosts = sort
-	// 	? posts
-	// 			.sort((a, b) => {
-	// 				let dayA = a.frontmatter.date.split("/")[2],
-	// 					dayB = b.frontmatter.date.split("/")[2];
-	// 				return dayB - dayA;
-	// 			})
-	// 			.sort((a, b) => {
-	// 				let monthA = a.frontmatter.date.split("/")[1],
-	// 					monthB = b.frontmatter.date.split("/")[1];
-	// 				return monthB - monthA;
-	// 			})
-	// 			.sort((a, b) => {
-	// 				let yearA = a.frontmatter.date.split("/")[0],
-	// 					yearB = b.frontmatter.date.split("/")[0];
-	// 				return yearB - yearA;
-	// 			})
-	// 	: posts;
-
 	return posts;
 }
 
