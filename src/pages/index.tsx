@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
-import Tab from "../components/Tab";
 import {
 	Button,
 	ListItem,
@@ -13,11 +12,13 @@ import {
 	Grid,
 	GridItem,
 } from "@kindle-ui/core";
+import Tab from "@/components/Tab";
 import Text from "../utils/i18n";
 import { postList } from "../i18n.json";
 import getAllPosts from "@/utils/getAllPosts";
 import getPostId from "@/utils/getPostId";
-import getCategories, { ICategory } from "../utils/getCategories";
+import { sortByDate } from "@/utils/sortPosts";
+import getCategories, { ICategory } from "@/utils/getCategories";
 
 const MAX_POST_COUNT = 12;
 const FLAG_ENABLE_SORT_BY_DATE = true;
@@ -58,32 +59,22 @@ export async function getStaticProps({ locale, locales }) {
 	};
 }
 
-function PostList({ allPosts, falttedPosts, activeCategory }) {
+function PostList({
+	allPosts,
+	falttedPosts,
+	activeCategory,
+}: {
+	activeCategory: string;
+	allPosts: any;
+	falttedPosts: any[];
+}) {
 	const classfiedPosts =
 		activeCategory !== "All"
 			? allPosts.find((cata) => cata.name === activeCategory).children
 			: falttedPosts;
 
 	const sortedPosts = useMemo(
-		() =>
-			classfiedPosts
-				.filter((post) => "date" in post.frontmatter)
-				.sort((a, b) => {
-					// console.log("sorting", a);
-					let dayA = a.frontmatter.date.split("/")[2],
-						dayB = b.frontmatter.date.split("/")[2];
-					return dayB - dayA;
-				})
-				.sort((a, b) => {
-					let monthA = a.frontmatter.date.split("/")[1],
-						monthB = b.frontmatter.date.split("/")[1];
-					return monthB - monthA;
-				})
-				.sort((a, b) => {
-					let yearA = a.frontmatter.date.split("/")[0],
-						yearB = b.frontmatter.date.split("/")[0];
-					return yearB - yearA;
-				}),
+		() => sortByDate(classfiedPosts),
 		[classfiedPosts]
 	);
 
@@ -108,10 +99,6 @@ function PostList({ allPosts, falttedPosts, activeCategory }) {
 			</ListItem>
 		</Link>
 	));
-}
-
-export function frontmatterValidator(postData) {
-	return frontmatter.draft !== true;
 }
 
 interface HomePageProps {
@@ -139,7 +126,7 @@ const HomePage = (props: HomePageProps) => {
 		[allCategories]
 	);
 
-	console.log(allCategories);
+	// console.log(allCategories);
 
 	return (
 		<>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { Typography } from "@kindle-ui/core";
-import getAllPosts from "../utils/getAllPosts";
-import getPostId from "../utils/getPostId";
+import getAllPosts from "@/utils/getAllPosts";
+import getPostId from "@/utils/getPostId";
+import { sortByDate } from "@/utils/sortPosts";
 
 export async function getStaticProps({ locale, locales }) {
 	// require.context doesn't support dynamic import'
@@ -33,27 +34,14 @@ export async function getStaticProps({ locale, locales }) {
 }
 
 const AllPost = ({ allPosts, locale }) => {
-	const falttedPosts = allPosts.map((item) => item.children).flat();
+	const flattedPosts = useMemo(
+		() => allPosts.map((item) => item.children).flat(),
+		[allPosts]
+	);
 
-	console.log(falttedPosts);
+	// console.log(flattedPosts);
 
-	const sortedPosts = falttedPosts
-		.sort((a, b) => {
-			console.log("sorting", a);
-			let dayA = a.frontmatter.date.split("/")[2],
-				dayB = b.frontmatter.date.split("/")[2];
-			return dayB - dayA;
-		})
-		.sort((a, b) => {
-			let monthA = a.frontmatter.date.split("/")[1],
-				monthB = b.frontmatter.date.split("/")[1];
-			return monthB - monthA;
-		})
-		.sort((a, b) => {
-			let yearA = a.frontmatter.date.split("/")[0],
-				yearB = b.frontmatter.date.split("/")[0];
-			return yearB - yearA;
-		});
+	const sortedPosts = useMemo(() => sortByDate(flattedPosts), [allPosts]);
 
 	return (
 		<>
@@ -66,6 +54,7 @@ const AllPost = ({ allPosts, locale }) => {
 								href={"/p/" + post.id}
 								locale={locale}
 								key={post.id}
+								legacyBehavior
 							>
 								<li>{post.frontmatter.title || post.slug}</li>
 							</Link>
