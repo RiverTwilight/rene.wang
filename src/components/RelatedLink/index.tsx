@@ -1,6 +1,6 @@
 //@ts-nocheck
 import * as React from "react";
-import { Card, CardTitle, Typography } from "kindle-ui";
+import { Card, CardTitle, Typography } from "@kindle-ui/core";
 import dic from "../../i18n.json";
 import { relatedLinks } from "../../site.config";
 

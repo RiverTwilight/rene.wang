@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import siteConfig from "../site.config.js";
-import { Container } from "kindle-ui";
+import { Container } from "@kindle-ui/core";
 import "./App.css";
 
 function MyApp({ Component, pageProps }) {

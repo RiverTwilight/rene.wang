@@ -1,5 +1,5 @@
 import React from "react";
-import { Tab, TabItem } from "kindle-ui";
+import { Tab, TabItem } from "@kindle-ui/core";
 
 type TTab = {
 	name: string;

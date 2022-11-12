@@ -9,7 +9,7 @@ import { generateMap } from "../../utils/getAllPosts";
 import getFilename from "../../utils/getFilename";
 import getPostId from "../../utils/getPostId";
 // import BookOutline from "../../static/icon/book-outline.svg";
-import { Typography, TimeBar } from "kindle-ui";
+import { Typography, TimeBar } from "@kindle-ui/core";
 import { IPost } from "../../types";
 import matter from "gray-matter";
 /**

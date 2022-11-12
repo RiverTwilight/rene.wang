@@ -14,6 +14,8 @@ function getCategories(requireFunc, locale): ICategory[] {
 		const keys = context.keys();
 		const values = keys.map(context);
 
+		console.log(keys, values);
+
 		const key_value_map = generateMap(keys, values);
 
 		var res = [];

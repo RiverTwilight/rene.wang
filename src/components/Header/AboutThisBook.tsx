@@ -1,1 +1,1 @@
-import { Menu } from "kindle-ui";
+import { Menu } from "@kindle-ui/core";

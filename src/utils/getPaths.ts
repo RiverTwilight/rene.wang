@@ -15,9 +15,6 @@ export default (locale, processId: (id: string) => string, path: string) => {
 			.trim()
 	);
 
-	// console.log("paths", blogSlugs);
-	// create paths with `slug` param
-	// const paths = blogSlugs.map(slug => `/blog/${encodeURI(slug)}`)
 	const paths = blogSlugs.map((slug: string) => {
 		return {
 			params: {
@@ -27,7 +24,7 @@ export default (locale, processId: (id: string) => string, path: string) => {
 		};
 	});
 
-	console.log(paths);
+	// console.log(paths);
 
 	return paths;
 };
