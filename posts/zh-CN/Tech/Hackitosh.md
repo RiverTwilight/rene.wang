@@ -1,7 +1,6 @@
 ---
 title: 黑苹果不完全指南
 date: 2021/11/28
-cover: https://i.loli.net/2021/11/28/I7SbfaXY4TF6Adl.png
 ---
 
 **会进 bios**
@@ -14,25 +13,11 @@ cover: https://i.loli.net/2021/11/28/I7SbfaXY4TF6Adl.png
 
 ## **前言**
 
-这是一篇适合对黑苹果毫无了解的小白
+本文适合对黑苹果毫无了解的小白。如果你已经买到电脑，想装黑苹果，可以继续阅读。
 
-适用于：你已经买到电脑，想装黑苹果
+若你准备买一台可以装黑苹果设备，可参考 [笔记本](https://github.com/daliansky/Hackintosh) [台式机](https://macx.top/18202.html)
 
-若你准备买一台可以装黑苹果设备
-
-参考 [笔记本](https://github.com/daliansky/Hackintosh) [台式机](https://macx.top/18202.html)
-
-**文章会用到的表达方式**:
-
-一、搜索 **XXX+中文(括号内是英文，在谷歌搜)**
-
-二、笔记本和电脑统称电脑，如有特殊说明（笔记本有电池、触控板什么的），请按照特殊说明的来办
-
-三、已经默认你会搭梯子、会使用 GitHub(不接受此类问题)
-
-四、~~像这种被划了线的句子,小白可以不用看~~
-
-五、所有使用 _中文数字_ 标注的，是你需要注意的。所有使用 _阿拉伯数字_ 标注的，是操作时的步骤。除非你是老手，建议遵循
+本文默认你会科学上网、会使用 GitHub 。
 
 ## **前期搜索&明确配置**
 
@@ -343,4 +328,4 @@ _打开_
 
 所有的操作均来自互联网，遇到问题请你自己负责！
 
-文章已授权 [Gloridust](https://gloridust.xyz/) [Rene](https://rene.wang/en-US)发布
+文章已授权 [Gloridust](https://gloridust.xyz/) [Rene](https://rene.wang/)发布

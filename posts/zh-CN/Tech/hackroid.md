@@ -5,7 +5,7 @@ date: 2022/11/09
 
 这几个月陆陆续续刷了好多机，每次都容易忘记一些东西，所以写下这篇文章，以便下次刷机时查阅。
 
-本文长期维护，点击“阅读原文”查看最新更改。如果出现纰漏，欢迎指正。
+本文长期维护，欢迎你在 [Github](https://github.com/RiverTwilight/rene.wang/blob/master/posts/zh-CN/Tech/hackroid.md) 上参与维护。
 
 ## 离开 MIUI 的缺点
 
