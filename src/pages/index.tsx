@@ -79,7 +79,7 @@ function PostList({
 	);
 
 	return sortedPosts.slice(0, MAX_POST_COUNT).map((post) => (
-		<Link passHref href={"/p/" + post.id}>
+		<Link key={post.id} passHref href={"/p/" + post.id}>
 			<ListItem
 				style={{
 					cursor: "pointer",

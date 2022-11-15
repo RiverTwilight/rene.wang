@@ -35,6 +35,10 @@ export interface ISiteConfig {
 	keywords: string[];
 	description: string;
 	root: string;
+	relatedLinks: {
+		title: string;
+		url: string;
+	}[];
 	author: {
 		name: string;
 		image?: string;

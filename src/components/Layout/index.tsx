@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Header from "../Header";
+import Header from "@/components/Header";
 import RelatedLink from "../RelatedLink";
 import { ICurrentPage, ISiteConfig } from "../../types";
 
@@ -11,8 +11,6 @@ const Layout = (props: {
 	allPosts: ISiteConfig[];
 	/** 当前页面 */
 	currentPage: ICurrentPage;
-	/**目录 */
-	catalog?: any[];
 	locale?: string;
 	children: JSX.Element | JSX.Element[];
 	menuItems: any[];
@@ -71,7 +69,10 @@ const Layout = (props: {
 				<div className="container">
 					{children}
 					<br></br>
-					<RelatedLink locale={locale} />
+					<RelatedLink
+						links={siteConfig.relatedLinks}
+						locale={locale}
+					/>
 				</div>
 			</div>
 		</>
