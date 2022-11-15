@@ -4,9 +4,11 @@
 
 ## 使用方法
 
-1. 点击右上角“Use this template”，创建你自己的仓库
+1. 点击右上角“Use this template”，创建你自己的仓库。
 
 2. 删掉我的文章，写你自己的文章。
+
+3. 更改网站配置信息。
 
 ## 配置
 
@@ -17,18 +19,19 @@
 -   author: 作者信息
     -   name:名称
     -   intro:介绍
--   catagories: 目录配置
 
 ### 静态资源
 
 ## 写作
 
-将 Markdown 文件放入`/posts`目录即可。
+将 Markdown 文件放入`/posts/<catagories>`目录即可。目前最高支持二级目录。
 
 ### 文章元数据 frontmatter
 
--   title: articel's title, if null, NBlog will regard the file name as title
--   date: Due to node cannot read the file's meta date, **you need to add a date by yourself**.
+每篇文章至少需要以下两个 frontmatter：
+
+-   title
+-   date
 
 ## 部署
 
