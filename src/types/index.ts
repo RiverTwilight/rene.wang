@@ -2,6 +2,7 @@ export type IPost = {
 	slug: string;
 	defaultTitle: string;
 	frontmatter: {
+		title?: string;
 		date: string;
 		/** 目录 */
 		categories?: string[];
@@ -28,7 +29,7 @@ export type TDictionary = {
 	};
 };
 
-export type TLang = "zh-CN" | "en-US" | "jp";
+export type TLocale = "zh-CN" | "en-US";
 
 export interface ISiteConfig {
 	title: string;
