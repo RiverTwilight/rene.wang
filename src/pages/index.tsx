@@ -15,10 +15,11 @@ import {
 import Tab from "@/components/Tab";
 import Text from "../utils/i18n";
 import { postList } from "../i18n.json";
-import getAllPosts from "@/utils/getAllPosts";
+import getAllPosts, { flatPost } from "@/utils/getAllPosts";
 import getPostId from "@/utils/getPostId";
 import { sortByDate } from "@/utils/sortPosts";
 import getCategories, { ICategory } from "@/utils/getCategories";
+import type { TLocale, IPost } from "@/types/index"
 
 const MAX_POST_COUNT = 12;
 const FLAG_ENABLE_SORT_BY_DATE = true;
@@ -27,8 +28,7 @@ export async function getStaticProps({ locale, locales }) {
 	const allPosts = getAllPosts(
 		{
 			markdownBody: (content) =>
-				`${content.substr(0, 200)}${
-					content.length >= 200 ? "..." : ""
+				`${content.substr(0, 200)}${content.length >= 200 ? "..." : ""
 				}`,
 			id: getPostId,
 		},
@@ -66,7 +66,7 @@ function PostList({
 }: {
 	activeCategory: string;
 	allPosts: any;
-	falttedPosts: any[];
+	falttedPosts: IPost[];
 }) {
 	const classfiedPosts =
 		activeCategory !== "All"
@@ -93,7 +93,9 @@ function PostList({
 						post.frontmatter ? post.frontmatter.date : "1970/01/01"
 					}
 				/>
-				<ListItemIcon onClick={() => {}}>
+				<ListItemIcon onClick={() => {
+					console.log("Clicked")
+				}}>
 					<EllipsisVerticalIcon />
 				</ListItemIcon>
 			</ListItem>
@@ -102,6 +104,7 @@ function PostList({
 }
 
 interface HomePageProps {
+	locale: TLocale;
 	allPosts: any;
 	allCategories: ICategory[];
 }
@@ -110,13 +113,9 @@ const HomePage = (props: HomePageProps) => {
 	const { allPosts, locale, allCategories } = props;
 	const [activeCategory, setActiveCategory] = useState("All");
 
-	const falttedPosts = useMemo(() => {
-		return allPosts.map((item) => item.children).flat();
-	}, [allPosts]);
+	const falttedPosts = useMemo(flatPost(allPosts), [allPosts]);
 
-	// console.log("count", falttedPosts.length);
-
-	const tabs = useMemo(
+	const tabs = useMemo<{ name: string, text: string }[]>(
 		() =>
 			[{ name: "All", text: "全部" }].concat(
 				allCategories.map((item) => {
