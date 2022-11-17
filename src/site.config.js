@@ -37,4 +37,7 @@ module.exports = {
 			url: "https://gloridust.xyz/",
 		},
 	],
+	paths: {
+		blog: "p/",
+	},
 };

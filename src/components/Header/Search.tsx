@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { IPost } from "../../types"
+import { IPost } from "@/types/index";
 
 interface SearchState {
 	searchIsFocus: boolean;
@@ -98,8 +98,8 @@ export default class extends React.Component<SearchProps, SearchState> {
 						}}
 						type="search"
 						value={kwd}
-						onChange={(e) => {
-							this.setState({ kwd: e.target.value });
+						onChange={({ target: { value } }) => {
+							this.setState({ kwd: value });
 						}}
 					/>
 					<button className="search-btn">

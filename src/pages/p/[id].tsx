@@ -1,16 +1,16 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import CodeBlock from "../../components/CodeBlock";
-import ImageBlock from "../../components/LazyloadImage";
-import HeadingBlock from "../../components/HeadingBlock";
-import getPaths from "../../utils/getPaths";
-import { generateMap } from "../../utils/getAllPosts";
-import getFilename from "../../utils/getFilename";
-import getPostId from "../../utils/getPostId";
-// import BookOutline from "../../static/icon/book-outline.svg";
+import CodeBlock from "@/components/CodeBlock";
+import ImageBlock from "@/components/LazyloadImage";
+import HeadingBlock from "@/components/HeadingBlock";
+import getPaths from "@/utils/getPaths";
+import { generateMap } from "@/utils/getAllPosts";
+import getFilename from "@/utils/getFilename";
+import getPostId from "@/utils/getPostId";
 import { Typography, TimeBar } from "@kindle-ui/core";
-import { IPost } from "../../types";
+import { paths } from "../../site.config";
+import type { IPost } from "../../types";
 import matter from "gray-matter";
 /**
  * 获取相关文章，包含相同标签
@@ -18,22 +18,22 @@ import matter from "gray-matter";
  * @param {Array} categories 当前文章的目录
  * @param {String} currentId
  */
-const getRecommendPost = (
-	allPosts: IPost[],
-	categories: any[],
-	currentId: string
-) => {
-	let data = [];
-	allPosts.forEach((post) => {
-		categories.forEach((cate) => {
-			post.frontmatter.categories.includes(cate) &&
-				!data.includes(post) &&
-				currentId !== post.id &&
-				data.push(post);
-		});
-	});
-	return data.slice(0, 3);
-};
+// const getRecommendPost = (
+// 	allPosts: IPost[],
+// 	categories: any[],
+// 	currentId: string
+// ) => {
+// 	let data = [];
+// 	allPosts.forEach((post) => {
+// 		categories.forEach((cate) => {
+// 			post.frontmatter.categories.includes(cate) &&
+// 				!data.includes(post) &&
+// 				currentId !== post.id &&
+// 				data.push(post);
+// 		});
+// 	});
+// 	return data.slice(0, 3);
+// };
 
 export async function getStaticProps({ locale, locales, ...ctx }) {
 	const { id: currentId } = ctx.params;
@@ -66,7 +66,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			postProps: currentPost.data,
 			currentPage: {
 				title: currentPost.data.title || currentPost.data.slug,
-				path: "/blog/" + currentId,
+				path: "/" + paths.blog + currentId,
 				description:
 					currentPost.data.summary ||
 					currentPost.content.slice(0, 100),
