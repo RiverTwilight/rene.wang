@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import {
 	ActionGroup,
 	ArrowBackSharpIcon,
@@ -18,23 +19,29 @@ import {
 } from "@kindle-ui/core";
 import Text from "../../utils/i18n";
 import { nav, navbarMenu } from "../../i18n.json";
-import { useRouter } from "next/router";
-import { ICurrentPage, ISiteConfig } from "../../types";
+import { ICurrentPage, ISiteConfig } from "@/types/index";
 
-interface IHeader {
+interface HeaderProps {
 	siteConfig: ISiteConfig;
 	currentPage?: ICurrentPage;
 	lang?: string;
 	menuItems?: any[];
 }
 
-const MainHeader = ({ siteConfig, menuItems, currentPage, lang }: IHeader) => {
+const MainHeader: React.FC<HeaderProps> = ({
+	siteConfig,
+	menuItems,
+	currentPage,
+	lang,
+}) => {
 	const router = useRouter();
 
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState<boolean>(false);
+
 	const handleClick = () => {
 		setOpen(true);
 	};
+
 	const handleClose = () => {
 		setOpen(false);
 	};
@@ -91,7 +98,7 @@ const MainHeader = ({ siteConfig, menuItems, currentPage, lang }: IHeader) => {
 							{siteConfig.author.intro[0].content}
 						</DialogContent>
 						<DialogAction>
-							<Button>CLOSE</Button>
+							<Button onClick={handleClose}>CLOSE</Button>
 						</DialogAction>
 					</Dialog>
 					<Text dictionary={navbarMenu} language={lang}>
