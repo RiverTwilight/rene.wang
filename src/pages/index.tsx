@@ -19,7 +19,7 @@ import getAllPosts, { flatPost } from "@/utils/getAllPosts";
 import getPostId from "@/utils/getPostId";
 import { sortByDate } from "@/utils/sortPosts";
 import getCategories, { ICategory } from "@/utils/getCategories";
-import type { TLocale, IPost } from "@/types/index"
+import type { TLocale, IPost } from "@/types/index";
 
 const MAX_POST_COUNT = 12;
 const FLAG_ENABLE_SORT_BY_DATE = true;
@@ -28,7 +28,8 @@ export async function getStaticProps({ locale, locales }) {
 	const allPosts = getAllPosts(
 		{
 			markdownBody: (content) =>
-				`${content.substr(0, 200)}${content.length >= 200 ? "..." : ""
+				`${content.substr(0, 200)}${
+					content.length >= 200 ? "..." : ""
 				}`,
 			id: getPostId,
 		},
@@ -93,9 +94,11 @@ function PostList({
 						post.frontmatter ? post.frontmatter.date : "1970/01/01"
 					}
 				/>
-				<ListItemIcon onClick={() => {
-					console.log("Clicked")
-				}}>
+				<ListItemIcon
+					onClick={() => {
+						console.log("Clicked");
+					}}
+				>
 					<EllipsisVerticalIcon />
 				</ListItemIcon>
 			</ListItem>
@@ -113,9 +116,9 @@ const HomePage = (props: HomePageProps) => {
 	const { allPosts, locale, allCategories } = props;
 	const [activeCategory, setActiveCategory] = useState("All");
 
-	const falttedPosts = useMemo(flatPost(allPosts), [allPosts]);
+	const falttedPosts = useMemo(() => flatPost(allPosts), [allPosts]);
 
-	const tabs = useMemo<{ name: string, text: string }[]>(
+	const tabs = useMemo<{ name: string; text: string }[]>(
 		() =>
 			[{ name: "All", text: "全部" }].concat(
 				allCategories.map((item) => {
