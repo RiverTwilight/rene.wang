@@ -1,0 +1,2038 @@
+<?xmlversion="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>江村暮的博客</title>
+        <link>https://rene.wang</link>
+        <description>开发日志、技术文章以及生活随感。</description>
+        <lastBuildDate>Mon, 16 Jan 2023 09:20:54 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Feed for example website</generator>
+        <image>
+            <title>江村暮的博客</title>
+            <url>https://rene.wang/favicon.ico</url>
+            <link>https://rene.wang</link>
+        </image>
+        <copyright>All rights reserved 2023, RiverTwilight</copyright>
+        <item>
+            <title><![CDATA[小程序踩坑记录]]></title>
+            <link>https://rene.wang/p/MinIProgram-Learing-Notes</link>
+            <guid>MinIProgram-Learing-Notes</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+刚花了五天做一个小程序，准备审核的时候发现个人小程序不允许有用户发布内容，心都碎了....
+
+## update 函数出现问题？
+
+-   1.数据库权限，首先检查当前数据库的集合是否为第一个选项，所有用户可读，仅创建者可读写
+
+-   2.检查集合中的字段是否有 openid,如果从外部导入的表需要加上 openid 字段
+
+-   **3.在小程序端使用 update 只能更新字段中的 openid 和自己目前的 openid 相同的字段，如果需要更改别人创建的信息应该在云函数中使用 update，具体看官方文档，很简单。**
+
+-   4.在使用云函数 update 的时候，记得在 cloud.init({env: ‘xxx’})中填写你的环境 id。
+
+-   5.确保你上传的数据中的 data 不是 undefined,不然成功上传也会显示更新数据为一条
+
+## 云函数相关
+
+-   `cloud.init()`这个方法要放到 app.js 的 onLaunch 的生命周期中，以后无需调用。
+-   修改后记得右键修改过的文件，选择`上传`，否则更改不生效。
+
+## 开发前注意
+
+-   先搜索一下看看有没有撞名。
+
+-   仔细阅读官方文档的[服务类目](https://developers.weixin.qq.com/minigame/product/material/#%E4%B8%AA%E4%BA%BA%E4%B8%BB%E4%BD%93%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E6%94%BE%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%B1%BB%E7%9B%AE)
+
+-   个人小程序不能有用户发布内容！
+
+## tabBar 图标不显示？
+
+用真机调试即可。[这里](https://svgtopng.com/)有个 SVG 转 PNG 格式的工具，方便把设计稿中的 svg 图标转为 Png。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[Nextjs踩坑记录]]></title>
+            <link>https://rene.wang/p/Nextjs-Learning-Notes</link>
+            <guid>Nextjs-Learning-Notes</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 部署
+
+### 部署方法
+
+类似 express， 编译完成后运行`npm run start`命令，服务器配置反向代理即可
+
+### 端口占用
+
+Next 默认在开发环境下使用 3000 端口，若此时执行`npm run start`命令会提示端口被占用，将`package.json`文件下 script 的 start 命令改成如下即可
+
+```cli
+npm run start -p <port>
+```
+
+## i18n 功能不支持静态导出
+
+无奈之下只能放到服务器上了。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[Unity游戏开发学习记录]]></title>
+            <link>https://rene.wang/p/Unity-Learning-Log</link>
+            <guid>Unity-Learning-Log</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## Day 0
+
+用两倍速看完 Michel 大佬的 B 站视频，对整体工作流有了大致了解。（通过视频学习新东西，不妨用两倍速看两倍，也许会有更好的学习效果）
+
+先自己做一个 2D 项目吧，暂时用现成的素材，把 Unity 开发流程摸索明白后，在自己做美术！
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[云极客工具开发日志]]></title>
+            <link>https://rene.wang/p/Ygktool-Changelog</link>
+            <guid>Ygktool-Changelog</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 写在前面
+
+这篇博客记录我的 [ygktool](https://www.ygktool.cn) 开发历程。
+
+### 缘起
+
+大概是 19 年 7 月份的时候，那时我已经厌倦了停留在 html 和 css 无脑拼装的层次上，希望能向前端大神更近一步，加之一直追随的前辈也有自己的（很强的）工具箱，就想到了做工具箱的点子上。
+
+### 志向
+
+~~至少在中国有和一个木函一样的影响吧？~~
+
+**能被别人的文章推荐到。譬如知乎**
+
+## 历程
+
+2020 年二月份之前，一直都是传统的 php 和 jq 架构。为了营造出 SPA 的效果还死磕`iframe`. 没想到视觉效果还不错。
+
+2020 年二月之后开始接触 NPM，因为之前已经有了 react 基础，很快就用 Create-react-app 搭建了 ygktool pro。紧接着开始了移植工作，移植的过程十分枯燥（当时没用 vscode 都得手动格式化代码）。很快，pro 成为了正式版，从此告别 php + jquery。
+
+### 技术栈
+
+感谢这些优秀的库/框架。另外一些小规模使用的库没有列出。
+
+-   Create-react-app
+-   Typescript
+-   Sass
+-   MDUI
+-   Express
+
+## 技术细节
+
+### 使用 npm link 时 Hook 报错
+
+使用 npm link 测试 UI 库时，如果组件使用了 Hook 就会报错。在 Github 关于 hook 的 issue 下找到了解决方案。问题原因是两个库使用各自的 React 依赖。解决方法是将 app 的 react 链接到 UI 库的 react 下。
+
+```bash
+    npm-link-shared ./node_modules/mdui-in-react/node_modules . react && npm start
+```
+
+### 无声明文件的类引用
+
+`gif.js`这个库作者没有发布声明文件，只好自己添加模块。在 react-app-env.d.ts 中添加
+
+```ts
+declare module "gif.js" {
+	class GIF {
+		constructor(config);
+	}
+	export = GIF;
+}
+```
+
+### 检测设备的夜间模式
+
+不要遗漏查询串的括号！
+
+```js
+window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+```
+
+### React 事件池
+
+在开发`文件树工具`时发现了一个有趣的事
+
+```js
+for (var i = 0; i < e.target.files.length; i++) {
+	var freader = new FileReader();
+	freader.readAsDataURL(file);
+	console.log(e.target.files); // ok
+	freader.onload = (fe) => {
+		console.log(e.target.files); // error!
+	};
+}
+```
+
+循着控制台的提示查了官档：
+
+> The SyntheticEvent is pooled. This means that the SyntheticEvent object will be reused and all properties will be nullified after the event callback has been invoked. This is for performance reasons. such, you cannot access the event in an asynchronous way.
+> SyntheticEvent 是合并而来。这意味着 SyntheticEvent 对象可能会被重用，而且在事件回调函数被调用后，所有的属性都会无效。出于性能考虑，你不能通过异步访问事件。
+
+这下就明白了，只要在回调函数之前用变量保存事件属性就可以在回调里使用了
+
+### 忽略隐式类型转换而浪费大把时间
+
+开发设置页面时，列表组件会返回选中项目的下标，而设置业务函数没有值传入就会退出。
+
+```js
+if (!name || !value) return originSetting;
+```
+
+这样写的话，如果 value 为 0 也会退出...
+
+#### 解决方案
+
+```js
+if (!name || (!value && value !== 0)) return originSetting;
+```
+
+ECMA2020 新特性有对类似问题的解决方案
+
+```js
+let number = 0;
+let myNumber = number ?? 7; // => 0
+```
+
+## 思考
+
+微信的小程序逐渐发展起来，会不会蚕食浏览器市场呢？
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[一篇游记]]></title>
+            <link>https://rene.wang/p/2020-5-31</link>
+            <guid>2020-5-31</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+二〇二〇年五月三十日，多云，空气中弥漫着初夏的微热。
+
+这是一个半期考试刚刚结束的星期六，我们五个人（思源，鸭姐，小孙，磊磊，我）均取得了不错的成绩。相约一起出来耍。一是放松，二是拍一部真正的 vlog，以及，带我和林怡两个在海边长大的孩子看看成都。
+
+这天早上我早早地起了床，彼时的成都还在一片寂静中。敲了一会代码，八点吃过早饭。大约十点钟左右，我出发了，今天是<s>校服</s>白衬衣和黑色休闲裤，还带上了自拍杆（今日 MVP）
+
+碰面地点是`鸡毛店`————成都知名川菜馆。小孙首先抵达，很快，他在地铁口接到我。
+
+## 鸡毛店
+
+俗话说，无酒不成席！预定好包间之后，我们去买奶茶。尽管是繁华地带，却没有我喜爱的书亦。跋涉几百米后，终于出现了还算不错的蜜雪冰城，谁知道它竟然没有开始营业！于是我们继续走，总算见到一个名不见经传的`丸摩堂`，这是一个又贵又难喝的奶茶店（我与思源的评价都说明了这一点）。
+
+<b> ？？怎么才几分钟蜜雪冰城就开门大吉了？ </b>
+
+回到店里时，磊磊已经到了，几分钟后思源和鸭姐也到了。
+
+磊磊和小孙都是干净的短袖和工装裤，思源<s>和我情侣装？</s>是 JK，鸭姐是典雅大方的<s>蛋黄长裙</s>浅绿色长裙。
+
+### 菜单
+
+-   麻婆豆腐
+-   辣子鸡
+-   糍粑
+-   蒸肉
+-   毛血旺
+
+地道的川菜菜单了，共计 CNY 256。
+
+席间，我尝试用各种奇葩角度拍照，鸭姐向她的母亲介绍了我们一行，大家谈笑风生，好不快乐！
+
+由于不清楚饭菜的分量，点多了。虽然我已经饥肠辘辘，也只好雨露均沾。<s>思源说她可以吃六碗。</s>
+
+感觉剩下的饭菜可以养活一个连。
+
+鸭姐的萝卜挂件掉在店里了。
+
+## 锦里
+
+> 名彰汉唐，街纳古今。<br>
+> 功著三国，客聚五洲。
+
+我和磊磊骑车，另外三人则是打车到了锦里。人很多，只要健康码就能进。
+
+这是一条老街，现代化的改造让我略感压抑。这里有川剧变脸表演，有国家文化传承人的摊子，有各种摆件，配饰，糖画，书画，有漂亮妹纸，有在茶馆里唱歌的干净的帅鸽。显然，当历史沉淀和现代文明碰撞时，总会别有一番景致。
+
+### 耳朵清道夫
+
+这里是成都特色掏耳朵！
+
+经过长期激烈的心理斗争，小孙首当其冲，要尝试一下。躺在椅子上的小孙开始略有紧张，在师傅如开锁般娴熟的一顿操作之后，很快就飘飘欲仙，沉醉在温柔乡里...体验过后他只有一个字：爽！这彻底击垮了磊磊的心理防线，他也躺在了那把交椅之上。然而`真香定律`是普适的，“爽啊”，磊磊说，“仿佛听力翻了一倍”。
+
+我和两个女孩子没试，寻思万一有个三长两短呢。他俩享受的桠子倒是被我们的手机忠实地记录下来了。
+
+### 表哥的纪念品
+
+我们一直想给被父母关在温室里的本该来的表哥买个礼物，寻寻觅觅，一直没找到她喜爱的《全职高手》和王者瑶的周边。到最后还是没有买啥
+
+不过大家都感慨，要是表哥来了，我们没法自由自在地<s>开黄腔</s>谈笑了
+
+### 哈根达斯？
+
+逛完一圈下来，我们也倦了，鸭姐请我们去一家冰饮店。
+
+-   玫梅
+-   柠檬
+-   西柚
+-   小食拼盘
+
+点完单，我们买了副印有四川方言的扑克，教鸭姐说四川话，顺便打“干瞪眼”。
+
+我真的蠢啊！打牌时竟然心不在焉，大家只好悻悻离去。
+
+## 桌游
+
+果然是酒香不怕巷子深，成都排名第三的桌游俱乐部竟然在一栋略显破旧的大楼里。老板的桌游收藏像图书馆里的图书一样琳琅满目。
+
+令人头晕的烟气和压抑的空间...
+
+### 德国心脏病
+
+思源首先提议玩这个，果然学习委员反应力惊人，锐利地判断，<s>单身 15 年</s>敏捷的手速，很快占据上风。
+
+### 叠叠高
+
+（唱）人类用沙，造出梦里通天塔．．．
+
+## 滨江路
+
+> 水边灯火渐人行，天外一钩残月带三星。
+
+高楼的霓虹勾勒出繁华的夜空。桥上，一盏盏车灯仿佛颗颗疾驰的星星。人们欣赏着美丽的滨江夜景...多希望，期年之后，大家还能在一起散步
+
+### 是无心的玩笑，对吧
+
+回忆总是美好的，因为你的潜意识已经替你过滤掉了那些不美好的。
+
+## 尾声
+
+> 没有遗憾
+> 还有我
+
+我们在新南门地铁站分开。
+
+十点过，我到家了。很累，但很开心，非常开心，初中没有过这么充实有热闹的一天。
+
+那些不开心的事情，早日滚蛋吧。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[冥门嫁娶与超时空同居]]></title>
+            <link>https://rene.wang/p/2020-7-30</link>
+            <guid>2020-7-30</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 冥门嫁娶
+
+这是不需要打伞却会被淋湿的一天，盛夏的成都总是阴雨绵绵。
+
+![春熙路](https://i.loli.net/2020/07/30/o3DehanlL1tyJQT.jpg)
+
+放弃长滕鬼校后，我们二人选择了 `K空间密室逃脱`。 我们和另外四人组队，来挑战这个最难最恐怖的“冥门嫁娶”主题。
+
+看完我抽到的角色“侍卫”之后，我们就被蒙上眼罩，进入一间小黑屋。奇怪的是，明明就是一扇门的事，为什么需要戴眼罩呢？
+
+**本文含有剧透内容**
+
+### Room1
+
+我和锦轩把蜡烛探到一扇类似玻璃的洞里时，突然扑上来的鬼脸让我萌生了退出的念头。从这以后，我对类似的洞口就防备有加。
+
+根据一张纸条这个线索~~以及工作人员的大量提示~~，我们顺利到达下一个房间。
+
+### Room2
+
+我们解救出被关在一个电话亭一样的亭子里的新娘。闪电与白衣鬼使我多巴胺飙升。
+
+根据一对对联这个线索~~以及工作人员的大量提示~~，我们顺利到达下一个房间。
+
+### Room3
+
+根据一个罗盘和一张纸条这个线索~~以及工作人员的大量提示~~，我们顺利破解了密码，但是因为机关没对准，耽误了许多时间，成为遗憾。
+
+### Room4
+
+这关有大量的单人任务，队友一个一个被叫了出去，期间不时传来惨叫与碰撞声。所幸的是，作为侍卫的我没被叫出去。
+
+破解灵位密码后，我们从一个狗洞钻到了最后一个房间。四个大棺材矗立在那里，仿佛要我们进去。
+
+担心之时，时间也到了，工作人员示意我们停下，给我们讲解了后面的情节。原来 丫鬟(锦轩)/侍卫/小斯 其中一人在一进门就被鬼附身了，我们戴上眼罩时，手上被撒了特殊的荧光粉。特殊灯光照射时，会显现标记。棺材确实是为我们准备的，进去之后鬼会随机抓走一个人，众人解救他之后返回上一个房间，在光的照射下鬼显露原形。新娘新郎给父母磕头，游戏结束。
+
+总之，恐怖不至于，但会让你一直提心吊胆并盯着每一片黑暗，至少我这么觉得。
+
+## 《超时空同居》
+
+这才是爱情片该有的样子。女主很漂亮，故事很精彩且略微烧脑。强推这部电影，片尾的几个彩蛋，是一个男人看了会沉默，女人看了会流泪的故事。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[2020暑假收获]]></title>
+            <link>https://rene.wang/p/2020-Summer-Vacation</link>
+            <guid>2020-Summer-Vacation</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 读书
+
+### 《白夜行》
+
+“我的人生就像在白夜里走路”
+
+跨越二十多年的时间线很震撼，读完才发现，原来书中每一处情节，都在侧面或正面写雪穗和亮司的爱情。亮司作为雪穗“白夜里的太阳”，一直保护她到最后一刻。
+
+### 《解忧杂货店》
+
+非常温暖非常治愈的故事。四个部分看似毫无关联，却又紧紧相扣。是推理小说，却没有嫌疑人，没有警察，只有几个平凡人演绎平凡的故事。
+
+### 《三体》
+
+“给岁月以文明，而不是给文明以岁月”
+读完后被庞大复杂的世界观彻底震撼到了，天空似乎变得更加神秘了。
+
+### 《时生》
+
+虽然是略显俗套的穿越题材，但亲情足以弥补这一不足，千鹤线的推理环节比较薄弱。
+
+### 《挪威的森林》
+
+相比直子，我更喜欢绿子，开朗活泼，有血有肉。~~是理想的女朋友！~~
+
+也许是我还年轻，现在读起来略显青涩。也许几年后，到了渡边的年龄，就能体会到真正的爱情是什么了吧。
+
+### 《嫌疑人 X 的献身》
+
+天才与天才的对决，推理慎密，全文无尿点，几乎是一气呵成，与白夜行相似，也是一个男人为了保护心爱的人而付出巨大代价的故事。感觉石神的失败很大一部分是没控制好面部表情，被汤川看出来与靖子有瓜葛。
+
+### 《自控力》
+
+东野圭吾，村上春树两位日本作家的作品很好的展现了上世纪六七十年代（《挪威的森林》《时生》）以及经济泡沫前（《白夜行》）的日本社会风貌。
+
+此外还有《程序员修炼之道》《当下的力量》没有读完。
+
+## 影视
+
+### 《致命 ID》
+
+优秀的悬疑片，略微恐怖，结局真的真的超出人意料。
+
+### 《禁闭岛》
+
+同上。
+
+### 《某科学的超电磁炮 T》
+
+“你指尖跃动的电光，是我此生不变的信仰，为我超电磁炮永世长存！”
+
+啥都 8 说了，首先庆祝超炮 T 播放量破 1.3 亿，大爱炮姐！
+
+### 《犯罪心理第九季》1-15 集
+
+## 开发
+
+总体还是以开发为主，学习为辅。完善了[博客系统](https://blog.yungeeker.com)并持续开发[云极客工具](https://www.ygktool.cn)。
+
+-   [游戏加油鸭的故事](https://github.com/rivertwilight/adventurex)
+-   [一个完整的 UI 库](https://github.com/rivertwilight/mdui-in-react)
+-   Vue.js
+-   React-Native
+-   每天坚持 20 分钟以上健身
+-   番茄钟
+-   js 键盘码查询
+-   Bash 脚本
+-   5 道算法题
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[2022是一杯大份烧仙草]]></title>
+            <link>https://rene.wang/p/2022-Recup</link>
+            <guid>2022-Recup</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+我以前很喜欢喝书亦烧仙草的招牌饮料。在市中心以外的地方，花上 10 元就能买到一大杯：半杯是奶茶，半杯是料。
+
+今年前半年（不多不少刚刚好，到高考），像是那半杯奶茶。单调，那是形容高三最恰当的词汇。甚至到了倒计时最后十几天，有时又出现一种解脱的感觉。上半年没有网课，没有放开，没有东奔西跑，只是和时间赛跑，就是半杯纯纯的奶茶。
+
+有几个印象比较深的情景，那是淋过暴雨的深夜，下了晚自习独自走回宿舍。
+
+6 月 8 号下午考完英语，起身那会，抑制不住的笑容涌上脸颊，又生怕被别人看见那种纯真的快乐。不像是压在背上的重担卸下了，更像是带着镣铐的脚得到解脱，可以跑起来了。
+
+上半年就是这么简单却又值得怀念，用尽一切力气冲破教育体制的束缚，迎接新生。自然也有些遗憾：有天晚上下了晚自习，在操场上看到有个女生孤零零很伤心，应该去问问她怎么了；毕业前，没有和生活老师还有体育老师合影；高考完，不该买笔记本电脑而该买台式机…
+
+下半年则是在折腾中度过的，远比折腾技术精彩。
+
+首先到来的，是人生最后一个充满活力又可以无忧无虑的假期，填了还算正确的志愿，暂时逃离干枯的现实，拿了驾照，打了游戏，写了代码，恋恋不舍之时，惊闻开学延期。
+
+接踵而来的是似有若无的网课，秋风乍起，有人还想与病毒斗争到底，于是开学又一次延期，军训取消。
+
+终于体会到了什么叫“放假放到吐”，不久之后，开学第三次延期。我与假期的斗争终于到了白热化阶段，每天七点挣扎着起来上早自习，晚上坐在摄像头面前又上晚自习。似乎每个人都想开学，我却爱上了这种近乎独居的生活。下次想再体验这样的生活，恐怕就是跳槽后在家待业吧。
+
+直到我闻到了从北方飘来雪花的气息，才终于确确实实要开学了，已经是十一月。真正的大学生活才开始，真正的干枯的现实才要到来。
+
+大学里来来往往，只找到了越来越多我不想要的东西。在学校的一个月，只得不停地做减法，丢掉那些无谓的、浪费时间与分散注意力的陈规与琐事，也退掉了暑假就预先加入的学生组织。疫情之下，一切都如天空般每天灰暗。只有代码顺利地工作时，才稍稍有了一些慰藉。
+
+一年下来，学了很多新技术，Flutter、iOS、Unity 还有 Python，没有辜负之前多练算法题的愿望，对编程又有了更多的理解。也培养了许多许多新特长，看了很多题材的书，总之，在继续做一个终身学习者。
+
+在世界杯的欢呼声中，这个国家终于决定结束持续三年的闹剧，我们也得以回家，一切又回到今年秋天。经过折腾筛选的毒株又感染了周围的大多数人，我也挂了彩，在床上躺了四五天。
+
+下半年是各种小料堆起来的，有仙草冻，有绿豆，有红豆，还有椰果。遗憾是什么？遗憾是没在动荡不安的半年稳住阵脚，网络上的圈子没怎么扩大。
+
+体验了几个月真正的人生，我发现有些人从未想过寻找什么，有些人苦苦找寻他们想要的东西，还有些人也许已经找到。而我却不断发现自己不想要的东西，这也是一种寻找吗？
+
+总之，期望 2023 还可以满满当当写下一篇总结。希望明年可以再努力一点。（壬寅年腊月初九）
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[Before the Tsunami Comes： 8 Tips for Using Internet]]></title>
+            <link>https://rene.wang/p/8-Tips</link>
+            <guid>8-Tips</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+```
+本文的中文版本将在稍后发布
+
+```
+
+Though called the "web", people are more likely to attach the Internet to a tide. I still remember when I study in primary school, I read an essay titled *My Family Has Entered the Information Highway*. At first, the internet helped a lot. Now it is evolving into a tsunami.
+
+An innovation starts spoiling as soon as people find it profitable. I'm not saying earning money from the internet sucks, unless, of course, in an extreme way.
+
+One day when I was searching for how to deal with my tiring eyes on Zhihu, a popular Quora-like platform in China, I even couldn't find a user's real experience but medicine promotion(usually in an unconscious way).
+
+I also heard that Google Search users like to add a "Reddit" keyword after each search to get a real experience.
+
+In fact, decentralization is far away from us. For some reason in China, it can even be hopeless. So I want to share some tricks of living in the Internet world.
+
+**1. Stay calm.** The Internet is, actually, creating more information gaps but eliminating them. Let's say you are gonna buy a new book and soon you find a netizen saying"xxx is awesome, just buy it". Usually, comments like these make decisions for us. In this case, the gap is filled with background and personality.
+
+**2. Use RSS and Newsletter.** These information sources help you avoid being fed with something you like. It can also filter ads. Alternatively, you can disable "Personalized recommendation" on social media, if possible. This illustration shows how RSS works:
+
+![](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1Dfdn5THJL4Uia6AmcvNssbus8ia1butUNH3aDJKx3fHicct3S49V0iaus1dibvhdILvyUITcgFlFFQqXg/640?wx_fmt=png)
+
+To get started, you can try the Innoreader RSS reader.
+
+**3. Always reject cookies any websites asking for.** Cookies are first used to keep user sessions after they logged in. But soon website owners found it can also track users'journey, so they offer paid cookie share privilege to other sites. This explained why google ads suggest your favorite drinks to you though you never"told" them.
+
+**4. Keep caution when sharing your photos.** We say the Internet is immortal just because anything you upload won't disappear. You can"delete"it for you but not for the web. Embrace mosaic, it's a really reliable privacy protector.
+
+**5. Books age much slower than the internet.**
+
+**6. Choose open-source software if you can.** Open source software is those that make source code public, such as Telegram, Firefox, and Ubuntu(OS). For this reason, they can get more frequent security updates and will not collect your privacy. Unfortunately, users living in China's mainland can hardly find an open source alternative for often used apps like Wechat and QQ. But you can still consider using an open source operating system and browser.
+
+![](https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1Dfdn5THJL4Uia6AmcvNssbuw9MHxHFaUrrL7cNwrkzz2eXPuFiaRkQG2vEWCcic2GdwtXQyXmqZ4zOg/640?wx_fmt=jpeg)
+
+**7. Use an external password manager.** A malware can decrypt bookmarks and passwords saved in all mainstream browsers (except Safari).
+
+**8. Use a blocker.** If you are using Chrome, try installing the uBlock Origin Extension. It helps block track URLs and ads. BTW, it's open source.
+
+If you live on China's mainland, I will tell you to uninstall RED, TikTok, and Weibo. They are now the largest home for information gaps, useless arguments, and anxiety.
+
+**In a nutshell, judge any content you receive and review any content before you send it on the internet. You can find a safe house before the tsunami.**
+
+Let me see any comments:-)
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[在Minecraft中还原烟台开发区高级中学]]></title>
+            <link>https://rene.wang/p/Built-My-Senior-High-School-In-Minecraft</link>
+            <guid>Built-My-Senior-High-School-In-Minecraft</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+我们利用寒假的时间，在 Minecraft 中搭建了一个烟台开发区高级中学。九月份开学那天，我很遗憾地没能去报到，算是借助游戏完成了我的一个梦想吧。
+
+## 🎞 视频欣赏
+
+<iframe src="//player.bilibili.com/player.html?aid=844303535&bvid=BV1X54y1Y7Vp&cid=302453202&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+## 🚧 工程日志
+
+-   项目原型：山东省烟台市开发区高级中学（金沙江路）
+-   游戏版本：1.12.2 Forge (Java)
+-   参与人员：zby、RiverTwilight、FBI-mzy、huolong、lxy 等（均为游戏 ID）
+-   一期：2021/1/10 —— 2021/2/24
+-   二期：2021/2/25 —— 至今
+
+## 🎮 存档下载及安装
+
+### 0. 导入地图
+
+地图请使用 java 版 1.12.2forge 进入。
+
+> 存档下载地址：[百度网盘](https://pan.baidu.com/s/13zG8Xm6yR-Exu1QUKJZaFw)
+>
+> 提取码：**5jwg**
+
+将地图解压后放到游戏根目录（例如 `F:/Games/Minecraft/.minecraft`）下的 saves 文件夹即可。
+
+### 1. 安装 Mod
+
+此步骤不可跳过，否则会出现大量方块丢失。
+
+> 家具 Mod 下载地址： [百度网盘](https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg)
+>
+> 提取码：**lgau**
+
+将.jar 文件放到游戏根目录下的 mods 文件夹即可。
+
+### 2. 安装光影(可选)
+
+> 家具 Mod 下载地址： [百度网盘](https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg)
+>
+> 提取码：**lgau**
+
+将压缩包直接放到游戏根目录下的 resources 文件夹即可。
+
+## ✨ 彩蛋
+
+### 高级中学的民防工程
+
+在农场下有一个可以在核战争来临时供全校师生躲藏一个月的大型掩体。入口位于农田中的某一块水井。
+
+### 下水道
+
+校园配备了完整的排水系统。拥有亚马逊雨林级的防涝能力。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[深得一人心：信息获取全流程可控实战]]></title>
+            <link>https://rene.wang/p/Control-Your-Information</link>
+            <guid>Control-Your-Information</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+如果把大脑比作一个农场，信息比作农作物，那么作为农场主，你要合理安排有限的土地（时间），悉心审查种子（信息源）的质量，为高产作物留出更多的空间，同时防止杂草污染土地。
+
+这也是本文的目的。
+
+确保全流程可控有两个核心的点：**一是对信息进行分类，二是合理规划消费的时间和量**。
+
+对于每一类信息，要创建一个严格的 scope (域)，即不轻易增加或减少来源，在 scope 规定的时间内消费。
+
+Apple 公司的创始人 Steve Jobs 曾说：“Your time is limited”。 对部分信息的消费采用定时定量策略，目的是避免造成过度的时间浪费，并有效抑制一些可能出现的“伴随信息”，比如某一篇文章推荐了另一个公众号，如果这个公众号的 scope 与当前时间片不一致，那么应暂时放弃。
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e22cfa8-a1e1-4be5-b479-7e972a71538f/Untitled.png)
+
+## 被动型信息
+
+顾名思义，这类信息往往无法控制，所以单独说一下。消费时，注意不要被杂音干扰，因为国内常用的 IM 软件都有一些与聊天无关的内容。对不重要的信息设置免打扰，迅速处理重要的信息。
+
+-   QQ、微信的消息
+-   突如其来的邮件
+
+## 纯粹的垃圾信息
+
+这类信息完全就是对宝贵时间的浪费，要提防、原理。举例如下：
+
+-   短视频软件上的**某一类**内容
+-   微博、知乎等平台的热搜，充斥着炒作、虚伪与谎言
+-   淘宝、京东等购物软件的推荐页面
+
+## 高度碎片化、低质信息
+
+此类信息偏娱乐，仅供消遣，并不会对自身有太多提高，不获取也不会有丝毫损失。每周集中、定时、定量浏览。我本人的方法是每周四晚上固定浏览 30 分钟，项目按需分配。
+
+浏览的时候保持警惕，**不可沉迷、不可放纵**。
+
+-   **Twitter：**主要用于关注国内外新闻、技术圈的简讯
+-   **Telegram**: 同上
+-   **朋友圈**：身边人的新鲜事，定期互动即可
+-   **大学公众号**：通常报道一些校内的新闻，无关紧要，但关注他可以产生归属感，偶尔扫一眼即可。
+-   **社交过程中获得的信息**：比如朋友分享的一些新闻，此类信息注意保持一定的自我判断即可，理性消费。
+
+## 低碎片化的娱乐信息
+
+与上一种不同，这是需要消耗较多时间娱乐的内容。例如：
+
+-   电影
+-   小说
+
+在周末或者假期，大可以放松下来，好好欣赏一部优秀的电影或小说，这里不做推荐。相信喜欢看电影和读书的读者早已有自己的清单。我们只要轻松对待即可。
+
+## 中长篇文章、待加工处理的信息
+
+诸如优质的公众号文章等，此类信息第一次看并不会学到很多，需要积累深加工。此类信息建议全部使用 RSS 获取，其余渠道一律避开。
+
+同样是定时但不定量获取。在习惯管理软件中，我设置为每周二、周六浏览 RSS 阅读器，通常耗时半个小时以上，需要注意休息。
+
+-   **知乎日报**：奇闻异事、冷知识、文化素养，适合挑选精华摘录到 Flomo
+-   **冰点周刊**：高质量的新闻，关注小人物的故事
+-   **经过筛选的视频频道**：严格筛选你关注的博主或者频道，且定量观看，例如每次就看一期。
+-   **少数派**：文章质量普遍拔群，涉及领域广，适合深度阅读，并尽量每一篇都读。
+-   **国外知名新闻媒体**：例如 BBC、华尔街日报、纽约时报等。此类内容通常比推特的内容要翔实，并且能有效锻炼英语阅读能力，尽量每一篇都浏览，不一定要看完。
+-   **One 一个**：目标群体是文艺青年的优质内容，提升素养，偶尔允许自己 Emo 一下。
+
+注意，不推荐使用微信自带的公众号功能浏览公众号信息。容易受到个性化推荐以及广告的打扰，RSS 则可以有效规避商业化带来的烦恼。
+
+对于此类信息的加工我的方法是使用浮墨笔记。此处不详细讲述笔记方法。
+
+## 严肃、高质的信息合集
+
+这类信息专为学习而设计，例如人文社科类书籍、在线课程、小册等。无需定时定量，而重在吸收的质量。不要停止为自己充电，你的能力远超你的想象。事实上，前面两种信息消费时的克制，就为消费这一类信息创造了时间和空间。
+
+信息的获取要注意：确保是有体系、成架构的内容，并且有**一定**的深度，否则内容应划分到其他 scope。
+
+-   **书籍**：例如《马克思恩格斯著作选集》《小白经济学》等有体系、有结构的内容，笔者认为，读书应该是成为生活的一部分，不需要刻意安排，也不要忙到没时间去阅读。
+-   **视频类慕课**：此类信息的消费建议以待办的形式写入每天的日程。
+
+目前我们能获取的信息便大抵可分为这几类。总结下来最重要的就是：审视每一个信息源的质量。你的时间是有限的。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[大学新生研讨课报告]]></title>
+            <link>https://rene.wang/p/Freshman-Seminar-Report</link>
+            <guid>Freshman-Seminar-Report</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+> 本文系笔者大学新生研讨课报告。六次新生研讨课分别讨论了人工智能、算法、大数据、信息素养等时下热门主题，结合笔者上课所学以及平日了解，写下这篇报告。
+
+## 1.1 引言
+
+笔者今年步入大一，参加了几场新生研讨课，分板块讲解了笔者所在专业需要学习深入的领域，特撰写此报告。本报告完全原创，如有雷同，纯属巧合。
+
+## 2.1 人工智能
+
+人工智能第一次走入笔者的视野，应该就是大名鼎鼎的棋手李世石与 Google Alpha Go 的较量，紧接着是柯洁、国际象棋大师等人的较量，这些都是笔者在初、高中时期看到的，当时笔者对人工智能的印象就是：人工智能是一个可以和人类进行较量的东西，而且人工智能的智能程度已经超过了人类。
+
+### 2.1.1 前沿进展
+
+目前，人工智能已在很多领域有了突破，根据笔者的了解，列举如下：
+
+-   可繁殖机器人
+-   可自主作画（Novel AI）
+-   可自主写作（GPT-3）
+-   可自主翻译（Google Translate）
+-   可自主驾驶（Tesla）
+-   可自主识别（Face++）
+-   可自主学习（AlphaGo）
+-   可自主游戏（Dota2）
+-   可自主创作（Deep Dream）
+
+可以预见的是，几乎所有重复、有规律的工作都将被人工智能取代，这将会给人类带来很大的改变。
+
+### 2.1.2 如何看待人工智能
+
+笔者认为，一味的排挤，抑或是过度的依赖，都是偏激的做法。原因如下：
+
+-   人工智能并不会造成就业机会的减少，事实上，人工智能反而催生了更多职业。
+-   人工智能并非想象中的可靠。在最近热播的电视剧《爱，死亡与机器人》一集中，失控的机器人成为了女主人公的噩梦。这也是笔者认为，人工智能的发展应该是有监管的，而不是一味的放任自流的原因。
+-   人工智能还有很长的路要走。
+
+正如电的出现到普及一样，必然会触动某些人的利益，但是，电的出现，也带来了很多的便利，比如：电视、电脑、电灯等等。同时创造了大量新的就业机会：电工、变电厂等等。
+
+同样地，人工智能的出现，也会带来很多的便利，比如：智能家居、智能手机、智能汽车等等。人工智能的出现，也会带来很多的职业，比如：人工智能工程师、人工智能研究员、人工智能设计师等等。
+
+## 2.2 算法
+
+笔者三年多的编程经历中，用到算法的场景相当多。
+
+例如，笔者开发本人的博客系统时，涉及到一个日期排序功能，其实就是**冒泡算法**。而一些初级前端程序员在开发时，可能会觉得算法并不是必修课，但其实业务中经常可以用到一些简单的算法，比如：二分查找、快速排序等等，只是开发人员没有意识到运用了某种算法，甚至可能造成不优雅的代码出现。
+
+### 2.2.1 数据结构
+
+课上谈到了数据与程序的关系。笔者认为，只有理清数据结构，才能洞悉问题本质，写出高效的算法。
+
+-   数组
+-   堆
+-   栈
+-   二叉树
+-   链表
+
+说到算法，很多人会联想起数学。编程界有一句很出名的话：”数学不一定能让你成为更好的程序员，但是能让你多一个解决问题的办法。"
+
+## 2.3 大数据
+
+大数据是指，通过分析海量数据，从中发现有价值的信息，从而改善决策和业务的过程。而我们常说的数据分析，就是大数据的一种。
+
+大数据的应用场景有很多，比如：电商、医疗、金融、教育等等。
+
+大数据的发展，是一个漫长的过程。从最早的数据采集，到数据存储，再到数据分析，最后到数据挖掘，并服务于产品，其中涉及了很多人事、技术。
+
+## 2.3.1 利弊
+
+任何事物都有两面性。笔者个人十分反感成为大数据的“养料”，例如，让淘宝洞悉笔者的购买偏好，抑或是让知乎了解笔者最感兴趣的领域。并且，当一种技术可以带来利益时，往往就会偏离其本身的初衷。
+
+当互联网的一切都被卷入大数据的洪流中时，再讲隐私，恐怕只能是天方夜谭。
+
+## 2.4 信息素养
+
+课上教授谈到了数据库检索。数据库从 Web 1.0 时代诞生伊始，至今依然广泛应用在科研、教学、医学领域中。广义的数据库可以指为网站、APP 或小程序等互联网服务存储数据的一种信息容器，狭义的数据库则是存储文献、论文、书籍等信息的虚拟媒介。
+
+在课上教授重点谈了如何主动获取，包括一些常用数据库、电子图书馆使用等，但是未提及如何被动接受信息。笔者认为，信息素养不止包括如何检索信息。在当今滚滚的信息洪流中，我们便面临两个最重要的问题：
+
+-   如何主动获取信息
+-   如何被动接收信息
+-   如何利用、转化接收的信息
+
+### 2.4.1 如何接受信息
+
+事实上，从古到今，人类都一直在被动地接收信息，但是如今面对的信息量确却是空前地庞大。关于如何正确地被动接受信息，笔者曾在一篇[博客文章](https://rene.wang/p/My-Information-Flow.md)中探讨了信息工作流，有兴趣的读者可以阅读，此处不赘述。
+
+### 2.4.2 如何利用、转化接收的信息
+
+关于这个话题，笔者也在另一篇[博客文章](https://rene.wang/p/My-Information-Flow.md)中详细探讨了自己的信息处理工作流，摘录如下：
+
+![](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKQ9UndDwMKErMpjKvZGCdmHWUoZ5H0TURJr6uvuwtWTzZ0bPU6wOBwg/640?wx_fmt=png)
+
+## 2.5 操作系统
+
+要理解操作系统，一个核心理念是：**计算机是由硬件和软件组成的**。
+
+为了驱动、调度硬件，并提供一个易于人类操作的交互方式，我们研发了操作系统。常见的操作系统有 Linux、macOS、Windows 等，以及移动端的 Android、iOS 等。另外，电梯、智能家居等硬件内则安装了称为嵌入式系统的 OS。
+
+关于操作系统，笔者联想起曾经折腾过的一块随身 Wi-Fi。那是一个外接了扩展电路板的随身 Wi-Fi。尽管没有显示器、没有键盘、没有"显卡"，其实也搭载了 Linux 的发行版 Debian。这澄清了一个很常见的误区：即电脑一定要由显示器、机箱等等。
+
+现代操作系统是一个复杂的大型软件。包括线程调度、磁盘管理、（针对移动设备的）电源调度等。
+
+操作系统是人机交互的革命。
+
+## 2.6 软件开发
+
+软件开发的本质是什么？笔者认为其本质是设计一套解决问题的流程。很多初级开发者喜欢追求技术，但我们要站到更高的角度看整个流程，把精力集中到架构设计、利弊权衡等上去。这背后的理念其实就是"产品思维"，把整个软件看作产品（凡是能解决问题的产物都可以叫"产品"）。
+
+另一个很重要的思想就是，把语言看作工具。
+
+软件开发也与木工有很大的相似之处，开发者需要提前设计架构，准备材料，尝试不同的组装方式，测试其稳定性...有时又要坐的住冷板凳，学会把软件与自己分离，好投身到下一个项目中去。
+
+### 2.6.1 软件开发的乐趣
+
+《人月神话》对软件开发的乐趣有一段精彩的阐述：“这种快乐是一种创建事物的纯粹快乐。如同小孩在玩泥巴时感到快乐一样”。程序员多是喜欢自己动手创建事物的人，而软件开发赋予了他们最大的自由。
+
+## 3.1 总结
+
+新生研讨课作为笔者专业的“入门课”，对专业有了大致的了解，为以后的学习指明了方向，也了解到了计算机领域的前沿进展。
+
+而新生研讨课带来的更深层意义在于，学习是永无止境的。任何领域都有学不完的知识，在不断地学习中，你会逐渐意识到自己的无知，而这种无知又反过来激励你不断学习。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[板绘 | 壁纸作品合集]]></title>
+            <link>https://rene.wang/p/Gallery</link>
+            <guid>Gallery</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[拯救你的收藏按钮：我的信息管理工作流]]></title>
+            <link>https://rene.wang/p/My-Information-Flow</link>
+            <guid>My-Information-Flow</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+前几天，我发现我的语雀账号无故被封禁了。有意思的是，竟然显示为用户举报。
+
+![](https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKtv42kncdISS2InbxUgOBOWyxzglCm2uVTM8QuLx4b26SzEukgIfjnQ/640?wx_fmt=jpeg)
+
+这就不得不说说我为什么用语雀：主要**用它来管理我的文章收藏**。在网上看到一篇好文章，如果点击平台的收藏按钮，那么这很有可能是你最后一次看见他了。并且，**哪天文章被删了，想看也看不了**。
+
+所以我选择使用**简悦**创建文章副本，再保存到语雀，永久储存，分类整理。
+
+简悦是一个浏览器插件，除了提供沉浸式阅读，还可以将文章保存到各大知识管理服务，例如 Notion/Instapaper/Pocket 等等。这是很重要的一环，**必须尽可能掌握信息的所有权**。
+
+账号被封禁后，我开始重新审视这个国产工具：
+
+🙃 打造信息孤岛，文档导入功能丰富，导出功能却十分有限
+
+🙃  隐私不安全（存在审核）
+
+🙃  十分浮肿，我只需要他的 30% 功能
+
+🙃  拓展性很弱，API 使用门槛高
+
+于是我决定使用 Github 管理我的文章，几乎解决了所有痛点，简悦也支持直接保存到 Github. 借助这种纯文件的天然优势，可以通过 Docusaurus 等工具定制化页面，提升阅读体验。未来，还可以编写程序实现 flomo 的 “每日回顾” 功能。
+
+于是我的信息管理工作流就变成了这样：
+
+![](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKQ9UndDwMKErMpjKvZGCdmHWUoZ5H0TURJr6uvuwtWTzZ0bPU6wOBwg/640?wx_fmt=png)
+
+在手机上读到的文章，则需要将链接使用电脑浏览器打开，再执行上述步骤
+
+借助一些文档生成工具，则可以提高阅读效果：
+
+![](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKUFEZqdkvrTgdIwGx9FljwIbUR0gzqcfB38XbrR1zGhC10h2XMeywCg/640?wx_fmt=png)
+
+Docusaurus
+
+同时，开源软件也保证了信息安全性和可靠性。
+
+选择软件，要远离信息孤岛，注重拓展性。碎片化信息的时代，一定要有甄别和思考的能力，同时也要具有管理信息的能力。**下次见到喜欢的文章，试着把他真正保存起来吧**。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[个人能力作品集]]></title>
+            <link>https://rene.wang/p/Personall-Showcase</link>
+            <guid>Personall-Showcase</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+此页面展示我个人的特长能力，同时我也一直在不断学习中。
+
+## 开发
+
+拥有四年前端开发经验，项目绝大多数为开源。
+
+-   [小程序]()
+
+## 绘画
+
+本人绘画题材以风景、自然为主，绘画手法多样，也会进行漫画创作。
+
+作品主要发布在公众号上。
+
+-   [板绘｜ iPad 壁纸专辑（4K）](https://mp.weixin.qq.com/s?__biz=Mzg5MDgyMDg3NQ==&mid=2247483842&idx=1&sn=566445503cc7775cb54cb81adcf44937&chksm=cfd781a6f8a008b07da71d605d99748318a78f69efecfc807833e08aa3b515b9b5f80247c960#rd)
+
+## 证书
+
+其他领域的一些证书。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[过去的一年·2019]]></title>
+            <link>https://rene.wang/p/ThePast2019</link>
+            <guid>ThePast2019</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 前夕
+
+2019年6月13日，我在二中的宿舍床上担心会不会睡不好，会不会影响明天的数学。
+
+2019年6月14日，中考结束的那天晚上，我冲进房间买下了第一台服务器。
+
+2019年6月15日，师生参加了毕业典礼。临放学有同学丢给我棒棒糖，没想到那颗糖几乎成为永别。
+
+2019年6月16日，搭乘东航`CA4532`航班飞往成都，父母骗了我，我没和同学说再见，没收拾好回忆，匆匆离开。下午抵达成都，借住在父亲同学家里。
+
+![蓬莱机场](https://i.loli.net/2020/06/13/jIpFSBCHUh1JnGV.jpg)
+
+2019年6月17日，匆匆赶往成实外参加自主招生考试。
+
+2019年6月18日，即将踏入成外高新考场时，收到了成实外的录取通知书（平行班）。怀着波澜起伏的心情考完第二场。
+
+2019年6月21日，与父亲前往峨眉山朝圣。
+
+![峨眉山](https://i.loli.net/2020/06/13/otfj7B38JYCHRyS.jpg)
+
+2019年6月22日，由于成都的房子在装修，被父亲送到乡下撒野。
+
+半个被荒废的暑假过去了
+
+## 成外高新 
+
+2019年7月21日，参加为期两个周成外高新夏令营（衔接班）。在成都与陌生人的第一次邂逅，是和可爱的钰婷。遇到了第一个班主任，董老师。
+
+2019年7月30日，自行车被盗，报案后石沉大海。
+
+2019年整个8月，泡面，一个人，电影，旅行和手机写前端。
+
+2019年9月，一个周的军训。在509认识了锦轩，在教室里认识了思源。
+
+
+![school](https://i.loli.net/2020/06/13/cNxLoX2UsMFWSDK.jpg)
+
+
+2019年9月24日，头部受伤，缝三针，回家休养，有幸成为MIUI11内测用户。
+
+## 钉钉时代
+
+2020年1月19日，买了新的自行车————美利达探索者100。
+
+2020年1月20日，裸骑都江堰，全程80多公里。
+
+
+![骑行都江堰](https://i.loli.net/2020/06/13/itGvFaNx8Jwhrj2.jpg)
+
+
+2020年1月23日，回老家，成为第一批带上口罩的四川人。南方阴冷的冬天很是难受，喜欢北方轰轰烈烈认真的雪。
+
+2020年2月10日，开始钉钉时代。每天上课，在群里划水，连麦，看剧，产出无数代码。
+
+## 新生
+
+2020年4月20日，返回校园，见到了余下两年的同窗，结识了鸭姐和磊磊。
+
+2020年5月2日，第一次真正意义上和同学出去耍。
+
++ 牵肠挂肚
++ KTV
++ 散步
+
+2020年5月9日，成都的学生们摘下了口罩。
+
+2020年5月20日，实验中学的同学们返校了。
+
+2020年5月30日，第二次出游。认认真真做了vlog。写了一篇[游记](./记五月三十日游.md)。
+
++ 鸡毛店
++ 锦里
++ 锦江
+
+2020年6月13日，买了新的服务器，写下这篇回忆录。
+
+## 写在后面
+
+这篇文章记录了我中考结束后的一年，或者说来成都的一年，遇见的人，经历的事。我希望成为《活着》里的福贵那样“精彩地讲述自己”的人。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[过去的一年·2020]]></title>
+            <link>https://rene.wang/p/ThePast2020</link>
+            <guid>ThePast2020</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 经历的事
+
+### 2020.1.22-无装备单日 82 公里骑行都江堰
+
+### 2020.2.16-寒假结束，开始上网课
+
+每天五节课，大部分时间在划水，作业也经常糊弄。
+
+### 2020.4.13-返校上课
+
+### 2020.9.1-暑假结束，进入高二
+
+### 2020.11.29-Keep 锻炼满 3000 分钟
+
+### 2020.9. - 当选团委会宣传部部长
+
+## 读过的书
+
+一共读了 20 多本书，全都是在 Kindle 上读的。
+
+一年下来，读了很多，学到了很多，纸上得来终觉浅。绝知此事要躬行。
+
+-   《白夜行》
+-   《解忧杂货店》 - 暖。
+-   《三体》
+-   《时生》
+-   《恶意》 - 尝遍人生百态
+-   《挪威的森林》
+-   《当下的力量》 - 没有一刻生命是不在当下的。
+-   《嫌疑人 X 的献身》 - 爱有很多种形式
+-   《自控力》
+-   《兄弟》 - 人世纷扰，需守得本心。中国花了四十年时间走完西方四百年走的路。
+-   《菜根谭》 - 修身之道漫漫
+-   《海边的卡夫卡》
+-   《寻羊冒险记》
+-   《经济学人》数本
+-   《纽约客》数本
+-   《程序员修炼之道》 - 成为一名优秀的程序员真的不容易，需要学的东西很多。
+-   《伤逝》 - 一代名家的爱情绝唱。
+
+以及其他零零散散的文章。
+
+## 喜欢的歌
+
+-   《不找了》 - 希望你不要再碰到像我这样的人 敏感 缺爱 经常瞎想 老是缠着你和我聊天 应该让你很累吧 但又希望你碰到这样的人 因为这样的人真的好爱好爱你啊！
+
+-   《下雨天》 - 下雨天了怎么办我好想你。
+
+-   《像风一样》 - 留不住的人血液里都藏着风。
+
+-   《保留》 - 晚上才会想 我有那么喜欢她吗 为什么她不理我的时候我会觉得难受 等到我想去故意不理她的时候难受的还是我 她呢。
+
+## 感悟
+
+-   时间过的真的很快
+-   不能跟喜欢的人在一起是人生常态
+-   很多时候灾难往往因为一句话
+-   熬夜真的很伤身，会让第二天彻底崩溃
+-   人与人的关系真的很脆弱，一不留神就已经是陌生人了
+-   付出太多只会伤到自己，被偏爱的都有恃无恐
+
+## 接下来的一年
+
+-   Github 获得 300 星（24/300）
+-   年级前 50（140/50）
+-   Kindle 生词本掌握 3000 个（975/3000）
+-   微信零钱每个月收入-支出>50(0/12)
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[五天不使用互联网，我的经历和感受]]></title>
+            <link>https://rene.wang/p/Without-Internet</link>
+            <guid>Without-Internet</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+这是个信息爆炸的时代。
+
+我们时常被良莠不齐的信息冲击着，也许正在看一篇优质干货，就被一条擦边广告夺去注意力，然后一发不可收拾；每天都在更新的热搜不断刺激着我们的多巴胺，热点过时后留给我们的什么都没有；刷着一条条有用无用的朋友圈，不断窥探着别人的隐私，却忘记了真正属于自己的生活...
+
+这之前我自己一直有一些自律方法，例如利用人升（一款非常不错的习惯养成 APP）将上网设置为限时的商品，完成一些任务才能购买等等，但效果不佳——一旦遇到一些吸引力极强的内容，很容易就超时了。
+
+### 第一晚
+
+我最后刷了一次 Twitter, QQ 空间, 朋友圈, 晚 20：00 开始了我的计划，此后的 7\*24 小时，我将是与信息时代隔绝的孤岛。
+
+我在我的手机上做了以下工作：
+
+-   关闭数据网络和 WIFI，隐藏通知栏中打开数据和 WIFI 的开关
+-   下载常用的 Keep 课程
+-   将移动网络设置为 2G
+-   卸载 QQ
+-   每天屏幕时间限制为 2 小时
+-   通过短信与朋友联系
+
+电脑上：
+
+-   将写代码要用的文档下载下来（使用这个[离线文档聚合站](https://devdocs.io/)）
+-   将喜欢的音乐下载下来
+-   打开飞行模式
+-   把 vscode、一些依赖包更新到最新版本
+
+![](/public/images/OfflineData.jpg)
+
+接着我拿出 Kindle，看完了阿来的《尘埃落定》。
+
+### 第一天
+
+早上被闹钟叫醒，习惯性拿起手机，猛然想起已经没有网了。
+
+于是我放下手机，拿起 Kindle，看周国平的散文。正好周老师在谈论”孤独”。
+
+我发现手机里还有初中时搞 MOD 用的《铁锈战争》（一款类似红警的游戏，可单机）游戏安装包，没想到还能玩。这个五六年前由国外大神开发的游戏曾引起国内的 MOD 制作狂潮，界面简洁，没有如今某些游戏遍布的“多巴胺陷阱”以及吸金欲望。
+
+练琴回来的时候，由于需要出示健康吗，我迅速打开网络，打开健康通，一进门立刻关闭网络，恢复如初。
+
+> 由此可见，互联网的存在是合理且有益的，只是因为它无意中触到了人们的”多巴胺机制“，有时候才显得那么可怕。
+
+回到家。用手环的运动功能出去跑了 20 分钟约 2KM. 然后开始撰写第一天的内容。
+
+### 第二天
+
+才第二天，戒断反应就开始出现了。开始发呆，焦虑...翻了翻硬盘里存的视频，不过看起来多少有点索然无味。
+
+> 看来我确实是有网瘾了
+
+想起朋友送的一款需要动手拼装的小房子还没拼，于是拿出来开始折腾，一大男人给一个指甲盖大小的木板刷漆...一晚上就这么过去了。
+
+### 第三天
+
+### 第四天
+
+看书，
+
+### 第五天
+
+7：00起
+
+突然想起还有收音机这个
+
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[开发一个云端个人助理 · 1]]></title>
+            <link>https://rene.wang/p/Develop-An-Assistant-One</link>
+            <guid>Develop-An-Assistant-One</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+![](https://cdn.jsdelivr.net/gh/filess/img12@main/2022/10/04/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png)
+
+前几天给 RSSHub 提交了一个 PR，把我所就读的大学的两个学院官网做成了 RSS 源。
+
+RSS 好是好，但就是缺少即时性，于是打算利用企业微信机器人做一个及时推送的服务， 并把服务范围扩大。
+
+# 关于配置模式的思考
+
+```json
+{
+	"service": [
+		{
+			"src": "./components/core/swpu/is.js",
+			"config": {
+				"channel": ["xyxw", "tzgg"],
+				"uid": "123456",
+				"push": {
+					"wechat": {
+						"username": "WangRenJie"
+					}
+				}
+			}
+		}
+	]
+}
+```
+
+我想到了几种配置方案：
+
+1. 用户为单位，每个用户下面配置他订阅的路由，以及他的推送信息。
+
+2. 路由为单位，每个路由下面记录订阅该路由的用户。
+
+由于暂时只有我一个人使用，便使用了第二种方案，并把本该配置在用户字段下的”订阅频道“提到了全局。
+
+# 架构设计
+
+由于不确定各个模块的具体逻辑，这方面我也做了很多技术权衡：
+
+## A.每个模块负责返回最新推文
+
+这种模式源于 RSSHub 的实现模式。控制器依次注册每个模块，传递一个上下文方法。
+
+模块内部有一个定时器，每隔一段时间透过上下文更新推文。
+
+推文数据保存在控制器，一旦数据不一致则执行推送流程。
+
+如此，推送逻辑就由控制器处理。好处是，如果以后想抓取其他网站的文章，可以很方便地扩展。但是，后续的开发流程中数据可能污染污染控制器（因为每个网站的推文结构不一样，比如 B 站就会有 video 字段。）
+
+## B.每个模块执行全部自己的逻辑
+
+这个方法简单粗暴，模块只需暴露一个`start()`方法，控制器直接调用即可。
+
+```javascript
+	start(interval) {
+        this.instance.forEach((instance) => {
+			instance.start();
+		});
+	}
+```
+
+如果后续要扩展，比如用户选择推送逻辑，也可以提取出公共组件。
+
+并且，以后可能会有一些不需要推送的服务，例如网课签到。
+
+这也是最终采用的代码。
+
+## C.每个模块提供一个更新、推送方法
+
+看似简洁，事实上这是一个很糟糕的设计，数据到了上游，但是数据消费却到了下游。
+
+# 理解发布-订阅模式
+
+事实上，这并非是一个标准的发布-订阅模式。
+
+我们先来看看入口函数如何调用个人助理：
+
+```javascript
+assistant.regsiter("./components/core/swpu/is.js", {
+	channel: ["tzgg", "xyxw"],
+	uid: "123456",
+	push: ["wechat"],
+}) && assistant.start();
+```
+
+这确实是标准的订阅模式。
+
+如果 push 中写进一个具体的推送方法，并且每个模块仅仅返回最新的推文，那么发布者（控制器）则会存储一系列推送函数，一旦模块返回了最新的推文，就依次执行发布流程。
+
+但本项目中，推送流程其实由控制器自己调度了（事实上，每个模块都是控制器的组成部分，此处推送逻辑在模块里面）。所以仅仅实现了订阅模式。
+
+# 后续开发
+
+基于发布订阅模式，我保留了许多方法，例如`list()` `destory()`，后续可以搭配 Web 应用进行远程管理。
+
+国内开放 API 的 IM 平台还比较少，后续将接入国外的一些平台。值得一提的是，配置结构可能就要采取”订阅源“和”用户“分开存储的逻辑。
+
+项目地址: **github.com/rivertwilight/assistant**
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[红米6(cereus)救砖 + 刷第三方ROM教程]]></title>
+            <link>https://rene.wang/p/Hack-Redmi-6</link>
+            <guid>Hack-Redmi-6</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+> 本文最初由 Charles_Su0923 发表于[酷安](https://www.coolapk.com/feed/31765614?shareKey=MzUxZDIyNGE4MWEzNjFhMzI0MTU~&shareUid=3191596&shareFrom=com.coolapk.market_9.0.3)，有改动。
+
+-   **设备**：红米 6
+-   **TL;TD**：10 月份把手头 Redmi6 从只会震动黑砖里救出来，到 11 月初尝试了两个周末的刷机，终于在 11 月 27 日成功的把 LineageOS 17 刷入。
+
+重要！！：国内的大部分教程都没有提到，由于 MTK 特殊的硬件加密，故直接刷入 REC 会导致手机无法引导 REC，解决方案是下面这个文件。
+
+![下载了无数REC和rom](https://i.loli.net/2021/11/28/3lSt1WAnUaoZMbv.png)
+
+## 总览
+
+Step1：把手机降级回 MIUI 10.4.4（酷安上有太多太多教程，但是不要贪心，**只能降到 MIUI 10.4.4**）
+
+Step2：用下面提到的 rec 刷入工具刷入（秋之盒这种不行，只能用这个工具！！！）
+
+Step3：导入你要刷的包和这个 DDE（这一步非常重要！！！！）
+
+Step4：格式化 data 并且刷入系统，不出意外地话就会开机
+
+## 救砖
+
+大概是从去年的 8 月份，在尝试刷机，但是不料，意外成砖，学业繁重，于是就把他搁置在那了，中间尝试过鸟一鸟他，比如用 Mi flash 救一下这种，还是没有办法，放了一直到大概今年的 10 月，突然的时候发现了 MTK 的救砖工具。
+
+其过程大概就是，先装驱动，由于 MTK 奇妙的特性（搞过 MTK 的都知道，救砖需要在短短的几秒内，从一闪而过的端口里找到他，然后再快速的点安装驱动，详细教程酷安上有），所以光驱动就安装了大概 20 多分钟，因为放久了，没怎么充电，所以还冲了很久的电，用 MTK 工具救砖也是一样的恼火。
+
+由于小米引入了一个 auth 校验工具，所以，我们还需要用一个绕过工具去绕过，这个过程，亦是痛苦且难整的，所有的工具都是在海外源，所以还需要等着龟速下载。正式开始刷入的时候，并非完全用的是 MTK 的工具，在尝试完 MTk 工具后，手机意外地进入了 FB，于是当机立断，马上用米 flash 刷到 MIUI。
+
+## PART2 | Escape
+
+回到 MIUI 的第一件事情，就是刷第三方 rec，这本是平常不过的操作，但由于 MTK 的特殊性，在刷入 REC 的时候必须禁用 DM 加密，在刷完包之后，也必须再禁用一次，在尝试的过程中，并没有注意到，还有 DM 加密这类东西，于是我直接就用秋之盒工具箱进行刷入操作，我把所有我能找到的 twrp 的 rec 全部试了一遍，国内外的教程也都看了个遍，红米 6 和 6A 的 rec 都刷了遍，电脑上前前后后下了大概 20 多个 recBut，秋之盒的刷入方式是 `fastboot flash recovery.img` 而针对于 MTK 机型（尤其是红米 6），我们都要加上 `fastboot --disable-verity --disable-verification` 这类指令，发现这个的时候，最开始的尝试已经过了一年的多时间。
+
+## PART3 | Resurrection
+
+在成功刷入 rec 之后，我迫不及待的刷入 LineageOS 17，在之前的尝试中，我成功的刷入过红米 6a 的 rec，But，如果用红米 6a 的 rec 刷 rom 是刷不进去的，此时离我们最初的起点已经过了一个月了。
+
+结果发现可以进入开机动画，但是卡住不动了。于是重启，重来。
+
+已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)[https://t.me/redmi6official]里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！
+
+![image.png](https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png)
+
+## Part4 | Adjust
+
+这个部分很简单，调度 magisk+LSP 简直不能太简单。
+
+## PART5 | End？
+
+这是玩了 10 年刷机，老机油的坚持，虽然随着时代的前进，系统日渐完善，曾经比较火热的刷机平台停服刷机，也渐渐地淡出舞台。
+
+但为什么，还是有人坚持还是有人愿意为手机适配刷机包，就像周杰伦无法从我们的记忆中抹去一样，我们念物，其实念的是物背后的情感。初恋为什么忘不了，就是因为她是努力后才得到的。
+
+感谢机主的坚持和不懈，也感谢做出这个刷 rec 的作者 @MegaFon929!
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[黑苹果不完全指南]]></title>
+            <link>https://rene.wang/p/Hackitosh</link>
+            <guid>Hackitosh</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+**会进 bios**
+
+**会英语或者翻译**
+
+**有手、耐心**
+
+**需要一个 U 盘**
+
+## **前言**
+
+本文适合对黑苹果毫无了解的小白。如果你已经买到电脑，想装黑苹果，可以继续阅读。
+
+若你准备买一台可以装黑苹果设备，可参考 [笔记本](https://github.com/daliansky/Hackintosh) [台式机](https://macx.top/18202.html)
+
+本文默认你会科学上网、会使用 GitHub 。
+
+## **前期搜索&明确配置**
+
+黑果的大概启动原理是：修改 config 和 DSDT 来启动 OS X。
+
+明确配置的一会搜索驱动会少很多事，你需要做的就是去搜一下 「机型+EFI」 。
+
+有的话,直接跳到安装部分
+
+你的电脑如果找不到或者太冷门，且也想装黑苹果。就需要自己配 EFI
+
+**配置 EFI**
+
+这是一个 ！大点！
+
+请结合多方信息，
+
+不要只看我的这篇、也不要局限于国内互联网。
+
+**你需要知道的信息**
+
+黑苹果不怎么挑 U，但太老、太偏、AMD，就节约时间不考虑了。上网本（奔腾、赛扬就直接 pass 不得行）
+
+Intel 的集显(HD+一些数字)、AMD 的独立显卡大多都可驱动，这个请搜索 显卡型号+黑苹果”
+
+网卡能驱动上的很少，能驱动的也有各种特殊方法。
+具体情况请自行搜索，本文不展开
+
+声卡同理，请自行搜索。
+
+## **下载工作**
+
+#### _必须下载_
+
+~~这里的文件[参考](https://dortania.github.io/OpenCore-Install-Guide/ktext.html#must-haves)部分软件~~
+请记住他的别称（打在括号里的）
+
+**_请将你下载好的文件放在一起，软件请安装。请确保所有的东西你都能找到！_**
+
+编辑 plist 配置的[plist 编辑器](https://github.com/corpnewt/ProperTree) 或者[OpenCoreCFG](https://mackie100projects.altervista.org/opencore-configurator/)
+
+必备，下载 release[最简 EFI](https://github.com/acidanthera/OpenCorePkg/releases)
+
+[SSDT](https://github.com/corpnewt/SSDTTime)
+
+diskgeunis(区分工具)百度去下
+
+[Lilu](https://github.com/acidanthera/Lilu/releases)
+
+[VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)
+
+[WhateverGreen !部分 AMD 的集显不能装！](https://github.com/acidanthera/WhateverGreen/releases)
+
+[AICP 编辑工具](https://acpica.org/downloads/binary-tools)
+
+[写盘工具](https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Setup-1.7.9.exe)
+
+[黑果小兵](https://blog.daliansky.net/)这里下载一个镜像，可以私聊我给你发一个
+
+[排错 1](https://shuiyunxc.gitee.io/2020/04/06/Faults/index/) [排错 2](https://apple.sqlsec.com/10-%E6%8E%92%E9%94%99/)
+这里面是常见的黑苹果会遇到的问题，遇到问题了来这看看
+
+_共 10 个文件_
+
+**这里是笔记本的附加部分，台式机请跳过**
+
+~~因为有电池、键盘鼠标等，笔记本用户大多都需要补充这些驱动。当然凡事无绝对，你无法确保有些吃饱没事干，搞特殊~~
+
+这一部分适用于大部分用户，如果这一部分按照广普的教程不行，请百度搜索以下内容：
+
+**所有笔记本用户**。
+
+-   SMCProcessor.kext
+
+-   SMCSuperIO.kext
+
+-   SMCLightSensor.kext
+
+-   SMCBatteryManager.kext
+
+-   SMCDellSensors.kext(仅限 dell 用户)
+
+_共 4 个(戴尔是 5 个)_
+
+_**AMD 用户** 需要额外补充的驱动_
+
+[AMDProcesser](https://github.com/trulyspinach/SMCAMDProcessor)
+
+[AMDRadeonGPU](https://github.com/aluveitie/RadeonSensor)
+
+#### **显卡**
+
+_Intel 核显 （也就是整个电脑没有显卡）_
+
+直接用这个[OC 工具箱](https://www.123pan.com/s/rd39-MkpOd)特别省事
+
+_Nvdia_
+
+~~仅支持到 10.13.6~~
+
+[参考](https://www.bilibili.com/video/BV1wr4y1r78X?spm_id_from=333.337.search-card.all.click&vd_source=b2ed1387674e77df3a3f4f6acfe5a846)
+这个部分争议较大，且这个技术比较新，又加上我没有 Nvdia 的显卡无法测试
+
+所以英伟达用户请自行测试
+
+_AMD 显卡（独显，如果你是 vega8 这类集显，要么等，要么 C++逆向）_
+
+AMD 显卡要么就是免驱
+
+要么就是仿冒 ID
+
+这一步 AMD 用户可以大喊一声：AMD YES
+
+如果你是 vega8 的用户
+
+且你刚好会 C++，接触过逆向工程。欢迎联系我
+
+#### **声卡**
+
+声卡部分，由于不同品牌的网卡有不同的驱动方式
+
+有些事注入 ID 就好，有些需要单独加驱动，有些又无法驱动
+
+在此我帮你搜到了全网的大部分声卡驱动，剩下的你自己测试
+[声卡](https://radcliffe.vercel.app/post/hei-ping-guo-sheng-qia-qu-dong/)
+
+#### **网卡**
+
+网卡部分 intel 的看[Intel](https://zhuanlan.zhihu.com/p/299695036)
+
+[其他网卡](https://zhuanlan.zhihu.com/p/339648390)
+
+把你的网卡型号在这里面搜索一下
+
+有你的网卡，你就去对应搜索“型号+黑苹果
+
+**现在，所有的下载工作应该都做完了，你可以稍事休息一下辛苦了，但真正的硬菜马上就来了。少喝酒，多吃菜**
+
+## **配置 EFI**
+
+请按照这个顺序或者你自己不会弄错的顺序来。
+
+请将下载好的文件解压、安装。如果你看到 XXX.kext 这种文件夹，就证明她已经是最简了
+
+请将下载好的文件分好类。
+
+### _地基_
+
+将「最简 EFI」解压到你找到地方
+
+删除 Tools 文件夹下的所有东西
+
+把 Drivers 文件下删得只剩 OpenRuntime.efi 「！仔细理解这句话！」
+
+把[这个](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)放在 Drivers 里面
+
+### _ACIP_
+
+~~这一步的目的是让系统可以控制硬件，软件控制硬件
+[参考](https://www.bilibili.com/read/cv10117507/)~~
+
+1.打开 \***\*SSDT\*\*** 打开里的 \***\*SSDTTime.bat\*\***
+
+2.以「4，3，2」的顺序「顺序不能错」会生成 3 个文件
+
+3.现在我们需要处理下 **SSDT-RTC0.dsl**
+
+没有自动生成就[下载](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0.dsl)
+
+用文本编辑器之类的打开它，用尽你毕生所学找到
+
+    External (_SB_.PCI0.LPCB, DeviceObj)
+
+    Scope (_SB.PCI0.LPCB)
+
+修改成
+
+    External (_SB_.PCI0.LPC, DeviceObj)
+
+    Scope (_SB.PCI0.LPC)
+
+4.处理 **SSDT-PMC**
+没有就[下载](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PMC.dsl)
+
+    External (_SB_.PCI0.LPCB, DeviceObj)
+
+    Scope (_SB.PCI0.LPCB)
+
+修改为
+
+    ternal (_SB_.PCI0.LPC, DeviceObj)
+
+    Scope (_SB.PCI0.LPC)
+
+5.编译
+用这个指令
+
+    acpihelp.exe -o 文件名字
+
+**把「文件名字」 依次换成 刚刚变出来的 5 个文件**
+最后你需要确保 你可以看到 5 个以 XXX.aml 结尾的文件。
+
+6.现在，请新建一个文件夹，把文件放入，命名为「ACPI」替换在「最简 EFI』文件夹里
+
+### _配置 OpenCoreCFG_
+
+[请看](https://post.smzdm.com/p/aqm8nxvx/)，这个部分这个作者写的好，请看他
+
+以后会考虑自己写
+
+### _组装_
+
+将 **kexts 文件夹** **ACPI** 放在「最简 EFI 里」
+
+这个时候你的「最简 EFI」里会有 图 1.1[![xS2aDI.png](https://s1.ax1x.com/2022/09/17/xS2aDI.png)](https://imgse.com/i/xS2aDI) 1.2[![xS2hV0.png](https://s1.ax1x.com/2022/09/17/xS2hV0.png)](https://imgse.com/i/xS2hV0)
+
+将你的「最简 EFI」重命名为 EFI
+
+    休息下吧，看到这里
+
+    辛苦啦
+
+    这一步之后，就要正式开始安装了
+
+## **开始安装**
+
+### 1.写盘
+
+用「写盘工具」将你下载映像写入 U 盘
+
+~~如果你卡在 Vailting 这个地方 跳过就好~~
+
+对于小白：当你同时看到绿色的进度条和 Skip 这个单词时直接点 **skip**
+
+### 2.进入 BIOS
+
+_以你的毕生所学，进入 bios 并且关闭（没有的不管）_
+
+    Fast Boot
+    Secure Boot
+    Serial/COM Port
+    Parallel Port
+    VT-d
+    CSM
+    Thunderbolt（有些没有驱动）
+    Intel SGX
+    Intel Platform Trust
+    CFG Lock(可以的话)
+
+_打开_
+
+    VT-x
+    Above 4G decoding
+    Hyper-Threading
+    Execute Disable Bit
+    EHCI/XHCI Hand-off
+    OS type: other
+    UEFI Mode
+    DVMT Pre-Allocated: 64MB
+    SATA Mode: AHCI
+
+### 3.Boot up
+
+从你的 U 盘启动
+
+### 4.安装
+
+一、请将安装程序调成你熟悉的语言，最好不要登陆 Apple ID、不要
+
+如果你发现你下载的镜像是俄语的，且找不到地方修改它
+
+请使用翻译软件，推荐 _谷歌翻译_
+
+二、如果你是在安装 Catalina(10.15.x)之前的系统，请[参考](https://www.applex.net/threads/macos-mojave.93508/)
+
+### 善后
+
+现在，不出意外，你应该在系统里面了，
+
+有部分网卡、声卡需要别的操作的，请按照对应的教程进行
+
+三码注入部分,前面配置*OpenCoreCFG*部分
+
+另一位作者已经提到，不再赘述
+
+## 尾言
+
+文章写得很赶，有些东西自己也不太会。希望大家有耐心慢慢搞。
+
+苹果发布 M1 型片后，就不知道黑苹果还能活多久。且行且珍惜
+
+如果你是 vega8 用户，又刚好会 C++写驱动，可以带你去找找国外的进度
+
+感谢那些曾经为黑苹果默默做出贡献的开发者！
+
+此致
+
+——————————————————————————
+
+转载请注明出处，可以二创。
+
+如果你在安装时遇到问题，可在电报上联系我：[Charles](t.me/Mistry_Rain)
+
+所有的操作均来自互联网，遇到问题请你自己负责！
+
+文章已授权 [Gloridust](https://gloridust.xyz/) [Rene](https://rene.wang/)发布
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[程序员提问的艺术]]></title>
+            <link>https://rene.wang/p/How-To-Ask-A-Question</link>
+            <guid>How-To-Ask-A-Question</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+昨天在群里看见有朋友谈到程序员提问的艺术，我也写写我自己的想法。
+
+编程遇到问题，太正常不过了。
+
+为别人解决问题也可以提高自己的技术，但是**让别人回答一个低质量、不走心的问题无疑是浪费双方时间**。
+
+![](https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGweKtPFd70m0HvFop2Bh2jBlYJbv4eriaAjwHwfenKt4pw9oJ4PG5OHA/640?wx_fmt=jpeg)
+
+提问题之前，确保：
+
+-   你已经使用国外的搜索引擎搜索过了（国外的资源相对国内多）
+-   你已经查阅过相关工具的文档
+-   你已经尝试过自己解决
+-   你已经排查了一些常见的外部因素，例如网络、硬件问题
+
+不要觉得搜索引擎搜不到，这世界 7,200,000,000 人，总有人会碰到一样的问题并发布出来。
+
+单独讲讲搜索引擎。要避免使用 "how""where" 等疑问词，而是**使用关键词搜索**。比如，我想知道 Mysql 如何列出所有的用户，
+
+√ 好的做法应该是：
+
+![](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGN6LtW4SaJCWicW612icwKapBhGSttyXg9qE4bZLG41NOwZhCeuQGseDw/640?wx_fmt=png)
+
+❌ 而不是：
+
+![](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGVbeIibkTvM3RDFicofIcGw9KUbnygZ1KoicMjSVt9SRMY8WDvjS9mjxug/640?wx_fmt=png)
+
+这同样适用于大部分搜索场景。
+
+提问时，确保提供：
+
+-   相关场景描述，包括使用的系统、库 / 工具、语言等等
+-   实际的表现
+-   期望的表现
+-   **必要时提供最小复现样本**
+
+提问后，应该做到：
+
+-   积极响应别人要求的细节补充
+-   解决后回复一下别人
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[换桌面焕新情：Windows 桌面改造 macOS 指南]]></title>
+            <link>https://rene.wang/p/Macisfy-Your-Windows</link>
+            <guid>Macisfy-Your-Windows</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+由于大学专业的原因，高考完后我仍然置换了 Windows 笔记本，但是心中对于完整 Apple 生态的向往仍然还在。~在此之前，我仅仅是在背面贴上了 Apple 产品独家赠送的 Sticker。~
+
+话不多说，先看看成品，然后开始动手。
+
+![](https://cdn.sspai.com/2022/09/14/d3f40a5d29e0fe24db4bcae411acc1e1.png)最终效果
+
+## 📲 添加状态栏和 Dock
+
+没错，第一步就是简单粗暴，只需要在壁纸上画上 macOS 标志性的 UI 即可。
+
+使用 Canva、PS 、Figma 或其他你喜欢的图片编辑软件，创建一个和屏幕分辨率一样尺寸的画布。
+
+这里推荐使用 [Canva](https://www.canva.cn/)，可以省去许多处理素材的麻烦。
+
+在 “上传” 中上传你喜欢的壁纸，接着将其设置为背景，在 素材 - 形状 中选择矩形，拖拽到画布中，调整为合适的尺寸，置于顶部。根据你想定制的亮色 / 深色模式，修改状态栏的颜色（根据网络上的图片，深色模式下状态栏颜色代码为**#1a1d25**）。
+
+![](https://cdn.sspai.com/2022/09/14/6650382fea632f9bd22a623ee92b0afa.gif)添加 StatuBar
+
+在素材中，搜索 “Apple”，得到 Apple 的 logo，拖拽将其置于左上角，并把颜色设置为与状态栏相对的颜色。
+
+接着添加状态栏的按钮。在侧边栏选择文字，拖拽进画布并调整内容、大小、颜色。注意：“访达” 较其他按钮字体更粗一些。
+
+接着用同样的方法，借助 “素材” 中的搜索功能，依次搜索 “wifi”“电池” 等，拖拽添加你想要的状态图标。
+
+![](https://cdn.sspai.com/2022/09/14/9dac97d69d1a3fa04dd0049fccb71a14.png)
+
+再用类似方法，添加 Dock，与状态栏不同的是，你需要适当降低透明度，以模拟毛玻璃效果。由于 Canva 没有设置圆角功能，所以这里与实际 Dock 有些微差别，但几乎很难察觉。
+
+![](https://cdn.sspai.com/2022/09/14/28bbb9c0226a81522c32ee93b181622f.png)在右上角设置透明度
+
+你可能需要多次下载并预览，调整 Dock 的位置，直到底层图标可以恰好置于 Dock 中间。
+
+如果你有极致追求，可以开启任务栏自动隐藏，并将 Dock 高度降低即可。
+
+![](https://cdn.sspai.com/2022/09/14/817a355c90b955d4e6bb0cc253d97e5f.png)
+
+## ⬆️ 去除 Dock 中的图标名和小箭头
+
+有了 Dock，我们还需要去除快捷方式的名称。按 win 键，搜索” 字符映射表”，打开并找到 “无中断空格”，选择并在下方复制。
+
+![](https://cdn.sspai.com/2022/09/14/07516b27b4626b2c5992db886e7f7621.png)
+
+接着逐一修改快捷方式的名称。由于文件名不能重复，你需要混搭 “真实的空格” 和“在字符映射表中的空格字符”，来创造多个 “不一样” 的空白名。**文件名不宜过长**，否则会出现省略号。
+
+完成之后，我们还需要去除快捷方式自带的小箭头。在 Github 上搜索 [dism++](https://github.com/Chuyu-Team/Dism-Multi-language) 下载系统对应的版本打开，在 系统优化 - Explorer 中勾选 "隐藏快捷方式小箭头" 和 " 隐藏可执行文件小盾牌 “。
+
+![](https://cdn.sspai.com/2022/09/14/4727e9b1fc830ed589cbb8e5ac181491.png)
+
+## 📁 更换文件夹图标
+
+好了，现在桌面是不是已经有些 “果味儿” 了？但是，这时黄色的文件夹就显得非常刺眼。
+
+在网上搜索 macOS 的文件夹图标 ，用图像处理软件将背景设置为透明（如果你是 SAI 用户，只需把图片导入后，用橡皮擦擦除背景，并在图像 - 画布背景中把背景设置为透明即可）。
+
+最后用这个[网站](https://www.freeconvert.com/ico-converter)生成 ico 文件。右键文件夹 - 属性 - 自定义 - 更改图标 即可。快捷方式则通过 右键 - 属性 - 快捷方式 设置。
+
+![](https://cdn.sspai.com/2022/09/14/157c6b4d26e8a432a2c10da5140293c3.png)
+
+然后用类似的方法制作回收站图标，同样用这个[网站](https://www.freeconvert.com/ico-converter)生成 ico 文件：
+
+![](https://cdn.sspai.com/2022/09/14/c8849ff3801e07e0bf197de288f6ea16.png)SAI Ver.2
+
+在 设置 - 个性化 - 主题 - 桌面图标设置 中，即可更换回收站的图标为刚刚制作的 ico 文件。
+
+## 🪟 让访达和文件活起来
+
+有了上面更换图标的思路，那么，我们同样可以给 “我的电脑” 换上透明图标，并放在状态栏对应按钮的位置，模拟点击效果。
+
+在桌面空白处 右键 - 查看，取消勾选 “将图标与网格对齐”。
+
+使用 PS 等软件绘制一个 200 X 200 的透明图片（你也可以到文末直接下载），并用这个[网站](https://www.freeconvert.com/ico-converter)转换为
+
+在 设置 - 个性化 - 主题 - 桌面图标设置 中，把 “我的电脑”“控制面板” 都换成透明的图标，并用之前的方法把他们的名称也隐藏掉，再将其拖到状态栏对应位置。
+
+![](https://cdn.sspai.com/2022/09/14/09fe597a7ef5e295227e7e1f1f59af4a.png)设置 - 个性化 - 桌面图标设置![](https://cdn.sspai.com/2022/09/14/ee78eb37a92dcd4f08d4acb9fb191b61.png)似乎 Windows 会给透明图标生成一个边框，不过不仔细看看不出来。我暂时想不到完美的解决方法，如果你有好的方法，欢迎留言。
+
+之后的使用，只要点击 “状态栏” 即可。
+
+## ⬜ 将任务栏设为透明
+
+最后一步，只需要下载 [TranslucentTB](https://apps.microsoft.com/store/detail/9PF4KZ2VN4W9?hl=en-us&gl=US) 这个软件即可把任务栏设为透明，可在微软商店搜索下载，此外，还有汉化版可供选择。
+
+![](https://cdn.sspai.com/2022/09/14/6f4b546ae8d0a28aa5b013f64c7e235d.png)
+
+## ⏱️ 可选功能：让时钟活起来
+
+利用 Windows 自带的幻灯片壁纸功能，我们可以设计多个时钟不一样的壁纸，再将其轮流播放，把间隔设置为 1 分钟即可。
+
+![](https://cdn.sspai.com/2022/09/14/c3d4d8bac16feec9cb266cf1dac1003b.png)
+
+## ⬇️ 素材下载
+
+如果你懒得自己处理图标，可以使用我预制好的图标素材包以及成品壁纸（2600 x 1600）。
+
+-   图标以及成品壁纸（2600 x 1600）：[下载地址](https://www.aliyundrive.com/s/Ks1PZ6SSavY)
+-   Canva 项目：[查看地址](https://www.canva.cn/design/DAFMLWswCf4/HWvHBpNchqSltCJI_PzgWg/edit?utm_content=DAFMLWswCf4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+-   macOS 壁纸：[下载地址](https://wallpapercave.com/mac-os-4k-wallpapers)
+
+有任何问题欢迎留言，我会尽量解答。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[解决 Chreom 打开新 Tab 时强制打开 bing-com 的流氓问题]]></title>
+            <link>https://rene.wang/p/Solve-Open-Bing-When-Opening-New-Tab-In-Chrome</link>
+            <guid>Solve-Open-Bing-When-Opening-New-Tab-In-Chrome</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 问题背景
+
+当把 chrome 的搜索引擎设置为 bing 时，如果习惯打开新 tab 后立即在地址栏输入的话，页面加载完又会清空地址栏！真的很头疼。
+
+## 解决方案
+
+使用自定义的 bing 引擎。打开`设置->管理搜索引擎->添加`，名称和关键词随便写，查询 url 输入`https://cn.bing.com/search?q=%s`即可！
+
+## 关于 Bing
+
+对于无法科学上网的墙内码农，使用 Bing 代替谷歌是个不错的选择。
+
+什么？你说用百度？小心降维打击哦。
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[比Github更好用的代码部署平台]]></title>
+            <link>https://rene.wang/p/Vercel-Vs-GithubPage</link>
+            <guid>Vercel-Vs-GithubPage</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+## 前言
+
+最近一直在探索合适的个人博客解决方案。最开始是用 hexo,然后推送到 coding page 仓库。后来用 Next.js 开发了个静态博客[NBlog](https://github.com/RiverTwilight/NBlog)（后来给博客增加多语言功能之后就不能静态导出了），Nextjs 官方文档中推荐使用 vercel 部署，就抱着试试看的心态尝试了一下，没想到 vercel 竟如此强大。
+
+## GithubPage vs Vercel
+
+### github page
+
+-   使用开发框架需要手动执行开发框架的编译脚本，再单独为打包出来的文件夹建立 git 仓库。
+
+-   每个账户只能拥有一个仓库&站点
+
+-   访问速度较慢
+
+### vercel
+
+-   支持十几个开发框架（Next.js/Create React App/Vue...)，只需要建立源代码仓库，打包在云端进行。推送代码后自动部署。
+
+-   每个账户支持绑定无限 Github/Gitlagb 仓库&站点
+
+-   全球 CDN 加速
+
+~~当然，vercel 有一个缺点，如果你开发时修改了使用的依赖包，部署后是无效的，因为 vercel 会重新安装依赖。~~
+
+## 教程
+
+### 绑定仓库
+
+访问[Vercel](https://vercel.com/)官网，根据提示注册账号。个人用户可以免费使用。
+
+点击`Import Project` -> `Import Git Repository`，输入 git 仓库地址，vercel 与 Github 基本上是无缝衔接，绑定过程非常轻松。
+
+绑定完成后是项目配置。Vercel 会自动识别开发框架，这里可以自定义编译代码和输出文件夹，你可以在编译代码中添加自己的逻辑；使用内置框架一般不要修改输出文件夹。
+
+配置完成后点击`Deploy`，耐心等待即可。
+
+### 绑定域名
+
+部署完成后 vercel 会自动生成一个域名（一般是\*.vercel.app)，访问域名提供商控制台，添加一个**CNAME**解析,记录值填入 vercel 控制台看到的域名。解析完成后返回控制台，vercel 会自动验证域名，通过后会自动免费为你申请 SSL 证书。
+
+大功告成！
+
+[vercel 官方文档](https://vercel.com/docs)
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[玩机检查清单]]></title>
+            <link>https://rene.wang/p/hackroid</link>
+            <guid>hackroid</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+这几个月陆陆续续刷了好多机，每次都容易忘记一些东西，所以写下这篇文章，以便下次刷机时查阅。
+
+本文长期维护，欢迎你在 [Github](https://github.com/RiverTwilight/rene.wang/blob/master/posts/zh-CN/Tech/hackroid.md) 上参与维护。
+
+## 离开 MIUI 的缺点
+
+-   相机将被限制在 1200 万像素，目前尚无解决方案。
+-   某些定制功能可能无法使用，例如 MIUI 的「双开」功能、杜比音效、按下电源键再解锁等。
+-   某些设备可能无法再使用门禁卡。
+-   游戏性能可能会下降。
+
+## Root & 刷入 Magisk
+
+Magsik 的工作原理是直接把 API 写入系统的 boot.img 中，其安装方法也就是把已经 Hack 过的镜像重新刷入。Magisk 安装成功后，我们也同时拥有 Root 权限了。
+
+1. 从**目前运行的系统镜像**中提取出 boot.img，并把它发送到手机上。通常民间说的“线刷包”才有这个文件，“卡刷包（后缀为 zip）”就需要通过工具提取。
+
+2. 在手机上安装 Magisk APP。建议从官方 Github 仓库下载安装包。
+
+3. 点击“安装”，选择修补一个文件，选择之前提取的 boot.img。修补完成后，默认会把已修补的镜像放在 /Download 文件夹中。
+
+4. 将手机与电脑用数据线连接（要选择有文件传输功能的线材）。
+
+5. 把手机上修补过的镜像复制到电脑上。
+
+6. 关机状态下，同时按住音量减和电源键，进入 Fastboot 模式。
+
+7. 打开 adb 命令行，执行`fastboot flash boot <img_directry>`
+
+8. 刷入完毕后，执行`fastboot reboot`重启设备。完成。
+
+## 解锁 Bootloader
+
+解锁 Bootloader 后将有一定的风险，可能导致数据泄露，请注意。
+
+1. 从小米官网下载解锁工具。
+
+2. 将手机与电脑用数据线连接（要选择有文件传输功能的线材）。
+
+3. 在工具中按提示操作，可能需要等待 7 天。
+
+4. 解锁完成后，可进入开发者选项查看解锁状态。
+
+## 刷入官方 ROM
+
+⚠ 请务必做好设备数据备份，例如照片、联系人、信息等。
+
+1. 从小米官网下载 ROM 以及 Mifalsh，并把 rom 解压。
+
+2. 设备关机状态下，同时按住音量减和电源键，进入 Fastboot 模式。将手机与电脑用数据线连接。
+
+3. 打开 Miflash，选择刚刚解压的 ROM **文件夹**。
+
+4. 点击”加载设备“，选中你要刷的设备。
+
+5. **在右下角勾选“清除所有数据”**。
+
+6. 点击“刷入”，等待刷入完成。可能耗时 5-20 分钟。
+
+## 刷入第三方 Rom
+
+请务必做好设备数据备份，例如照片、联系人、信息等。
+
+这并不是一个很繁杂的操作，请保持冷静、平常心来做。
+
+1. 确保设备目前正在运行 OS 符合第三方 Rom 的要求。包括：**设备代号**、Android 版本、OS 版本等等。
+
+2. 确保设备已解锁 Bootloader。可以在开发者选项中查看设备的解锁状态。
+
+3. 下载第三方 Rom 以及推荐的 Recovery （如果有）。
+
+4. 关机状态下，同时按住音量减和电源键，进入 Fastboot 模式。将手机与电脑用数据线连接。
+
+5. 电脑上打开 adb 命令行，执行`fastboot boot <recovery_directry>`。如果一切正常，手机会进入 Recovery。
+
+6. 进入 Recovery 后，如果该 rec 支持 sideload 模式，可以直接进入 sideload 模式，执行`adb sideload <rom_directry>`；如果不支持 sideload 模式，可以选择刷入 zip 包的方式，执行`adb push <rom_directry> /sdcard/Download`，然后在 Recovery 中选择刷入 zip 包。
+
+## 其他资源
+
+### 系统增强 APP
+
+这些 app 弥补了类原生系统的一些缺陷，或者增强了其功能。
+
+-   炼妖壶：可以在沙盒中运行一些 app，并且相当于“双开”，例如微信、QQ、支付宝等。
+-   Shizuku： 应用权限管理
+-   Thanox：管理后台
+-   Scene4：场景模式
+-   Google Camera：安卓平台最强相机
+
+### 清理 MIUI 毒瘤应用
+
+```bash
+adb uninstall -k --user 0 com.miui.analytics
+adb uninstall -k --user 0 com.miui.analytics.service
+adb uninstall -k --user 0 com.miui.bugreport
+# 更多包名可自行进入设置查看
+```
+
+### 链接
+
+-   小米设备代号查询：https://miuiver.com/xiaomi-device-codename/
+-   MIUI 官方下载：https://www.miui.com/download.html
+-   MIUI 历史版本下载：https://miuiver.com/
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[bash学习笔记]]></title>
+            <link>https://rene.wang/p/Bash-Learing-Notes</link>
+            <guid>Bash-Learing-Notes</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+因为最近开始玩 WSL，就想起搁置了好久的学习计划————bash。这篇文章记录一些重点。
+学习的是[阮一峰老师的教程](https://wangdoc.com/bash)
+
+## 1
+
+文件名有空格时，应使用双引号包裹，否则会变成两个文件。
+
+```shell
+$ ls "two words.txt"
+```
+
+## 2
+
+每当 Shell 看到以`$`开头的单词时，就会尝试读取这个变量名对应的值。
+如果变量不存在，Bash 不会报错，而会输出空字符。所以即使 `unset` 命令删除了变量，还是可以读取这个变量，变量值为空字符串。
+
+## 3
+
+除法运算符的返回结果总是整数，比如 5 除以 2，得到的结果是 2，而不是 2.5
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[真正的友情是什么样子的]]></title>
+            <link>https://rene.wang/p/WhatsTrueFriendship</link>
+            <guid>WhatsTrueFriendship</guid>
+            <pubDate>Mon, 16 Jan 2023 09:20:54 GMT</pubDate>
+            <content:encoded><![CDATA[
+晚上突发奇想，想查一下真正的友情是什么样子的。
+
+看了国内外零零总总的答案。
+
+有人说是"努力出现在你的生活中的（Make an effort to stay in your life)";
+
+有人说是"在你需要时出现的”；
+
+有人说是“把你的困难当作他们的困难的”；
+
+......
+
+但我最同意的还是“**三秋不见，如隔一日**”的比喻。想想也快中考了，离我离开烟台的最好的哥们也两年了。那时没有太在意“朋友”这个概念，和大家相处时反倒更加轻松自然，不用考虑关系会不会淡。
+
+现在呢，可能因为受了周围人的影响，渐渐开始有意识地去界定“朋友”，去界定“熟不熟”，反倒越活越累。还是觉得顺其自然最好。
+
+至于异性朋友，那更应该顺其自然了，划一道红线，在这红线之外大家都很舒服，就足够了，没必要把“联系“放到日程表里。要是对异性朋友产生了感情，时刻提醒自己那道红线。
+
+最后贴一个知乎的回答：
+
+> 之前一直觉得友情是无话不谈，不会因为时间，距离而产生隔阂，双方一直以对方为依靠和安全感但是现在我发现，现实中的友谊是，有可能有那么一段时间，你们会忽视对方，甚至有的时候会厌烦对方，觉得对方的缺点难以容忍，但是经过慢慢的磨合，慢慢地学会包容对方的缺点，慢慢地也学会在和对方相处时调整自己，即使经历过了这些，两个人仍然是朋友，虽然有过各种不满，但从未放弃过对方。真心觉得**长久朋友之间，不止有美好，其实也有很多不好的回忆，只有这些不好，才显得这段友情更加珍贵。**
+]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+    </channel>
+</rss>

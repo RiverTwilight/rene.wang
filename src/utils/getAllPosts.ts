@@ -127,7 +127,9 @@ export default function getAllPosts(
 		/**文档内容处理函数 */
 		markdownBody?: (content: string) => string;
 		id?: (id: string) => string;
-	} = {},
+	} = {
+		markdownBody: (content) => content,
+	},
 	/**Node的require函数，请以./src/utils为主目录计算相对路径，如'path' */
 	requireFunc: any,
 	sort: boolean = false,
@@ -169,7 +171,9 @@ export default function getAllPosts(
 							defaultTitle: slug,
 							frontmatter,
 							id,
-							markdownBody: enableContent ? markdownBody : "",
+							markdownBody: enableContent
+								? pocessRes.markdownBody(markdownBody)
+								: "",
 							locale,
 						};
 					} else if (item.type === "folder") {

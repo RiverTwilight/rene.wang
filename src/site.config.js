@@ -7,6 +7,7 @@ module.exports = {
 	author: {
 		name: "江村暮",
 		twitter: "https://twitter.com/rea1DonandTrump",
+		email: "contact@rene.wang",
 		github: "https://github.com/RiverTwilight",
 		intro: [
 			{

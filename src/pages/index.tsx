@@ -20,6 +20,7 @@ import getPostId from "@/utils/getPostId";
 import { sortByDate } from "@/utils/sortPosts";
 import getCategories, { ICategory } from "@/utils/getCategories";
 import type { TLocale, IPost } from "@/types/index";
+import generateRssFeed from "@/utils/generateRssFeed";
 
 const MAX_POST_COUNT = 12;
 const FLAG_ENABLE_SORT_BY_DATE = true;
@@ -39,6 +40,8 @@ export async function getStaticProps({ locale, locales }) {
 		locale
 	);
 
+	generateRssFeed();
+	
 	// TODO use locale as a parameter
 
 	const allCategories = getCategories(
