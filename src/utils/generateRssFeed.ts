@@ -20,8 +20,8 @@ export default async function generateRssFeed() {
 		image: `${siteURL}/favicon.ico`,
 		favicon: `${siteURL}/favicon.ico`,
 		copyright: `All rights reserved ${date.getFullYear()}, RiverTwilight`,
-		updated: date, // today's date
-		generator: "Feed for example website",
+		updated: date, 
+		generator: "Feed for rene.wng",
 		feedLinks: {
 			rss2: `${siteURL}/rss/feed.xml`, // xml format
 			json: `${siteURL}/rss/feed.json`, // json fromat
@@ -69,7 +69,7 @@ export default async function generateRssFeed() {
 
 	fs.writeFileSync(
 		"./public/rss/feed.xml",
-		feed.rss2().replace(" ", ""),
+		feed.rss2(),
 		"utf8"
 	);
 }
