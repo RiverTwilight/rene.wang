@@ -1,5 +1,8 @@
+import { createElement } from "react";
+import { renderToString } from "react-dom/server";
 import fs from "fs";
 import { Feed } from "feed";
+import ReactMarkdown from "react-markdown";
 import siteConfig from "src/site.config";
 import getAllPosts from "./getAllPosts";
 import getPostId from "./getPostId";
@@ -49,7 +52,11 @@ export default async function generateRssFeed() {
 			title: post.frontmatter.title,
 			id: post.id,
 			link: `${siteConfig.root}/p/${post.id}`,
-			content: post.markdownBody,
+			content: renderToString(
+				createElement(ReactMarkdown, {
+					source: post.markdownBody,
+				})
+			),
 			author: [author],
 			contributor: [author],
 			date: new Date(date),
@@ -60,5 +67,9 @@ export default async function generateRssFeed() {
 		recursive: true,
 	});
 
-	fs.writeFileSync("./public/rss/feed.xml", feed.rss2().replace(" ", ""), "utf8");
+	fs.writeFileSync(
+		"./public/rss/feed.xml",
+		feed.rss2().replace(" ", ""),
+		"utf8"
+	);
 }
