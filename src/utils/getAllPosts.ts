@@ -39,6 +39,7 @@ interface IFile {
 	type?: "config" | "doc" | "folder";
 	value?: any;
 	children?: IFile[];
+	path?: string
 }
 
 const generateAllFiles = (files: string[]): IFile => {
@@ -50,7 +51,7 @@ const generateAllFiles = (files: string[]): IFile => {
 		return token;
 	});
 
-	var fileTrees = {
+	var fileTrees: IFile = {
 		name: ".",
 		type: "folder",
 		children: [],
@@ -130,8 +131,8 @@ export default function getAllPosts(
 	} = {
 		markdownBody: (content) => content,
 	},
-	/**Node的require函数，请以./src/utils为主目录计算相对路径，如'path' */
-	requireFunc: any,
+	/** Node的require函数，请以./src/utils为主目录计算相对路径，如'path' */
+	requireFunc: NodeRequire["context"],
 	sort: boolean = false,
 	enableContent: boolean = false,
 	locale: string

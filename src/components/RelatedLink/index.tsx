@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Card, CardTitle, Typography } from "@kindle-ui/core";
 import dic from "../../i18n.json";
-import type { ISiteConfig } from "src/types";
+import type { ISiteConfig } from "@/types/index";
 
 const LinkItem = ({ title, url }) => (
 	<>

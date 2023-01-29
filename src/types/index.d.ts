@@ -12,19 +12,21 @@ export type IPost = {
 	markdownBody?: string;
 };
 
-interface Window {
-	scrollListener: any;
-}
-
 declare global {
+
+	interface Window {
+		scrollListener: any;
+	}
+
 	interface NodeRequire {
 		/** A special feature supported by webpack's compiler that allows you to get all matching modules starting from some base directory.  */
 		context: (
 			directory: string,
 			useSubdirectories: boolean,
 			regExp: RegExp
-		) => any;
+		) => any
 	}
+
 }
 
 export interface ICurrentPage {
