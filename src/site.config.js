@@ -3,7 +3,7 @@ module.exports = {
 	title: "江村暮的博客",
 	root: "https://rene.wang",
 	description: "开发日志、技术文章以及生活随感。",
-	keywords: ["江村暮的博客", "RiverTwilight", "过气码农"],
+	keywords: ["江村暮的博客", "RiverTwilight", "过气码农", "江村暮"],
 	author: {
 		name: "江村暮",
 		twitter: "https://twitter.com/rea1DonandTrump",
@@ -36,6 +36,10 @@ module.exports = {
 		{
 			title: "辉晨雨幕",
 			url: "https://gloridust.xyz/",
+		},
+		{
+			title: "Jsun Dot LOL",
+			url: "https://jsun.lol",
 		},
 	],
 	paths: {
