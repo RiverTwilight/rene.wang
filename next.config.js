@@ -33,14 +33,17 @@ module.exports = {
 			{
 				source: "/s/twitter",
 				destination: "https://twitter.com/rea1DonandTrump",
+				permanent: true
 			},
 			{
 				source: "/s/pixiv",
 				destination: "https://www.pixiv.net/en/users/35572742",
+				permanent: true
 			},
 			{
 				source: "/rss",
-				destination: "https://rene.wang/rss/feed.xml"
+				destination: "https://rene.wang/rss/feed.xml",
+				permanent: false
 			}
 		];
 	},
