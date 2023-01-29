@@ -17,8 +17,10 @@
 		"baseUrl": "./",
 		"paths": {
 			"@/components/*": ["src/components/*"],
+			"@/pages/*": ["src/pages/*"],
 			"@/utils/*": ["src/utils/*"],
-			"@/types/*": ["src/types/*"]
+			"@/types/*": ["src/types/*"],
+			"@/themes/*": ["src/themes/*"],
 		}
 	},
 	"exclude": ["node_modules"],

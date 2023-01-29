@@ -1,17 +1,16 @@
-import React, { useMemo } from "react";
-import Link from "next/link";
-import { Typography } from "@kindle-ui/core";
+import React from "react";
 import getAllPosts, { flatPost } from "@/utils/getAllPosts";
 import getPostId from "@/utils/getPostId";
-import { sortByDate } from "@/utils/sortPosts";
 import type { IPost, TLocale } from "@/types/index";
+import ThemedPage from "@/themes/pages/all";
 
 export async function getStaticProps({ locale, locales }) {
 	// require.context doesn't support dynamic import'
 	const allPosts = getAllPosts(
 		{
 			markdownBody: (content) =>
-				`${content.substr(0, 200)}${content.length >= 200 ? "..." : ""
+				`${content.substr(0, 200)}${
+					content.length >= 200 ? "..." : ""
 				}`,
 			id: getPostId,
 		},
@@ -24,6 +23,7 @@ export async function getStaticProps({ locale, locales }) {
 	return {
 		props: {
 			allPosts,
+			flattedPosts: flatPost(allPosts),
 			currentPage: {
 				title: "全部文章",
 				path: "/all",
@@ -33,38 +33,16 @@ export async function getStaticProps({ locale, locales }) {
 	};
 }
 
-interface AllPostsProps {
-	locale: TLocale,
-	allPosts: any
+export interface AllPostsProps {
+	locale: TLocale;
+	allPosts: any;
+	flattedPosts: any;
 }
 
-const AllPost: React.FC<AllPostsProps> = ({ allPosts, locale }) => {
-
-	const flattedPosts = useMemo<IPost[]>(
-		() => flatPost(allPosts), [allPosts]
-	);
-
-	const sortedPosts = useMemo(() => sortByDate(flattedPosts), [allPosts]);
-
+const AllPost: React.FC<AllPostsProps> = (props) => {
 	return (
 		<>
-			<Typography>
-				<h1>全部文章</h1>
-				<ul>
-					{sortedPosts.length && sortedPosts.map((post) => {
-						return (
-							<Link
-								href={"/p/" + post.id}
-								locale={locale}
-								key={post.id}
-								legacyBehavior
-							>
-								<li>{post.frontmatter.title || post.slug}</li>
-							</Link>
-						);
-					})}
-				</ul>
-			</Typography>
+			<ThemedPage {...props} />
 		</>
 	);
 };

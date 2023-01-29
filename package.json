@@ -1,36 +1,37 @@
 {
-  "name": "nblog",
-  "version": "1.0.0",
-  "description": "A Responsive, Fast, i18n and Markdown Blog base on Next.js.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start -p 4000"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@kindle-ui/core": "^1.0.6",
-    "@svgr/webpack": "^5.5.0",
-    "glob": "^7.1.6",
-    "gray-matter": "^4.0.2",
-    "next": "^12.1.0",
-    "postcss": "^8.3.6",
-    "raw-loader": "^4.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-markdown": "^4.3.1",
-    "react-syntax-highlighter": "^15.4.4",
-    "styled-components": "^5.1.1",
-    "uuid": "^8.3.0"
-  },
-  "devDependencies": {
-    "@types/node": "^13.13.4",
-    "@types/react": "^16.9.34",
-    "@types/styled-components": "^5.1.2",
-    "feed": "^4.2.2",
-    "typescript": "^3.8.3"
-  },
-  "packageManager": "yarn@3.2.4"
+	"name": "nblog",
+	"version": "1.0.0",
+	"description": "A Responsive, Fast, i18n and Theme-able static blog base on Next.js.",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start -p 4000",
+		"install:theme": ""
+	},
+	"author": "",
+	"license": "MIT",
+	"dependencies": {
+		"@kindle-ui/core": "^1.0.6",
+		"@svgr/webpack": "^5.5.0",
+		"glob": "^7.1.6",
+		"gray-matter": "^4.0.2",
+		"next": "^12.1.0",
+		"postcss": "^8.3.6",
+		"raw-loader": "^4.0.1",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-markdown": "^4.3.1",
+		"react-syntax-highlighter": "^15.4.4",
+		"styled-components": "^5.1.1",
+		"uuid": "^8.3.0"
+	},
+	"devDependencies": {
+		"@types/node": "^13.13.4",
+		"@types/react": "^16.9.34",
+		"@types/styled-components": "^5.1.2",
+		"feed": "^4.2.2",
+		"typescript": "^3.8.3"
+	},
+	"packageManager": "yarn@3.2.4"
 }
