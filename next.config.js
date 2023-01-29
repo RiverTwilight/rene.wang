@@ -28,4 +28,20 @@ module.exports = {
 		locales: ["zh-CN", "en-US"],
 		defaultLocale: "zh-CN",
 	},
+	async redirects() {
+		return [
+			{
+				source: "/s/twitter",
+				destination: "https://twitter.com/rea1DonandTrump",
+			},
+			{
+				source: "/s/pixiv",
+				destination: "https://www.pixiv.net/en/users/35572742",
+			},
+			{
+				source: "/rss",
+				destination: "https://rene.wang/rss/feed.xml"
+			}
+		];
+	},
 };
