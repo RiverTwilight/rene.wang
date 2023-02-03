@@ -58,7 +58,7 @@ const MainHeader: React.FC<HeaderProps> = ({
 	}
 
 	return (
-		<Navbar>
+		<Navbar fixed>
 			<StatuBar
 				battery={86}
 				deviceName={`${currentPage ? `${currentPage.title} - ` : ""}${

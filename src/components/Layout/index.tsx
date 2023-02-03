@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
+import { Container, KindleOasis } from "@kindle-ui/core";
 import RelatedLink from "../RelatedLink";
 import { ICurrentPage, ISiteConfig } from "../../types";
 
@@ -59,22 +60,23 @@ const Layout = (props: {
 				/>
 				<title>{showTitle}</title>
 			</Head>
-			<Header
-				menuItems={menuItems}
-				lang={locale}
-				currentPage={currentPage}
-				siteConfig={siteConfig}
-			/>
-			<div className="main">
-				<div className="container">
+			<div className="hidden-xs" style={{ height: "30px"}}></div>
+			<Container deviceFrame={KindleOasis}>
+				<Header
+					menuItems={menuItems}
+					lang={locale}
+					currentPage={currentPage}
+					siteConfig={siteConfig}
+				/>
+				<main>
 					{children}
 					<br></br>
 					<RelatedLink
 						links={siteConfig.relatedLinks}
 						locale={locale}
 					/>
-				</div>
-			</div>
+				</main>
+			</Container>
 		</>
 	);
 };

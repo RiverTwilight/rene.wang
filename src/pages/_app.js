@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import siteConfig from "../site.config.js";
-import { Container } from "@kindle-ui/core";
 import "./App.css";
+import "kindle-fonts/bookerly.css";
+import "kindle-fonts/amazon-ember.css";
 
 function MyApp({ Component, pageProps }) {
 	const [colorTheme, setColorTheme] = useState("light");
@@ -26,16 +27,14 @@ function MyApp({ Component, pageProps }) {
 	} = pageProps;
 
 	return (
-		<Container dark={colorTheme === "dark"}>
-			<Layout
-				siteConfig={siteConfig}
-				locale={locale}
-				currentPage={currentPage}
-				menuItems={menuItems}
-			>
-				<Component {...pageProps} siteConfig={siteConfig} />
-			</Layout>
-		</Container>
+		<Layout
+			siteConfig={siteConfig}
+			locale={locale}
+			currentPage={currentPage}
+			menuItems={menuItems}
+		>
+			<Component {...pageProps} siteConfig={siteConfig} />
+		</Layout>
 	);
 }
 
