@@ -1,6 +1,6 @@
 //  TODO i18n
 module.exports = {
-	title: "江村暮的博客",
+	title: "江村暮的 Kindle",
 	root: "https://rene.wang",
 	description: "开发日志、技术文章以及生活随感。",
 	keywords: ["江村暮的博客", "RiverTwilight", "过气码农", "江村暮"],
