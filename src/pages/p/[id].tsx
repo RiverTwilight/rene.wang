@@ -110,28 +110,28 @@ const Cover = styled.div`
 // 	);
 // };
 
-const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
-	const generateCatalog = (post) => {
-		var matchTitle = post.match(/\#+\s(.+)/g) || [];
-		return [
-			{
-				title: frontmatter.title || slug,
-				level: 0,
-			},
-			...matchTitle.map((tit) => {
-				return {
-					title: tit.substr(tit.lastIndexOf("#") + 1).trim(),
-					level: tit.lastIndexOf("#"),
-				};
-			}),
-		];
-	};
+const generateCatalog = (post) => {
+	var matchTitle = post.match(/\#+\s(.+)/g) || [];
+	return [
+		{
+			title: frontmatter.title || slug,
+			level: 0,
+		},
+		...matchTitle.map((tit) => {
+			return {
+				title: tit.substr(tit.lastIndexOf("#") + 1).trim(),
+				level: tit.lastIndexOf("#"),
+			};
+		}),
+	];
+};
 
+const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 	// TODO 右上角菜单显示 AboutThisBook
 
 	return (
 		<>
-			<TimeBar />
+			{/* <TimeBar /> */}
 			<Typography itemScope itemType="http://schema.org/Article">
 				<Cover>
 					{postProps.cover && (

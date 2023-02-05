@@ -1482,9 +1482,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kindle-ui/core@npm:1.0.8":
-  version: 1.0.8
-  resolution: "@kindle-ui/core@npm:1.0.8"
+"@kindle-ui/core@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "@kindle-ui/core@npm:1.0.9"
   dependencies:
     "@rollup/plugin-typescript": ^8.2.3
     "@testing-library/jest-dom": ^5.11.4
@@ -1494,7 +1494,7 @@ __metadata:
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: e5724991fc80c30c8eb47f713a1f2cbf6c13598c088568c21ea9582bdefa6399922c3881d2240d00dba52194afbc4564bb182fc9dbe4261b9ec28b3e747dfdb3
+  checksum: 18dfd8dd2e5c5ae5bfddc4094e5f46b3cb1fe58bf7a5eccd7ae1a0d2ad8a376cf19ff1ef999fd6e857ea570a2fa37ea583cec964bbb6c34d16153db71ff893e6
   languageName: node
   linkType: hard
 
@@ -3712,7 +3712,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nblog@workspace:."
   dependencies:
-    "@kindle-ui/core": 1.0.8
+    "@kindle-ui/core": ^1.0.9
     "@svgr/webpack": ^5.5.0
     "@types/node": ^13.13.4
     "@types/react": ^16.9.34
