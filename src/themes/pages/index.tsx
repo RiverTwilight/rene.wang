@@ -90,7 +90,10 @@ const HomePage = (props: any) => {
 					<CardTitle>精选栏目</CardTitle>
 					<CardContent>
 						<Grid>
-							<GridItem src="https://cdn.sspai.com/2022/09/14/323d5392b32276f64959c20977cbe81a.png?imageMogr2/auto-orient/quality/95/thumbnail/!800x400r/gravity/Center/crop/800x400/interlace/1" />
+							<GridItem
+								href=""
+								src="https://cdn.sspai.com/2022/09/14/323d5392b32276f64959c20977cbe81a.png?imageMogr2/auto-orient/quality/95/thumbnail/!800x400r/gravity/Center/crop/800x400/interlace/1"
+							/>
 						</Grid>
 					</CardContent>
 				</Card>
@@ -100,7 +103,6 @@ const HomePage = (props: any) => {
 				tabs={tabs}
 				activeIndex={activeCategory}
 				onChange={(index) => {
-					console.log(index);
 					setActiveCategory(index);
 				}}
 			/>
