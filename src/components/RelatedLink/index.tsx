@@ -8,7 +8,7 @@ const LinkItem = ({ title, url }) => (
 		<a key={title} href={url}>
 			{title}
 		</a>
-		&nbsp;
+		&nbsp;|&nbsp;
 	</>
 );
 
@@ -23,11 +23,13 @@ const RelatedLink = ({
 		<div className="P(10px)">
 			<Card>
 				<Typography>
-					<CardTitle>{dic.RelatedLinks.title[locale]}</CardTitle>{" "}
+					<CardTitle>{dic.RelatedLinks.title[locale]}</CardTitle>
 					{links.map((item, i) => (
 						<LinkItem {...item} />
 					))}
-					<a href="">{dic.RelatedLinks.submit[locale]}</a>
+					<a href="https://github.com/RiverTwilight/rene.wang/issues/22">
+						{dic.RelatedLinks.submit[locale]}
+					</a>
 				</Typography>
 			</Card>
 		</div>

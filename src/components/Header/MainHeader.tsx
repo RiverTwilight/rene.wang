@@ -60,6 +60,11 @@ const MainHeader: React.FC<HeaderProps> = ({
 	return (
 		<Navbar fixed>
 			<StatuBar
+			    celluar={{
+					on: true,
+					label: "LTE",
+					siginal: 3,
+				}}
 				battery={86}
 				deviceName={`${currentPage ? `${currentPage.title} - ` : ""}${
 					siteConfig.title
