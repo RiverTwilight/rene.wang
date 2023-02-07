@@ -60,23 +60,25 @@ const Layout = (props: {
 				/>
 				<title>{showTitle}</title>
 			</Head>
-			<div className="hidden-xs" style={{ height: "30px"}}></div>
-			<Container deviceFrame={KindleOasis}>
-				<Header
-					menuItems={menuItems}
-					lang={locale}
-					currentPage={currentPage}
-					siteConfig={siteConfig}
-				/>
-				<main>
-					{children}
-					<br></br>
-					<RelatedLink
-						links={siteConfig.relatedLinks}
-						locale={locale}
+			<div className="hidden-xs" style={{ height: "30px" }}></div>
+			<div id="platform">
+				<Container deviceFrame={KindleOasis}>
+					<Header
+						menuItems={menuItems}
+						lang={locale}
+						currentPage={currentPage}
+						siteConfig={siteConfig}
 					/>
-				</main>
-			</Container>
+					<main>
+						{children}
+						<br></br>
+						<RelatedLink
+							links={siteConfig.relatedLinks}
+							locale={locale}
+						/>
+					</main>
+				</Container>
+			</div>
 		</>
 	);
 };

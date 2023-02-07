@@ -1,30 +1,25 @@
-import glob from "glob";
+import getAllPosts from "@/utils/getAllPosts";
 
-export default (locale, processId: (id: string) => string, path: string) => {
-	//get all .md files in the posts dir
-	const blogs = glob.sync(path, {
-		stat: true,
-	});
+export default (locale) => {
 
-	//remove path and extension to leave filename only
-	const blogSlugs = blogs.map((file) =>
-		file
-			.split("/")
-			.pop() // doc-name.md
-			.split(".")[0] // doc-name
-			.trim()
+	const allPosts = getAllPosts(
+		require.context("../../posts", true, /^(\.)(.+)[\.md|(\.js)]$/),
+		{
+			enableFlat: true,
+			locale
+		}
 	);
 
-	const paths = blogSlugs.map((slug: string) => {
+	const paths = allPosts.map((post) => {
 		return {
 			params: {
-				id: processId(slug),
+				id: post.id,
 			},
-			locale,
+			locale: post.locale,
 		};
 	});
 
-	// console.log(paths);
+	console.log(paths);
 
 	return paths;
 };

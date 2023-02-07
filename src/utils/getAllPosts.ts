@@ -2,8 +2,9 @@ import matter from "gray-matter";
 import type { IPost } from "@/types/index";
 
 const generateTokens = (path: string): { value: string; type: string }[] => {
-	var tokens = [];
+	let tokens = [];
 	let current = 0;
+
 	while (current < path.length) {
 		let currentChar = path[current];
 
@@ -12,14 +13,11 @@ const generateTokens = (path: string): { value: string; type: string }[] => {
 				value: "/",
 				type: "slash",
 			});
-
 			current++;
-
 			continue;
 		}
 
 		let str = "";
-
 		while (currentChar !== "/" && current < path.length) {
 			str += currentChar;
 			currentChar = path[++current];
@@ -39,10 +37,11 @@ interface IFile {
 	type?: "config" | "doc" | "folder";
 	value?: any;
 	children?: IFile[];
-	path?: string
+	path?: string;
+	root?: boolean;
 }
 
-const generateAllFiles = (files: string[]): IFile => {
+const getFileTree = (files: string[]): IFile => {
 	const fileTokens = files.map((file, i) => {
 		let token = {
 			tokens: generateTokens(file),
@@ -51,13 +50,14 @@ const generateAllFiles = (files: string[]): IFile => {
 		return token;
 	});
 
-	var fileTrees: IFile = {
+	let fileTrees: IFile = {
 		name: ".",
 		type: "folder",
+		root: true,
 		children: [],
 	};
 
-	var currentPosition = fileTrees;
+	let currentPosition = fileTrees;
 
 	fileTokens.forEach((file) => {
 		file.tokens.forEach((token) => {
@@ -67,7 +67,7 @@ const generateAllFiles = (files: string[]): IFile => {
 
 					currentPosition.children.push({
 						name: token.value,
-						type: /.md$/.test(token.value) ? "doc" : "config",
+						type: token.value.endsWith(".md") ? "doc" : "config",
 						path: file.path,
 					});
 
@@ -122,28 +122,44 @@ const flatPost = (allPosts): IPost[] => {
 	return allPosts.map((item) => item.children).flat();
 };
 
-export { flatPost };
-export default function getAllPosts(
-	pocessRes: {
+export interface GetAllPostsOption {
+	pocessRes?: {
 		/**文档内容处理函数 */
 		markdownBody?: (content: string) => string;
 		id?: (id: string) => string;
-	} = {
-		markdownBody: (content) => content,
-	},
-	/** Node的require函数，请以./src/utils为主目录计算相对路径，如'path' */
+	};
+	enableSort?: boolean;
+	enableFlat?: boolean;
+	enableContent?: boolean;
+	locale?: string;
+}
+
+export { flatPost };
+export default function getAllPosts(
+	/** Node的require函数，请以`./src/utils`为主目录计算相对路径，如'path' */
 	requireFunc: NodeRequire["context"],
-	sort: boolean = false,
-	enableContent: boolean = false,
-	locale: string
+	options: GetAllPostsOption
 ) {
+	const {
+		locale,
+		enableContent,
+		enableFlat,
+		enableSort,
+		pocessRes = {
+			markdownBody: (content) => content,
+			id: (content) => content,
+		},
+	} = options;
+
 	const posts = ((context) => {
 		const keys = context.keys();
 		const values = keys.map(context);
 		const key_value_map = generateMap(keys, values);
-		const localizedTree = generateAllFiles(keys).children.find((child) => {
-			return child.name === locale;
+		const localizedTree = getFileTree(keys).children.find((child) => {
+			return locale ? child.name === locale : true;
 		});
+
+		console.log(locale, localizedTree)
 
 		// console.log("./zh-CN/Tech/Macisfy-Your-Windows".split("/").pop());
 
@@ -172,21 +188,21 @@ export default function getAllPosts(
 							defaultTitle: slug,
 							frontmatter,
 							id,
-							markdownBody: enableContent
+							markdownBody: !!enableContent
 								? pocessRes.markdownBody(markdownBody)
 								: "",
-							locale,
+							locale: localizedTree.name,
 						};
 					} else if (item.type === "folder") {
 						const configFile = item.children.find((file) => {
 							return file.type === "config";
 						});
 
-						console.log(
-							"is a folder",
-							item,
-							key_value_map[configFile.path]
-						);
+						// console.log(
+						// 	"is a folder",
+						// 	item,
+						// 	key_value_map[configFile.path]
+						// );
 
 						return {
 							...item,
@@ -206,7 +222,11 @@ export default function getAllPosts(
 		return validlizedTree;
 	})(requireFunc);
 
+	if (enableFlat) {
+		return flatPost(posts);
+	}
+
 	return posts;
 }
 
-export { generateMap, generateAllFiles };
+export { generateMap, getFileTree as generateAllFiles };

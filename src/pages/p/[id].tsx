@@ -5,9 +5,7 @@ import CodeBlock from "@/components/CodeBlock";
 import ImageBlock from "@/components/LazyloadImage";
 import HeadingBlock from "@/components/HeadingBlock";
 import getPaths from "@/utils/getPaths";
-import { generateMap } from "@/utils/getAllPosts";
 import getFilename from "@/utils/getFilename";
-import getPostId from "@/utils/getPostId";
 import { Typography, TimeBar } from "@kindle-ui/core";
 import { paths } from "../../site.config";
 import type { IPost } from "../../types";
@@ -42,7 +40,10 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		((context) => {
 			const keys = context
 				.keys()
-				.find((path) => getFilename(path) === currentId);
+				.find(
+					(path) =>
+						path.includes(locale) && getFilename(path) === currentId
+				);
 			return context(keys).default;
 		})(require.context("../../../posts", true, /\.md$/))
 	);
@@ -77,9 +78,17 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 	};
 }
 
-export async function getStaticPaths({ locale }) {
+export async function getStaticPaths() {
+	const {
+		i18n: { locales },
+	} = require("../../../next.config");
+
 	return {
-		paths: getPaths(locale, getPostId, "posts/**/*.md"),
+		paths: locales
+			.map((locale: string) => {
+				return getPaths(locale);
+			})
+			.flat(),
 		fallback: false,
 	};
 }

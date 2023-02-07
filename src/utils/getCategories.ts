@@ -9,7 +9,9 @@ export interface ICategory {
 
 // 仅支持二维目录
 
-function getCategories(requireFunc, locale): ICategory[] {
+function getCategories(requireFunc, options): ICategory[] {
+	const { locale } = options
+	
 	const categories = ((context) => {
 		const keys = context.keys();
 		const values = keys.map(context);

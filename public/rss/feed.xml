@@ -4,7 +4,7 @@
         <title>江村暮的 Kindle</title>
         <link>https://rene.wang</link>
         <description>开发日志、技术文章以及生活随感。</description>
-        <lastBuildDate>Sun, 05 Feb 2023 05:10:34 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Feb 2023 02:18:16 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for rene.wng</generator>
         <image>
@@ -17,7 +17,7 @@
             <title><![CDATA[小程序踩坑记录]]></title>
             <link>https://rene.wang/p/MinIProgram-Learing-Notes</link>
             <guid>MinIProgram-Learing-Notes</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>刚花了五天做一个小程序，准备审核的时候发现个人小程序不允许有用户发布内容，心都碎了....</p><h2>update 函数出现问题？</h2><ul><li><p>1.数据库权限，首先检查当前数据库的集合是否为第一个选项，所有用户可读，仅创建者可读写</p></li><li><p>2.检查集合中的字段是否有 openid,如果从外部导入的表需要加上 openid 字段</p></li><li><p><strong>3.在小程序端使用 update 只能更新字段中的 openid 和自己目前的 openid 相同的字段，如果需要更改别人创建的信息应该在云函数中使用 update，具体看官方文档，很简单。</strong></p></li><li><p>4.在使用云函数 update 的时候，记得在 cloud.init({env: ‘xxx’})中填写你的环境 id。</p></li><li><p>5.确保你上传的数据中的 data 不是 undefined,不然成功上传也会显示更新数据为一条</p></li></ul><h2>云函数相关</h2><ul><li><code>cloud.init()</code>这个方法要放到 app.js 的 onLaunch 的生命周期中，以后无需调用。</li><li>修改后记得右键修改过的文件，选择<code>上传</code>，否则更改不生效。</li></ul><h2>开发前注意</h2><ul><li><p>先搜索一下看看有没有撞名。</p></li><li><p>仔细阅读官方文档的<a href="https://developers.weixin.qq.com/minigame/product/material/#%E4%B8%AA%E4%BA%BA%E4%B8%BB%E4%BD%93%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E6%94%BE%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%B1%BB%E7%9B%AE">服务类目</a></p></li><li><p>个人小程序不能有用户发布内容！</p></li></ul><h2>tabBar 图标不显示？</h2><p>用真机调试即可。<a href="https://svgtopng.com/">这里</a>有个 SVG 转 PNG 格式的工具，方便把设计稿中的 svg 图标转为 Png。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -25,23 +25,184 @@
             <title><![CDATA[Nextjs踩坑记录]]></title>
             <link>https://rene.wang/p/Nextjs-Learning-Notes</link>
             <guid>Nextjs-Learning-Notes</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>部署</h2><h3>部署方法</h3><p>类似 express， 编译完成后运行<code>npm run start</code>命令，服务器配置反向代理即可</p><h3>端口占用</h3><p>Next 默认在开发环境下使用 3000 端口，若此时执行<code>npm run start</code>命令会提示端口被占用，将<code>package.json</code>文件下 script 的 start 命令改成如下即可</p><pre><code class="language-cli">npm run start -p &lt;port&gt;</code></pre><h2>i18n 功能不支持静态导出</h2><p>无奈之下只能放到服务器上了。</p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[使用 Mocha + chai 测试 React 应用]]></title>
+            <link>https://rene.wang/p/Testing-React-with-Mocha</link>
+            <guid>Testing-React-with-Mocha</guid>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
+            <content:encoded><![CDATA[<p>最近在继续开发之前的 <a href="https://github.com/RiverTwilight/kindle-ui">Kindle UI</a> 库，想到该写一下测试，于是决定使用 <a href="https://mochajs.org/">Mocha</a> 的测试方案（尝试一些新东西）。</p><p>（此段由GPT生成👉）在开发过程中，保证代码质量和正确性是非常重要的。测试是达到这个目的的有效方法之一，特别是在 JavaScript 开发中。在 React 应用开发中，Mocha 和 Chai 是两个非常流行的测试框架。本文将介绍如何使用 Mocha 和 Chai 测试 React 应用。</p><h2>为什么不用 react 官方推荐的 Jest 测试?</h2><p>jest 最初是为测试 react app 设计的。相比 Jest, Mocha 具有更高的灵活性（后者可以且必须进行额外的配置，而前者开箱即用），可以在浏览器和 node 环境下运行，并且支持一些复杂的语句例如：</p><pre><code class="language-js">expect(person.age).to.be.lte(35).and.to.be.gte(18);</code></pre><p>由于我的项目并非单个 react app 而是 monorepo，所以在 workspace 根目录使用 mocha 无疑是更好的选择。</p><h2>安装依赖</h2><p>Mocha 本身是不支持 JSX 的，所以我们要安装一些依赖：</p><pre><code class="language-bash">yarn add mocha -D
+
+# Babel 配套插件
+yarn add -W -D @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/register
+
+# 此依赖用于渲染 react, 请根据 react 版本选择依赖版本！
+yarn add react-test-renderer@17.0.2 -D -W</code></pre><blockquote><p>注意：如果你在 workspace 根目录安装测试依赖（推荐的做法），记得添加 -W 参数。</p></blockquote><h2>配置 Mocha</h2><p>在项目根目录创建一个 <code>.mocharc.js</code> 文件，内容如下：</p><pre><code class="language-js">module.exports = {
+	extension: [&quot;js&quot;, &quot;mjs&quot;, &quot;ts&quot;, &quot;tsx&quot;],
+	ignore: [&quot;**/build/**&quot;, &quot;**/node_modules/**&quot;],
+	recursive: true,
+	timeout: (process.env.CIRCLECI === &quot;true&quot; ? 5 : 2) * 1000, // Circle CI has low-performance CPUs.
+	reporter: &quot;dot&quot;,
+	require: [require.resolve(&quot;./test/utils/setupBabel&quot;)],
+	&quot;watch-ignore&quot;: [
+		&quot;.git&quot;,
+		&quot;**/node_modules/**&quot;,
+		&quot;**/build/**&quot;,
+		&quot;docs/.next/**&quot;,
+	],
+};</code></pre><p>在 <code>/test/utils/setupBabel</code> 目录创建一个 <code>setupBabel.js</code> 文件</p><pre><code class="language-js">require(&quot;@babel/register&quot;)({
+	extensions: [&quot;.js&quot;, &quot;.ts&quot;, &quot;.tsx&quot;],
+});</code></pre><h2>配置 Babel</h2><p>有了 babel， 我们可以使用 cjs 格式的测试文件而无需进行 <code>&quot;type&quot;: &quot;module&quot;</code> 这种令人讨厌的设置。</p><pre><code class="language-js">// babel.config.js
+module.exports = function getBabelConfig(api) {
+	const useESModules = api.env([&quot;legacy&quot;, &quot;modern&quot;, &quot;stable&quot;, &quot;rollup&quot;]);
+
+	const presets = [
+		[
+			&quot;@babel/preset-env&quot;,
+			{
+				browserslistEnv: process.env.BABEL_ENV || process.env.NODE_ENV,
+				modules: useESModules ? false : &quot;commonjs&quot;,
+			},
+		],
+		[
+			&quot;@babel/preset-react&quot;,
+			{
+				runtime: &quot;automatic&quot;,
+			},
+		],
+		&quot;@babel/preset-typescript&quot;,
+	];
+
+	const plugins = [];
+
+	return {
+		assumptions: {
+			noDocumentAll: true,
+		},
+		presets,
+		plugins,
+		ignore: [/@babel[\\|/]runtime/], // Fix a Windows issue.
+		overrides: [
+			{
+				exclude: /\.test\.(js|ts|tsx)$/,
+				plugins: [&quot;@babel/plugin-transform-react-constant-elements&quot;],
+			},
+		],
+	};
+};</code></pre><h2>测试</h2><p>在 <code>package.json</code> 添加快捷脚本，此处请根据实际项目配置：</p><pre><code class="language-json">&quot;test:unit&quot;: &quot;cross-env NODE_ENV=test mocha --config .mocharc.js &#x27;packages/kindle-ui/**/*.test.{mjs,js,ts,tsx}&#x27; &#x27;test/utils/**/*.test.{js,ts,tsx}&#x27;&quot;</code></pre><p>之后我们可以愉快地编写测试了。</p><p>关于 react-test-renderer 的更多用法，可以参考<a href="https://reactjs.org/docs/test-renderer.html">官方文档</a>。</p><p>此处列举一些常见测试场景供参考：</p><h3>检查组件类型</h3><pre><code class="language-js">import * as React from &quot;react&quot;;
+import { expect } from &quot;chai&quot;;
+import renderer from &quot;react-test-renderer&quot;;
+// 建议使用 link 后的包，以确保贴近实际场景。
+import { ListItem } from &quot;@kindle-ui/core&quot;;
+
+describe(&quot;&lt;ListItem /&gt;&quot;, () =&gt; {
+	describe(&quot;prop: component&quot;, () =&gt; {
+		it(&quot;renders a div&quot;, () =&gt; {
+			const component = renderer.create(&lt;ListItem /&gt;);
+			expect(component.toTree().rendered).to.have.property(&quot;type&quot;, &quot;div&quot;);
+		});
+
+		it(&quot;renders a link&quot;, () =&gt; {
+			const component = renderer.create(
+				&lt;ListItem component=&quot;a&quot; href=&quot;#&quot; /&gt;
+			);
+			expect(component.toTree().rendered).to.have.property(&quot;type&quot;, &quot;a&quot;);
+		});
+	});
+});</code></pre><h3>检查渲染结果</h3><pre><code class="language-js">it(&quot;render in Container&quot;, () =&gt; {
+	expect(() =&gt;
+		renderer.create(
+			&lt;Container&gt;
+				&lt;ListItem&gt;test&lt;/ListItem&gt;
+			&lt;/Container&gt;
+		)
+	).not.to.throw();
+});</code></pre><h2>改进</h2><p>react 官方提供的测试库功能比较局限，例如，我们无法测试一个元素是否可见，也无法模拟用户操作页面。</p><p>所以，我们可以使用<code>@testing-library/react</code>来进行进一步改进。</p><p>注意，node 环境下没有 document 对象，需要使用 JSDom 这个库模拟一个。</p><p>先为 mocha 添加钩子：</p><pre><code class="language-js">// .mocharc.js
+
+module.exports = {
+    {/**... */}
+	beforeEach: () =&gt; {
+		const dom = new JSDOM(&quot;&quot;, {
+			pretendToBeVisual: true,
+			url: &quot;http://localhost&quot;,
+		});
+		global.window = dom.window;
+	},
+};</code></pre><p>更新测试代码：</p><pre><code class="language-js">import { queries, within } from &quot;@testing-library/react/pure&quot;;
+
+describe(&quot;general rendering&quot;, async () =&gt; {
+	it(&quot;render in Container&quot;, async () =&gt; {
+		render(&lt;ListItem&gt;KindleUI&lt;/ListItem&gt;);
+
+		expect(
+			within(document.body, { ...queries })
+				.getByRole(&quot;ListItem&quot;)
+				.toHaveTextContent(&quot;KindleUI&quot;)
+		).to.be(true);
+	});
+});</code></pre>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
             <title><![CDATA[Unity游戏开发学习记录]]></title>
             <link>https://rene.wang/p/Unity-Learning-Log</link>
             <guid>Unity-Learning-Log</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>Day 0</h2><p>用两倍速看完 Michel 大佬的 B 站视频，对整体工作流有了大致了解。（通过视频学习新东西，不妨用两倍速看两倍，也许会有更好的学习效果）</p><p>先自己做一个 2D 项目吧，暂时用现成的素材，把 Unity 开发流程摸索明白后，在自己做美术！</p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[搭配 rollup + preact 开发大型页面美化插件]]></title>
+            <link>https://rene.wang/p/Use-Rollup-and-Preact-Create-a-Beautifier-Extension</link>
+            <guid>Use-Rollup-and-Preact-Create-a-Beautifier-Extension</guid>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
+            <content:encoded><![CDATA[<p>最近期末成绩也出了（大抵是寄了），觉得学校的教务系统实在太丑，决定写一个浏览器插件美化插件。</p><p>打开教务系统，一股00年代的复古拟物风格袭来，无数<code>tr</code> <code>td</code>构成的表格布局，拼音命名的变量名，随意设置的全局函数...我们大概可以猜到彼时这家公司程序员的工作环境似乎不太好。</p><p><img src="https://cdn.jsdelivr.net/gh/filess/img3@main/2023/01/19/1674135191542-5a8b7b7f-036d-42a5-9cb0-3edb05d9f880.png"/></p><h2>前置知识</h2><h2>搭建脚手架</h2><p>为了减轻插件体积，我们采用优秀的 react 替代品 preact 开发用户页面。</p><p>安装一系列依赖</p><pre><code class="language-bash">yarn add preact
+
+yarn add -D @rollup/plugin-node-resolve @rollup/plugin-commonjs @rollup/plugin-typescript @rollup/plugin-babel
+
+yarn add -D @babel/core @rollup/plugin-alias @babel/plugin-transform-react-jsx</code></pre><p>编写 rollup 配置。</p><pre><code class="language-js">import { nodeResolve } from &quot;@rollup/plugin-node-resolve&quot;;
+import commonjs from &quot;@rollup/plugin-commonjs&quot;;
+import typescript from &quot;@rollup/plugin-typescript&quot;;
+import { babel } from &quot;@rollup/plugin-babel&quot;;
+
+const extensions = [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.ts&quot;, &quot;.tsx&quot;];
+
+export default [
+	{
+		input: &quot;src/components/content.js&quot;,
+		output: [
+			{
+				file: &quot;dist/content.bundle.cjs.js&quot;,
+				format: &quot;cjs&quot;,
+				sourcemap: true,
+			},
+			{
+				file: &quot;dist/content.bundle.esm.js&quot;,
+				format: &quot;esm&quot;,
+				sourcemap: true,
+			},
+		],
+		plugins: [
+			nodeResolve({ extensions }),
+			commonjs(),
+			babel({
+				babelHelpers: &quot;bundled&quot;,
+				extensions,
+				include: [&quot;src/**/*&quot;],
+			}),
+		],
+	},
+];</code></pre><p><img src="https://cdn.jsdelivr.net/gh/filess/img3@main/2023/01/18/1674014555394-c7bdfd44-7991-462f-8f57-ed2cfa157369.png"/></p><h2>分析页面</h2>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
             <title><![CDATA[云极客工具开发日志]]></title>
             <link>https://rene.wang/p/Ygktool-Changelog</link>
             <guid>Ygktool-Changelog</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>写在前面</h2><p>这篇博客记录我的 <a href="https://www.ygktool.cn">ygktool</a> 开发历程。</p><h3>缘起</h3><p>大概是 19 年 7 月份的时候，那时我已经厌倦了停留在 html 和 css 无脑拼装的层次上，希望能向前端大神更近一步，加之一直追随的前辈也有自己的（很强的）工具箱，就想到了做工具箱的点子上。</p><h3>志向</h3><p><del>至少在中国有和一个木函一样的影响吧？</del></p><p><strong>能被别人的文章推荐到。譬如知乎</strong></p><h2>历程</h2><p>2020 年二月份之前，一直都是传统的 php 和 jq 架构。为了营造出 SPA 的效果还死磕<code>iframe</code>. 没想到视觉效果还不错。</p><p>2020 年二月之后开始接触 NPM，因为之前已经有了 react 基础，很快就用 Create-react-app 搭建了 ygktool pro。紧接着开始了移植工作，移植的过程十分枯燥（当时没用 vscode 都得手动格式化代码）。很快，pro 成为了正式版，从此告别 php + jquery。</p><h3>技术栈</h3><p>感谢这些优秀的库/框架。另外一些小规模使用的库没有列出。</p><ul><li>Create-react-app</li><li>Typescript</li><li>Sass</li><li>MDUI</li><li>Express</li></ul><h2>技术细节</h2><h3>使用 npm link 时 Hook 报错</h3><p>使用 npm link 测试 UI 库时，如果组件使用了 Hook 就会报错。在 Github 关于 hook 的 issue 下找到了解决方案。问题原因是两个库使用各自的 React 依赖。解决方法是将 app 的 react 链接到 UI 库的 react 下。</p><pre><code class="language-bash">    npm-link-shared ./node_modules/mdui-in-react/node_modules . react &amp;&amp; npm start</code></pre><h3>无声明文件的类引用</h3><p><code>gif.js</code>这个库作者没有发布声明文件，只好自己添加模块。在 react-app-env.d.ts 中添加</p><pre><code class="language-ts">declare module &quot;gif.js&quot; {
 	class GIF {
 		constructor(config);
@@ -63,7 +224,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[一篇游记]]></title>
             <link>https://rene.wang/p/2020-5-31</link>
             <guid>2020-5-31</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>二〇二〇年五月三十日，多云，空气中弥漫着初夏的微热。</p><p>这是一个半期考试刚刚结束的星期六，我们五个人（思源，鸭姐，小孙，磊磊，我）均取得了不错的成绩。相约一起出来耍。一是放松，二是拍一部真正的 vlog，以及，带我和林怡两个在海边长大的孩子看看成都。</p><p>这天早上我早早地起了床，彼时的成都还在一片寂静中。敲了一会代码，八点吃过早饭。大约十点钟左右，我出发了，今天是<!-- -->&lt;s&gt;<!-- -->校服<!-- -->&lt;/s&gt;<!-- -->白衬衣和黑色休闲裤，还带上了自拍杆（今日 MVP）</p><p>碰面地点是<code>鸡毛店</code>————成都知名川菜馆。小孙首先抵达，很快，他在地铁口接到我。</p><h2>鸡毛店</h2><p>俗话说，无酒不成席！预定好包间之后，我们去买奶茶。尽管是繁华地带，却没有我喜爱的书亦。跋涉几百米后，终于出现了还算不错的蜜雪冰城，谁知道它竟然没有开始营业！于是我们继续走，总算见到一个名不见经传的<code>丸摩堂</code>，这是一个又贵又难喝的奶茶店（我与思源的评价都说明了这一点）。</p><p>&lt;b&gt;<!-- --> ？？怎么才几分钟蜜雪冰城就开门大吉了？ <!-- -->&lt;/b&gt;</p><p>回到店里时，磊磊已经到了，几分钟后思源和鸭姐也到了。</p><p>磊磊和小孙都是干净的短袖和工装裤，思源<!-- -->&lt;s&gt;<!-- -->和我情侣装？<!-- -->&lt;/s&gt;<!-- -->是 JK，鸭姐是典雅大方的<!-- -->&lt;s&gt;<!-- -->蛋黄长裙<!-- -->&lt;/s&gt;<!-- -->浅绿色长裙。</p><h3>菜单</h3><ul><li>麻婆豆腐</li><li>辣子鸡</li><li>糍粑</li><li>蒸肉</li><li>毛血旺</li></ul><p>地道的川菜菜单了，共计 CNY 256。</p><p>席间，我尝试用各种奇葩角度拍照，鸭姐向她的母亲介绍了我们一行，大家谈笑风生，好不快乐！</p><p>由于不清楚饭菜的分量，点多了。虽然我已经饥肠辘辘，也只好雨露均沾。<!-- -->&lt;s&gt;<!-- -->思源说她可以吃六碗。<!-- -->&lt;/s&gt;</p><p>感觉剩下的饭菜可以养活一个连。</p><p>鸭姐的萝卜挂件掉在店里了。</p><h2>锦里</h2><blockquote><p>名彰汉唐，街纳古今。<!-- -->&lt;br&gt;<!-- -->
 功著三国，客聚五洲。</p></blockquote><p>我和磊磊骑车，另外三人则是打车到了锦里。人很多，只要健康码就能进。</p><p>这是一条老街，现代化的改造让我略感压抑。这里有川剧变脸表演，有国家文化传承人的摊子，有各种摆件，配饰，糖画，书画，有漂亮妹纸，有在茶馆里唱歌的干净的帅鸽。显然，当历史沉淀和现代文明碰撞时，总会别有一番景致。</p><h3>耳朵清道夫</h3><p>这里是成都特色掏耳朵！</p><p>经过长期激烈的心理斗争，小孙首当其冲，要尝试一下。躺在椅子上的小孙开始略有紧张，在师傅如开锁般娴熟的一顿操作之后，很快就飘飘欲仙，沉醉在温柔乡里...体验过后他只有一个字：爽！这彻底击垮了磊磊的心理防线，他也躺在了那把交椅之上。然而<code>真香定律</code>是普适的，“爽啊”，磊磊说，“仿佛听力翻了一倍”。</p><p>我和两个女孩子没试，寻思万一有个三长两短呢。他俩享受的桠子倒是被我们的手机忠实地记录下来了。</p><h3>表哥的纪念品</h3><p>我们一直想给被父母关在温室里的本该来的表哥买个礼物，寻寻觅觅，一直没找到她喜爱的《全职高手》和王者瑶的周边。到最后还是没有买啥</p><p>不过大家都感慨，要是表哥来了，我们没法自由自在地<!-- -->&lt;s&gt;<!-- -->开黄腔<!-- -->&lt;/s&gt;<!-- -->谈笑了</p><h3>哈根达斯？</h3><p>逛完一圈下来，我们也倦了，鸭姐请我们去一家冰饮店。</p><ul><li>玫梅</li><li>柠檬</li><li>西柚</li><li>小食拼盘</li></ul><p>点完单，我们买了副印有四川方言的扑克，教鸭姐说四川话，顺便打“干瞪眼”。</p><p>我真的蠢啊！打牌时竟然心不在焉，大家只好悻悻离去。</p><h2>桌游</h2><p>果然是酒香不怕巷子深，成都排名第三的桌游俱乐部竟然在一栋略显破旧的大楼里。老板的桌游收藏像图书馆里的图书一样琳琅满目。</p><p>令人头晕的烟气和压抑的空间...</p><h3>德国心脏病</h3><p>思源首先提议玩这个，果然学习委员反应力惊人，锐利地判断，<!-- -->&lt;s&gt;<!-- -->单身 15 年<!-- -->&lt;/s&gt;<!-- -->敏捷的手速，很快占据上风。</p><h3>叠叠高</h3><p>（唱）人类用沙，造出梦里通天塔．．．</p><h2>滨江路</h2><blockquote><p>水边灯火渐人行，天外一钩残月带三星。</p></blockquote><p>高楼的霓虹勾勒出繁华的夜空。桥上，一盏盏车灯仿佛颗颗疾驰的星星。人们欣赏着美丽的滨江夜景...多希望，期年之后，大家还能在一起散步</p><h3>是无心的玩笑，对吧</h3><p>回忆总是美好的，因为你的潜意识已经替你过滤掉了那些不美好的。</p><h2>尾声</h2><blockquote><p>没有遗憾
 还有我</p></blockquote><p>我们在新南门地铁站分开。</p><p>十点过，我到家了。很累，但很开心，非常开心，初中没有过这么充实有热闹的一天。</p><p>那些不开心的事情，早日滚蛋吧。</p>]]></content:encoded>
@@ -73,7 +234,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[冥门嫁娶与超时空同居]]></title>
             <link>https://rene.wang/p/2020-7-30</link>
             <guid>2020-7-30</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>冥门嫁娶</h2><p>这是不需要打伞却会被淋湿的一天，盛夏的成都总是阴雨绵绵。</p><p><img alt="春熙路" src="https://i.loli.net/2020/07/30/o3DehanlL1tyJQT.jpg"/></p><p>放弃长滕鬼校后，我们二人选择了 <code>K空间密室逃脱</code>。 我们和另外四人组队，来挑战这个最难最恐怖的“冥门嫁娶”主题。</p><p>看完我抽到的角色“侍卫”之后，我们就被蒙上眼罩，进入一间小黑屋。奇怪的是，明明就是一扇门的事，为什么需要戴眼罩呢？</p><p><strong>本文含有剧透内容</strong></p><h3>Room1</h3><p>我和锦轩把蜡烛探到一扇类似玻璃的洞里时，突然扑上来的鬼脸让我萌生了退出的念头。从这以后，我对类似的洞口就防备有加。</p><p>根据一张纸条这个线索<del>以及工作人员的大量提示</del>，我们顺利到达下一个房间。</p><h3>Room2</h3><p>我们解救出被关在一个电话亭一样的亭子里的新娘。闪电与白衣鬼使我多巴胺飙升。</p><p>根据一对对联这个线索<del>以及工作人员的大量提示</del>，我们顺利到达下一个房间。</p><h3>Room3</h3><p>根据一个罗盘和一张纸条这个线索<del>以及工作人员的大量提示</del>，我们顺利破解了密码，但是因为机关没对准，耽误了许多时间，成为遗憾。</p><h3>Room4</h3><p>这关有大量的单人任务，队友一个一个被叫了出去，期间不时传来惨叫与碰撞声。所幸的是，作为侍卫的我没被叫出去。</p><p>破解灵位密码后，我们从一个狗洞钻到了最后一个房间。四个大棺材矗立在那里，仿佛要我们进去。</p><p>担心之时，时间也到了，工作人员示意我们停下，给我们讲解了后面的情节。原来 丫鬟(锦轩)/侍卫/小斯 其中一人在一进门就被鬼附身了，我们戴上眼罩时，手上被撒了特殊的荧光粉。特殊灯光照射时，会显现标记。棺材确实是为我们准备的，进去之后鬼会随机抓走一个人，众人解救他之后返回上一个房间，在光的照射下鬼显露原形。新娘新郎给父母磕头，游戏结束。</p><p>总之，恐怖不至于，但会让你一直提心吊胆并盯着每一片黑暗，至少我这么觉得。</p><h2>《超时空同居》</h2><p>这才是爱情片该有的样子。女主很漂亮，故事很精彩且略微烧脑。强推这部电影，片尾的几个彩蛋，是一个男人看了会沉默，女人看了会流泪的故事。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -81,7 +242,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[2020暑假收获]]></title>
             <link>https://rene.wang/p/2020-Summer-Vacation</link>
             <guid>2020-Summer-Vacation</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>读书</h2><h3>《白夜行》</h3><p>“我的人生就像在白夜里走路”</p><p>跨越二十多年的时间线很震撼，读完才发现，原来书中每一处情节，都在侧面或正面写雪穗和亮司的爱情。亮司作为雪穗“白夜里的太阳”，一直保护她到最后一刻。</p><h3>《解忧杂货店》</h3><p>非常温暖非常治愈的故事。四个部分看似毫无关联，却又紧紧相扣。是推理小说，却没有嫌疑人，没有警察，只有几个平凡人演绎平凡的故事。</p><h3>《三体》</h3><p>“给岁月以文明，而不是给文明以岁月”
 读完后被庞大复杂的世界观彻底震撼到了，天空似乎变得更加神秘了。</p><h3>《时生》</h3><p>虽然是略显俗套的穿越题材，但亲情足以弥补这一不足，千鹤线的推理环节比较薄弱。</p><h3>《挪威的森林》</h3><p>相比直子，我更喜欢绿子，开朗活泼，有血有肉。<del>是理想的女朋友！</del></p><p>也许是我还年轻，现在读起来略显青涩。也许几年后，到了渡边的年龄，就能体会到真正的爱情是什么了吧。</p><h3>《嫌疑人 X 的献身》</h3><p>天才与天才的对决，推理慎密，全文无尿点，几乎是一气呵成，与白夜行相似，也是一个男人为了保护心爱的人而付出巨大代价的故事。感觉石神的失败很大一部分是没控制好面部表情，被汤川看出来与靖子有瓜葛。</p><h3>《自控力》</h3><p>东野圭吾，村上春树两位日本作家的作品很好的展现了上世纪六七十年代（《挪威的森林》《时生》）以及经济泡沫前（《白夜行》）的日本社会风貌。</p><p>此外还有《程序员修炼之道》《当下的力量》没有读完。</p><h2>影视</h2><h3>《致命 ID》</h3><p>优秀的悬疑片，略微恐怖，结局真的真的超出人意料。</p><h3>《禁闭岛》</h3><p>同上。</p><h3>《某科学的超电磁炮 T》</h3><p>“你指尖跃动的电光，是我此生不变的信仰，为我超电磁炮永世长存！”</p><p>啥都 8 说了，首先庆祝超炮 T 播放量破 1.3 亿，大爱炮姐！</p><h3>《犯罪心理第九季》1-15 集</h3><h2>开发</h2><p>总体还是以开发为主，学习为辅。完善了<a href="https://blog.yungeeker.com">博客系统</a>并持续开发<a href="https://www.ygktool.cn">云极客工具</a>。</p><ul><li><a href="https://github.com/rivertwilight/adventurex">游戏加油鸭的故事</a></li><li><a href="https://github.com/rivertwilight/mdui-in-react">一个完整的 UI 库</a></li><li>Vue.js</li><li>React-Native</li><li>每天坚持 20 分钟以上健身</li><li>番茄钟</li><li>js 键盘码查询</li><li>Bash 脚本</li><li>5 道算法题</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
@@ -90,7 +251,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[2022是一杯大份烧仙草]]></title>
             <link>https://rene.wang/p/2022-Recup</link>
             <guid>2022-Recup</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>我以前很喜欢喝书亦烧仙草的招牌饮料。在市中心以外的地方，花上 10 元就能买到一大杯：半杯是奶茶，半杯是料。</p><p>今年前半年（不多不少刚刚好，到高考），像是那半杯奶茶。单调，那是形容高三最恰当的词汇。甚至到了倒计时最后十几天，有时又出现一种解脱的感觉。上半年没有网课，没有放开，没有东奔西跑，只是和时间赛跑，就是半杯纯纯的奶茶。</p><p>有几个印象比较深的情景，那是淋过暴雨的深夜，下了晚自习独自走回宿舍。</p><p>6 月 8 号下午考完英语，起身那会，抑制不住的笑容涌上脸颊，又生怕被别人看见那种纯真的快乐。不像是压在背上的重担卸下了，更像是带着镣铐的脚得到解脱，可以跑起来了。</p><p>上半年就是这么简单却又值得怀念，用尽一切力气冲破教育体制的束缚，迎接新生。自然也有些遗憾：有天晚上下了晚自习，在操场上看到有个女生孤零零很伤心，应该去问问她怎么了；毕业前，没有和生活老师还有体育老师合影；高考完，不该买笔记本电脑而该买台式机…</p><p>下半年则是在折腾中度过的，远比折腾技术精彩。</p><p>首先到来的，是人生最后一个充满活力又可以无忧无虑的假期，填了还算正确的志愿，暂时逃离干枯的现实，拿了驾照，打了游戏，写了代码，恋恋不舍之时，惊闻开学延期。</p><p>接踵而来的是似有若无的网课，秋风乍起，有人还想与病毒斗争到底，于是开学又一次延期，军训取消。</p><p>终于体会到了什么叫“放假放到吐”，不久之后，开学第三次延期。我与假期的斗争终于到了白热化阶段，每天七点挣扎着起来上早自习，晚上坐在摄像头面前又上晚自习。似乎每个人都想开学，我却爱上了这种近乎独居的生活。下次想再体验这样的生活，恐怕就是跳槽后在家待业吧。</p><p>直到我闻到了从北方飘来雪花的气息，才终于确确实实要开学了，已经是十一月。真正的大学生活才开始，真正的干枯的现实才要到来。</p><p>大学里来来往往，只找到了越来越多我不想要的东西。在学校的一个月，只得不停地做减法，丢掉那些无谓的、浪费时间与分散注意力的陈规与琐事，也退掉了暑假就预先加入的学生组织。疫情之下，一切都如天空般每天灰暗。只有代码顺利地工作时，才稍稍有了一些慰藉。</p><p>一年下来，学了很多新技术，Flutter、iOS、Unity 还有 Python，没有辜负之前多练算法题的愿望，对编程又有了更多的理解。也培养了许多许多新特长，看了很多题材的书，总之，在继续做一个终身学习者。</p><p>在世界杯的欢呼声中，这个国家终于决定结束持续三年的闹剧，我们也得以回家，一切又回到今年秋天。经过折腾筛选的毒株又感染了周围的大多数人，我也挂了彩，在床上躺了四五天。</p><p>下半年是各种小料堆起来的，有仙草冻，有绿豆，有红豆，还有椰果。遗憾是什么？遗憾是没在动荡不安的半年稳住阵脚，网络上的圈子没怎么扩大。</p><p>体验了几个月真正的人生，我发现有些人从未想过寻找什么，有些人苦苦找寻他们想要的东西，还有些人也许已经找到。而我却不断发现自己不想要的东西，这也是一种寻找吗？</p><p>总之，期望 2023 还可以满满当当写下一篇总结。希望明年可以再努力一点。（壬寅年腊月初九）</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -98,7 +259,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[Before the Tsunami Comes： 8 Tips for Using Internet]]></title>
             <link>https://rene.wang/p/8-Tips</link>
             <guid>8-Tips</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<pre><code>本文的中文版本将在稍后发布</code></pre><p>Though called the &quot;web&quot;, people are more likely to attach the Internet to a tide. I still remember when I study in primary school, I read an essay titled <em>My Family Has Entered the Information Highway</em>. At first, the internet helped a lot. Now it is evolving into a tsunami.</p><p>An innovation starts spoiling as soon as people find it profitable. I&#x27;m not saying earning money from the internet sucks, unless, of course, in an extreme way.</p><p>One day when I was searching for how to deal with my tiring eyes on Zhihu, a popular Quora-like platform in China, I even couldn&#x27;t find a user&#x27;s real experience but medicine promotion(usually in an unconscious way).</p><p>I also heard that Google Search users like to add a &quot;Reddit&quot; keyword after each search to get a real experience.</p><p>In fact, decentralization is far away from us. For some reason in China, it can even be hopeless. So I want to share some tricks of living in the Internet world.</p><p><strong>1. Stay calm.</strong> The Internet is, actually, creating more information gaps but eliminating them. Let&#x27;s say you are gonna buy a new book and soon you find a netizen saying&quot;xxx is awesome, just buy it&quot;. Usually, comments like these make decisions for us. In this case, the gap is filled with background and personality.</p><p><strong>2. Use RSS and Newsletter.</strong> These information sources help you avoid being fed with something you like. It can also filter ads. Alternatively, you can disable &quot;Personalized recommendation&quot; on social media, if possible. This illustration shows how RSS works:</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1Dfdn5THJL4Uia6AmcvNssbus8ia1butUNH3aDJKx3fHicct3S49V0iaus1dibvhdILvyUITcgFlFFQqXg/640?wx_fmt=png"/></p><p>To get started, you can try the Innoreader RSS reader.</p><p><strong>3. Always reject cookies any websites asking for.</strong> Cookies are first used to keep user sessions after they logged in. But soon website owners found it can also track users&#x27;journey, so they offer paid cookie share privilege to other sites. This explained why google ads suggest your favorite drinks to you though you never&quot;told&quot; them.</p><p><strong>4. Keep caution when sharing your photos.</strong> We say the Internet is immortal just because anything you upload won&#x27;t disappear. You can&quot;delete&quot;it for you but not for the web. Embrace mosaic, it&#x27;s a really reliable privacy protector.</p><p><strong>5. Books age much slower than the internet.</strong></p><p><strong>6. Choose open-source software if you can.</strong> Open source software is those that make source code public, such as Telegram, Firefox, and Ubuntu(OS). For this reason, they can get more frequent security updates and will not collect your privacy. Unfortunately, users living in China&#x27;s mainland can hardly find an open source alternative for often used apps like Wechat and QQ. But you can still consider using an open source operating system and browser.</p><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1Dfdn5THJL4Uia6AmcvNssbuw9MHxHFaUrrL7cNwrkzz2eXPuFiaRkQG2vEWCcic2GdwtXQyXmqZ4zOg/640?wx_fmt=jpeg"/></p><p><strong>7. Use an external password manager.</strong> A malware can decrypt bookmarks and passwords saved in all mainstream browsers (except Safari).</p><p><strong>8. Use a blocker.</strong> If you are using Chrome, try installing the uBlock Origin Extension. It helps block track URLs and ads. BTW, it&#x27;s open source.</p><p>If you live on China&#x27;s mainland, I will tell you to uninstall RED, TikTok, and Weibo. They are now the largest home for information gaps, useless arguments, and anxiety.</p><p><strong>In a nutshell, judge any content you receive and review any content before you send it on the internet. You can find a safe house before the tsunami.</strong></p><p>Let me see any comments:-)</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -106,7 +267,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[在Minecraft中还原烟台开发区高级中学]]></title>
             <link>https://rene.wang/p/Built-My-Senior-High-School-In-Minecraft</link>
             <guid>Built-My-Senior-High-School-In-Minecraft</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>我们利用寒假的时间，在 Minecraft 中搭建了一个烟台开发区高级中学。九月份开学那天，我很遗憾地没能去报到，算是借助游戏完成了我的一个梦想吧。</p><h2>🎞 视频欣赏</h2>&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=844303535&amp;bvid=BV1X54y1Y7Vp&amp;cid=302453202&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;<h2>🚧 工程日志</h2><ul><li>项目原型：山东省烟台市开发区高级中学（金沙江路）</li><li>游戏版本：1.12.2 Forge (Java)</li><li>参与人员：zby、RiverTwilight、FBI-mzy、huolong、lxy 等（均为游戏 ID）</li><li>一期：2021/1/10 —— 2021/2/24</li><li>二期：2021/2/25 —— 至今</li></ul><h2>🎮 存档下载及安装</h2><h3>0. 导入地图</h3><p>地图请使用 java 版 1.12.2forge 进入。</p><blockquote><p>存档下载地址：<a href="https://pan.baidu.com/s/13zG8Xm6yR-Exu1QUKJZaFw">百度网盘</a></p><p>提取码：<strong>5jwg</strong></p></blockquote><p>将地图解压后放到游戏根目录（例如 <code>F:/Games/Minecraft/.minecraft</code>）下的 saves 文件夹即可。</p><h3>1. 安装 Mod</h3><p>此步骤不可跳过，否则会出现大量方块丢失。</p><blockquote><p>家具 Mod 下载地址： <a href="https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg">百度网盘</a></p><p>提取码：<strong>lgau</strong></p></blockquote><p>将.jar 文件放到游戏根目录下的 mods 文件夹即可。</p><h3>2. 安装光影(可选)</h3><blockquote><p>家具 Mod 下载地址： <a href="https://pan.baidu.com/s/1a9cUIv0r1Ev2qXJPV1ujpg">百度网盘</a></p><p>提取码：<strong>lgau</strong></p></blockquote><p>将压缩包直接放到游戏根目录下的 resources 文件夹即可。</p><h2>✨ 彩蛋</h2><h3>高级中学的民防工程</h3><p>在农场下有一个可以在核战争来临时供全校师生躲藏一个月的大型掩体。入口位于农田中的某一块水井。</p><h3>下水道</h3><p>校园配备了完整的排水系统。拥有亚马逊雨林级的防涝能力。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -114,7 +275,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[深得一人心：信息获取全流程可控实战]]></title>
             <link>https://rene.wang/p/Control-Your-Information</link>
             <guid>Control-Your-Information</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>如果把大脑比作一个农场，信息比作农作物，那么作为农场主，你要合理安排有限的土地（时间），悉心审查种子（信息源）的质量，为高产作物留出更多的空间，同时防止杂草污染土地。</p><p>这也是本文的目的。</p><p>确保全流程可控有两个核心的点：<strong>一是对信息进行分类，二是合理规划消费的时间和量</strong>。</p><p>对于每一类信息，要创建一个严格的 scope (域)，即不轻易增加或减少来源，在 scope 规定的时间内消费。</p><p>Apple 公司的创始人 Steve Jobs 曾说：“Your time is limited”。 对部分信息的消费采用定时定量策略，目的是避免造成过度的时间浪费，并有效抑制一些可能出现的“伴随信息”，比如某一篇文章推荐了另一个公众号，如果这个公众号的 scope 与当前时间片不一致，那么应暂时放弃。</p><p><img alt="Untitled" src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e22cfa8-a1e1-4be5-b479-7e972a71538f/Untitled.png"/></p><h2>被动型信息</h2><p>顾名思义，这类信息往往无法控制，所以单独说一下。消费时，注意不要被杂音干扰，因为国内常用的 IM 软件都有一些与聊天无关的内容。对不重要的信息设置免打扰，迅速处理重要的信息。</p><ul><li>QQ、微信的消息</li><li>突如其来的邮件</li></ul><h2>纯粹的垃圾信息</h2><p>这类信息完全就是对宝贵时间的浪费，要提防、原理。举例如下：</p><ul><li>短视频软件上的<strong>某一类</strong>内容</li><li>微博、知乎等平台的热搜，充斥着炒作、虚伪与谎言</li><li>淘宝、京东等购物软件的推荐页面</li></ul><h2>高度碎片化、低质信息</h2><p>此类信息偏娱乐，仅供消遣，并不会对自身有太多提高，不获取也不会有丝毫损失。每周集中、定时、定量浏览。我本人的方法是每周四晚上固定浏览 30 分钟，项目按需分配。</p><p>浏览的时候保持警惕，<strong>不可沉迷、不可放纵</strong>。</p><ul><li><strong>Twitter：</strong>主要用于关注国内外新闻、技术圈的简讯</li><li><strong>Telegram</strong>: 同上</li><li><strong>朋友圈</strong>：身边人的新鲜事，定期互动即可</li><li><strong>大学公众号</strong>：通常报道一些校内的新闻，无关紧要，但关注他可以产生归属感，偶尔扫一眼即可。</li><li><strong>社交过程中获得的信息</strong>：比如朋友分享的一些新闻，此类信息注意保持一定的自我判断即可，理性消费。</li></ul><h2>低碎片化的娱乐信息</h2><p>与上一种不同，这是需要消耗较多时间娱乐的内容。例如：</p><ul><li>电影</li><li>小说</li></ul><p>在周末或者假期，大可以放松下来，好好欣赏一部优秀的电影或小说，这里不做推荐。相信喜欢看电影和读书的读者早已有自己的清单。我们只要轻松对待即可。</p><h2>中长篇文章、待加工处理的信息</h2><p>诸如优质的公众号文章等，此类信息第一次看并不会学到很多，需要积累深加工。此类信息建议全部使用 RSS 获取，其余渠道一律避开。</p><p>同样是定时但不定量获取。在习惯管理软件中，我设置为每周二、周六浏览 RSS 阅读器，通常耗时半个小时以上，需要注意休息。</p><ul><li><strong>知乎日报</strong>：奇闻异事、冷知识、文化素养，适合挑选精华摘录到 Flomo</li><li><strong>冰点周刊</strong>：高质量的新闻，关注小人物的故事</li><li><strong>经过筛选的视频频道</strong>：严格筛选你关注的博主或者频道，且定量观看，例如每次就看一期。</li><li><strong>少数派</strong>：文章质量普遍拔群，涉及领域广，适合深度阅读，并尽量每一篇都读。</li><li><strong>国外知名新闻媒体</strong>：例如 BBC、华尔街日报、纽约时报等。此类内容通常比推特的内容要翔实，并且能有效锻炼英语阅读能力，尽量每一篇都浏览，不一定要看完。</li><li><strong>One 一个</strong>：目标群体是文艺青年的优质内容，提升素养，偶尔允许自己 Emo 一下。</li></ul><p>注意，不推荐使用微信自带的公众号功能浏览公众号信息。容易受到个性化推荐以及广告的打扰，RSS 则可以有效规避商业化带来的烦恼。</p><p>对于此类信息的加工我的方法是使用浮墨笔记。此处不详细讲述笔记方法。</p><h2>严肃、高质的信息合集</h2><p>这类信息专为学习而设计，例如人文社科类书籍、在线课程、小册等。无需定时定量，而重在吸收的质量。不要停止为自己充电，你的能力远超你的想象。事实上，前面两种信息消费时的克制，就为消费这一类信息创造了时间和空间。</p><p>信息的获取要注意：确保是有体系、成架构的内容，并且有<strong>一定</strong>的深度，否则内容应划分到其他 scope。</p><ul><li><strong>书籍</strong>：例如《马克思恩格斯著作选集》《小白经济学》等有体系、有结构的内容，笔者认为，读书应该是成为生活的一部分，不需要刻意安排，也不要忙到没时间去阅读。</li><li><strong>视频类慕课</strong>：此类信息的消费建议以待办的形式写入每天的日程。</li></ul><p>目前我们能获取的信息便大抵可分为这几类。总结下来最重要的就是：审视每一个信息源的质量。你的时间是有限的。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -122,7 +283,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[大学新生研讨课报告]]></title>
             <link>https://rene.wang/p/Freshman-Seminar-Report</link>
             <guid>Freshman-Seminar-Report</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<blockquote><p>本文系笔者大学新生研讨课报告。六次新生研讨课分别讨论了人工智能、算法、大数据、信息素养等时下热门主题，结合笔者上课所学以及平日了解，写下这篇报告。</p></blockquote><h2>1.1 引言</h2><p>笔者今年步入大一，参加了几场新生研讨课，分板块讲解了笔者所在专业需要学习深入的领域，特撰写此报告。本报告完全原创，如有雷同，纯属巧合。</p><h2>2.1 人工智能</h2><p>人工智能第一次走入笔者的视野，应该就是大名鼎鼎的棋手李世石与 Google Alpha Go 的较量，紧接着是柯洁、国际象棋大师等人的较量，这些都是笔者在初、高中时期看到的，当时笔者对人工智能的印象就是：人工智能是一个可以和人类进行较量的东西，而且人工智能的智能程度已经超过了人类。</p><h3>2.1.1 前沿进展</h3><p>目前，人工智能已在很多领域有了突破，根据笔者的了解，列举如下：</p><ul><li>可繁殖机器人</li><li>可自主作画（Novel AI）</li><li>可自主写作（GPT-3）</li><li>可自主翻译（Google Translate）</li><li>可自主驾驶（Tesla）</li><li>可自主识别（Face++）</li><li>可自主学习（AlphaGo）</li><li>可自主游戏（Dota2）</li><li>可自主创作（Deep Dream）</li></ul><p>可以预见的是，几乎所有重复、有规律的工作都将被人工智能取代，这将会给人类带来很大的改变。</p><h3>2.1.2 如何看待人工智能</h3><p>笔者认为，一味的排挤，抑或是过度的依赖，都是偏激的做法。原因如下：</p><ul><li>人工智能并不会造成就业机会的减少，事实上，人工智能反而催生了更多职业。</li><li>人工智能并非想象中的可靠。在最近热播的电视剧《爱，死亡与机器人》一集中，失控的机器人成为了女主人公的噩梦。这也是笔者认为，人工智能的发展应该是有监管的，而不是一味的放任自流的原因。</li><li>人工智能还有很长的路要走。</li></ul><p>正如电的出现到普及一样，必然会触动某些人的利益，但是，电的出现，也带来了很多的便利，比如：电视、电脑、电灯等等。同时创造了大量新的就业机会：电工、变电厂等等。</p><p>同样地，人工智能的出现，也会带来很多的便利，比如：智能家居、智能手机、智能汽车等等。人工智能的出现，也会带来很多的职业，比如：人工智能工程师、人工智能研究员、人工智能设计师等等。</p><h2>2.2 算法</h2><p>笔者三年多的编程经历中，用到算法的场景相当多。</p><p>例如，笔者开发本人的博客系统时，涉及到一个日期排序功能，其实就是<strong>冒泡算法</strong>。而一些初级前端程序员在开发时，可能会觉得算法并不是必修课，但其实业务中经常可以用到一些简单的算法，比如：二分查找、快速排序等等，只是开发人员没有意识到运用了某种算法，甚至可能造成不优雅的代码出现。</p><h3>2.2.1 数据结构</h3><p>课上谈到了数据与程序的关系。笔者认为，只有理清数据结构，才能洞悉问题本质，写出高效的算法。</p><ul><li>数组</li><li>堆</li><li>栈</li><li>二叉树</li><li>链表</li></ul><p>说到算法，很多人会联想起数学。编程界有一句很出名的话：”数学不一定能让你成为更好的程序员，但是能让你多一个解决问题的办法。&quot;</p><h2>2.3 大数据</h2><p>大数据是指，通过分析海量数据，从中发现有价值的信息，从而改善决策和业务的过程。而我们常说的数据分析，就是大数据的一种。</p><p>大数据的应用场景有很多，比如：电商、医疗、金融、教育等等。</p><p>大数据的发展，是一个漫长的过程。从最早的数据采集，到数据存储，再到数据分析，最后到数据挖掘，并服务于产品，其中涉及了很多人事、技术。</p><h2>2.3.1 利弊</h2><p>任何事物都有两面性。笔者个人十分反感成为大数据的“养料”，例如，让淘宝洞悉笔者的购买偏好，抑或是让知乎了解笔者最感兴趣的领域。并且，当一种技术可以带来利益时，往往就会偏离其本身的初衷。</p><p>当互联网的一切都被卷入大数据的洪流中时，再讲隐私，恐怕只能是天方夜谭。</p><h2>2.4 信息素养</h2><p>课上教授谈到了数据库检索。数据库从 Web 1.0 时代诞生伊始，至今依然广泛应用在科研、教学、医学领域中。广义的数据库可以指为网站、APP 或小程序等互联网服务存储数据的一种信息容器，狭义的数据库则是存储文献、论文、书籍等信息的虚拟媒介。</p><p>在课上教授重点谈了如何主动获取，包括一些常用数据库、电子图书馆使用等，但是未提及如何被动接受信息。笔者认为，信息素养不止包括如何检索信息。在当今滚滚的信息洪流中，我们便面临两个最重要的问题：</p><ul><li>如何主动获取信息</li><li>如何被动接收信息</li><li>如何利用、转化接收的信息</li></ul><h3>2.4.1 如何接受信息</h3><p>事实上，从古到今，人类都一直在被动地接收信息，但是如今面对的信息量确却是空前地庞大。关于如何正确地被动接受信息，笔者曾在一篇<a href="https://rene.wang/p/My-Information-Flow.md">博客文章</a>中探讨了信息工作流，有兴趣的读者可以阅读，此处不赘述。</p><h3>2.4.2 如何利用、转化接收的信息</h3><p>关于这个话题，笔者也在另一篇<a href="https://rene.wang/p/My-Information-Flow.md">博客文章</a>中详细探讨了自己的信息处理工作流，摘录如下：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKQ9UndDwMKErMpjKvZGCdmHWUoZ5H0TURJr6uvuwtWTzZ0bPU6wOBwg/640?wx_fmt=png"/></p><h2>2.5 操作系统</h2><p>要理解操作系统，一个核心理念是：<strong>计算机是由硬件和软件组成的</strong>。</p><p>为了驱动、调度硬件，并提供一个易于人类操作的交互方式，我们研发了操作系统。常见的操作系统有 Linux、macOS、Windows 等，以及移动端的 Android、iOS 等。另外，电梯、智能家居等硬件内则安装了称为嵌入式系统的 OS。</p><p>关于操作系统，笔者联想起曾经折腾过的一块随身 Wi-Fi。那是一个外接了扩展电路板的随身 Wi-Fi。尽管没有显示器、没有键盘、没有&quot;显卡&quot;，其实也搭载了 Linux 的发行版 Debian。这澄清了一个很常见的误区：即电脑一定要由显示器、机箱等等。</p><p>现代操作系统是一个复杂的大型软件。包括线程调度、磁盘管理、（针对移动设备的）电源调度等。</p><p>操作系统是人机交互的革命。</p><h2>2.6 软件开发</h2><p>软件开发的本质是什么？笔者认为其本质是设计一套解决问题的流程。很多初级开发者喜欢追求技术，但我们要站到更高的角度看整个流程，把精力集中到架构设计、利弊权衡等上去。这背后的理念其实就是&quot;产品思维&quot;，把整个软件看作产品（凡是能解决问题的产物都可以叫&quot;产品&quot;）。</p><p>另一个很重要的思想就是，把语言看作工具。</p><p>软件开发也与木工有很大的相似之处，开发者需要提前设计架构，准备材料，尝试不同的组装方式，测试其稳定性...有时又要坐的住冷板凳，学会把软件与自己分离，好投身到下一个项目中去。</p><h3>2.6.1 软件开发的乐趣</h3><p>《人月神话》对软件开发的乐趣有一段精彩的阐述：“这种快乐是一种创建事物的纯粹快乐。如同小孩在玩泥巴时感到快乐一样”。程序员多是喜欢自己动手创建事物的人，而软件开发赋予了他们最大的自由。</p><h2>3.1 总结</h2><p>新生研讨课作为笔者专业的“入门课”，对专业有了大致的了解，为以后的学习指明了方向，也了解到了计算机领域的前沿进展。</p><p>而新生研讨课带来的更深层意义在于，学习是永无止境的。任何领域都有学不完的知识，在不断地学习中，你会逐渐意识到自己的无知，而这种无知又反过来激励你不断学习。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -130,14 +291,14 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[板绘 | 壁纸作品合集]]></title>
             <link>https://rene.wang/p/Gallery</link>
             <guid>Gallery</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
             <title><![CDATA[拯救你的收藏按钮：我的信息管理工作流]]></title>
             <link>https://rene.wang/p/My-Information-Flow</link>
             <guid>My-Information-Flow</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>前几天，我发现我的语雀账号无故被封禁了。有意思的是，竟然显示为用户举报。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKtv42kncdISS2InbxUgOBOWyxzglCm2uVTM8QuLx4b26SzEukgIfjnQ/640?wx_fmt=jpeg"/></p><p>这就不得不说说我为什么用语雀：主要<strong>用它来管理我的文章收藏</strong>。在网上看到一篇好文章，如果点击平台的收藏按钮，那么这很有可能是你最后一次看见他了。并且，<strong>哪天文章被删了，想看也看不了</strong>。</p><p>所以我选择使用<strong>简悦</strong>创建文章副本，再保存到语雀，永久储存，分类整理。</p><p>简悦是一个浏览器插件，除了提供沉浸式阅读，还可以将文章保存到各大知识管理服务，例如 Notion/Instapaper/Pocket 等等。这是很重要的一环，<strong>必须尽可能掌握信息的所有权</strong>。</p><p>账号被封禁后，我开始重新审视这个国产工具：</p><p>🙃 打造信息孤岛，文档导入功能丰富，导出功能却十分有限</p><p>🙃  隐私不安全（存在审核）</p><p>🙃  十分浮肿，我只需要他的 30% 功能</p><p>🙃  拓展性很弱，API 使用门槛高</p><p>于是我决定使用 Github 管理我的文章，几乎解决了所有痛点，简悦也支持直接保存到 Github. 借助这种纯文件的天然优势，可以通过 Docusaurus 等工具定制化页面，提升阅读体验。未来，还可以编写程序实现 flomo 的 “每日回顾” 功能。</p><p>于是我的信息管理工作流就变成了这样：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKQ9UndDwMKErMpjKvZGCdmHWUoZ5H0TURJr6uvuwtWTzZ0bPU6wOBwg/640?wx_fmt=png"/></p><p>在手机上读到的文章，则需要将链接使用电脑浏览器打开，再执行上述步骤</p><p>借助一些文档生成工具，则可以提高阅读效果：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1CCEsmUicOp4LCrCNgMKJibZKUFEZqdkvrTgdIwGx9FljwIbUR0gzqcfB38XbrR1zGhC10h2XMeywCg/640?wx_fmt=png"/></p><p>Docusaurus</p><p>同时，开源软件也保证了信息安全性和可靠性。</p><p>选择软件，要远离信息孤岛，注重拓展性。碎片化信息的时代，一定要有甄别和思考的能力，同时也要具有管理信息的能力。<strong>下次见到喜欢的文章，试着把他真正保存起来吧</strong>。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -145,7 +306,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[个人能力作品集]]></title>
             <link>https://rene.wang/p/Personall-Showcase</link>
             <guid>Personall-Showcase</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>此页面展示我个人的特长能力，同时我也一直在不断学习中。</p><h2>开发</h2><p>拥有四年前端开发经验，项目绝大多数为开源。</p><ul><li><a href="">小程序</a></li></ul><h2>绘画</h2><p>本人绘画题材以风景、自然为主，绘画手法多样，也会进行漫画创作。</p><p>作品主要发布在公众号上。</p><ul><li><a href="https://mp.weixin.qq.com/s?__biz=Mzg5MDgyMDg3NQ==&amp;mid=2247483842&amp;idx=1&amp;sn=566445503cc7775cb54cb81adcf44937&amp;chksm=cfd781a6f8a008b07da71d605d99748318a78f69efecfc807833e08aa3b515b9b5f80247c960#rd">板绘｜ iPad 壁纸专辑（4K）</a></li></ul><h2>证书</h2><p>其他领域的一些证书。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -153,7 +314,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[过去的一年·2019]]></title>
             <link>https://rene.wang/p/ThePast2019</link>
             <guid>ThePast2019</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>前夕</h2><p>2019年6月13日，我在二中的宿舍床上担心会不会睡不好，会不会影响明天的数学。</p><p>2019年6月14日，中考结束的那天晚上，我冲进房间买下了第一台服务器。</p><p>2019年6月15日，师生参加了毕业典礼。临放学有同学丢给我棒棒糖，没想到那颗糖几乎成为永别。</p><p>2019年6月16日，搭乘东航<code>CA4532</code>航班飞往成都，父母骗了我，我没和同学说再见，没收拾好回忆，匆匆离开。下午抵达成都，借住在父亲同学家里。</p><p><img alt="蓬莱机场" src="https://i.loli.net/2020/06/13/jIpFSBCHUh1JnGV.jpg"/></p><p>2019年6月17日，匆匆赶往成实外参加自主招生考试。</p><p>2019年6月18日，即将踏入成外高新考场时，收到了成实外的录取通知书（平行班）。怀着波澜起伏的心情考完第二场。</p><p>2019年6月21日，与父亲前往峨眉山朝圣。</p><p><img alt="峨眉山" src="https://i.loli.net/2020/06/13/otfj7B38JYCHRyS.jpg"/></p><p>2019年6月22日，由于成都的房子在装修，被父亲送到乡下撒野。</p><p>半个被荒废的暑假过去了</p><h2>成外高新</h2><p>2019年7月21日，参加为期两个周成外高新夏令营（衔接班）。在成都与陌生人的第一次邂逅，是和可爱的钰婷。遇到了第一个班主任，董老师。</p><p>2019年7月30日，自行车被盗，报案后石沉大海。</p><p>2019年整个8月，泡面，一个人，电影，旅行和手机写前端。</p><p>2019年9月，一个周的军训。在509认识了锦轩，在教室里认识了思源。</p><p><img alt="school" src="https://i.loli.net/2020/06/13/cNxLoX2UsMFWSDK.jpg"/></p><p>2019年9月24日，头部受伤，缝三针，回家休养，有幸成为MIUI11内测用户。</p><h2>钉钉时代</h2><p>2020年1月19日，买了新的自行车————美利达探索者100。</p><p>2020年1月20日，裸骑都江堰，全程80多公里。</p><p><img alt="骑行都江堰" src="https://i.loli.net/2020/06/13/itGvFaNx8Jwhrj2.jpg"/></p><p>2020年1月23日，回老家，成为第一批带上口罩的四川人。南方阴冷的冬天很是难受，喜欢北方轰轰烈烈认真的雪。</p><p>2020年2月10日，开始钉钉时代。每天上课，在群里划水，连麦，看剧，产出无数代码。</p><h2>新生</h2><p>2020年4月20日，返回校园，见到了余下两年的同窗，结识了鸭姐和磊磊。</p><p>2020年5月2日，第一次真正意义上和同学出去耍。</p><ul><li>牵肠挂肚</li><li>KTV</li><li>散步</li></ul><p>2020年5月9日，成都的学生们摘下了口罩。</p><p>2020年5月20日，实验中学的同学们返校了。</p><p>2020年5月30日，第二次出游。认认真真做了vlog。写了一篇<a href="./记五月三十日游.md">游记</a>。</p><ul><li>鸡毛店</li><li>锦里</li><li>锦江</li></ul><p>2020年6月13日，买了新的服务器，写下这篇回忆录。</p><h2>写在后面</h2><p>这篇文章记录了我中考结束后的一年，或者说来成都的一年，遇见的人，经历的事。我希望成为《活着》里的福贵那样“精彩地讲述自己”的人。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -161,7 +322,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[过去的一年·2020]]></title>
             <link>https://rene.wang/p/ThePast2020</link>
             <guid>ThePast2020</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>经历的事</h2><h3>2020.1.22-无装备单日 82 公里骑行都江堰</h3><h3>2020.2.16-寒假结束，开始上网课</h3><p>每天五节课，大部分时间在划水，作业也经常糊弄。</p><h3>2020.4.13-返校上课</h3><h3>2020.9.1-暑假结束，进入高二</h3><h3>2020.11.29-Keep 锻炼满 3000 分钟</h3><h3>2020.9. - 当选团委会宣传部部长</h3><h2>读过的书</h2><p>一共读了 20 多本书，全都是在 Kindle 上读的。</p><p>一年下来，读了很多，学到了很多，纸上得来终觉浅。绝知此事要躬行。</p><ul><li>《白夜行》</li><li>《解忧杂货店》 - 暖。</li><li>《三体》</li><li>《时生》</li><li>《恶意》 - 尝遍人生百态</li><li>《挪威的森林》</li><li>《当下的力量》 - 没有一刻生命是不在当下的。</li><li>《嫌疑人 X 的献身》 - 爱有很多种形式</li><li>《自控力》</li><li>《兄弟》 - 人世纷扰，需守得本心。中国花了四十年时间走完西方四百年走的路。</li><li>《菜根谭》 - 修身之道漫漫</li><li>《海边的卡夫卡》</li><li>《寻羊冒险记》</li><li>《经济学人》数本</li><li>《纽约客》数本</li><li>《程序员修炼之道》 - 成为一名优秀的程序员真的不容易，需要学的东西很多。</li><li>《伤逝》 - 一代名家的爱情绝唱。</li></ul><p>以及其他零零散散的文章。</p><h2>喜欢的歌</h2><ul><li><p>《不找了》 - 希望你不要再碰到像我这样的人 敏感 缺爱 经常瞎想 老是缠着你和我聊天 应该让你很累吧 但又希望你碰到这样的人 因为这样的人真的好爱好爱你啊！</p></li><li><p>《下雨天》 - 下雨天了怎么办我好想你。</p></li><li><p>《像风一样》 - 留不住的人血液里都藏着风。</p></li><li><p>《保留》 - 晚上才会想 我有那么喜欢她吗 为什么她不理我的时候我会觉得难受 等到我想去故意不理她的时候难受的还是我 她呢。</p></li></ul><h2>感悟</h2><ul><li>时间过的真的很快</li><li>不能跟喜欢的人在一起是人生常态</li><li>很多时候灾难往往因为一句话</li><li>熬夜真的很伤身，会让第二天彻底崩溃</li><li>人与人的关系真的很脆弱，一不留神就已经是陌生人了</li><li>付出太多只会伤到自己，被偏爱的都有恃无恐</li></ul><h2>接下来的一年</h2><ul><li>Github 获得 300 星（24/300）</li><li>年级前 50（140/50）</li><li>Kindle 生词本掌握 3000 个（975/3000）</li><li>微信零钱每个月收入-支出&gt;50(0/12)</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -169,7 +330,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[五天不使用互联网，我的经历和感受]]></title>
             <link>https://rene.wang/p/Without-Internet</link>
             <guid>Without-Internet</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>这是个信息爆炸的时代。</p><p>我们时常被良莠不齐的信息冲击着，也许正在看一篇优质干货，就被一条擦边广告夺去注意力，然后一发不可收拾；每天都在更新的热搜不断刺激着我们的多巴胺，热点过时后留给我们的什么都没有；刷着一条条有用无用的朋友圈，不断窥探着别人的隐私，却忘记了真正属于自己的生活...</p><p>这之前我自己一直有一些自律方法，例如利用人升（一款非常不错的习惯养成 APP）将上网设置为限时的商品，完成一些任务才能购买等等，但效果不佳——一旦遇到一些吸引力极强的内容，很容易就超时了。</p><h3>第一晚</h3><p>我最后刷了一次 Twitter, QQ 空间, 朋友圈, 晚 20：00 开始了我的计划，此后的 7<!-- -->*<!-- -->24 小时，我将是与信息时代隔绝的孤岛。</p><p>我在我的手机上做了以下工作：</p><ul><li>关闭数据网络和 WIFI，隐藏通知栏中打开数据和 WIFI 的开关</li><li>下载常用的 Keep 课程</li><li>将移动网络设置为 2G</li><li>卸载 QQ</li><li>每天屏幕时间限制为 2 小时</li><li>通过短信与朋友联系</li></ul><p>电脑上：</p><ul><li>将写代码要用的文档下载下来（使用这个<a href="https://devdocs.io/">离线文档聚合站</a>）</li><li>将喜欢的音乐下载下来</li><li>打开飞行模式</li><li>把 vscode、一些依赖包更新到最新版本</li></ul><p><img src="/public/images/OfflineData.jpg"/></p><p>接着我拿出 Kindle，看完了阿来的《尘埃落定》。</p><h3>第一天</h3><p>早上被闹钟叫醒，习惯性拿起手机，猛然想起已经没有网了。</p><p>于是我放下手机，拿起 Kindle，看周国平的散文。正好周老师在谈论”孤独”。</p><p>我发现手机里还有初中时搞 MOD 用的《铁锈战争》（一款类似红警的游戏，可单机）游戏安装包，没想到还能玩。这个五六年前由国外大神开发的游戏曾引起国内的 MOD 制作狂潮，界面简洁，没有如今某些游戏遍布的“多巴胺陷阱”以及吸金欲望。</p><p>练琴回来的时候，由于需要出示健康吗，我迅速打开网络，打开健康通，一进门立刻关闭网络，恢复如初。</p><blockquote><p>由此可见，互联网的存在是合理且有益的，只是因为它无意中触到了人们的”多巴胺机制“，有时候才显得那么可怕。</p></blockquote><p>回到家。用手环的运动功能出去跑了 20 分钟约 2KM. 然后开始撰写第一天的内容。</p><h3>第二天</h3><p>才第二天，戒断反应就开始出现了。开始发呆，焦虑...翻了翻硬盘里存的视频，不过看起来多少有点索然无味。</p><blockquote><p>看来我确实是有网瘾了</p></blockquote><p>想起朋友送的一款需要动手拼装的小房子还没拼，于是拿出来开始折腾，一大男人给一个指甲盖大小的木板刷漆...一晚上就这么过去了。</p><h3>第三天</h3><h3>第四天</h3><p>看书，</p><h3>第五天</h3><p>7：00起</p><p>突然想起还有收音机这个</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -177,7 +338,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[开发一个云端个人助理 · 1]]></title>
             <link>https://rene.wang/p/Develop-An-Assistant-One</link>
             <guid>Develop-An-Assistant-One</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/filess/img12@main/2022/10/04/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png"/></p><p>前几天给 RSSHub 提交了一个 PR，把我所就读的大学的两个学院官网做成了 RSS 源。</p><p>RSS 好是好，但就是缺少即时性，于是打算利用企业微信机器人做一个及时推送的服务， 并把服务范围扩大。</p><h1>关于配置模式的思考</h1><pre><code class="language-json">{
 	&quot;service&quot;: [
 		{
@@ -208,7 +369,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[红米6(cereus)救砖 + 刷第三方ROM教程]]></title>
             <link>https://rene.wang/p/Hack-Redmi-6</link>
             <guid>Hack-Redmi-6</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<blockquote><p>本文最初由 Charles_Su0923 发表于<a href="https://www.coolapk.com/feed/31765614?shareKey=MzUxZDIyNGE4MWEzNjFhMzI0MTU~&amp;shareUid=3191596&amp;shareFrom=com.coolapk.market_9.0.3">酷安</a>，有改动。</p></blockquote><ul><li><strong>设备</strong>：红米 6</li><li><strong>TL;TD</strong>：10 月份把手头 Redmi6 从只会震动黑砖里救出来，到 11 月初尝试了两个周末的刷机，终于在 11 月 27 日成功的把 LineageOS 17 刷入。</li></ul><p>重要！！：国内的大部分教程都没有提到，由于 MTK 特殊的硬件加密，故直接刷入 REC 会导致手机无法引导 REC，解决方案是下面这个文件。</p><p><img alt="下载了无数REC和rom" src="https://i.loli.net/2021/11/28/3lSt1WAnUaoZMbv.png"/></p><h2>总览</h2><p>Step1：把手机降级回 MIUI 10.4.4（酷安上有太多太多教程，但是不要贪心，<strong>只能降到 MIUI 10.4.4</strong>）</p><p>Step2：用下面提到的 rec 刷入工具刷入（秋之盒这种不行，只能用这个工具！！！）</p><p>Step3：导入你要刷的包和这个 DDE（这一步非常重要！！！！）</p><p>Step4：格式化 data 并且刷入系统，不出意外地话就会开机</p><h2>救砖</h2><p>大概是从去年的 8 月份，在尝试刷机，但是不料，意外成砖，学业繁重，于是就把他搁置在那了，中间尝试过鸟一鸟他，比如用 Mi flash 救一下这种，还是没有办法，放了一直到大概今年的 10 月，突然的时候发现了 MTK 的救砖工具。</p><p>其过程大概就是，先装驱动，由于 MTK 奇妙的特性（搞过 MTK 的都知道，救砖需要在短短的几秒内，从一闪而过的端口里找到他，然后再快速的点安装驱动，详细教程酷安上有），所以光驱动就安装了大概 20 多分钟，因为放久了，没怎么充电，所以还冲了很久的电，用 MTK 工具救砖也是一样的恼火。</p><p>由于小米引入了一个 auth 校验工具，所以，我们还需要用一个绕过工具去绕过，这个过程，亦是痛苦且难整的，所有的工具都是在海外源，所以还需要等着龟速下载。正式开始刷入的时候，并非完全用的是 MTK 的工具，在尝试完 MTk 工具后，手机意外地进入了 FB，于是当机立断，马上用米 flash 刷到 MIUI。</p><h2>PART2 | Escape</h2><p>回到 MIUI 的第一件事情，就是刷第三方 rec，这本是平常不过的操作，但由于 MTK 的特殊性，在刷入 REC 的时候必须禁用 DM 加密，在刷完包之后，也必须再禁用一次，在尝试的过程中，并没有注意到，还有 DM 加密这类东西，于是我直接就用秋之盒工具箱进行刷入操作，我把所有我能找到的 twrp 的 rec 全部试了一遍，国内外的教程也都看了个遍，红米 6 和 6A 的 rec 都刷了遍，电脑上前前后后下了大概 20 多个 recBut，秋之盒的刷入方式是 <code>fastboot flash recovery.img</code> 而针对于 MTK 机型（尤其是红米 6），我们都要加上 <code>fastboot --disable-verity --disable-verification</code> 这类指令，发现这个的时候，最开始的尝试已经过了一年的多时间。</p><h2>PART3 | Resurrection</h2><p>在成功刷入 rec 之后，我迫不及待的刷入 LineageOS 17，在之前的尝试中，我成功的刷入过红米 6a 的 rec，But，如果用红米 6a 的 rec 刷 rom 是刷不进去的，此时离我们最初的起点已经过了一个月了。</p><p>结果发现可以进入开机动画，但是卡住不动了。于是重启，重来。</p><p>已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)<a href="">https://t.me/redmi6official</a>里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！</p><p><img alt="image.png" src="https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png"/></p><h2>Part4 | Adjust</h2><p>这个部分很简单，调度 magisk+LSP 简直不能太简单。</p><h2>PART5 | End？</h2><p>这是玩了 10 年刷机，老机油的坚持，虽然随着时代的前进，系统日渐完善，曾经比较火热的刷机平台停服刷机，也渐渐地淡出舞台。</p><p>但为什么，还是有人坚持还是有人愿意为手机适配刷机包，就像周杰伦无法从我们的记忆中抹去一样，我们念物，其实念的是物背后的情感。初恋为什么忘不了，就是因为她是努力后才得到的。</p><p>感谢机主的坚持和不懈，也感谢做出这个刷 rec 的作者 @MegaFon929!</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -216,7 +377,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[黑苹果不完全指南]]></title>
             <link>https://rene.wang/p/Hackitosh</link>
             <guid>Hackitosh</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p><strong>会进 bios</strong></p><p><strong>会英语或者翻译</strong></p><p><strong>有手、耐心</strong></p><p><strong>需要一个 U 盘</strong></p><h2><strong>前言</strong></h2><p>本文适合对黑苹果毫无了解的小白。如果你已经买到电脑，想装黑苹果，可以继续阅读。</p><p>若你准备买一台可以装黑苹果设备，可参考 <a href="https://github.com/daliansky/Hackintosh">笔记本</a> <a href="https://macx.top/18202.html">台式机</a></p><p>本文默认你会科学上网、会使用 GitHub 。</p><h2><strong>前期搜索&amp;明确配置</strong></h2><p>黑果的大概启动原理是：修改 config 和 DSDT 来启动 OS X。</p><p>明确配置的一会搜索驱动会少很多事，你需要做的就是去搜一下 「机型+EFI」 。</p><p>有的话,直接跳到安装部分</p><p>你的电脑如果找不到或者太冷门，且也想装黑苹果。就需要自己配 EFI</p><p><strong>配置 EFI</strong></p><p>这是一个 ！大点！</p><p>请结合多方信息，</p><p>不要只看我的这篇、也不要局限于国内互联网。</p><p><strong>你需要知道的信息</strong></p><p>黑苹果不怎么挑 U，但太老、太偏、AMD，就节约时间不考虑了。上网本（奔腾、赛扬就直接 pass 不得行）</p><p>Intel 的集显(HD+一些数字)、AMD 的独立显卡大多都可驱动，这个请搜索 显卡型号+黑苹果”</p><p>网卡能驱动上的很少，能驱动的也有各种特殊方法。
 具体情况请自行搜索，本文不展开</p><p>声卡同理，请自行搜索。</p><h2><strong>下载工作</strong></h2><h4><em>必须下载</em></h4><p><del>这里的文件<a href="https://dortania.github.io/OpenCore-Install-Guide/ktext.html#must-haves">参考</a>部分软件</del>
 请记住他的别称（打在括号里的）</p><p><strong><em>请将你下载好的文件放在一起，软件请安装。请确保所有的东西你都能找到！</em></strong></p><p>编辑 plist 配置的<a href="https://github.com/corpnewt/ProperTree">plist 编辑器</a> 或者<a href="https://mackie100projects.altervista.org/opencore-configurator/">OpenCoreCFG</a></p><p>必备，下载 release<a href="https://github.com/acidanthera/OpenCorePkg/releases">最简 EFI</a></p><p><a href="https://github.com/corpnewt/SSDTTime">SSDT</a></p><p>diskgeunis(区分工具)百度去下</p><p><a href="https://github.com/acidanthera/Lilu/releases">Lilu</a></p><p><a href="https://github.com/acidanthera/VirtualSMC/releases">VirtualSMC</a></p><p><a href="https://github.com/acidanthera/WhateverGreen/releases">WhateverGreen !部分 AMD 的集显不能装！</a></p><p><a href="https://acpica.org/downloads/binary-tools">AICP 编辑工具</a></p><p><a href="https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Setup-1.7.9.exe">写盘工具</a></p><p><a href="https://blog.daliansky.net/">黑果小兵</a>这里下载一个镜像，可以私聊我给你发一个</p><p><a href="https://shuiyunxc.gitee.io/2020/04/06/Faults/index/">排错 1</a> <a href="https://apple.sqlsec.com/10-%E6%8E%92%E9%94%99/">排错 2</a>
@@ -262,7 +423,7 @@ SATA Mode: AHCI</code></pre><h3>3.Boot up</h3><p>从你的 U 盘启动</p><h3>4.
             <title><![CDATA[程序员提问的艺术]]></title>
             <link>https://rene.wang/p/How-To-Ask-A-Question</link>
             <guid>How-To-Ask-A-Question</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>昨天在群里看见有朋友谈到程序员提问的艺术，我也写写我自己的想法。</p><p>编程遇到问题，太正常不过了。</p><p>为别人解决问题也可以提高自己的技术，但是<strong>让别人回答一个低质量、不走心的问题无疑是浪费双方时间</strong>。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGweKtPFd70m0HvFop2Bh2jBlYJbv4eriaAjwHwfenKt4pw9oJ4PG5OHA/640?wx_fmt=jpeg"/></p><p>提问题之前，确保：</p><ul><li>你已经使用国外的搜索引擎搜索过了（国外的资源相对国内多）</li><li>你已经查阅过相关工具的文档</li><li>你已经尝试过自己解决</li><li>你已经排查了一些常见的外部因素，例如网络、硬件问题</li></ul><p>不要觉得搜索引擎搜不到，这世界 7,200,000,000 人，总有人会碰到一样的问题并发布出来。</p><p>单独讲讲搜索引擎。要避免使用 &quot;how&quot;&quot;where&quot; 等疑问词，而是<strong>使用关键词搜索</strong>。比如，我想知道 Mysql 如何列出所有的用户，</p><p>√ 好的做法应该是：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGN6LtW4SaJCWicW612icwKapBhGSttyXg9qE4bZLG41NOwZhCeuQGseDw/640?wx_fmt=png"/></p><p>❌ 而不是：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGVbeIibkTvM3RDFicofIcGw9KUbnygZ1KoicMjSVt9SRMY8WDvjS9mjxug/640?wx_fmt=png"/></p><p>这同样适用于大部分搜索场景。</p><p>提问时，确保提供：</p><ul><li>相关场景描述，包括使用的系统、库 / 工具、语言等等</li><li>实际的表现</li><li>期望的表现</li><li><strong>必要时提供最小复现样本</strong></li></ul><p>提问后，应该做到：</p><ul><li>积极响应别人要求的细节补充</li><li>解决后回复一下别人</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -270,7 +431,7 @@ SATA Mode: AHCI</code></pre><h3>3.Boot up</h3><p>从你的 U 盘启动</p><h3>4.
             <title><![CDATA[换桌面焕新情：Windows 桌面改造 macOS 指南]]></title>
             <link>https://rene.wang/p/Macisfy-Your-Windows</link>
             <guid>Macisfy-Your-Windows</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>由于大学专业的原因，高考完后我仍然置换了 Windows 笔记本，但是心中对于完整 Apple 生态的向往仍然还在。~在此之前，我仅仅是在背面贴上了 Apple 产品独家赠送的 Sticker。~</p><p>话不多说，先看看成品，然后开始动手。</p><p><img src="https://cdn.sspai.com/2022/09/14/d3f40a5d29e0fe24db4bcae411acc1e1.png"/>最终效果</p><h2>📲 添加状态栏和 Dock</h2><p>没错，第一步就是简单粗暴，只需要在壁纸上画上 macOS 标志性的 UI 即可。</p><p>使用 Canva、PS 、Figma 或其他你喜欢的图片编辑软件，创建一个和屏幕分辨率一样尺寸的画布。</p><p>这里推荐使用 <a href="https://www.canva.cn/">Canva</a>，可以省去许多处理素材的麻烦。</p><p>在 “上传” 中上传你喜欢的壁纸，接着将其设置为背景，在 素材 - 形状 中选择矩形，拖拽到画布中，调整为合适的尺寸，置于顶部。根据你想定制的亮色 / 深色模式，修改状态栏的颜色（根据网络上的图片，深色模式下状态栏颜色代码为<strong>#1a1d25</strong>）。</p><p><img src="https://cdn.sspai.com/2022/09/14/6650382fea632f9bd22a623ee92b0afa.gif"/>添加 StatuBar</p><p>在素材中，搜索 “Apple”，得到 Apple 的 logo，拖拽将其置于左上角，并把颜色设置为与状态栏相对的颜色。</p><p>接着添加状态栏的按钮。在侧边栏选择文字，拖拽进画布并调整内容、大小、颜色。注意：“访达” 较其他按钮字体更粗一些。</p><p>接着用同样的方法，借助 “素材” 中的搜索功能，依次搜索 “wifi”“电池” 等，拖拽添加你想要的状态图标。</p><p><img src="https://cdn.sspai.com/2022/09/14/9dac97d69d1a3fa04dd0049fccb71a14.png"/></p><p>再用类似方法，添加 Dock，与状态栏不同的是，你需要适当降低透明度，以模拟毛玻璃效果。由于 Canva 没有设置圆角功能，所以这里与实际 Dock 有些微差别，但几乎很难察觉。</p><p><img src="https://cdn.sspai.com/2022/09/14/28bbb9c0226a81522c32ee93b181622f.png"/>在右上角设置透明度</p><p>你可能需要多次下载并预览，调整 Dock 的位置，直到底层图标可以恰好置于 Dock 中间。</p><p>如果你有极致追求，可以开启任务栏自动隐藏，并将 Dock 高度降低即可。</p><p><img src="https://cdn.sspai.com/2022/09/14/817a355c90b955d4e6bb0cc253d97e5f.png"/></p><h2>⬆️ 去除 Dock 中的图标名和小箭头</h2><p>有了 Dock，我们还需要去除快捷方式的名称。按 win 键，搜索” 字符映射表”，打开并找到 “无中断空格”，选择并在下方复制。</p><p><img src="https://cdn.sspai.com/2022/09/14/07516b27b4626b2c5992db886e7f7621.png"/></p><p>接着逐一修改快捷方式的名称。由于文件名不能重复，你需要混搭 “真实的空格” 和“在字符映射表中的空格字符”，来创造多个 “不一样” 的空白名。<strong>文件名不宜过长</strong>，否则会出现省略号。</p><p>完成之后，我们还需要去除快捷方式自带的小箭头。在 Github 上搜索 <a href="https://github.com/Chuyu-Team/Dism-Multi-language">dism++</a> 下载系统对应的版本打开，在 系统优化 - Explorer 中勾选 &quot;隐藏快捷方式小箭头&quot; 和 &quot; 隐藏可执行文件小盾牌 “。</p><p><img src="https://cdn.sspai.com/2022/09/14/4727e9b1fc830ed589cbb8e5ac181491.png"/></p><h2>📁 更换文件夹图标</h2><p>好了，现在桌面是不是已经有些 “果味儿” 了？但是，这时黄色的文件夹就显得非常刺眼。</p><p>在网上搜索 macOS 的文件夹图标 ，用图像处理软件将背景设置为透明（如果你是 SAI 用户，只需把图片导入后，用橡皮擦擦除背景，并在图像 - 画布背景中把背景设置为透明即可）。</p><p>最后用这个<a href="https://www.freeconvert.com/ico-converter">网站</a>生成 ico 文件。右键文件夹 - 属性 - 自定义 - 更改图标 即可。快捷方式则通过 右键 - 属性 - 快捷方式 设置。</p><p><img src="https://cdn.sspai.com/2022/09/14/157c6b4d26e8a432a2c10da5140293c3.png"/></p><p>然后用类似的方法制作回收站图标，同样用这个<a href="https://www.freeconvert.com/ico-converter">网站</a>生成 ico 文件：</p><p><img src="https://cdn.sspai.com/2022/09/14/c8849ff3801e07e0bf197de288f6ea16.png"/>SAI Ver.2</p><p>在 设置 - 个性化 - 主题 - 桌面图标设置 中，即可更换回收站的图标为刚刚制作的 ico 文件。</p><h2>🪟 让访达和文件活起来</h2><p>有了上面更换图标的思路，那么，我们同样可以给 “我的电脑” 换上透明图标，并放在状态栏对应按钮的位置，模拟点击效果。</p><p>在桌面空白处 右键 - 查看，取消勾选 “将图标与网格对齐”。</p><p>使用 PS 等软件绘制一个 200 X 200 的透明图片（你也可以到文末直接下载），并用这个<a href="https://www.freeconvert.com/ico-converter">网站</a>转换为</p><p>在 设置 - 个性化 - 主题 - 桌面图标设置 中，把 “我的电脑”“控制面板” 都换成透明的图标，并用之前的方法把他们的名称也隐藏掉，再将其拖到状态栏对应位置。</p><p><img src="https://cdn.sspai.com/2022/09/14/09fe597a7ef5e295227e7e1f1f59af4a.png"/>设置 - 个性化 - 桌面图标设置<img src="https://cdn.sspai.com/2022/09/14/ee78eb37a92dcd4f08d4acb9fb191b61.png"/>似乎 Windows 会给透明图标生成一个边框，不过不仔细看看不出来。我暂时想不到完美的解决方法，如果你有好的方法，欢迎留言。</p><p>之后的使用，只要点击 “状态栏” 即可。</p><h2>⬜ 将任务栏设为透明</h2><p>最后一步，只需要下载 <a href="https://apps.microsoft.com/store/detail/9PF4KZ2VN4W9?hl=en-us&amp;gl=US">TranslucentTB</a> 这个软件即可把任务栏设为透明，可在微软商店搜索下载，此外，还有汉化版可供选择。</p><p><img src="https://cdn.sspai.com/2022/09/14/6f4b546ae8d0a28aa5b013f64c7e235d.png"/></p><h2>⏱️ 可选功能：让时钟活起来</h2><p>利用 Windows 自带的幻灯片壁纸功能，我们可以设计多个时钟不一样的壁纸，再将其轮流播放，把间隔设置为 1 分钟即可。</p><p><img src="https://cdn.sspai.com/2022/09/14/c3d4d8bac16feec9cb266cf1dac1003b.png"/></p><h2>⬇️ 素材下载</h2><p>如果你懒得自己处理图标，可以使用我预制好的图标素材包以及成品壁纸（2600 x 1600）。</p><ul><li>图标以及成品壁纸（2600 x 1600）：<a href="https://www.aliyundrive.com/s/Ks1PZ6SSavY">下载地址</a></li><li>Canva 项目：<a href="https://www.canva.cn/design/DAFMLWswCf4/HWvHBpNchqSltCJI_PzgWg/edit?utm_content=DAFMLWswCf4&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton">查看地址</a></li><li>macOS 壁纸：<a href="https://wallpapercave.com/mac-os-4k-wallpapers">下载地址</a></li></ul><p>有任何问题欢迎留言，我会尽量解答。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -278,7 +439,7 @@ SATA Mode: AHCI</code></pre><h3>3.Boot up</h3><p>从你的 U 盘启动</p><h3>4.
             <title><![CDATA[解决 Chreom 打开新 Tab 时强制打开 bing-com 的流氓问题]]></title>
             <link>https://rene.wang/p/Solve-Open-Bing-When-Opening-New-Tab-In-Chrome</link>
             <guid>Solve-Open-Bing-When-Opening-New-Tab-In-Chrome</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>问题背景</h2><p>当把 chrome 的搜索引擎设置为 bing 时，如果习惯打开新 tab 后立即在地址栏输入的话，页面加载完又会清空地址栏！真的很头疼。</p><h2>解决方案</h2><p>使用自定义的 bing 引擎。打开<code>设置-&gt;管理搜索引擎-&gt;添加</code>，名称和关键词随便写，查询 url 输入<code>https://cn.bing.com/search?q=%s</code>即可！</p><h2>关于 Bing</h2><p>对于无法科学上网的墙内码农，使用 Bing 代替谷歌是个不错的选择。</p><p>什么？你说用百度？小心降维打击哦。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -286,7 +447,7 @@ SATA Mode: AHCI</code></pre><h3>3.Boot up</h3><p>从你的 U 盘启动</p><h3>4.
             <title><![CDATA[比Github更好用的代码部署平台]]></title>
             <link>https://rene.wang/p/Vercel-Vs-GithubPage</link>
             <guid>Vercel-Vs-GithubPage</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<h2>前言</h2><p>最近一直在探索合适的个人博客解决方案。最开始是用 hexo,然后推送到 coding page 仓库。后来用 Next.js 开发了个静态博客<a href="https://github.com/RiverTwilight/NBlog">NBlog</a>（后来给博客增加多语言功能之后就不能静态导出了），Nextjs 官方文档中推荐使用 vercel 部署，就抱着试试看的心态尝试了一下，没想到 vercel 竟如此强大。</p><h2>GithubPage vs Vercel</h2><h3>github page</h3><ul><li><p>使用开发框架需要手动执行开发框架的编译脚本，再单独为打包出来的文件夹建立 git 仓库。</p></li><li><p>每个账户只能拥有一个仓库&amp;站点</p></li><li><p>访问速度较慢</p></li></ul><h3>vercel</h3><ul><li><p>支持十几个开发框架（Next.js/Create React App/Vue...)，只需要建立源代码仓库，打包在云端进行。推送代码后自动部署。</p></li><li><p>每个账户支持绑定无限 Github/Gitlagb 仓库&amp;站点</p></li><li><p>全球 CDN 加速</p></li></ul><p><del>当然，vercel 有一个缺点，如果你开发时修改了使用的依赖包，部署后是无效的，因为 vercel 会重新安装依赖。</del></p><h2>教程</h2><h3>绑定仓库</h3><p>访问<a href="https://vercel.com/">Vercel</a>官网，根据提示注册账号。个人用户可以免费使用。</p><p>点击<code>Import Project</code> -&gt; <code>Import Git Repository</code>，输入 git 仓库地址，vercel 与 Github 基本上是无缝衔接，绑定过程非常轻松。</p><p>绑定完成后是项目配置。Vercel 会自动识别开发框架，这里可以自定义编译代码和输出文件夹，你可以在编译代码中添加自己的逻辑；使用内置框架一般不要修改输出文件夹。</p><p>配置完成后点击<code>Deploy</code>，耐心等待即可。</p><h3>绑定域名</h3><p>部署完成后 vercel 会自动生成一个域名（一般是<!-- -->*<!-- -->.vercel.app)，访问域名提供商控制台，添加一个<strong>CNAME</strong>解析,记录值填入 vercel 控制台看到的域名。解析完成后返回控制台，vercel 会自动验证域名，通过后会自动免费为你申请 SSL 证书。</p><p>大功告成！</p><p><a href="https://vercel.com/docs">vercel 官方文档</a></p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -294,7 +455,7 @@ SATA Mode: AHCI</code></pre><h3>3.Boot up</h3><p>从你的 U 盘启动</p><h3>4.
             <title><![CDATA[玩机检查清单]]></title>
             <link>https://rene.wang/p/hackroid</link>
             <guid>hackroid</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>这几个月陆陆续续刷了好多机，每次都容易忘记一些东西，所以写下这篇文章，以便下次刷机时查阅。</p><p>本文长期维护，欢迎你在 <a href="https://github.com/RiverTwilight/rene.wang/blob/master/posts/zh-CN/Tech/hackroid.md">Github</a> 上参与维护。</p><h2>离开 MIUI 的缺点</h2><ul><li>相机将被限制在 1200 万像素，目前尚无解决方案。</li><li>某些定制功能可能无法使用，例如 MIUI 的「双开」功能、杜比音效、按下电源键再解锁等。</li><li>某些设备可能无法再使用门禁卡。</li><li>游戏性能可能会下降。</li></ul><h2>Root &amp; 刷入 Magisk</h2><p>Magsik 的工作原理是直接把 API 写入系统的 boot.img 中，其安装方法也就是把已经 Hack 过的镜像重新刷入。Magisk 安装成功后，我们也同时拥有 Root 权限了。</p><ol><li><p>从<strong>目前运行的系统镜像</strong>中提取出 boot.img，并把它发送到手机上。通常民间说的“线刷包”才有这个文件，“卡刷包（后缀为 zip）”就需要通过工具提取。</p></li><li><p>在手机上安装 Magisk APP。建议从官方 Github 仓库下载安装包。</p></li><li><p>点击“安装”，选择修补一个文件，选择之前提取的 boot.img。修补完成后，默认会把已修补的镜像放在 /Download 文件夹中。</p></li><li><p>将手机与电脑用数据线连接（要选择有文件传输功能的线材）。</p></li><li><p>把手机上修补过的镜像复制到电脑上。</p></li><li><p>关机状态下，同时按住音量减和电源键，进入 Fastboot 模式。</p></li><li><p>打开 adb 命令行，执行<code>fastboot flash boot &lt;img_directry&gt;</code></p></li><li><p>刷入完毕后，执行<code>fastboot reboot</code>重启设备。完成。</p></li></ol><h2>解锁 Bootloader</h2><p>解锁 Bootloader 后将有一定的风险，可能导致数据泄露，请注意。</p><ol><li><p>从小米官网下载解锁工具。</p></li><li><p>将手机与电脑用数据线连接（要选择有文件传输功能的线材）。</p></li><li><p>在工具中按提示操作，可能需要等待 7 天。</p></li><li><p>解锁完成后，可进入开发者选项查看解锁状态。</p></li></ol><h2>刷入官方 ROM</h2><p>⚠ 请务必做好设备数据备份，例如照片、联系人、信息等。</p><ol><li><p>从小米官网下载 ROM 以及 Mifalsh，并把 rom 解压。</p></li><li><p>设备关机状态下，同时按住音量减和电源键，进入 Fastboot 模式。将手机与电脑用数据线连接。</p></li><li><p>打开 Miflash，选择刚刚解压的 ROM <strong>文件夹</strong>。</p></li><li><p>点击”加载设备“，选中你要刷的设备。</p></li><li><p><strong>在右下角勾选“清除所有数据”</strong>。</p></li><li><p>点击“刷入”，等待刷入完成。可能耗时 5-20 分钟。</p></li></ol><h2>刷入第三方 Rom</h2><p>请务必做好设备数据备份，例如照片、联系人、信息等。</p><p>这并不是一个很繁杂的操作，请保持冷静、平常心来做。</p><ol><li><p>确保设备目前正在运行 OS 符合第三方 Rom 的要求。包括：<strong>设备代号</strong>、Android 版本、OS 版本等等。</p></li><li><p>确保设备已解锁 Bootloader。可以在开发者选项中查看设备的解锁状态。</p></li><li><p>下载第三方 Rom 以及推荐的 Recovery （如果有）。</p></li><li><p>关机状态下，同时按住音量减和电源键，进入 Fastboot 模式。将手机与电脑用数据线连接。</p></li><li><p>电脑上打开 adb 命令行，执行<code>fastboot boot &lt;recovery_directry&gt;</code>。如果一切正常，手机会进入 Recovery。</p></li><li><p>进入 Recovery 后，如果该 rec 支持 sideload 模式，可以直接进入 sideload 模式，执行<code>adb sideload &lt;rom_directry&gt;</code>；如果不支持 sideload 模式，可以选择刷入 zip 包的方式，执行<code>adb push &lt;rom_directry&gt; /sdcard/Download</code>，然后在 Recovery 中选择刷入 zip 包。</p></li></ol><h2>其他资源</h2><h3>系统增强 APP</h3><p>这些 app 弥补了类原生系统的一些缺陷，或者增强了其功能。</p><ul><li>炼妖壶：可以在沙盒中运行一些 app，并且相当于“双开”，例如微信、QQ、支付宝等。</li><li>Shizuku： 应用权限管理</li><li>Thanox：管理后台</li><li>Scene4：场景模式</li><li>Google Camera：安卓平台最强相机</li></ul><h3>清理 MIUI 毒瘤应用</h3><pre><code class="language-bash">adb uninstall -k --user 0 com.miui.analytics
 adb uninstall -k --user 0 com.miui.analytics.service
 adb uninstall -k --user 0 com.miui.bugreport
@@ -305,7 +466,7 @@ adb uninstall -k --user 0 com.miui.bugreport
             <title><![CDATA[bash学习笔记]]></title>
             <link>https://rene.wang/p/Bash-Learing-Notes</link>
             <guid>Bash-Learing-Notes</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>因为最近开始玩 WSL，就想起搁置了好久的学习计划————bash。这篇文章记录一些重点。
 学习的是<a href="https://wangdoc.com/bash">阮一峰老师的教程</a></p><h2>1</h2><p>文件名有空格时，应使用双引号包裹，否则会变成两个文件。</p><pre><code class="language-shell">$ ls &quot;two words.txt&quot;</code></pre><h2>2</h2><p>每当 Shell 看到以<code>$</code>开头的单词时，就会尝试读取这个变量名对应的值。
 如果变量不存在，Bash 不会报错，而会输出空字符。所以即使 <code>unset</code> 命令删除了变量，还是可以读取这个变量，变量值为空字符串。</p><h2>3</h2><p>除法运算符的返回结果总是整数，比如 5 除以 2，得到的结果是 2，而不是 2.5</p>]]></content:encoded>
@@ -315,7 +476,7 @@ adb uninstall -k --user 0 com.miui.bugreport
             <title><![CDATA[真正的友情是什么样子的]]></title>
             <link>https://rene.wang/p/WhatsTrueFriendship</link>
             <guid>WhatsTrueFriendship</guid>
-            <pubDate>Sun, 05 Feb 2023 05:10:34 GMT</pubDate>
+            <pubDate>Tue, 07 Feb 2023 02:18:16 GMT</pubDate>
             <content:encoded><![CDATA[<p>晚上突发奇想，想查一下真正的友情是什么样子的。</p><p>看了国内外零零总总的答案。</p><p>有人说是&quot;努力出现在你的生活中的（Make an effort to stay in your life)&quot;;</p><p>有人说是&quot;在你需要时出现的”；</p><p>有人说是“把你的困难当作他们的困难的”；</p><p>......</p><p>但我最同意的还是“<strong>三秋不见，如隔一日</strong>”的比喻。想想也快中考了，离我离开烟台的最好的哥们也两年了。那时没有太在意“朋友”这个概念，和大家相处时反倒更加轻松自然，不用考虑关系会不会淡。</p><p>现在呢，可能因为受了周围人的影响，渐渐开始有意识地去界定“朋友”，去界定“熟不熟”，反倒越活越累。还是觉得顺其自然最好。</p><p>至于异性朋友，那更应该顺其自然了，划一道红线，在这红线之外大家都很舒服，就足够了，没必要把“联系“放到日程表里。要是对异性朋友产生了感情，时刻提醒自己那道红线。</p><p>最后贴一个知乎的回答：</p><blockquote><p>之前一直觉得友情是无话不谈，不会因为时间，距离而产生隔阂，双方一直以对方为依靠和安全感但是现在我发现，现实中的友谊是，有可能有那么一段时间，你们会忽视对方，甚至有的时候会厌烦对方，觉得对方的缺点难以容忍，但是经过慢慢的磨合，慢慢地学会包容对方的缺点，慢慢地也学会在和对方相处时调整自己，即使经历过了这些，两个人仍然是朋友，虽然有过各种不满，但从未放弃过对方。真心觉得<strong>长久朋友之间，不止有美好，其实也有很多不好的回忆，只有这些不好，才显得这段友情更加珍贵。</strong></p></blockquote>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>

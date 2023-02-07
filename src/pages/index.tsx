@@ -4,20 +4,22 @@ import getCategories, { ICategory } from "@/utils/getCategories";
 import type { TLocale, IPost } from "@/types/index";
 import generateRssFeed from "@/utils/generateRssFeed";
 import ThemedIndex from "@/themes/pages/index";
+import glob from "glob";
 
 export async function getStaticProps({ locale, locales }) {
 	const allPosts = getAllPosts(
-		{
-			markdownBody: (content) =>
-				`${content.substr(0, 200)}${
-					content.length >= 200 ? "..." : ""
-				}`,
-			id: getPostId,
-		},
 		require.context("../../posts", true, /[\.md|(\.js)]$/),
-		true,
-		false,
-		locale
+		{
+			pocessRes: {
+				markdownBody: (content) =>
+					`${content.substr(0, 200)}${
+						content.length >= 200 ? "..." : ""
+					}`,
+				id: getPostId,
+			},
+			enableSort: true,
+			locale,
+		}
 	);
 
 	generateRssFeed();
@@ -25,8 +27,10 @@ export async function getStaticProps({ locale, locales }) {
 	// TODO use locale as a parameter
 
 	const allCategories = getCategories(
-		require.context("../../posts/zh-CN", true, /config\.js$/),
-		locale
+		require.context("../../posts", true, /^(\.)(.+)config\.js$/),
+		{
+			locale
+		}
 	);
 
 	return {
