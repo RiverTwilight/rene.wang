@@ -10,6 +10,7 @@ import { Typography, TimeBar } from "@kindle-ui/core";
 import { paths } from "../../site.config";
 import type { IPost } from "../../types";
 import matter from "gray-matter";
+import parseDate from "@/utils/parseDateStr";
 /**
  * 获取相关文章，包含相同标签
  * @param {Array} allPosts
@@ -79,17 +80,17 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 }
 
 export async function getStaticPaths() {
-	const {
-		i18n: { locales },
-	} = require("../../../next.config");
+	// const {
+	// 	i18n: { locales },
+	// } = require("../../../next.config");
 
 	return {
-		paths: locales
+		paths: ["zh-CN", "en-US"]
 			.map((locale: string) => {
 				return getPaths(locale);
 			})
 			.flat(),
-		fallback: false,
+		fallback: true,
 	};
 }
 
@@ -157,7 +158,9 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 				<h1 itemProp="headline">{postProps.title || slug}</h1>
 				<div className="Textc(secondary)">
 					最后更新于
-					<span itemProp="dateCreated">{postProps.date}</span>
+					<span itemProp="dateCreated">
+						{parseDate(postProps.date).toLocaleDateString()}
+					</span>
 					{/* &nbsp;分类:
 					{postProps.categories
 						? postProps.categories.map(

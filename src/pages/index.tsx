@@ -1,10 +1,9 @@
+import type { TLocale, IPost } from "@/types/index";
 import getAllPosts from "@/utils/getAllPosts";
 import getPostId from "@/utils/getPostId";
 import getCategories, { ICategory } from "@/utils/getCategories";
-import type { TLocale, IPost } from "@/types/index";
 import generateRssFeed from "@/utils/generateRssFeed";
 import ThemedIndex from "@/themes/pages/index";
-import glob from "glob";
 
 export async function getStaticProps({ locale, locales }) {
 	const allPosts = getAllPosts(
@@ -25,12 +24,10 @@ export async function getStaticProps({ locale, locales }) {
 
 	generateRssFeed();
 
-	// TODO use locale as a parameter
-
 	const allCategories = getCategories(
 		require.context("../../posts", true, /^(\.)(.+)config\.js$/),
 		{
-			locale
+			locale,
 		}
 	);
 

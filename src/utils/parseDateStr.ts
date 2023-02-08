@@ -1,4 +1,4 @@
-function parseDate(dateString) {
+function parseDate(dateString): Date {
 	const dateArray = dateString.split("/");
 	const year = parseInt(dateArray[0]);
 	const month = parseInt(dateArray[1]) - 1;
