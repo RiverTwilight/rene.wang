@@ -1,4 +1,4 @@
-import getAllPosts, { flatPost } from "@/utils/getAllPosts";
+import getAllPosts from "@/utils/getAllPosts";
 import getPostId from "@/utils/getPostId";
 import getCategories, { ICategory } from "@/utils/getCategories";
 import type { TLocale, IPost } from "@/types/index";
@@ -17,6 +17,7 @@ export async function getStaticProps({ locale, locales }) {
 					}`,
 				id: getPostId,
 			},
+			enableFlat: true,
 			enableSort: true,
 			locale,
 		}
@@ -36,7 +37,7 @@ export async function getStaticProps({ locale, locales }) {
 	return {
 		props: {
 			allPosts,
-			falttedPosts: flatPost(allPosts),
+			falttedPosts: allPosts,
 			allCategories,
 			currentPage: {
 				title: "首页",

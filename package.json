@@ -13,7 +13,6 @@
 	"license": "MIT",
 	"dependencies": {
 		"@kindle-ui/core": "^1.0.9",
-		"@svgr/webpack": "^5.5.0",
 		"glob": "^7.1.6",
 		"gray-matter": "^4.0.2",
 		"kindle-fonts": "1.0.0",
@@ -28,6 +27,7 @@
 		"uuid": "^8.3.0"
 	},
 	"devDependencies": {
+		"@svgr/webpack": "5.5.0",
 		"@types/node": "^13.13.4",
 		"@types/react": "^16.9.34",
 		"@types/styled-components": "^5.1.2",

@@ -5,7 +5,7 @@ import { Feed } from "feed";
 import ReactMarkdown from "react-markdown";
 import siteConfig from "src/site.config";
 import getAllPosts from "./getAllPosts";
-import getPostId from "./getPostId";
+import parseDate from "./parseDateStr";
 
 export default async function generateRssFeed() {
 	const siteURL = siteConfig.root;
@@ -20,7 +20,7 @@ export default async function generateRssFeed() {
 		image: `${siteURL}/favicon.ico`,
 		favicon: `${siteURL}/favicon.ico`,
 		copyright: `All rights reserved ${date.getFullYear()}, RiverTwilight`,
-		updated: date, 
+		updated: date,
 		generator: "Feed for rene.wng",
 		feedLinks: {
 			rss2: `${siteURL}/rss/feed.xml`, // xml format
@@ -30,19 +30,14 @@ export default async function generateRssFeed() {
 	});
 
 	const allPosts = getAllPosts(
-		{
-			markdownBody: (content) => content,
-			id: getPostId,
-		},
 		require.context("../../posts", true, /[\.md|(\.js)]$/),
-		true,
-		true,
-		"zh-CN"
-	)
-		.map((cate) => cate.children)
-		.flat(1);
+		{
+			enableContent: true,
+			enableFlat: true,
+			locale: "zh-CN",
+		}
+	);
 
-	console.log("ASfdasdfas", allPosts);
 	fs.mkdirSync(`./public/rss`, {
 		recursive: true,
 	});
@@ -59,7 +54,7 @@ export default async function generateRssFeed() {
 			),
 			author: [author],
 			contributor: [author],
-			date: new Date(date),
+			date: parseDate(post.frontmatter.date),
 		});
 	});
 
@@ -67,9 +62,5 @@ export default async function generateRssFeed() {
 		recursive: true,
 	});
 
-	fs.writeFileSync(
-		"./public/rss/feed.xml",
-		feed.rss2(),
-		"utf8"
-	);
+	fs.writeFileSync("./public/rss/feed.xml", feed.rss2(), "utf8");
 }
