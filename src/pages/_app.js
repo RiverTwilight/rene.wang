@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
+import { Analytics } from "@vercel/analytics/react";
 import siteConfig from "../site.config.js";
 import "./App.css";
 import "kindle-fonts/bookerly.css";
@@ -27,14 +28,17 @@ function MyApp({ Component, pageProps }) {
 	} = pageProps;
 
 	return (
-		<Layout
-			siteConfig={siteConfig}
-			locale={locale}
-			currentPage={currentPage}
-			menuItems={menuItems}
-		>
-			<Component {...pageProps} siteConfig={siteConfig} />
-		</Layout>
+		<>
+			<Layout
+				siteConfig={siteConfig}
+				locale={locale}
+				currentPage={currentPage}
+				menuItems={menuItems}
+			>
+				<Component {...pageProps} siteConfig={siteConfig} />
+			</Layout>
+			<Analytics />
+		</>
 	);
 }
 

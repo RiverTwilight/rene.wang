@@ -1,7 +1,10 @@
 import matter from "gray-matter";
 import type { IPost } from "@/types/index";
 
-const generateTokens = (path: string): { value: string; type: string }[] => {
+// Do something like this: '/a/b/c' -> '["/", "a", "/", "b" , "/", "c"]'
+const generateTokens = (
+	path: string
+): { value: string; type: "slash" | "path" }[] => {
 	let tokens = [];
 	let current = 0;
 
@@ -63,7 +66,6 @@ const getFileTree = (files: string[]): IFile => {
 		file.tokens.forEach((token) => {
 			if (token.type === "path" && token.value !== ".") {
 				if (/\./.test(token.value)) {
-					// console.log("is a file", currentPosition.name);
 
 					currentPosition.children.push({
 						name: token.value,
@@ -72,6 +74,7 @@ const getFileTree = (files: string[]): IFile => {
 					});
 
 					currentPosition = fileTrees;
+					
 				} else {
 					const isExist = currentPosition.children.some((child) => {
 						return child.name === token.value;
