@@ -1,4 +1,4 @@
-import type { TLocale, IPost } from "@/types/index";
+import { TLocale, IPost } from "@/types/index";
 import getAllPosts from "@/utils/getAllPosts";
 import getPostId from "@/utils/getPostId";
 import getCategories, { ICategory } from "@/utils/getCategories";

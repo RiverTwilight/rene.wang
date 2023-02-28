@@ -4,7 +4,7 @@
         <title>江村暮的 Kindle</title>
         <link>https://rene.wang</link>
         <description>开发日志、技术文章以及生活随感。</description>
-        <lastBuildDate>Fri, 10 Feb 2023 03:14:39 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 28 Feb 2023 12:53:35 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for rene.wng</generator>
         <image>
@@ -13,6 +13,106 @@
             <link>https://rene.wang</link>
         </image>
         <copyright>All rights reserved 2023, RiverTwilight</copyright>
+        <item>
+            <title><![CDATA[【图片 + 渐进式】换一种方式理解回溯]]></title>
+            <link>https://rene.wang/p/Backtrace</link>
+            <guid>Backtrace</guid>
+            <pubDate>Fri, 10 Feb 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>今天做的是回溯算法题。题目如下</p><p><img src="https://cdn.jsdelivr.net/gh/filess/img1@main/2023/02/11/1676101161776-a208b8e6-40f2-4785-9e1c-4ec4d5a8fcfb.png"/></p><blockquote><p>给定一个候选人编号的集合 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+candidates 中的每个数字在每个组合中只能使用 一次 。
+注意：解集不能包含重复的组合。</p></blockquote><p>于是决定以本题为基础写篇文章讲讲回溯算法。</p><p>首先我们看看回溯最基本的框架：</p><pre><code class="language-python">class Solution:
+    def combinationSum2():
+        res = []
+
+        def tranceback():
+           for i in xxx:
+
+        tranceback()
+        return res</code></pre><p>这段代码相当于遍历了一遍某个数组。</p><p>但是我们遇到的问题往往是需要重复使用某一个元素（也许结果不允许重复，但是我们也要不止一次地遍历到它）。例如，求和最基础的穷举思路：</p><p><img src="https://cdn.jsdelivr.net/gh/filess/img18@main/2023/02/11/1676101255682-fa2aeb83-e33a-4703-997f-2314287d4bde.png"/></p><p>这样的方法十分低效，会不断重复匹配组合，例如<a href="">1, 2</a></p><blockquote><p>其实回溯也是一种枚举方法，但我们有更大优化的空间。回溯算法的核心思想是不断地试错，在每一步搜索中，如果发现当前的决策不可行，则进行回溯，退回到上一步重新做决策。</p></blockquote><p>所以我们希望能&quot;记住&quot;已经匹配过的部分，</p><p>我们将上面的代码继续添加内容：</p><pre><code>class Solution:
+    def combinationSum2(self, candidates: List[int], target: int):
+        res = []
+
+        def tranceback(index, path, remain):
+
+           for i in range(index,len(candidates)):
+
+        tranceback(0, [], target)
+        return res</code></pre><p>回溯函数接受三个参数，第一个就是指针，第二个是组合，第三个是目前的组合距离目标还有多远。</p><p>函数内的循环是从指针的位置开始的，避免了重复检查内容。</p><p>循环每走一次，我们就看看是否满足了要求。</p><pre><code class="language-python">for i in range(index, len(candidates)):
+    candi = candidates[i]
+
+    # 达到目标，不用再循环了
+    if candi == remain:
+        res.append(path + [candi])
+        return
+    #还不够，继续
+    if candi &lt; remain:
+        # 往下阅读</code></pre><p>如果不够，我们可以继续从指针循环：</p><pre><code class="language-python">for i in range(index, len(candidates)):
+    candi = candidates[i]
+
+    # 达到目标，不用再循环了
+    if candi == remain:
+        res.append(path + [candi])
+        return
+    #还不够，继续
+    if candi &lt; remain:
+        for i in range(i + 1, len(candidates)):
+            remain -= candi
+            # 重复上面的操作</code></pre><p><img src="https://cdn.jsdelivr.net/gh/filess/img9@main/2023/02/11/1676101246046-fc35411e-bfa1-425c-87aa-6bc688e94af1.png"/></p><p>每遍历到一个数，执行的逻辑都是相似的：检查 remain 够不够，不够的话往下走....</p><p>所以我们不妨重用这个函数本身，把作为参数的指针向后挪一位即可。</p><pre><code class="language-python">if candi &lt; remain:
+    tranceback(i + 1, path + [candi], remain - candi)</code></pre><p>想象一下：假如目标是无穷大，我们就会一直循环调用，指针也会一直往后移。</p><p>而最外层的循环，让每一个节点都有了成为“无限循环的开始”的权利。</p><p>这就是回溯的核心思想：以每一个节点为起始，再遍历一遍其他的节点。</p><p>这段代码仍然可以优化。因为某些情况下完全没必要继续进行循环了，比如</p><ul><li>达到了目标</li><li>目前指针所指的数字超过了剩余的和</li></ul><p>所以每次回溯我们都可以检查一下，这叫“剪枝”。</p><pre><code class="language-python">class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -&gt; List[List[int]]:
+        res = []
+
+        def tranceback(index, path, remain):
+
+           for i in range(index,len(candidates)):
+                candi = candidates[i]
+
+                if candi == remain:
+                    res.append(path + [candi])
+                    return
+                if candi &lt; remain:
+                    tranceback(i + 1,path + [candi], remain - candi)
+                if candi &gt; remain:
+                    return
+
+        tranceback(0, [], target)
+        return res</code></pre><p>这就是完整的回溯解法。但是我们仍然可以改进。</p><p>首先，如果给定的数组是升序，那么我们可以更快得到结果。因为答案密度在较小的数字中比较大。</p><p>其次，如果遇到了一样的数字，我们可以直接跳过。因为答案不允许重复。</p><p><img src="https://cdn.jsdelivr.net/gh/filess/img12@main/2023/02/11/1676101269773-c0a9429a-6c57-46bf-9574-6b955ad24105.png"/></p><p>优化过后的代码：</p><pre><code class="language-python">class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -&gt; List[List[int]]:
+        candidates.sort()
+        res = []
+
+        def tranceback(index, path, remain):
+
+           for i in range(index,len(candidates)):
+
+                candi = candidates[i]
+                # 重复就直接跳过
+                if i &gt; index and candidates[i-1] == candidates[i]:
+                    continue
+                if candi == remain:
+                    res.append(path + [candi])
+                    return
+                if candi &lt; remain:
+                    tranceback(i + 1,path + [candi], remain - candi)
+                if candi &gt; remain:
+                    return
+
+        tranceback(0, [], target)
+        return res</code></pre><h2>实践：八皇后问题</h2><p>「八皇后问题」是一个经典的回溯算法题目，要求在 8x8 的国际象棋棋盘上放置 8 个皇后，使它们不互相攻击，即任意两个皇后都不能处于同一行、同一列或同一对角线上。</p><p>下面的源码中，yield 可以理解为往存放结果的数组中追加元素。</p><pre><code class="language-python"># state是一个一维数组，记录每一行的皇后横坐标。例如[1, 4, 6, 3, 0, 7, 5, 2]
+
+def queens(num=8,state=()):
+    for pos in range(num):
+        # 剪枝：如果冲突了就不循环了，相当于上面的return
+        if not conflict(state, pos):
+           # 到了倒数第二行，就不必嵌套了，返回所有可能的坐标即可（不符合的x位置已经被过滤掉了）
+            if len(state)==num-1:
+                yield(pos,)
+            else:
+                # 以当前状态为起点，再次调用函数自身。
+                for result in queens(num, state+(pos,)):
+                    yield (pos,)+result</code></pre><p>同样经典的模式：以每一次循环的状态为起点，搜索剩余的部分。</p><p>感谢阅读，欢迎关注我的 <a href="https://github.com/RiverTwilight">Github</a>, 我会持续分享更多技术内容。</p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
         <item>
             <title><![CDATA[小程序踩坑记录]]></title>
             <link>https://rene.wang/p/MinIProgram-Learing-Notes</link>
@@ -27,6 +127,14 @@
             <guid>Nextjs-Learning-Notes</guid>
             <pubDate>Fri, 19 Jun 2020 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>部署</h2><h3>部署方法</h3><p>类似 express， 编译完成后运行<code>npm run start</code>命令，服务器配置反向代理即可</p><h3>端口占用</h3><p>Next 默认在开发环境下使用 3000 端口，若此时执行<code>npm run start</code>命令会提示端口被占用，将<code>package.json</code>文件下 script 的 start 命令改成如下即可</p><pre><code class="language-cli">npm run start -p &lt;port&gt;</code></pre><h2>i18n 功能不支持静态导出</h2><p>无奈之下只能放到服务器上了。</p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[Python 刷算法小记]]></title>
+            <link>https://rene.wang/p/Python-in-Algo</link>
+            <guid>Python-in-Algo</guid>
+            <pubDate>Sat, 11 Feb 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>便利方法</h2><ul><li>统计列表中某个元素的出现次数：<code>List.count(&quot;target&quot;)</code></li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
@@ -264,6 +372,14 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
+            <title><![CDATA[海外走资入门指南]]></title>
+            <link>https://rene.wang/p/Capitalisation</link>
+            <guid>Capitalisation</guid>
+            <pubDate>Mon, 27 Feb 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>在开始折腾前请注意：</p><ul><li>不必要逼自己开通一个账户/卡片，实在不行大可放弃</li><li>理财有风险，就算大公司也可能跑路，人在国内建议钱放国内</li><li>除非必要，不要提供虚假的 KYC 信息</li></ul><h2>海外地址</h2><p>海外地址是许多金融相关账号注册的必要条件，大致可分为三种等级：</p><ol><li>完全不属于自己，只是真实存在的一个住宅地址，可以通过地图软件找到，只需要填写信息即可。</li><li>转运地址。可以收发邮件，可能需要支付一定订阅费用。</li><li>真实地址且可以开具声明。如果你不拥有，或者没有朋友帮你提供，可能需要伪造（PS）地址证明，例如水电单。</li></ol><h2>iban 个人银行账户</h2><h2>国内多币种卡</h2><p>截至 2023 年 2 月，国内已知可申请的境外发卡行的卡片有：</p><table><thead><tr><th style="text-align:left">发卡机构</th><th style="text-align:left">名称</th><th style="text-align:left">类型</th><th style="text-align:left">申请条件</th><th style="text-align:left">币种</th><th style="text-align:left">申请链接</th></tr></thead><tbody><tr><td style="text-align:left">HSBC</td><td style="text-align:left">HSBC Premier Mastercard</td><td style="text-align:left">信用卡</td><td style="text-align:left">人民币账户，年龄 ≥21，年收入 ≥100 万</td><td style="text-align:left"></td><td style="text-align:left"><a href="https://www.hsbc.com.cn/1/2/zh-cn/credit-cards/premier-mastercard">HSBC</a></td></tr><tr><td style="text-align:left">BOC</td><td style="text-align:left">卓 jun Visa/Mastercard 卡</td><td style="text-align:left">信用卡</td><td style="text-align:left">暂不清楚</td><td style="text-align:left">美元/加元/英镑</td></tr><tr><td style="text-align:left">BOC</td><td style="text-align:left">莫奈/非人哉 Mastercard</td><td style="text-align:left">借记卡</td><td style="text-align:left">上海地区，任何人可申请</td><td style="text-align:left">美元</td><td style="text-align:left"></td></tr><tr><td style="text-align:left">CIB</td><td style="text-align:left">运通卡</td><td style="text-align:left">借记卡</td><td style="text-align:left">任何人可申请，但需要社保才能进行非柜面交易</td><td style="text-align:left">人民币结算</td><td style="text-align:left"></td></tr><tr><td style="text-align:left">BOC</td><td style="text-align:left">长城跨境通</td><td style="text-align:left">借记卡</td><td style="text-align:left">留学/工作证明（四川分行要求）</td><td style="text-align:left">多币种</td></tr></tbody></table><p>其中 BOC 代表中国银行，CIB 代表兴业银行，HSBC 代表汇丰银行。</p><h2>海外电话卡</h2><h2>海外实体银行卡</h2><h2>海外虚拟银行卡</h2><p>虚拟银行卡可以完成网上支付的大多数场景。</p><table><thead><tr><th>服务商</th><th>注册要求</th><th>KYC</th><th>缺点</th><th>优点</th><th>卡种</th></tr></thead><tbody><tr><td>Wise</td><td>科学上网</td><td>护照</td><td>需要首充约 30 加元</td><td>损耗少，正规公司</td><td>Visa</td></tr><tr><td>GCash</td><td>菲律宾 IP + 电话卡</td><td>护照</td><td>无法提现到银行卡</td><td>无需科学上网，无需护照</td><td>American Express</td></tr><tr><td>Revolut</td><td>科学上网</td><td>护照</td><td>无法提现到银行卡</td><td>损耗少，正规公司</td><td>Visa</td></tr><tr><td>Biance Card</td><td>科学上网</td><td>护照</td><td>无法提现到银行卡</td><td>损耗少，正规公司</td><td>Visa</td></tr><tr><td>Depay</td><td>虚拟货币钱包</td><td>身份证</td><td>损耗高，充值、转换货币均有手续费，最低 $1 月费，只能使用加密货币入金</td><td>较为方便</td><td>Visa</td></tr><tr><td>嘉信理财</td><td>科学上网</td><td>护照</td><td>需要入金 25k</td><td>损耗极低，正规公司，目前最为理想的选择</td><td>Visa</td></tr></tbody></table><h2>法币与虚拟币互转</h2><p>这些工具可以将法币兑换为虚拟币。</p><h2>相关资源/教程</h2>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
             <title><![CDATA[深得一人心：信息获取全流程可控实战]]></title>
             <link>https://rene.wang/p/Control-Your-Information</link>
             <guid>Control-Your-Information</guid>
@@ -300,6 +416,14 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <guid>Personall-Showcase</guid>
             <pubDate>Fri, 09 Dec 2022 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>此页面展示我个人的特长能力，同时我也一直在不断学习中。</p><h2>开发</h2><p>拥有四年前端开发经验，项目绝大多数为开源。</p><ul><li><a href="">小程序</a></li></ul><h2>绘画</h2><p>本人绘画题材以风景、自然为主，绘画手法多样，也会进行漫画创作。</p><p>作品主要发布在公众号上。</p><ul><li><a href="https://mp.weixin.qq.com/s?__biz=Mzg5MDgyMDg3NQ==&amp;mid=2247483842&amp;idx=1&amp;sn=566445503cc7775cb54cb81adcf44937&amp;chksm=cfd781a6f8a008b07da71d605d99748318a78f69efecfc807833e08aa3b515b9b5f80247c960#rd">板绘｜ iPad 壁纸专辑（4K）</a></li></ul><h2>证书</h2><p>其他领域的一些证书。</p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[迟到一分钟的检讨]]></title>
+            <link>https://rene.wang/p/Review-of-One-Minute-Late</link>
+            <guid>Review-of-One-Minute-Late</guid>
+            <pubDate>Mon, 27 Feb 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>尊敬的老师和同学们：</p><p>我在上周的《职业生涯规划课》中迟到了1分钟，这是我非常抱歉的事情。我认识到这一行为的不当，我深感愧疚。我想在这里写下我的检讨，希望能够得到老师和同学们的谅解。</p><p>首先，我要承认自己的错误。我没有按时到达教室，这不仅是对老师和同学们的不尊重，也是对自己的不负责任。我的这个行为给大家带来了麻烦，甚至对课程的顺利进行造成了一定的影响。我深感自责和内疚，我会努力改正这个不良的习惯。</p><p>一分钟，是决定胜负的分水岭，是挽救生命的宝贵时间，是成功与失败的分界点，是实现目标的关键一刻，是决策的机遇之窗，是创造历史的重要瞬间。在这短暂而宝贵的时间里，我们需要充分发挥自己的能力和智慧，抓住机遇，迎接挑战，才能赢得成功和尊重。因此，珍惜每一分钟，就等于珍惜自己的人生。我相信在王丹老师眼中，她的课是弥足珍贵的，字字珠玑、一字千金的，以至于不想让任何人错过了一分钟。对于错过的这一分钟，我深表惋惜。</p><p>其次，我要反思自己的行为背后的原因。我迟到一分钟，说明我对职业规划课程不上心，我沉迷于自己早早安排好的四年生活，我醉心于自己的爱好和职业规划，以至于我忽略了王丹老师的优秀课程。我发现我在那天早上没有做好充分的准备。我没有提前计划好如何到达教室，没有预留足够的时间来应对可能出现的突发情况。我的这种做法很不明智，给自己和别人都带来了困扰。我会从这个经历中吸取教训，以后会更加谨慎地做好时间和事务的安排。</p><p>最后，我要向老师和同学们道歉。我知道我的这个行为不应该发生，也没有任何借口可以解释它。一分钟也许微不足道，但我深刻意识到我的不良行为给大家带来的影响，我为此感到非常抱歉。我保证以后会更加认真地对待每一堂大学生职业生涯规划课程，我相信王丹老师的课程，一定比我自己早早做好的规划和调查更加切合实际，更加有用；我也相信跟着王丹老师走，我会找到比自己规划中更好的工作。我会避免让类似的情况再次发生。</p><p>总之，我要向老师和同学们再次表达我的歉意。我承认自己的过错，并且会从中吸取教训。我相信在大家的理解和帮助下，我一定能够成为更好的自己。再次感谢大家的谅解和支持！</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
@@ -355,6 +479,14 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
 	uid: &quot;123456&quot;,
 	push: [&quot;wechat&quot;],
 }) &amp;&amp; assistant.start();</code></pre><p>这确实是标准的订阅模式。</p><p>如果 push 中写进一个具体的推送方法，并且每个模块仅仅返回最新的推文，那么发布者（控制器）则会存储一系列推送函数，一旦模块返回了最新的推文，就依次执行发布流程。</p><p>但本项目中，推送流程其实由控制器自己调度了（事实上，每个模块都是控制器的组成部分，此处推送逻辑在模块里面）。所以仅仅实现了订阅模式。</p><h1>后续开发</h1><p>基于发布订阅模式，我保留了许多方法，例如<code>list()</code> <code>destory()</code>，后续可以搭配 Web 应用进行远程管理。</p><p>国内开放 API 的 IM 平台还比较少，后续将接入国外的一些平台。值得一提的是，配置结构可能就要采取”订阅源“和”用户“分开存储的逻辑。</p><p>项目地址: <strong>github.com/rivertwilight/assistant</strong></p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[2023 国内注册 Google Play 开发者终极教程]]></title>
+            <link>https://rene.wang/p/Google-Play-Developer-Registration</link>
+            <guid>Google-Play-Developer-Registration</guid>
+            <pubDate>Sat, 12 Feb 2022 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>准备的材料</h2><ul><li>国区 Google 账号：如果不是国区，注册后将无法通过实名验证。笔者最初使用美区账号注册，发现只能使用美国政府发行的证件进行实名认证，且国家无法更改。</li><li>25 美元的注册费用</li><li>带有 Visa/Mastercard/Express 的信用卡或者借记卡。如果国内申请不到，可以使用虚拟信用卡。据笔者了解，兴业银行联合发行的运通实体卡，以及 depay 的虚拟信用卡都可以完成注册费用支付</li><li>居民身份证或者护照</li></ul><h2>申请流程</h2><p>首先，进入浏览器无痕模式。如果你使用的是 Chrome，可以按下 <code>Ctrl+Shift+N</code> 打开无痕模式。</p><p>打开注册<a href="">地址</a>，输入基本信息。在注册阶段输入的大部分信息，在创建后都是可以修改的，所以不必太担心。</p><h2>注册后的注意事项</h2><ul><li>不要长期闲置这个账号，否则会被判定为休眠账户，而面临被删除的风险，且无法退还注册费用。</li></ul><ul><li>不要上传违规应用，请务必详细阅读指南</li></ul><h2>收款</h2><p>国内可以</p><h2>一些意外的处理方法</h2><ul><li>发现是美区账号注册，无法实名认证：联系客服要求删除账号并退款即可</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>

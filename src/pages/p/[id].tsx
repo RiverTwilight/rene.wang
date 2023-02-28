@@ -8,7 +8,7 @@ import getPaths from "@/utils/getPaths";
 import getFilename from "@/utils/getFilename";
 import { Typography, TimeBar } from "@kindle-ui/core";
 import { paths } from "../../site.config";
-import type { IPost } from "../../types";
+import { IPost } from "../../types";
 import matter from "gray-matter";
 import parseDate from "@/utils/parseDateStr";
 /**
@@ -80,10 +80,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 }
 
 export async function getStaticPaths() {
-	// const {
-	// 	i18n: { locales },
-	// } = require("../../../next.config");
-
 	return {
 		paths: ["zh-CN", "en-US"]
 			.map((locale: string) => {
@@ -139,12 +135,14 @@ const generateCatalog = (post) => {
 const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 	// TODO 右上角菜单显示 AboutThisBook
 
+	if(!postProps) return null
+
 	return (
 		<>
 			{/* <TimeBar /> */}
 			<Typography itemScope itemType="http://schema.org/Article">
 				<Cover>
-					{postProps.cover && (
+					{typeof postProps.cover == "string" && (
 						<>
 							<ImageBlock src={postProps.cover} />
 							<meta
@@ -155,7 +153,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 					)}
 				</Cover>
 
-				<h1 itemProp="headline">{postProps.title || slug}</h1>
+				<h1 itemProp="headline">{postProps.title}</h1>
 				<div className="Textc(secondary)">
 					最后更新于
 					<span itemProp="dateCreated">
