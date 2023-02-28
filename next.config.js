@@ -13,6 +13,7 @@ module.exports = {
 			"bgr.com",
 			"mmbiz.qpic.cn",
 			"s1.ax1x.com",
+			"cdn.sspai.com",
 			"cdn.jsdelivr.net",
 		],
 	},
