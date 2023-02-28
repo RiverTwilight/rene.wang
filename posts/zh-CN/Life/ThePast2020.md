@@ -1,8 +1,6 @@
 ---
 title: 过去的一年·2020
 date: 2021/1/2
-categories:
-    - Life
 ---
 
 ## 经历的事
