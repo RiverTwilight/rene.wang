@@ -122,8 +122,14 @@ const generateMap = (
 };
 
 const flatPost = (allPosts): IPost[] => {
-	return allPosts.map((item) => item.children).flat();
-};
+	return allPosts.map((item) => {
+		const classfiedPosts = item.children.map(post => Object.assign({
+			category: item.name
+		}, post))		
+		return classfiedPosts
+		
+	}).flat()
+}
 
 export interface GetAllPostsOption {
 	pocessRes?: {

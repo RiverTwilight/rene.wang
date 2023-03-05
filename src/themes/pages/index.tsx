@@ -32,8 +32,10 @@ function PostList({
 }) {
 	const classfiedPosts =
 		activeCategory !== "All"
-			? allPosts.find((cata) => cata.name === activeCategory).children
+			? falttedPosts.filter((post) => post.category === activeCategory)
 			: falttedPosts;
+
+	// console.log("<PostList />", allPosts);
 
 	const sortedPosts = useMemo(
 		() => sortByDate(classfiedPosts),

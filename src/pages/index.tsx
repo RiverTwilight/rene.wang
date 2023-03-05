@@ -22,6 +22,8 @@ export async function getStaticProps({ locale, locales }) {
 		}
 	);
 
+	console.log("StaticProps:", allPosts)
+
 	generateRssFeed();
 
 	const allCategories = getCategories(
