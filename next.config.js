@@ -15,6 +15,7 @@ module.exports = {
 			"s1.ax1x.com",
 			"cdn.sspai.com",
 			"cdn.jsdelivr.net",
+			"i.ibb.co"
 		],
 	},
 	webpack: function (config) {

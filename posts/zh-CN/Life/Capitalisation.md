@@ -19,7 +19,7 @@ date: 2023/2/28
 
 目前笔者使用的是英国 Postbox。从英国转运两张电话卡到国内的资费如下（拥有地址并不收取租金）：
 
-![](./images/postbox.png)
+![](https://i.ibb.co/wNsjdpZ/postbox.png)
 
 笔者使用的是带追踪的国际邮件，比平邮稍贵。共计 13.62 英镑。
 
