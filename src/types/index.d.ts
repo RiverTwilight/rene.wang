@@ -8,8 +8,8 @@ export type IPost = {
 		categories?: string[];
 	};
 	id: number;
-	/** 文章 */
 	markdownBody?: string;
+	category?: string;
 };
 
 declare global {

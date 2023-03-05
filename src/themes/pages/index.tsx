@@ -16,7 +16,7 @@ import Tab from "@/themes/components/Tab";
 import Text from "@/utils/i18n";
 import { postList } from "../i18n.json";
 import { sortByDate } from "@/utils/sortPosts";
-import type { TLocale, IPost } from "@/types/index";
+import type { IPost } from "@/types/index";
 
 const MAX_POST_COUNT = 12;
 const FLAG_ENABLE_SORT_BY_DATE = true;
@@ -82,8 +82,6 @@ const HomePage = (props: any) => {
 			),
 		[allCategories]
 	);
-
-	// console.log(allCategories);
 
 	return (
 		<>
