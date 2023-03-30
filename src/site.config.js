@@ -41,6 +41,10 @@ module.exports = {
 			title: "Jsun Dot LOL",
 			url: "https://jsun.lol",
 		},
+		{
+			title: "Xy1on",
+			url: "https://xy1on.cn/",
+		},
 	],
 	paths: {
 		blog: "p/",
