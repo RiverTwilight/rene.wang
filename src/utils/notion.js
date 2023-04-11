@@ -3,11 +3,8 @@ const fs = require("fs").promises;
 const path = require("path");
 const dotenv = require("dotenv");
 
-dotenv.config();
-
-const NOTION_API_KEY = "secret_BRKiwPYjUbj1ucekKVgow8BhSwafFsjM0CsYD95wxDG";
-const NOTION_DATABASE_ID = "faf0f2effa1746f8806af0c0df3d7b30";
-// const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
+const NOTION_API_KEY = process.env.NOTION_API_KEY;
+const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
 if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
 	console.error(
