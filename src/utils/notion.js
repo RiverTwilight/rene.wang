@@ -70,7 +70,7 @@ async function getBlogPosts() {
 	const posts = await Promise.all(
 		results.results.map(async (post) => {
 			console.log(post.properties.Slug);
-			if (!post.properties.Published.checkbox) {
+			if (post.properties.Published.checkbox) {
 				return {
 					id: post.id,
 					title: post.properties.Name.title[0]?.plain_text,
