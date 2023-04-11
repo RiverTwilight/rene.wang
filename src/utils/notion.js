@@ -39,6 +39,8 @@ function notionBlocksToMarkdown(blocks) {
 					return `\n${richTextToMarkdown(
 						block.paragraph.rich_text
 					)}\n`;
+				case "divider":
+					return `\n---\n`;
 				case "heading_2":
 					return `\n## ${richTextToMarkdown(
 						block.heading_2.rich_text
