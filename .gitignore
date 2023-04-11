@@ -11,3 +11,4 @@ out
 !.yarn/versions
 
 .env.local
+.env
