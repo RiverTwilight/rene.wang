@@ -22,7 +22,7 @@ export async function getStaticProps({ locale, locales }) {
 		}
 	);
 
-	console.log("StaticProps:", allPosts)
+	console.log("StaticProps:", allPosts);
 
 	generateRssFeed();
 
@@ -42,7 +42,6 @@ export async function getStaticProps({ locale, locales }) {
 				title: "首页",
 				path: "/",
 			},
-			// postNumber: sortedPosts.length,
 			locale,
 		},
 	};
