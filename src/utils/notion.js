@@ -120,8 +120,7 @@ function formatDate(dateString) {
 	const posts = await getBlogPosts();
 
 	posts.forEach(async (post) => {
-		const rawMarkdown = `
----
+		const rawMarkdown = `---
 title: ${post.title}
 cover: ${post.cover}
 date: ${formatDate(post.date)}

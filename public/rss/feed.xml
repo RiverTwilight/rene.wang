@@ -4,7 +4,7 @@
         <title>江村暮的 Kindle</title>
         <link>https://rene.wang</link>
         <description>开发日志、技术文章以及生活随感。</description>
-        <lastBuildDate>Tue, 11 Apr 2023 14:37:29 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 11 Apr 2023 14:44:28 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for rene.wng</generator>
         <image>
@@ -494,60 +494,6 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <guid>Google-Play-Developer-Registration</guid>
             <pubDate>Sat, 12 Feb 2022 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>准备的材料</h2><ul><li>国区 Google 账号：如果不是国区，注册后将无法通过实名验证。笔者最初使用美区账号注册，发现只能使用美国政府发行的证件进行实名认证，且国家无法更改。</li><li>25 美元的注册费用</li><li>带有 Visa/Mastercard/Express 的信用卡或者借记卡。如果国内申请不到，可以使用虚拟信用卡。据笔者了解，兴业银行联合发行的运通实体卡，以及 depay 的虚拟信用卡都可以完成注册费用支付</li><li>居民身份证或者护照</li></ul><h2>申请流程</h2><p>首先，进入浏览器无痕模式。如果你使用的是 Chrome，可以按下 <code>Ctrl+Shift+N</code> 打开无痕模式。</p><p>打开注册<a href="">地址</a>，输入基本信息。在注册阶段输入的大部分信息，在创建后都是可以修改的，所以不必太担心。</p><h2>注册后的注意事项</h2><ul><li>不要长期闲置这个账号，否则会被判定为休眠账户，而面临被删除的风险，且无法退还注册费用。</li></ul><ul><li>不要上传违规应用，请务必详细阅读指南</li></ul><h2>收款</h2><p>国内可以</p><h2>一些意外的处理方法</h2><ul><li>发现是美区账号注册，无法实名认证：联系客服要求删除账号并退款即可</li></ul>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
-            <title><![CDATA[红米6(cereus)救砖 + 刷第三方ROM教程]]></title>
-            <link>https://rene.wang/p/Hack-Redmi-6</link>
-            <guid>Hack-Redmi-6</guid>
-            <pubDate>Sat, 27 Nov 2021 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<blockquote><p>本文最初由 Charles_Su0923 发表于<a href="https://www.coolapk.com/feed/31765614?shareKey=MzUxZDIyNGE4MWEzNjFhMzI0MTU~&amp;shareUid=3191596&amp;shareFrom=com.coolapk.market_9.0.3">酷安</a>，有改动。</p></blockquote><ul><li><strong>设备</strong>：红米 6</li><li><strong>TL;TD</strong>：10 月份把手头 Redmi6 从只会震动黑砖里救出来，到 11 月初尝试了两个周末的刷机，终于在 11 月 27 日成功的把 LineageOS 17 刷入。</li></ul><p>重要！！：国内的大部分教程都没有提到，由于 MTK 特殊的硬件加密，故直接刷入 REC 会导致手机无法引导 REC，解决方案是下面这个文件。</p><p><img alt="下载了无数REC和rom" src="https://i.loli.net/2021/11/28/3lSt1WAnUaoZMbv.png"/></p><h2>总览</h2><p>Step1：把手机降级回 MIUI 10.4.4（酷安上有太多太多教程，但是不要贪心，<strong>只能降到 MIUI 10.4.4</strong>）</p><p>Step2：用下面提到的 rec 刷入工具刷入（秋之盒这种不行，只能用这个工具！！！）</p><p>Step3：导入你要刷的包和这个 DDE（这一步非常重要！！！！）</p><p>Step4：格式化 data 并且刷入系统，不出意外地话就会开机</p><h2>救砖</h2><p>大概是从去年的 8 月份，在尝试刷机，但是不料，意外成砖，学业繁重，于是就把他搁置在那了，中间尝试过鸟一鸟他，比如用 Mi flash 救一下这种，还是没有办法，放了一直到大概今年的 10 月，突然的时候发现了 MTK 的救砖工具。</p><p>其过程大概就是，先装驱动，由于 MTK 奇妙的特性（搞过 MTK 的都知道，救砖需要在短短的几秒内，从一闪而过的端口里找到他，然后再快速的点安装驱动，详细教程酷安上有），所以光驱动就安装了大概 20 多分钟，因为放久了，没怎么充电，所以还冲了很久的电，用 MTK 工具救砖也是一样的恼火。</p><p>由于小米引入了一个 auth 校验工具，所以，我们还需要用一个绕过工具去绕过，这个过程，亦是痛苦且难整的，所有的工具都是在海外源，所以还需要等着龟速下载。正式开始刷入的时候，并非完全用的是 MTK 的工具，在尝试完 MTk 工具后，手机意外地进入了 FB，于是当机立断，马上用米 flash 刷到 MIUI。</p><h2>PART2 | Escape</h2><p>回到 MIUI 的第一件事情，就是刷第三方 rec，这本是平常不过的操作，但由于 MTK 的特殊性，在刷入 REC 的时候必须禁用 DM 加密，在刷完包之后，也必须再禁用一次，在尝试的过程中，并没有注意到，还有 DM 加密这类东西，于是我直接就用秋之盒工具箱进行刷入操作，我把所有我能找到的 twrp 的 rec 全部试了一遍，国内外的教程也都看了个遍，红米 6 和 6A 的 rec 都刷了遍，电脑上前前后后下了大概 20 多个 recBut，秋之盒的刷入方式是 <code>fastboot flash recovery.img</code> 而针对于 MTK 机型（尤其是红米 6），我们都要加上 <code>fastboot --disable-verity --disable-verification</code> 这类指令，发现这个的时候，最开始的尝试已经过了一年的多时间。</p><h2>PART3 | Resurrection</h2><p>在成功刷入 rec 之后，我迫不及待的刷入 LineageOS 17，在之前的尝试中，我成功的刷入过红米 6a 的 rec，But，如果用红米 6a 的 rec 刷 rom 是刷不进去的，此时离我们最初的起点已经过了一个月了。</p><p>结果发现可以进入开机动画，但是卡住不动了。于是重启，重来。</p><p>已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)<a href="">https://t.me/redmi6official</a>里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！</p><p><img alt="image.png" src="https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png"/></p><h2>Part4 | Adjust</h2><p>这个部分很简单，调度 magisk+LSP 简直不能太简单。</p><h2>PART5 | End？</h2><p>这是玩了 10 年刷机，老机油的坚持，虽然随着时代的前进，系统日渐完善，曾经比较火热的刷机平台停服刷机，也渐渐地淡出舞台。</p><p>但为什么，还是有人坚持还是有人愿意为手机适配刷机包，就像周杰伦无法从我们的记忆中抹去一样，我们念物，其实念的是物背后的情感。初恋为什么忘不了，就是因为她是努力后才得到的。</p><p>感谢机主的坚持和不懈，也感谢做出这个刷 rec 的作者 @MegaFon929!</p>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
-            <title><![CDATA[黑苹果不完全指南]]></title>
-            <link>https://rene.wang/p/Hackitosh</link>
-            <guid>Hackitosh</guid>
-            <pubDate>Sat, 27 Nov 2021 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<p><strong>会进 bios</strong></p><p><strong>会英语或者翻译</strong></p><p><strong>有手、耐心</strong></p><p><strong>需要一个 U 盘</strong></p><h2><strong>前言</strong></h2><p>本文适合对黑苹果毫无了解的小白。如果你已经买到电脑，想装黑苹果，可以继续阅读。</p><p>若你准备买一台可以装黑苹果设备，可参考 <a href="https://github.com/daliansky/Hackintosh">笔记本</a> <a href="https://macx.top/18202.html">台式机</a></p><p>本文默认你会科学上网、会使用 GitHub 。</p><h2><strong>前期搜索&amp;明确配置</strong></h2><p>黑果的大概启动原理是：修改 config 和 DSDT 来启动 OS X。</p><p>明确配置的一会搜索驱动会少很多事，你需要做的就是去搜一下 「机型+EFI」 。</p><p>有的话,直接跳到安装部分</p><p>你的电脑如果找不到或者太冷门，且也想装黑苹果。就需要自己配 EFI</p><p><strong>配置 EFI</strong></p><p>这是一个 ！大点！</p><p>请结合多方信息，</p><p>不要只看我的这篇、也不要局限于国内互联网。</p><p><strong>你需要知道的信息</strong></p><p>黑苹果不怎么挑 U，但太老、太偏、AMD，就节约时间不考虑了。上网本（奔腾、赛扬就直接 pass 不得行）</p><p>Intel 的集显(HD+一些数字)、AMD 的独立显卡大多都可驱动，这个请搜索 显卡型号+黑苹果”</p><p>网卡能驱动上的很少，能驱动的也有各种特殊方法。
-具体情况请自行搜索，本文不展开</p><p>声卡同理，请自行搜索。</p><h2><strong>下载工作</strong></h2><h4><em>必须下载</em></h4><p><del>这里的文件<a href="https://dortania.github.io/OpenCore-Install-Guide/ktext.html#must-haves">参考</a>部分软件</del>
-请记住他的别称（打在括号里的）</p><p><strong><em>请将你下载好的文件放在一起，软件请安装。请确保所有的东西你都能找到！</em></strong></p><p>编辑 plist 配置的<a href="https://github.com/corpnewt/ProperTree">plist 编辑器</a> 或者<a href="https://mackie100projects.altervista.org/opencore-configurator/">OpenCoreCFG</a></p><p>必备，下载 release<a href="https://github.com/acidanthera/OpenCorePkg/releases">最简 EFI</a></p><p><a href="https://github.com/corpnewt/SSDTTime">SSDT</a></p><p>diskgeunis(区分工具)百度去下</p><p><a href="https://github.com/acidanthera/Lilu/releases">Lilu</a></p><p><a href="https://github.com/acidanthera/VirtualSMC/releases">VirtualSMC</a></p><p><a href="https://github.com/acidanthera/WhateverGreen/releases">WhateverGreen !部分 AMD 的集显不能装！</a></p><p><a href="https://acpica.org/downloads/binary-tools">AICP 编辑工具</a></p><p><a href="https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Setup-1.7.9.exe">写盘工具</a></p><p><a href="https://blog.daliansky.net/">黑果小兵</a>这里下载一个镜像，可以私聊我给你发一个</p><p><a href="https://shuiyunxc.gitee.io/2020/04/06/Faults/index/">排错 1</a> <a href="https://apple.sqlsec.com/10-%E6%8E%92%E9%94%99/">排错 2</a>
-这里面是常见的黑苹果会遇到的问题，遇到问题了来这看看</p><p><em>共 10 个文件</em></p><p><strong>这里是笔记本的附加部分，台式机请跳过</strong></p><p><del>因为有电池、键盘鼠标等，笔记本用户大多都需要补充这些驱动。当然凡事无绝对，你无法确保有些吃饱没事干，搞特殊</del></p><p>这一部分适用于大部分用户，如果这一部分按照广普的教程不行，请百度搜索以下内容：</p><p><strong>所有笔记本用户</strong>。</p><ul><li><p>SMCProcessor.kext</p></li><li><p>SMCSuperIO.kext</p></li><li><p>SMCLightSensor.kext</p></li><li><p>SMCBatteryManager.kext</p></li><li><p>SMCDellSensors.kext(仅限 dell 用户)</p></li></ul><p><em>共 4 个(戴尔是 5 个)</em></p><p><em><strong>AMD 用户</strong> 需要额外补充的驱动</em></p><p><a href="https://github.com/trulyspinach/SMCAMDProcessor">AMDProcesser</a></p><p><a href="https://github.com/aluveitie/RadeonSensor">AMDRadeonGPU</a></p><h4><strong>显卡</strong></h4><p><em>Intel 核显 （也就是整个电脑没有显卡）</em></p><p>直接用这个<a href="https://www.123pan.com/s/rd39-MkpOd">OC 工具箱</a>特别省事</p><p><em>Nvdia</em></p><p><del>仅支持到 10.13.6</del></p><p><a href="https://www.bilibili.com/video/BV1wr4y1r78X?spm_id_from=333.337.search-card.all.click&amp;vd_source=b2ed1387674e77df3a3f4f6acfe5a846">参考</a>
-这个部分争议较大，且这个技术比较新，又加上我没有 Nvdia 的显卡无法测试</p><p>所以英伟达用户请自行测试</p><p><em>AMD 显卡（独显，如果你是 vega8 这类集显，要么等，要么 C++逆向）</em></p><p>AMD 显卡要么就是免驱</p><p>要么就是仿冒 ID</p><p>这一步 AMD 用户可以大喊一声：AMD YES</p><p>如果你是 vega8 的用户</p><p>且你刚好会 C++，接触过逆向工程。欢迎联系我</p><h4><strong>声卡</strong></h4><p>声卡部分，由于不同品牌的网卡有不同的驱动方式</p><p>有些事注入 ID 就好，有些需要单独加驱动，有些又无法驱动</p><p>在此我帮你搜到了全网的大部分声卡驱动，剩下的你自己测试
-<a href="https://radcliffe.vercel.app/post/hei-ping-guo-sheng-qia-qu-dong/">声卡</a></p><h4><strong>网卡</strong></h4><p>网卡部分 intel 的看<a href="https://zhuanlan.zhihu.com/p/299695036">Intel</a></p><p><a href="https://zhuanlan.zhihu.com/p/339648390">其他网卡</a></p><p>把你的网卡型号在这里面搜索一下</p><p>有你的网卡，你就去对应搜索“型号+黑苹果</p><p><strong>现在，所有的下载工作应该都做完了，你可以稍事休息一下辛苦了，但真正的硬菜马上就来了。少喝酒，多吃菜</strong></p><h2><strong>配置 EFI</strong></h2><p>请按照这个顺序或者你自己不会弄错的顺序来。</p><p>请将下载好的文件解压、安装。如果你看到 XXX.kext 这种文件夹，就证明她已经是最简了</p><p>请将下载好的文件分好类。</p><h3><em>地基</em></h3><p>将「最简 EFI」解压到你找到地方</p><p>删除 Tools 文件夹下的所有东西</p><p>把 Drivers 文件下删得只剩 OpenRuntime.efi 「！仔细理解这句话！」</p><p>把<a href="https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi">这个</a>放在 Drivers 里面</p><h3><em>ACIP</em></h3><p><del>这一步的目的是让系统可以控制硬件，软件控制硬件
-<a href="https://www.bilibili.com/read/cv10117507/">参考</a></del></p><p>1.打开 <!-- -->*<strong>*<!-- -->SSDT<!-- -->*<!-- -->*</strong> 打开里的 <!-- -->*<strong>*<!-- -->SSDTTime.bat<!-- -->*<!-- -->*</strong></p><p>2.以「4，3，2」的顺序「顺序不能错」会生成 3 个文件</p><p>3.现在我们需要处理下 <strong>SSDT-RTC0.dsl</strong></p><p>没有自动生成就<a href="https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0.dsl">下载</a></p><p>用文本编辑器之类的打开它，用尽你毕生所学找到</p><pre><code>External (_SB_.PCI0.LPCB, DeviceObj)
-
-Scope (_SB.PCI0.LPCB)</code></pre><p>修改成</p><pre><code>External (_SB_.PCI0.LPC, DeviceObj)
-
-Scope (_SB.PCI0.LPC)</code></pre><p>4.处理 <strong>SSDT-PMC</strong>
-没有就<a href="https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PMC.dsl">下载</a></p><pre><code>External (_SB_.PCI0.LPCB, DeviceObj)
-
-Scope (_SB.PCI0.LPCB)</code></pre><p>修改为</p><pre><code>ternal (_SB_.PCI0.LPC, DeviceObj)
-
-Scope (_SB.PCI0.LPC)</code></pre><p>5.编译
-用这个指令</p><pre><code>acpihelp.exe -o 文件名字</code></pre><p><strong>把「文件名字」 依次换成 刚刚变出来的 5 个文件</strong>
-最后你需要确保 你可以看到 5 个以 XXX.aml 结尾的文件。</p><p>6.现在，请新建一个文件夹，把文件放入，命名为「ACPI」替换在「最简 EFI』文件夹里</p><h3><em>配置 OpenCoreCFG</em></h3><p><a href="https://post.smzdm.com/p/aqm8nxvx/">请看</a>，这个部分这个作者写的好，请看他</p><p>以后会考虑自己写</p><h3><em>组装</em></h3><p>将 <strong>kexts 文件夹</strong> <strong>ACPI</strong> 放在「最简 EFI 里」</p><p>这个时候你的「最简 EFI」里会有 图 1.1<a href="https://imgse.com/i/xS2aDI"><img alt="xS2aDI.png" src="https://s1.ax1x.com/2022/09/17/xS2aDI.png"/></a> 1.2<a href="https://imgse.com/i/xS2hV0"><img alt="xS2hV0.png" src="https://s1.ax1x.com/2022/09/17/xS2hV0.png"/></a></p><p>将你的「最简 EFI」重命名为 EFI</p><pre><code>休息下吧，看到这里
-
-辛苦啦
-
-这一步之后，就要正式开始安装了</code></pre><h2><strong>开始安装</strong></h2><h3>1.写盘</h3><p>用「写盘工具」将你下载映像写入 U 盘</p><p><del>如果你卡在 Vailting 这个地方 跳过就好</del></p><p>对于小白：当你同时看到绿色的进度条和 Skip 这个单词时直接点 <strong>skip</strong></p><h3>2.进入 BIOS</h3><p><em>以你的毕生所学，进入 bios 并且关闭（没有的不管）</em></p><pre><code>Fast Boot
-Secure Boot
-Serial/COM Port
-Parallel Port
-VT-d
-CSM
-Thunderbolt（有些没有驱动）
-Intel SGX
-Intel Platform Trust
-CFG Lock(可以的话)</code></pre><p><em>打开</em></p><pre><code>VT-x
-Above 4G decoding
-Hyper-Threading
-Execute Disable Bit
-EHCI/XHCI Hand-off
-OS type: other
-UEFI Mode
-DVMT Pre-Allocated: 64MB
-SATA Mode: AHCI</code></pre><h3>3.Boot up</h3><p>从你的 U 盘启动</p><h3>4.安装</h3><p>一、请将安装程序调成你熟悉的语言，最好不要登陆 Apple ID、不要</p><p>如果你发现你下载的镜像是俄语的，且找不到地方修改它</p><p>请使用翻译软件，推荐 <em>谷歌翻译</em></p><p>二、如果你是在安装 Catalina(10.15.x)之前的系统，请<a href="https://www.applex.net/threads/macos-mojave.93508/">参考</a></p><h3>善后</h3><p>现在，不出意外，你应该在系统里面了，</p><p>有部分网卡、声卡需要别的操作的，请按照对应的教程进行</p><p>三码注入部分,前面配置<em>OpenCoreCFG</em>部分</p><p>另一位作者已经提到，不再赘述</p><h2>尾言</h2><p>文章写得很赶，有些东西自己也不太会。希望大家有耐心慢慢搞。</p><p>苹果发布 M1 型片后，就不知道黑苹果还能活多久。且行且珍惜</p><p>如果你是 vega8 用户，又刚好会 C++写驱动，可以带你去找找国外的进度</p><p>感谢那些曾经为黑苹果默默做出贡献的开发者！</p><p>此致</p><p>——————————————————————————</p><p>转载请注明出处，可以二创。</p><p>如果你在安装时遇到问题，可在电报上联系我：<a href="t.me/Mistry_Rain">Charles</a></p><p>所有的操作均来自互联网，遇到问题请你自己负责！</p><p>文章已授权 <a href="https://gloridust.xyz/">Gloridust</a> <a href="https://rene.wang/">Rene</a>发布</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
