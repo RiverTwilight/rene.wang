@@ -37,7 +37,7 @@ jobs:
                   NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
             - name: Execute notion.js script
-              run: cd ./src/utils && node notion.js
+              run: node ./src/utils/notion.js
 
             - name: Commit and push changes
               env:

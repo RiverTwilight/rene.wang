@@ -139,15 +139,9 @@ ${await getPageContent(post.id)}
 
 		post.locale.forEach(async (locale) => {
 			post.tags.forEach(async (tag) => {
-				console.log(
-					`Saving ${fileName} to ${path.join(
-						`./posts/${locale.name}/${tag.name}`,
-						fileName
-					)}`
-				);
 				await fs.writeFile(
 					path.join(
-						`../../posts/${locale.name}/${tag.name}`,
+						`./posts/${locale.name}/${tag.name}`,
 						fileName
 					),
 					rawMarkdown
