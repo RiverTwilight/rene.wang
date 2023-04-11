@@ -3,7 +3,7 @@ const fs = require("fs").promises;
 const path = require("path");
 const dotenv = require("dotenv");
 
-dotenv.config()
+dotenv.config();
 
 const NOTION_API_KEY = process.env.NOTION_API_KEY;
 const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
@@ -39,8 +39,6 @@ function notionBlocksToMarkdown(blocks) {
 					return `\n${richTextToMarkdown(
 						block.paragraph.rich_text
 					)}\n`;
-				case "divider":
-					return `\n---\n`;
 				case "heading_2":
 					return `\n## ${richTextToMarkdown(
 						block.heading_2.rich_text
@@ -49,6 +47,12 @@ function notionBlocksToMarkdown(blocks) {
 					return `\n# ${richTextToMarkdown(
 						block.heading_1.rich_text
 					)}\n`;
+				case "code":
+					return `\n\`\`\`${
+						block.code.language
+					}\n${richTextToMarkdown(block.code.rich_text)}\n\`\`\`\n`;
+				case "image":
+					return `![Image](${block.image.external.url})\n`;
 				default:
 					return "";
 			}
@@ -141,10 +145,7 @@ ${await getPageContent(post.id)}
 		post.locale.forEach(async (locale) => {
 			post.tags.forEach(async (tag) => {
 				await fs.writeFile(
-					path.join(
-						`./posts/${locale.name}/${tag.name}`,
-						fileName
-					),
+					path.join(`./posts/${locale.name}/${tag.name}`, fileName),
 					rawMarkdown
 				);
 				console.log(`Saved post: ${fileName}`);
