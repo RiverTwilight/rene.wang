@@ -7,12 +7,14 @@ on:
         branches:
             - master
 
+env:
+    KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
 jobs:
     notion-to-markdown:
         runs-on: ubuntu-latest
         environment:
           name: Production
-
+        
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
@@ -25,7 +27,16 @@ jobs:
             - name: Install dependencies
               run: yarn install --frozen-lockfile
 
-            - name: Execute notion.ts script
+            - name: 'Create env file'
+              run: |
+                  touch .env
+                  echo NOTION_API_KEY=$NOTION_API_KEY >> .env
+                  echo NOTION_DATABASE_ID=$NOTION_DATABASE_ID >> .env
+              env:
+                  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+                  NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+
+            - name: Execute notion.js script
               run: node ./src/utils/notion.js
 
             - name: Commit and push changes

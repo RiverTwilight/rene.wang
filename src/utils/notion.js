@@ -3,6 +3,8 @@ const fs = require("fs").promises;
 const path = require("path");
 const dotenv = require("dotenv");
 
+dotenv.config()
+
 const NOTION_API_KEY = process.env.NOTION_API_KEY;
 const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
