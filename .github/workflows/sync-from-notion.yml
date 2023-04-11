@@ -21,10 +21,10 @@ jobs:
                   node-version: 16
 
             - name: Install dependencies
-              run: npm ci
+              run: yarn install --frozen-lockfile
 
             - name: Execute notion.ts script
-              run: node utils/notion.ts
+              run: node ./src/utils/notion.js
 
             - name: Commit and push changes
               env:
