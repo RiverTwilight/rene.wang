@@ -4,6 +4,7 @@ module.exports = {
 	root: "https://rene.wang",
 	description: "开发日志、技术文章以及生活随感。",
 	keywords: ["江村暮的博客", "RiverTwilight", "过气码农", "江村暮"],
+	dataSource: "notion",
 	author: {
 		name: "江村暮",
 		twitter: "https://twitter.com/rea1DonandTrump",

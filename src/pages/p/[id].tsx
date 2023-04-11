@@ -11,6 +11,7 @@ import { paths } from "../../site.config";
 import { IPost } from "../../types";
 import matter from "gray-matter";
 import parseDate from "@/utils/parseDateStr";
+
 /**
  * 获取相关文章，包含相同标签
  * @param {Array} allPosts
@@ -48,8 +49,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			return context(keys).default;
 		})(require.context("../../../posts", true, /\.md$/))
 	);
-
-	console.log(currentPost);
 
 	// console.log(
 	// 	posts.filter((post: any) => {
@@ -135,7 +134,7 @@ const generateCatalog = (post) => {
 const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 	// TODO 右上角菜单显示 AboutThisBook
 
-	if(!postProps) return null
+	if (!postProps) return null;
 
 	return (
 		<>
