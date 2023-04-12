@@ -4,7 +4,7 @@
         <title>江村暮的 Kindle</title>
         <link>https://rene.wang</link>
         <description>开发日志、技术文章以及生活随感。</description>
-        <lastBuildDate>Wed, 12 Apr 2023 00:45:08 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Apr 2023 00:50:04 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for rene.wng</generator>
         <image>
@@ -446,7 +446,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[海外走资入门指南：银行卡、电话卡与 iban]]></title>
             <link>https://rene.wang/p/captialisation</link>
             <guid>captialisation</guid>
-            <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <content:encoded><![CDATA[&lt;hr /&gt;<h2>在开始折腾前请注意：</h2><ul><li>不必要逼自己开通一个账户/卡片，实在不行大可放弃</li><li>理财有风险，就算大公司也可能跑路，人在国内建议钱放国内</li><li>除非必要，不要提供虚假的 KYC 信息</li></ul><h2>海外地址</h2><p>海外地址是许多金融相关账号注册的必要条件，大致可分为三种等级：</p><p>目前笔者使用的是英国 Postbox。从英国转运两张电话卡到国内的资费如下（拥有地址并不收取租金）：
 <img alt="Image" src="https://i.ibb.co/wNsjdpZ/postbox.png"/></p><p>笔者使用的是带追踪的国际邮件，比平邮稍贵。共计 13.62 英镑。</p><h2>iban 个人银行账户</h2><p>这是申请流程最复杂的一种资产。笔者只尝试过 Bitfnex，最终因为地址证明处理不当被识破，无奈只好放弃。</p><p>你需要提供护照、银行流水、地址证明。所有证件的名字必须全部匹配。</p><p>也可以参考这个Youtube 视频</p><h2>海外卡组织在国内发行的卡</h2><p>截至 2023 年 2 月，国内已知可申请的境外发卡行的卡片有：</p><p>其中 BOC 代表中国银行，CIB 代表兴业银行，HSBC 代表汇丰银行。</p><p>Visa 和 Mastercard 是全球比较受欢迎的组织，AMEX 主要在美国提供服务。</p><p>上面提到的卡片钟，实测：</p><ul><li>长城跨境通可以绑定 Google Pay 并消费，支持支付 Google Play Developer 注册费用，不支持甲骨文验证</li><li>运通卡支持 Google Play 消费</li></ul><p>顺带提一句现汇和现钞的区别：现汇相当于你银行账户上的存款，是存在银行卡、存折、电子账户上的钱，是帐面上的外币；而现钞是你手头拥有的实实在在的外国纸币。外汇可以在全球自由流通，而外钞则需要监管。</p><h2>海外电话卡</h2><p>目前国内可以独立申请到的海外电话卡有：</p><p>通常海外卡的漫游费用都很高，所以用来科学上网十分不划算，接收短信还是很香的。</p><h2>海外实体银行卡</h2><p>笔者暂时还没有折腾过。如果你到了香港，不妨去开一个香港账户。</p><h2>海外虚拟银行卡</h2><p>虚拟银行卡可以完成网上支付的大多数场景。</p><p>上述卡片中，实测：</p><ul><li>Depay 可以支付 Google Play Developer 注册费用，可以绑定支付宝在国内使用</li></ul><h2>法币与虚拟币互转</h2><p>这些工具可以将法币兑换为虚拟币。</p><h2>相关资源/教程</h2><ul><li>Youtube 频道 1</li><li>Youtube 频道 2<pre><code>	</code></pre></li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
