@@ -1,7 +1,7 @@
 ---
 title: 海外走资入门指南：银行卡、电话卡与 iban
-date: 2023-04-12T00:00:00.000Z
-
+cover: undefined
+date: 23/04/12
 ---
 
 <hr />
