@@ -177,12 +177,40 @@ AMD 显卡要么就是免驱
 
 用文本编辑器之类的打开它，用尽你毕生所学找到
 
+```plain text
+External (_SB_.PCI0.LPCB, DeviceObj)
+
+Scope (_SB.PCI0.LPCB)
+
+```
+
 修改成
+
+```plain text
+External (_SB_.PCI0.LPC, DeviceObj)
+
+Scope (_SB.PCI0.LPC)
+
+```
 
 4.处理 SSDT-PMC
 没有就下载
 
+```plain text
+External (_SB_.PCI0.LPCB, DeviceObj)
+
+Scope (_SB.PCI0.LPCB)
+
+```
+
 修改为
+
+```plain text
+ternal (_SB_.PCI0.LPC, DeviceObj)
+
+Scope (_SB.PCI0.LPC)
+
+```
 
 5.编译
 用这个指令
