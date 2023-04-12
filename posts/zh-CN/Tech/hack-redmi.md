@@ -10,6 +10,7 @@ date: 23/04/11
 - TL;TD：10 月份把手头 Redmi6 从只会震动黑砖里救出来，到 11 月初尝试了两个周末的刷机，终于在 11 月 27 日成功的把 LineageOS 17 刷入。
 
 重要！！：国内的大部分教程都没有提到，由于 MTK 特殊的硬件加密，故直接刷入 REC 会导致手机无法引导 REC，解决方案是下面这个文件。
+![Image](https://i.loli.net/2021/11/28/3lSt1WAnUaoZMbv.png)
 
 ## 总览
 
@@ -40,6 +41,7 @@ Step4：格式化 data 并且刷入系统，不出意外地话就会开机
 结果发现可以进入开机动画，但是卡住不动了。于是重启，重来。
 
 已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)[https://t.me/redmi6official]里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！
+![Image](https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png)
 
 ## Part4 | Adjust
 
