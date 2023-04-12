@@ -1,7 +1,7 @@
 ---
 title: 黑苹果不完全指南
-cover: undefined
-date: 23/04/11
+date: 2023/04/11
+
 ---
 
 <hr />
