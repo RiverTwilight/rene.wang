@@ -1,6 +1,10 @@
 # Rene.wang
 
-这是我的的[博客](https://rene.wang)的源代码。
+这是我的的 [博客](https://rene.wang) 的源代码，同时也是一个强大的静态博客站点。
+
+-   [x] 支持自定义主题开发
+-   [x] 从 Notion 同步文章
+-   [x] 多语言 UI/文章
 
 ## 使用方法
 
@@ -20,11 +24,12 @@
     -   name:名称
     -   intro:介绍
 
-### 静态资源
-
 ## 写作
 
-将 Markdown 文件放入`/posts/<catagories>`目录即可。目前最高支持二级目录。
+目前支持两种写作方式：
+
+1. 将 Markdown 文件放入`/posts/<catagories>`目录即可。目前最高支持二级目录。
+2. 从 Notion 自动同步文章，请参考[配置 Notion]()一节。
 
 ### 文章元数据 frontmatter
 
@@ -33,11 +38,11 @@
 -   title
 -   date
 
-## 部署
+## 部署到 Vercel
 
-~~由于 Nextjs 的 i18n 功能不支持静态导出，需要部署到服务器上，可以使用 github action 轻松部署。~~
+有两种部署方式，[Vercel](https://vercel.com/) 和自己的服务器，vercel 只需创建好仓库并按提示走就可以了，如果要部署到自己的服务器请继续阅读:
 
-有两种部署方式，[Vercel](https://vercel.com/)和自己的服务器，vercel 只需创建好仓库并按提示走就可以了，如果要部署到自己的服务器请继续阅读:
+## 部署到自己的服务器
 
 ### 0.服务器配置
 
@@ -68,3 +73,16 @@ vim ~/.ssh/id_rsa.pub
 ### 2.推送代码
 
 确保 Action 已启用之后，在 github 上所有 master 分支的更新都会自动部署到服务器。大功告成！
+
+## 配置 Notion
+
+在 Github 仓库新增两个环境变量
+```bash
+NOTION_API_KEY=<YOUR_KEY>
+NOTION_DATABASE_ID=<YOUR_ID>
+```
+在 Notion 新建一个 Intergation，获取 API Key. 
+
+## License
+
+MIT

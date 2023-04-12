@@ -93,23 +93,13 @@ async function getBlogPosts() {
 	return posts.filter((post) => post);
 }
 
-function formatDate(dateString) {
-	const date = new Date(dateString);
-
-	const year = date.getFullYear().toString().substr(-4); // Extract the last two digits of the year
-	const month = ("0" + (date.getMonth() + 1)).slice(-2); // Add 1 to month (0-indexed) and pad with 0 if needed
-	const day = ("0" + date.getDate()).slice(-2); // Pad with 0 if needed
-
-	return `${year}/${month}/${day}`;
-}
-
 (async function main() {
 	const posts = await getBlogPosts();
 
 	posts.forEach(async (post) => {
 		const rawMarkdown = `---
 title: ${post.title}
-date: ${formatDate(post.date)}
+date: ${post.date}
 ${post.cover ? `cover: ${post.cover}` : ""}
 ---
 

@@ -12,6 +12,16 @@ import { IPost } from "../../types";
 import matter from "gray-matter";
 import parseDate from "@/utils/parseDateStr";
 
+function formatDate(dateString) {
+	const date = new Date(dateString);
+
+	const year = date.getFullYear().toString().substr(-4); // Extract the last two digits of the year
+	const month = ("0" + (date.getMonth() + 1)).slice(-2); // Add 1 to month (0-indexed) and pad with 0 if needed
+	const day = ("0" + date.getDate()).slice(-2); // Pad with 0 if needed
+
+	return new Date(Number(year), Number(month), Number(day));
+}
+
 /**
  * 获取相关文章，包含相同标签
  * @param {Array} allPosts
@@ -156,7 +166,9 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 				<div className="Textc(secondary)">
 					最后更新于
 					<span itemProp="dateCreated">
-						{parseDate(postProps.date).toLocaleDateString()}
+						{postProps.date.includes("T")
+							? formatDate(postProps.date).toLocaleDateString()
+							: parseDate(postProps.date).toLocaleDateString()}
 					</span>
 					{/* &nbsp;分类:
 					{postProps.categories

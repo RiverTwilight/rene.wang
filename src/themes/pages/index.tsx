@@ -15,7 +15,6 @@ import {
 import Tab from "@/themes/components/Tab";
 import Text from "@/utils/i18n";
 import { postList } from "../i18n.json";
-import { sortByDate } from "@/utils/sortPosts";
 import type { IPost } from "@/types/index";
 
 const MAX_POST_COUNT = 12;
@@ -35,14 +34,12 @@ function PostList({
 			? falttedPosts.filter((post) => post.category === activeCategory)
 			: falttedPosts;
 
-	// console.log("<PostList />", allPosts);
+	// const sortedPosts = useMemo(
+	// 	() => sortByDate(classfiedPosts),
+	// 	[classfiedPosts]
+	// );
 
-	const sortedPosts = useMemo(
-		() => sortByDate(classfiedPosts),
-		[classfiedPosts]
-	);
-
-	return sortedPosts.slice(0, MAX_POST_COUNT).map((post) => (
+	return classfiedPosts.slice(0, MAX_POST_COUNT).map((post) => (
 		<Link key={post.id} passHref href={"/p/" + post.id}>
 			<ListItem
 				style={{

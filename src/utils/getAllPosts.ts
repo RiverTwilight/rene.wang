@@ -1,5 +1,6 @@
 import matter from "gray-matter";
 import type { IPost } from "@/types/index";
+import parseDate from "./parseDateStr";
 
 // Do something like this: '/a/b/c' -> '["/", "a", "/", "b" , "/", "c"]'
 const generateTokens = (
@@ -66,7 +67,6 @@ const getFileTree = (files: string[]): IFile => {
 		file.tokens.forEach((token) => {
 			if (token.type === "path" && token.value !== ".") {
 				if (/\./.test(token.value)) {
-
 					currentPosition.children.push({
 						name: token.value,
 						type: token.value.endsWith(".md") ? "doc" : "config",
@@ -74,7 +74,6 @@ const getFileTree = (files: string[]): IFile => {
 					});
 
 					currentPosition = fileTrees;
-					
 				} else {
 					const isExist = currentPosition.children.some((child) => {
 						return child.name === token.value;
@@ -122,14 +121,20 @@ const generateMap = (
 };
 
 const flatPost = (allPosts): IPost[] => {
-	return allPosts.map((item) => {
-		const classfiedPosts = item.children.map(post => Object.assign({
-			category: item.name
-		}, post))		
-		return classfiedPosts
-		
-	}).flat()
-}
+	return allPosts
+		.map((item) => {
+			const classfiedPosts = item.children.map((post) =>
+				Object.assign(
+					{
+						category: item.name,
+					},
+					post
+				)
+			);
+			return classfiedPosts;
+		})
+		.flat();
+};
 
 export interface GetAllPostsOption {
 	pocessRes?: {
@@ -192,6 +197,8 @@ export default function getAllPosts(
 
 						const { data: frontmatter, content: markdownBody } =
 							document;
+						
+							frontmatter.date = parseDate(frontmatter.date).toLocaleDateString()
 
 						return {
 							defaultTitle: slug,
@@ -232,6 +239,15 @@ export default function getAllPosts(
 	})(requireFunc);
 
 	if (enableFlat) {
+		if (enableSort) {
+			return flatPost(posts).sort((a, b) => {
+				console.log(a)
+				const dateA = new Date(a.frontmatter.date);
+				const dateB = new Date(b.frontmatter.date);
+
+				return dateB - dateA;
+			});
+		}
 		return flatPost(posts);
 	}
 
