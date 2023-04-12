@@ -103,8 +103,7 @@ date: ${post.date}
 ${post.cover ? `cover: ${post.cover}` : ""}
 ---
 
-${await getPageContent(post.id)}
-		`;
+${await getPageContent(post.id)}`;
 
 		const fileName = `${post.slug
 			.replace(/[^a-zA-Z0-9]/g, "-")
