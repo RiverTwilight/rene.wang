@@ -1,10 +1,6 @@
 ---
 title: 红米6(cereus)救砖 + 刷第三方ROM教程
-<<<<<<< HEAD
 date: 2023-04-11T14:39:00.000Z
-=======
-date: 2023/04/11
->>>>>>> 403c79d8f6807b5e74a69e921cc06087673f6122
 cover: https://i.loli.net/2021/11/28/I7SbfaXY4TF6Adl.png
 ---
 
