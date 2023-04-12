@@ -5,18 +5,13 @@
 -   [x] 支持自定义主题开发
 -   [x] 从 Notion 同步文章
 -   [x] 多语言 UI/文章
+-   [ ] 评论
 
-## 使用方法
+## 🎞️ 使用
 
-1. 点击右上角“Use this template”，创建你自己的仓库。
+点击页面右上角 **Use this templat**，创建你自己的仓库。
 
-2. 删掉我的文章，写你自己的文章。
-
-3. 更改网站配置信息。
-
-## 配置
-
-配置文件位于 `./site.config.js`
+之后，修改配置文件。位于 `./site.config.js`
 
 -   title:博客名称
 -   root:博客根网址
@@ -24,19 +19,30 @@
     -   name:名称
     -   intro:介绍
 
-## 写作
+如果你需要使用 Notion 写作，请在 Notion 新建一个 Intergation，获取 API Key. 同时获取你的 database_id
+
+然后，在 Github 仓库新增两个环境变量：
+
+```bash
+NOTION_API_KEY=<YOUR_KEY>
+NOTION_DATABASE_ID=<YOUR_ID>
+```
+
+一切准备就绪后，可以选择你喜欢的方法部署。
+
+## ✍ 写作
 
 目前支持两种写作方式：
 
 1. 将 Markdown 文件放入`/posts/<catagories>`目录即可。目前最高支持二级目录。
-2. 从 Notion 自动同步文章，请参考[配置 Notion]()一节。
+2. 从 Notion 自动同步文章。
 
-### 文章元数据 frontmatter
-
-每篇文章至少需要以下两个 frontmatter：
+如果你选择第一种方式，每篇文章至少需要以下两个 frontmatter：
 
 -   title
 -   date
+
+如果选择使用 Notion 写作，请参考这个 [database]() 的形式创建一个一样的。
 
 ## 部署到 Vercel
 
@@ -75,13 +81,6 @@ vim ~/.ssh/id_rsa.pub
 确保 Action 已启用之后，在 github 上所有 master 分支的更新都会自动部署到服务器。大功告成！
 
 ## 配置 Notion
-
-在 Github 仓库新增两个环境变量
-```bash
-NOTION_API_KEY=<YOUR_KEY>
-NOTION_DATABASE_ID=<YOUR_ID>
-```
-在 Notion 新建一个 Intergation，获取 API Key. 
 
 ## License
 
