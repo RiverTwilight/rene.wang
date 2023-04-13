@@ -46,6 +46,10 @@ module.exports = {
 			title: "Xy1on",
 			url: "https://xy1on.cn/",
 		},
+		{
+			title: "Zack's Blog",
+			url: "https://blog.zackmount.life",
+		},
 	],
 	paths: {
 		blog: "p/",
