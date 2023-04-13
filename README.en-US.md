@@ -1,32 +1,83 @@
 # Rene.wang
 
-This is the source code of my [blog](https://rene.wang).
+This is the source code for my blog and also a powerful static blogging site.
 
-A Responsive, Fast, i18n and Markdown Blog base on Next.js. Inspired by this [article](https://dev.to/tinacms/creating-a-markdown-blog-with-next-js-52hk)
+-   [x] Supports custom theme development
+-   [x] Syncs articles from Notion
+-   [x] Multi-language UI and articles
+-   [ ] Comments
 
-## Config
+## 🎞️ Usage
 
-All config  is in `/data/config.json`
+Click on the Use this template button on the top right corner of the page to create your own repository.
 
-* author: Author info will be  written into `<meta>` tags
-* catagories: Custom catagories, each post can add a catagoies info in `yaml`
-* 
+Afterwards, modify the configuration file located at ./site.config.js.
 
-## Writting
+-   title: Blog name
+-   root: Blog root URL
+-   author: Author information
+    -   name: Name
+    -   intro: Introduction
 
-All posts is in `/posts`. NBlog surports markdown and HTML.
+If you need to use Notion for writing, create a new Integration in Notion to obtain an API Key. Also, get your database_id.
 
-### frontmatter
+Then, add two environment variables in the Github repository:
 
-* title: articel's title, if null, NBlog will regard the file name as title
-* date: Due to node cannot read the file's meta date, **you need to add a date by yourself**.
+```bash
+NOTION_API_KEY=<YOUR_KEY>
+NOTION_DATABASE_ID=<YOUR_ID>
+```
 
-## Deploy
+Once everything is ready, you can choose the deployment method you prefer.
 
-You can deploy your blog by [Vercel](https://vercel.com) easily by one command.
+## ✍ Writing
 
-Or you can deploy by yourself. You don't need a node server.
+Currently, two writing methods are supported:
+
+Place the Markdown file in the /posts/<categories> directory. Currently, up to two-level directories are supported.
+Automatically sync articles from Notion.
+If you choose the first method, each article must have at least the following two frontmatter:
+
+-   title
+-   date
+
+If you choose to use Notion for writing, refer to this [database] () to create a similar one.
+
+## Deploying to Vercel
+
+There are two deployment methods, Vercel and your own server. For Vercel, simply create the repository and follow the prompts. If you want to deploy to your own server, continue reading:
+
+## Deploying to Your Own Server
+
+0. Server Configuration
+   Make sure that Node.js, git, and pm2 are installed on the server.
+
+Create a `/app/ygk-blog` directory on the server and execute git init to initialize the repository.
+
+```bash
+mkdir -p /app/blog && cd /app/blog
+git init
+```
+
+1. Github Repository Configuration
+   Create a repository on Github and add server information under Setting -> Secrets.
+
+```bash
+SSH_HOST: Server IP
+SSH_USERNAME: Server username
+SSH_PORT: SSH port (default 22)
+SSH_PASSWORD: Server user password
+```
+
+Add the server's git public key under Deploy Keys in the Github repository (generation method).
 
 ```sh
-npm run deploy
+vim ~/.ssh/id_rsa.pub
 ```
+
+2. Pushing Code
+   Make sure that the Action is enabled, and all updates to the master branch on Github will be automatically deployed to the server. Congratulations!
+
+## License
+
+MIT
