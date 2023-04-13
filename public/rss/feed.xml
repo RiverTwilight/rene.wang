@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>江村暮的 Kindle</title>
+        <title>[object Object]</title>
         <link>https://rene.wang</link>
         <description>开发日志、技术文章以及生活随感。</description>
-        <lastBuildDate>Wed, 12 Apr 2023 00:58:17 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 13 Apr 2023 08:06:43 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for rene.wng</generator>
         <image>
-            <title>江村暮的 Kindle</title>
+            <title>[object Object]</title>
             <url>https://rene.wang/favicon.ico</url>
             <link>https://rene.wang</link>
         </image>
@@ -130,131 +130,6 @@ def queens(num=8,state=()):
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
-            <title><![CDATA[Python 刷算法小记]]></title>
-            <link>https://rene.wang/p/Python-in-Algo</link>
-            <guid>Python-in-Algo</guid>
-            <pubDate>Sat, 11 Feb 2023 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h2>便利方法</h2><ul><li>统计列表中某个元素的出现次数：<code>List.count(&quot;target&quot;)</code></li></ul>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
-            <title><![CDATA[使用 Mocha + chai 测试 React 应用]]></title>
-            <link>https://rene.wang/p/Testing-React-with-Mocha</link>
-            <guid>Testing-React-with-Mocha</guid>
-            <pubDate>Sat, 04 Feb 2023 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<p>最近在继续开发之前的 <a href="https://github.com/RiverTwilight/kindle-ui">Kindle UI</a> 库，想到该写一下测试，于是决定使用 <a href="https://mochajs.org/">Mocha</a> 的测试方案（尝试一些新东西）。</p><p>（此段由GPT生成👉）在开发过程中，保证代码质量和正确性是非常重要的。测试是达到这个目的的有效方法之一，特别是在 JavaScript 开发中。在 React 应用开发中，Mocha 和 Chai 是两个非常流行的测试框架。本文将介绍如何使用 Mocha 和 Chai 测试 React 应用。</p><h2>为什么不用 react 官方推荐的 Jest 测试?</h2><p>jest 最初是为测试 react app 设计的。相比 Jest, Mocha 具有更高的灵活性（后者可以且必须进行额外的配置，而前者开箱即用），可以在浏览器和 node 环境下运行，并且支持一些复杂的语句例如：</p><pre><code class="language-js">expect(person.age).to.be.lte(35).and.to.be.gte(18);</code></pre><p>由于我的项目并非单个 react app 而是 monorepo，所以在 workspace 根目录使用 mocha 无疑是更好的选择。</p><h2>安装依赖</h2><p>Mocha 本身是不支持 JSX 的，所以我们要安装一些依赖：</p><pre><code class="language-bash">yarn add mocha -D
-
-# Babel 配套插件
-yarn add -W -D @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/register
-
-# 此依赖用于渲染 react, 请根据 react 版本选择依赖版本！
-yarn add react-test-renderer@17.0.2 -D -W</code></pre><blockquote><p>注意：如果你在 workspace 根目录安装测试依赖（推荐的做法），记得添加 -W 参数。</p></blockquote><h2>配置 Mocha</h2><p>在项目根目录创建一个 <code>.mocharc.js</code> 文件，内容如下：</p><pre><code class="language-js">module.exports = {
-	extension: [&quot;js&quot;, &quot;mjs&quot;, &quot;ts&quot;, &quot;tsx&quot;],
-	ignore: [&quot;**/build/**&quot;, &quot;**/node_modules/**&quot;],
-	recursive: true,
-	timeout: (process.env.CIRCLECI === &quot;true&quot; ? 5 : 2) * 1000, // Circle CI has low-performance CPUs.
-	reporter: &quot;dot&quot;,
-	require: [require.resolve(&quot;./test/utils/setupBabel&quot;)],
-	&quot;watch-ignore&quot;: [
-		&quot;.git&quot;,
-		&quot;**/node_modules/**&quot;,
-		&quot;**/build/**&quot;,
-		&quot;docs/.next/**&quot;,
-	],
-};</code></pre><p>在 <code>/test/utils/setupBabel</code> 目录创建一个 <code>setupBabel.js</code> 文件</p><pre><code class="language-js">require(&quot;@babel/register&quot;)({
-	extensions: [&quot;.js&quot;, &quot;.ts&quot;, &quot;.tsx&quot;],
-});</code></pre><h2>配置 Babel</h2><p>有了 babel， 我们可以使用 cjs 格式的测试文件而无需进行 <code>&quot;type&quot;: &quot;module&quot;</code> 这种令人讨厌的设置。</p><pre><code class="language-js">// babel.config.js
-module.exports = function getBabelConfig(api) {
-	const useESModules = api.env([&quot;legacy&quot;, &quot;modern&quot;, &quot;stable&quot;, &quot;rollup&quot;]);
-
-	const presets = [
-		[
-			&quot;@babel/preset-env&quot;,
-			{
-				browserslistEnv: process.env.BABEL_ENV || process.env.NODE_ENV,
-				modules: useESModules ? false : &quot;commonjs&quot;,
-			},
-		],
-		[
-			&quot;@babel/preset-react&quot;,
-			{
-				runtime: &quot;automatic&quot;,
-			},
-		],
-		&quot;@babel/preset-typescript&quot;,
-	];
-
-	const plugins = [];
-
-	return {
-		assumptions: {
-			noDocumentAll: true,
-		},
-		presets,
-		plugins,
-		ignore: [/@babel[\\|/]runtime/], // Fix a Windows issue.
-		overrides: [
-			{
-				exclude: /\.test\.(js|ts|tsx)$/,
-				plugins: [&quot;@babel/plugin-transform-react-constant-elements&quot;],
-			},
-		],
-	};
-};</code></pre><h2>测试</h2><p>在 <code>package.json</code> 添加快捷脚本，此处请根据实际项目配置：</p><pre><code class="language-json">&quot;test:unit&quot;: &quot;cross-env NODE_ENV=test mocha --config .mocharc.js &#x27;packages/kindle-ui/**/*.test.{mjs,js,ts,tsx}&#x27; &#x27;test/utils/**/*.test.{js,ts,tsx}&#x27;&quot;</code></pre><p>之后我们可以愉快地编写测试了。</p><p>关于 react-test-renderer 的更多用法，可以参考<a href="https://reactjs.org/docs/test-renderer.html">官方文档</a>。</p><p>此处列举一些常见测试场景供参考：</p><h3>检查组件类型</h3><pre><code class="language-js">import * as React from &quot;react&quot;;
-import { expect } from &quot;chai&quot;;
-import renderer from &quot;react-test-renderer&quot;;
-// 建议使用 link 后的包，以确保贴近实际场景。
-import { ListItem } from &quot;@kindle-ui/core&quot;;
-
-describe(&quot;&lt;ListItem /&gt;&quot;, () =&gt; {
-	describe(&quot;prop: component&quot;, () =&gt; {
-		it(&quot;renders a div&quot;, () =&gt; {
-			const component = renderer.create(&lt;ListItem /&gt;);
-			expect(component.toTree().rendered).to.have.property(&quot;type&quot;, &quot;div&quot;);
-		});
-
-		it(&quot;renders a link&quot;, () =&gt; {
-			const component = renderer.create(
-				&lt;ListItem component=&quot;a&quot; href=&quot;#&quot; /&gt;
-			);
-			expect(component.toTree().rendered).to.have.property(&quot;type&quot;, &quot;a&quot;);
-		});
-	});
-});</code></pre><h3>检查渲染结果</h3><pre><code class="language-js">it(&quot;render in Container&quot;, () =&gt; {
-	expect(() =&gt;
-		renderer.create(
-			&lt;Container&gt;
-				&lt;ListItem&gt;test&lt;/ListItem&gt;
-			&lt;/Container&gt;
-		)
-	).not.to.throw();
-});</code></pre><h2>改进</h2><p>react 官方提供的测试库功能比较局限，例如，我们无法测试一个元素是否可见，也无法模拟用户操作页面。</p><p>所以，我们可以使用<code>@testing-library/react</code>来进行进一步改进。</p><p>注意，node 环境下没有 document 对象，需要使用 JSDom 这个库模拟一个。</p><p>先为 mocha 添加钩子：</p><pre><code class="language-js">// .mocharc.js
-
-module.exports = {
-    {/**... */}
-	beforeEach: () =&gt; {
-		const dom = new JSDOM(&quot;&quot;, {
-			pretendToBeVisual: true,
-			url: &quot;http://localhost&quot;,
-		});
-		global.window = dom.window;
-	},
-};</code></pre><p>更新测试代码：</p><pre><code class="language-js">import { queries, within } from &quot;@testing-library/react/pure&quot;;
-
-describe(&quot;general rendering&quot;, async () =&gt; {
-	it(&quot;render in Container&quot;, async () =&gt; {
-		render(&lt;ListItem&gt;KindleUI&lt;/ListItem&gt;);
-
-		expect(
-			within(document.body, { ...queries })
-				.getByRole(&quot;ListItem&quot;)
-				.toHaveTextContent(&quot;KindleUI&quot;)
-		).to.be(true);
-	});
-});</code></pre>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
             <title><![CDATA[Unity游戏开发学习记录]]></title>
             <link>https://rene.wang/p/Unity-Learning-Log</link>
             <guid>Unity-Learning-Log</guid>
@@ -326,6 +201,165 @@ export default [
 }</code></pre><p>循着控制台的提示查了官档：</p><blockquote><p>The SyntheticEvent is pooled. This means that the SyntheticEvent object will be reused and all properties will be nullified after the event callback has been invoked. This is for performance reasons. such, you cannot access the event in an asynchronous way.
 SyntheticEvent 是合并而来。这意味着 SyntheticEvent 对象可能会被重用，而且在事件回调函数被调用后，所有的属性都会无效。出于性能考虑，你不能通过异步访问事件。</p></blockquote><p>这下就明白了，只要在回调函数之前用变量保存事件属性就可以在回调里使用了</p><h3>忽略隐式类型转换而浪费大把时间</h3><p>开发设置页面时，列表组件会返回选中项目的下标，而设置业务函数没有值传入就会退出。</p><pre><code class="language-js">if (!name || !value) return originSetting;</code></pre><p>这样写的话，如果 value 为 0 也会退出...</p><h4>解决方案</h4><pre><code class="language-js">if (!name || (!value &amp;&amp; value !== 0)) return originSetting;</code></pre><p>ECMA2020 新特性有对类似问题的解决方案</p><pre><code class="language-js">let number = 0;
 let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的小程序逐渐发展起来，会不会蚕食浏览器市场呢？</p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[开发一个云端个人助理 · 1]]></title>
+            <link>https://rene.wang/p/develop-an-assistant-one</link>
+            <guid>develop-an-assistant-one</guid>
+            <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p><img alt="Image" src="https://cdn.jsdelivr.net/gh/filess/img12@main/2022/10/04/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png"/></p><p>前几天给 RSSHub 提交了一个 PR，把我所就读的大学的两个学院官网做成了 RSS 源。</p><p>RSS 好是好，但就是缺少即时性，于是打算利用企业微信机器人做一个及时推送的服务， 并把服务范围扩大。</p><h1>关于配置模式的思考</h1><pre><code class="language-plain">{
+	&quot;service&quot;: [
+		{
+			&quot;src&quot;: &quot;./components/core/swpu/is.js&quot;,
+			&quot;config&quot;: {
+				&quot;channel&quot;: [&quot;xyxw&quot;, &quot;tzgg&quot;],
+				&quot;uid&quot;: &quot;123456&quot;,
+				&quot;push&quot;: {
+					&quot;wechat&quot;: {
+						&quot;username&quot;: &quot;WangRenJie&quot;
+					}
+				}
+			}
+		}
+	]
+}</code></pre><p>我想到了几种配置方案：</p><p>由于暂时只有我一个人使用，便使用了第二种方案，并把本该配置在用户字段下的”订阅频道“提到了全局。</p><h1>架构设计</h1><p>由于不确定各个模块的具体逻辑，这方面我也做了很多技术权衡：</p><h2>A.每个模块负责返回最新推文</h2><p>这种模式源于 RSSHub 的实现模式。控制器依次注册每个模块，传递一个上下文方法。</p><p>模块内部有一个定时器，每隔一段时间透过上下文更新推文。</p><p>推文数据保存在控制器，一旦数据不一致则执行推送流程。</p><p>如此，推送逻辑就由控制器处理。好处是，如果以后想抓取其他网站的文章，可以很方便地扩展。但是，后续的开发流程中数据可能污染污染控制器（因为每个网站的推文结构不一样，比如 B 站就会有 video 字段。）</p><h2>B.每个模块执行全部自己的逻辑</h2><p>这个方法简单粗暴，模块只需暴露一个start()方法，控制器直接调用即可。</p><pre><code class="language-plain">	start(interval) {
+        this.instance.forEach((instance) =&gt; {
+			instance.start();
+		});
+	}</code></pre><p>如果后续要扩展，比如用户选择推送逻辑，也可以提取出公共组件。</p><p>并且，以后可能会有一些不需要推送的服务，例如网课签到。</p><p>这也是最终采用的代码。</p><h2>C.每个模块提供一个更新、推送方法</h2><p>看似简洁，事实上这是一个很糟糕的设计，数据到了上游，但是数据消费却到了下游。</p><h1>理解发布-订阅模式</h1><p>事实上，这并非是一个标准的发布-订阅模式。</p><p>我们先来看看入口函数如何调用个人助理：</p><pre><code class="language-plain">assistant.regsiter(&quot;./components/core/swpu/is.js&quot;, {
+	channel: [&quot;tzgg&quot;, &quot;xyxw&quot;],
+	uid: &quot;123456&quot;,
+	push: [&quot;wechat&quot;],
+}) &amp;&amp; assistant.start();</code></pre><p>这确实是标准的订阅模式。</p><p>如果 push 中写进一个具体的推送方法，并且每个模块仅仅返回最新的推文，那么发布者（控制器）则会存储一系列推送函数，一旦模块返回了最新的推文，就依次执行发布流程。</p><p>但本项目中，推送流程其实由控制器自己调度了（事实上，每个模块都是控制器的组成部分，此处推送逻辑在模块里面）。所以仅仅实现了订阅模式。</p><h1>后续开发</h1><p>基于发布订阅模式，我保留了许多方法，例如list() destory()，后续可以搭配 Web 应用进行远程管理。</p><p>国内开放 API 的 IM 平台还比较少，后续将接入国外的一些平台。值得一提的是，配置结构可能就要采取”订阅源“和”用户“分开存储的逻辑。</p><p>项目地址: github.com/rivertwilight/assistant</p>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[程序员提问的艺术]]></title>
+            <link>https://rene.wang/p/how-to-ask-a-question</link>
+            <guid>how-to-ask-a-question</guid>
+            <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>昨天在群里看见有朋友谈到程序员提问的艺术，我也写写我自己的想法。</p><p>编程遇到问题，太正常不过了。</p><p>为别人解决问题也可以提高自己的技术，但是让别人回答一个低质量、不走心的问题无疑是浪费双方时间。
+<img alt="Image" src="https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGweKtPFd70m0HvFop2Bh2jBlYJbv4eriaAjwHwfenKt4pw9oJ4PG5OHA/640?wx_fmt=jpeg"/></p><p>提问题之前，确保：</p><ul><li>你已经使用国外的搜索引擎搜索过了（国外的资源相对国内多）</li><li>你已经查阅过相关工具的文档</li><li>你已经尝试过自己解决</li><li>你已经排查了一些常见的外部因素，例如网络、硬件问题</li></ul><p>不要觉得搜索引擎搜不到，这世界 7,200,000,000 人，总有人会碰到一样的问题并发布出来。</p><p>单独讲讲搜索引擎。要避免使用 &quot;how&quot;&quot;where&quot; 等疑问词，而是使用关键词搜索。比如，我想知道 Mysql 如何列出所有的用户，</p><p>√ 好的做法应该是：
+<img alt="Image" src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGN6LtW4SaJCWicW612icwKapBhGSttyXg9qE4bZLG41NOwZhCeuQGseDw/640?wx_fmt=png"/></p><p>❌ 而不是：
+<img alt="Image" src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGVbeIibkTvM3RDFicofIcGw9KUbnygZ1KoicMjSVt9SRMY8WDvjS9mjxug/640?wx_fmt=png"/></p><p>这同样适用于大部分搜索场景。</p><p>提问时，确保提供：</p><ul><li>相关场景描述，包括使用的系统、库 / 工具、语言等等</li><li>实际的表现</li><li>期望的表现</li><li>必要时提供最小复现样本</li></ul><p>提问后，应该做到：</p><ul><li>积极响应别人要求的细节补充</li><li>解决后回复一下别人</li></ul>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
+            <title><![CDATA[使用 Mocha + chai 测试 React 应用]]></title>
+            <link>https://rene.wang/p/testing-react-with-mocha</link>
+            <guid>testing-react-with-mocha</guid>
+            <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[&lt;hr /&gt;<p>最近在继续开发之前的 Kindle UI 库，想到该写一下测试，于是决定使用 Mocha 的测试方案（尝试一些新东西）。</p><p>（此段由GPT生成👉）在开发过程中，保证代码质量和正确性是非常重要的。测试是达到这个目的的有效方法之一，特别是在 JavaScript 开发中。在 React 应用开发中，Mocha 和 Chai 是两个非常流行的测试框架。本文将介绍如何使用 Mocha 和 Chai 测试 React 应用。</p><h2>为什么不用 react 官方推荐的 Jest 测试?</h2><p>jest 最初是为测试 react app 设计的。相比 Jest, Mocha 具有更高的灵活性（后者可以且必须进行额外的配置，而前者开箱即用），可以在浏览器和 node 环境下运行，并且支持一些复杂的语句例如：</p><pre><code class="language-plain">expect(person.age).to.be.lte(35).and.to.be.gte(18);Q</code></pre><p>由于我的项目并非单个 react app 而是 monorepo，所以在 workspace 根目录使用 mocha 无疑是更好的选择。</p><h2>安装依赖</h2><p>Mocha 本身是不支持 JSX 的，所以我们要安装一些依赖：</p><pre><code class="language-shell">yarn add mocha -D
+
+# Babel 配套插件
+yarn add -W -D @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/register
+
+# 此依赖用于渲染 react, 请根据 react 版本选择依赖版本！
+yarn add react-test-renderer@17.0.2 -D -W</code></pre><blockquote><p>注意：如果你在 workspace 根目录安装测试依赖（推荐的做法），记得添加 -W 参数。</p></blockquote><h2>配置 Mocha</h2><p>在项目根目录创建一个 .mocharc.js 文件，内容如下：</p><pre><code class="language-javascript">module.exports = {
+	extension: [&quot;js&quot;, &quot;mjs&quot;, &quot;ts&quot;, &quot;tsx&quot;],
+	ignore: [&quot;**/build/**&quot;, &quot;**/node_modules/**&quot;],
+	recursive: true,
+	timeout: (process.env.CIRCLECI === &quot;true&quot; ? 5 : 2) * 1000, // Circle CI has low-performance CPUs.
+	reporter: &quot;dot&quot;,
+	require: [require.resolve(&quot;./test/utils/setupBabel&quot;)],
+	&quot;watch-ignore&quot;: [
+		&quot;.git&quot;,
+		&quot;**/node_modules/**&quot;,
+		&quot;**/build/**&quot;,
+		&quot;docs/.next/**&quot;,
+	],
+};</code></pre><p>在 /test/utils/setupBabel 目录创建一个 setupBabel.js 文件</p><pre><code class="language-javascript">require(&quot;@babel/register&quot;)({
+	extensions: [&quot;.js&quot;, &quot;.ts&quot;, &quot;.tsx&quot;],
+});</code></pre><h2>配置 Babel</h2><p>有了 babel， 我们可以使用 cjs 格式的测试文件而无需进行 &quot;type&quot;: &quot;module&quot; 这种令人讨厌的设置。</p><pre><code class="language-plain">// babel.config.js
+module.exports = function getBabelConfig(api) {
+	const useESModules = api.env([&quot;legacy&quot;, &quot;modern&quot;, &quot;stable&quot;, &quot;rollup&quot;]);
+
+	const presets = [
+		[
+			&quot;@babel/preset-env&quot;,
+			{
+				browserslistEnv: process.env.BABEL_ENV || process.env.NODE_ENV,
+				modules: useESModules ? false : &quot;commonjs&quot;,
+			},
+		],
+		[
+			&quot;@babel/preset-react&quot;,
+			{
+				runtime: &quot;automatic&quot;,
+			},
+		],
+		&quot;@babel/preset-typescript&quot;,
+	];
+
+	const plugins = [];
+
+	return {
+		assumptions: {
+			noDocumentAll: true,
+		},
+		presets,
+		plugins,
+		ignore: [/@babel[\\\\|/]runtime/], // Fix a Windows issue.
+		overrides: [
+			{
+				exclude: /\\.test\\.(js|ts|tsx)$/,
+				plugins: [&quot;@babel/plugin-transform-react-constant-elements&quot;],
+			},
+		],
+	};
+};</code></pre><h2>测试</h2><p>在 package.json 添加快捷脚本，此处请根据实际项目配置：</p><pre><code class="language-plain">&quot;test:unit&quot;: &quot;cross-env NODE_ENV=test mocha --config .mocharc.js &#x27;packages/kindle-ui/**/*.test.{mjs,js,ts,tsx}&#x27; &#x27;test/utils/**/*.test.{js,ts,tsx}&#x27;&quot;</code></pre><p>之后我们可以愉快地编写测试了。</p><p>关于 react-test-renderer 的更多用法，可以参考官方文档。</p><p>此处列举一些常见测试场景供参考：</p><pre><code class="language-plain">import * as React from &quot;react&quot;;
+import { expect } from &quot;chai&quot;;
+import renderer from &quot;react-test-renderer&quot;;
+// 建议使用 link 后的包，以确保贴近实际场景。
+import { ListItem } from &quot;@kindle-ui/core&quot;;
+
+describe(&quot;&lt;ListItem /&gt;&quot;, () =&gt; {
+	describe(&quot;prop: component&quot;, () =&gt; {
+		it(&quot;renders a div&quot;, () =&gt; {
+			const component = renderer.create(&lt;ListItem /&gt;);
+			expect(component.toTree().rendered).to.have.property(&quot;type&quot;, &quot;div&quot;);
+		});
+
+		it(&quot;renders a link&quot;, () =&gt; {
+			const component = renderer.create(
+				&lt;ListItem component=&quot;a&quot; href=&quot;#&quot; /&gt;
+			);
+			expect(component.toTree().rendered).to.have.property(&quot;type&quot;, &quot;a&quot;);
+		});
+	});
+});</code></pre><pre><code class="language-plain">it(&quot;render in Container&quot;, () =&gt; {
+	expect(() =&gt;
+		renderer.create(
+			&lt;Container&gt;
+				&lt;ListItem&gt;test&lt;/ListItem&gt;
+			&lt;/Container&gt;
+		)
+	).not.to.throw();
+});</code></pre><h2>改进</h2><p>react 官方提供的测试库功能比较局限，例如，我们无法测试一个元素是否可见，也无法模拟用户操作页面。</p><p>所以，我们可以使用@testing-library/react来进行进一步改进。</p><p>注意，node 环境下没有 document 对象，需要使用 JSDom 这个库模拟一个。</p><p>先为 mocha 添加钩子：</p><pre><code class="language-javascript">// .mocharc.js
+
+module.exports = {
+    {/**... */}
+	beforeEach: () =&gt; {
+		const dom = new JSDOM(&quot;&quot;, {
+			pretendToBeVisual: true,
+			url: &quot;&lt;http://localhost&gt;&quot;,
+		});
+		global.window = dom.window;
+	},
+};</code></pre><p>更新测试代码：</p><pre><code class="language-plain">import { queries, within } from &quot;@testing-library/react/pure&quot;;
+
+describe(&quot;general rendering&quot;, async () =&gt; {
+	it(&quot;render in Container&quot;, async () =&gt; {
+		render(&lt;ListItem&gt;KindleUI&lt;/ListItem&gt;);
+
+		expect(
+			within(document.body, { ...queries })
+				.getByRole(&quot;ListItem&quot;)
+				.toHaveTextContent(&quot;KindleUI&quot;)
+		).to.be(true);
+	});
+});</code></pre>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
@@ -435,6 +469,14 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
+            <title><![CDATA[真正的友情是什么样子的]]></title>
+            <link>https://rene.wang/p/WhatsTrueFriendship</link>
+            <guid>WhatsTrueFriendship</guid>
+            <pubDate>Fri, 04 Jun 2021 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>晚上突发奇想，想查一下真正的友情是什么样子的。</p><p>看了国内外零零总总的答案。</p><p>有人说是&quot;努力出现在你的生活中的（Make an effort to stay in your life)&quot;;</p><p>有人说是&quot;在你需要时出现的”；</p><p>有人说是“把你的困难当作他们的困难的”；</p><p>......</p><p>但我最同意的还是“<strong>三秋不见，如隔一日</strong>”的比喻。想想也快中考了，离我离开烟台的最好的哥们也两年了。那时没有太在意“朋友”这个概念，和大家相处时反倒更加轻松自然，不用考虑关系会不会淡。</p><p>现在呢，可能因为受了周围人的影响，渐渐开始有意识地去界定“朋友”，去界定“熟不熟”，反倒越活越累。还是觉得顺其自然最好。</p><p>至于异性朋友，那更应该顺其自然了，划一道红线，在这红线之外大家都很舒服，就足够了，没必要把“联系“放到日程表里。要是对异性朋友产生了感情，时刻提醒自己那道红线。</p><p>最后贴一个知乎的回答：</p><blockquote><p>之前一直觉得友情是无话不谈，不会因为时间，距离而产生隔阂，双方一直以对方为依靠和安全感但是现在我发现，现实中的友谊是，有可能有那么一段时间，你们会忽视对方，甚至有的时候会厌烦对方，觉得对方的缺点难以容忍，但是经过慢慢的磨合，慢慢地学会包容对方的缺点，慢慢地也学会在和对方相处时调整自己，即使经历过了这些，两个人仍然是朋友，虽然有过各种不满，但从未放弃过对方。真心觉得<strong>长久朋友之间，不止有美好，其实也有很多不好的回忆，只有这些不好，才显得这段友情更加珍贵。</strong></p></blockquote>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
             <title><![CDATA[五天不使用互联网，我的经历和感受]]></title>
             <link>https://rene.wang/p/Without-Internet</link>
             <guid>Without-Internet</guid>
@@ -447,8 +489,8 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <link>https://rene.wang/p/captialisation</link>
             <guid>captialisation</guid>
             <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h2>在开始折腾前请注意：</h2><ul><li>不必要逼自己开通一个账户/卡片，实在不行大可放弃</li><li>理财有风险，就算大公司也可能跑路，人在国内建议钱放国内</li><li>除非必要，不要提供虚假的 KYC 信息</li></ul><h2>海外地址</h2><p>海外地址是许多金融相关账号注册的必要条件，大致可分为三种等级：</p><p>目前笔者使用的是英国 Postbox。从英国转运两张电话卡到国内的资费如下（拥有地址并不收取租金）：
-<img alt="Image" src="https://i.ibb.co/wNsjdpZ/postbox.png"/></p><p>笔者使用的是带追踪的国际邮件，比平邮稍贵。共计 13.62 英镑。</p><h2>iban 个人银行账户</h2><p>这是申请流程最复杂的一种资产。笔者只尝试过 Bitfnex，最终因为地址证明处理不当被识破，无奈只好放弃。</p><p>你需要提供护照、银行流水、地址证明。所有证件的名字必须全部匹配。</p><p>也可以参考这个 Youtube 视频</p><h2>海外卡组织在国内发行的卡</h2><p>截至 2023 年 2 月，国内已知可申请的境外发卡行的卡片有：</p><p>其中 BOC 代表中国银行，CIB 代表兴业银行，HSBC 代表汇丰银行。</p><p>Visa 和 Mastercard 是全球比较受欢迎的组织，AMEX 主要在美国提供服务。</p><p>上面提到的卡片钟，实测：</p><ul><li>长城跨境通可以绑定 Google Pay 并消费，支持支付 Google Play Developer 注册费用，不支持甲骨文验证</li><li>运通卡支持 Google Play 消费</li></ul><p>顺带提一句现汇和现钞的区别：现汇相当于你银行账户上的存款，是存在银行卡、存折、电子账户上的钱，是帐面上的外币；而现钞是你手头拥有的实实在在的外国纸币。外汇可以在全球自由流通，而外钞则需要监管。</p><h2>海外电话卡</h2><p>目前国内可以独立申请到的海外电话卡有：</p><p>通常海外卡的漫游费用都很高，所以用来科学上网十分不划算，接收短信还是很香的。</p><h2>海外实体银行卡</h2><p>笔者暂时还没有折腾过。如果你到了香港，不妨去开一个香港账户。</p><h2>海外虚拟银行卡</h2><p>虚拟银行卡可以完成网上支付的大多数场景。</p><p>上述卡片中，实测：</p><ul><li>Depay 可以支付 Google Play Developer 注册费用，可以绑定支付宝在国内使用</li></ul><h2>法币与虚拟币互转</h2><p>这些工具可以将法币兑换为虚拟币。</p><h2>相关资源/教程</h2><ul><li>Youtube 频道 1</li><li>Youtube 频道 2</li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[&lt;hr /&gt;<h2>在开始折腾前请注意：</h2><ul><li>不必要逼自己开通一个账户/卡片，实在不行大可放弃</li><li>理财有风险，就算大公司也可能跑路，人在国内建议钱放国内</li><li>除非必要，不要提供虚假的 KYC 信息</li></ul><h2>海外地址</h2><p>海外地址是许多金融相关账号注册的必要条件，大致可分为三种等级：</p><p>目前笔者使用的是英国 Postbox。从英国转运两张电话卡到国内的资费如下（拥有地址并不收取租金）：
+<img alt="Image" src="https://i.ibb.co/wNsjdpZ/postbox.png"/></p><p>笔者使用的是带追踪的国际邮件，比平邮稍贵。共计 13.62 英镑。</p><h2>iban 个人银行账户</h2><p>这是申请流程最复杂的一种资产。笔者只尝试过 Bitfnex，最终因为地址证明处理不当被识破，无奈只好放弃。</p><p>你需要提供护照、银行流水、地址证明。所有证件的名字必须全部匹配。</p><p>也可以参考这个Youtube 视频</p><h2>海外卡组织在国内发行的卡</h2><p>截至 2023 年 2 月，国内已知可申请的境外发卡行的卡片有：</p><p>其中 BOC 代表中国银行，CIB 代表兴业银行，HSBC 代表汇丰银行。</p><p>Visa 和 Mastercard 是全球比较受欢迎的组织，AMEX 主要在美国提供服务。</p><p>上面提到的卡片钟，实测：</p><ul><li>长城跨境通可以绑定 Google Pay 并消费，支持支付 Google Play Developer 注册费用，不支持甲骨文验证</li><li>运通卡支持 Google Play 消费</li></ul><p>顺带提一句现汇和现钞的区别：现汇相当于你银行账户上的存款，是存在银行卡、存折、电子账户上的钱，是帐面上的外币；而现钞是你手头拥有的实实在在的外国纸币。外汇可以在全球自由流通，而外钞则需要监管。</p><h2>海外电话卡</h2><p>目前国内可以独立申请到的海外电话卡有：</p><p>通常海外卡的漫游费用都很高，所以用来科学上网十分不划算，接收短信还是很香的。</p><h2>海外实体银行卡</h2><p>笔者暂时还没有折腾过。如果你到了香港，不妨去开一个香港账户。</p><h2>海外虚拟银行卡</h2><p>虚拟银行卡可以完成网上支付的大多数场景。</p><p>上述卡片中，实测：</p><ul><li>Depay 可以支付 Google Play Developer 注册费用，可以绑定支付宝在国内使用</li></ul><h2>法币与虚拟币互转</h2><p>这些工具可以将法币兑换为虚拟币。</p><h2>相关资源/教程</h2><ul><li>Youtube 频道 1</li><li>Youtube 频道 2</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
@@ -464,53 +506,6 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <guid>is-this-meaningful</guid>
             <pubDate>Mon, 10 Apr 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>再次思考这个问题。</p>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
-            <title><![CDATA[开发一个云端个人助理 · 1]]></title>
-            <link>https://rene.wang/p/Develop-An-Assistant-One</link>
-            <guid>Develop-An-Assistant-One</guid>
-            <pubDate>Mon, 18 Jul 2022 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/filess/img12@main/2022/10/04/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png"/></p><p>前几天给 RSSHub 提交了一个 PR，把我所就读的大学的两个学院官网做成了 RSS 源。</p><p>RSS 好是好，但就是缺少即时性，于是打算利用企业微信机器人做一个及时推送的服务， 并把服务范围扩大。</p><h1>关于配置模式的思考</h1><pre><code class="language-json">{
-	&quot;service&quot;: [
-		{
-			&quot;src&quot;: &quot;./components/core/swpu/is.js&quot;,
-			&quot;config&quot;: {
-				&quot;channel&quot;: [&quot;xyxw&quot;, &quot;tzgg&quot;],
-				&quot;uid&quot;: &quot;123456&quot;,
-				&quot;push&quot;: {
-					&quot;wechat&quot;: {
-						&quot;username&quot;: &quot;WangRenJie&quot;
-					}
-				}
-			}
-		}
-	]
-}</code></pre><p>我想到了几种配置方案：</p><ol><li><p>用户为单位，每个用户下面配置他订阅的路由，以及他的推送信息。</p></li><li><p>路由为单位，每个路由下面记录订阅该路由的用户。</p></li></ol><p>由于暂时只有我一个人使用，便使用了第二种方案，并把本该配置在用户字段下的”订阅频道“提到了全局。</p><h1>架构设计</h1><p>由于不确定各个模块的具体逻辑，这方面我也做了很多技术权衡：</p><h2>A.每个模块负责返回最新推文</h2><p>这种模式源于 RSSHub 的实现模式。控制器依次注册每个模块，传递一个上下文方法。</p><p>模块内部有一个定时器，每隔一段时间透过上下文更新推文。</p><p>推文数据保存在控制器，一旦数据不一致则执行推送流程。</p><p>如此，推送逻辑就由控制器处理。好处是，如果以后想抓取其他网站的文章，可以很方便地扩展。但是，后续的开发流程中数据可能污染污染控制器（因为每个网站的推文结构不一样，比如 B 站就会有 video 字段。）</p><h2>B.每个模块执行全部自己的逻辑</h2><p>这个方法简单粗暴，模块只需暴露一个<code>start()</code>方法，控制器直接调用即可。</p><pre><code class="language-javascript">	start(interval) {
-        this.instance.forEach((instance) =&gt; {
-			instance.start();
-		});
-	}</code></pre><p>如果后续要扩展，比如用户选择推送逻辑，也可以提取出公共组件。</p><p>并且，以后可能会有一些不需要推送的服务，例如网课签到。</p><p>这也是最终采用的代码。</p><h2>C.每个模块提供一个更新、推送方法</h2><p>看似简洁，事实上这是一个很糟糕的设计，数据到了上游，但是数据消费却到了下游。</p><h1>理解发布-订阅模式</h1><p>事实上，这并非是一个标准的发布-订阅模式。</p><p>我们先来看看入口函数如何调用个人助理：</p><pre><code class="language-javascript">assistant.regsiter(&quot;./components/core/swpu/is.js&quot;, {
-	channel: [&quot;tzgg&quot;, &quot;xyxw&quot;],
-	uid: &quot;123456&quot;,
-	push: [&quot;wechat&quot;],
-}) &amp;&amp; assistant.start();</code></pre><p>这确实是标准的订阅模式。</p><p>如果 push 中写进一个具体的推送方法，并且每个模块仅仅返回最新的推文，那么发布者（控制器）则会存储一系列推送函数，一旦模块返回了最新的推文，就依次执行发布流程。</p><p>但本项目中，推送流程其实由控制器自己调度了（事实上，每个模块都是控制器的组成部分，此处推送逻辑在模块里面）。所以仅仅实现了订阅模式。</p><h1>后续开发</h1><p>基于发布订阅模式，我保留了许多方法，例如<code>list()</code> <code>destory()</code>，后续可以搭配 Web 应用进行远程管理。</p><p>国内开放 API 的 IM 平台还比较少，后续将接入国外的一些平台。值得一提的是，配置结构可能就要采取”订阅源“和”用户“分开存储的逻辑。</p><p>项目地址: <strong>github.com/rivertwilight/assistant</strong></p>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
-            <title><![CDATA[2023 国内注册 Google Play 开发者终极教程]]></title>
-            <link>https://rene.wang/p/Google-Play-Developer-Registration</link>
-            <guid>Google-Play-Developer-Registration</guid>
-            <pubDate>Sat, 12 Feb 2022 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h2>准备的材料</h2><ul><li>国区 Google 账号：如果不是国区，注册后将无法通过实名验证。笔者最初使用美区账号注册，发现只能使用美国政府发行的证件进行实名认证，且国家无法更改。</li><li>25 美元的注册费用</li><li>带有 Visa/Mastercard/Express 的信用卡或者借记卡。如果国内申请不到，可以使用虚拟信用卡。据笔者了解，兴业银行联合发行的运通实体卡，以及 depay 的虚拟信用卡都可以完成注册费用支付</li><li>居民身份证或者护照</li></ul><h2>申请流程</h2><p>首先，进入浏览器无痕模式。如果你使用的是 Chrome，可以按下 <code>Ctrl+Shift+N</code> 打开无痕模式。</p><p>打开注册<a href="">地址</a>，输入基本信息。在注册阶段输入的大部分信息，在创建后都是可以修改的，所以不必太担心。</p><h2>注册后的注意事项</h2><ul><li>不要长期闲置这个账号，否则会被判定为休眠账户，而面临被删除的风险，且无法退还注册费用。</li></ul><ul><li>不要上传违规应用，请务必详细阅读指南</li></ul><h2>收款</h2><p>国内可以</p><h2>一些意外的处理方法</h2><ul><li>发现是美区账号注册，无法实名认证：联系客服要求删除账号并退款即可</li></ul>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
-            <title><![CDATA[程序员提问的艺术]]></title>
-            <link>https://rene.wang/p/How-To-Ask-A-Question</link>
-            <guid>How-To-Ask-A-Question</guid>
-            <pubDate>Mon, 18 Jul 2022 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<p>昨天在群里看见有朋友谈到程序员提问的艺术，我也写写我自己的想法。</p><p>编程遇到问题，太正常不过了。</p><p>为别人解决问题也可以提高自己的技术，但是<strong>让别人回答一个低质量、不走心的问题无疑是浪费双方时间</strong>。</p><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGweKtPFd70m0HvFop2Bh2jBlYJbv4eriaAjwHwfenKt4pw9oJ4PG5OHA/640?wx_fmt=jpeg"/></p><p>提问题之前，确保：</p><ul><li>你已经使用国外的搜索引擎搜索过了（国外的资源相对国内多）</li><li>你已经查阅过相关工具的文档</li><li>你已经尝试过自己解决</li><li>你已经排查了一些常见的外部因素，例如网络、硬件问题</li></ul><p>不要觉得搜索引擎搜不到，这世界 7,200,000,000 人，总有人会碰到一样的问题并发布出来。</p><p>单独讲讲搜索引擎。要避免使用 &quot;how&quot;&quot;where&quot; 等疑问词，而是<strong>使用关键词搜索</strong>。比如，我想知道 Mysql 如何列出所有的用户，</p><p>√ 好的做法应该是：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGN6LtW4SaJCWicW612icwKapBhGSttyXg9qE4bZLG41NOwZhCeuQGseDw/640?wx_fmt=png"/></p><p>❌ 而不是：</p><p><img src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGVbeIibkTvM3RDFicofIcGw9KUbnygZ1KoicMjSVt9SRMY8WDvjS9mjxug/640?wx_fmt=png"/></p><p>这同样适用于大部分搜索场景。</p><p>提问时，确保提供：</p><ul><li>相关场景描述，包括使用的系统、库 / 工具、语言等等</li><li>实际的表现</li><li>期望的表现</li><li><strong>必要时提供最小复现样本</strong></li></ul><p>提问后，应该做到：</p><ul><li>积极响应别人要求的细节补充</li><li>解决后回复一下别人</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
@@ -547,7 +542,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
 - 设备：红米 6
 - TL;TD：10 月份把手头 Redmi6 从只会震动黑砖里救出来，到 11 月初尝试了两个周末的刷机，终于在 11 月 27 日成功的把 LineageOS 17 刷入。<p>重要！！：国内的大部分教程都没有提到，由于 MTK 特殊的硬件加密，故直接刷入 REC 会导致手机无法引导 REC，解决方案是下面这个文件。
 <img alt="Image" src="https://i.loli.net/2021/11/28/3lSt1WAnUaoZMbv.png"/></p><h2>总览</h2><p>Step1：把手机降级回 MIUI 10.4.4（酷安上有太多太多教程，但是不要贪心，只能降到 MIUI 10.4.4）</p><p>Step2：用下面提到的 rec 刷入工具刷入（秋之盒这种不行，只能用这个工具！！！）</p><p>Step3：导入你要刷的包和这个 DDE（这一步非常重要！！！！）</p><p>Step4：格式化 data 并且刷入系统，不出意外地话就会开机</p><h2>救砖</h2><p>大概是从去年的 8 月份，在尝试刷机，但是不料，意外成砖，学业繁重，于是就把他搁置在那了，中间尝试过鸟一鸟他，比如用 Mi flash 救一下这种，还是没有办法，放了一直到大概今年的 10 月，突然的时候发现了 MTK 的救砖工具。</p><p>其过程大概就是，先装驱动，由于 MTK 奇妙的特性（搞过 MTK 的都知道，救砖需要在短短的几秒内，从一闪而过的端口里找到他，然后再快速的点安装驱动，详细教程酷安上有），所以光驱动就安装了大概 20 多分钟，因为放久了，没怎么充电，所以还冲了很久的电，用 MTK 工具救砖也是一样的恼火。</p><p>由于小米引入了一个 auth 校验工具，所以，我们还需要用一个绕过工具去绕过，这个过程，亦是痛苦且难整的，所有的工具都是在海外源，所以还需要等着龟速下载。正式开始刷入的时候，并非完全用的是 MTK 的工具，在尝试完 MTk 工具后，手机意外地进入了 FB，于是当机立断，马上用米 flash 刷到 MIUI。</p><h2>PART2 | Escape</h2><p>回到 MIUI 的第一件事情，就是刷第三方 rec，这本是平常不过的操作，但由于 MTK 的特殊性，在刷入 REC 的时候必须禁用 DM 加密，在刷完包之后，也必须再禁用一次，在尝试的过程中，并没有注意到，还有 DM 加密这类东西，于是我直接就用秋之盒工具箱进行刷入操作，我把所有我能找到的 twrp 的 rec 全部试了一遍，国内外的教程也都看了个遍，红米 6 和 6A 的 rec 都刷了遍，电脑上前前后后下了大概 20 多个 recBut，秋之盒的刷入方式是 fastboot flash recovery.img 而针对于 MTK 机型（尤其是红米 6），我们都要加上 fastboot --disable-verity --disable-verification 这类指令，发现这个的时候，最开始的尝试已经过了一年的多时间。</p><h2>PART3 | Resurrection</h2><p>在成功刷入 rec 之后，我迫不及待的刷入 LineageOS 17，在之前的尝试中，我成功的刷入过红米 6a 的 rec，But，如果用红米 6a 的 rec 刷 rom 是刷不进去的，此时离我们最初的起点已经过了一个月了。</p><p>结果发现可以进入开机动画，但是卡住不动了。于是重启，重来。</p><p>已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)<a href="">https://t.me/redmi6official</a>里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！
-<img alt="Image" src="https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png"/></p><h2>Part4 | Adjust</h2><p>这个部分很简单，调度 magisk+LSP 简直不能太简单。</p><h2>PART5 | End？</h2><p>这是玩了 10 年刷机，老机油的坚持，虽然随着时代的前进，系统日渐完善，曾经比较火热的刷机平台停服刷机，也渐渐地淡出舞台。</p><p>但为什么，还是有人坚持还是有人愿意为手机适配刷机包，就像周杰伦无法从我们的记忆中抹去一样，我们念物，其实念的是物背后的情感。初恋为什么忘不了，就是因为她是努力后才得到的。</p><p>感谢机主的坚持和不懈，也感谢做出这个刷 rec 的作者 @MegaFon929!</p><pre><code>	</code></pre>]]></content:encoded>
+<img alt="Image" src="https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png"/></p><h2>Part4 | Adjust</h2><p>这个部分很简单，调度 magisk+LSP 简直不能太简单。</p><h2>PART5 | End？</h2><p>这是玩了 10 年刷机，老机油的坚持，虽然随着时代的前进，系统日渐完善，曾经比较火热的刷机平台停服刷机，也渐渐地淡出舞台。</p><p>但为什么，还是有人坚持还是有人愿意为手机适配刷机包，就像周杰伦无法从我们的记忆中抹去一样，我们念物，其实念的是物背后的情感。初恋为什么忘不了，就是因为她是努力后才得到的。</p><p>感谢机主的坚持和不懈，也感谢做出这个刷 rec 的作者 @MegaFon929!</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
@@ -571,7 +566,7 @@ Scope (_SB.PCI0.LPC)</code></pre><p>4.处理 SSDT-PMC
 Scope (_SB.PCI0.LPCB)</code></pre><p>修改为</p><pre><code class="language-plain">ternal (_SB_.PCI0.LPC, DeviceObj)
 
 Scope (_SB.PCI0.LPC)</code></pre><p>5.编译
-用这个指令</p><pre><code>	</code></pre>]]></content:encoded>
+用这个指令</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
@@ -586,6 +581,14 @@ adb uninstall -k --user 0 com.miui.bugreport
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
+            <title><![CDATA[2023 国内注册 Google Play 开发者终极教程]]></title>
+            <link>https://rene.wang/p/register-google-play-developer</link>
+            <guid>register-google-play-developer</guid>
+            <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>准备的材料</h2><ul><li>国区 Google 账号：如果不是国区，注册后将无法通过实名验证。笔者最初使用美区账号注册，发现只能使用美国政府发行的证件进行实名认证，且国家无法更改。</li><li>25 美元的注册费用</li><li>带有 Visa/Mastercard/Express 的信用卡或者借记卡。如果国内申请不到，可以使用虚拟信用卡。据笔者了解，兴业银行联合发行的运通实体卡，以及 depay 的虚拟信用卡都可以完成注册费用支付</li><li>居民身份证或者护照</li></ul><h2>申请流程</h2><p>首先，进入浏览器无痕模式。如果你使用的是 Chrome，可以按下 Ctrl+Shift+N 打开无痕模式。</p><p>打开注册地址，输入基本信息。在注册阶段输入的大部分信息，在创建后都是可以修改的，所以不必太担心。</p><h2>注册后的注意事项</h2><ul><li>不要长期闲置这个账号，否则会被判定为休眠账户，而面临被删除的风险，且无法退还注册费用。</li><li>不要上传违规应用，请务必详细阅读指南</li></ul><h2>收款</h2><p>国内可以</p><h2>一些意外的处理方法</h2><ul><li>发现是美区账号注册，无法实名认证：联系客服要求删除账号并退款即可</li></ul>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
             <title><![CDATA[bash学习笔记]]></title>
             <link>https://rene.wang/p/Bash-Learing-Notes</link>
             <guid>Bash-Learing-Notes</guid>
@@ -593,14 +596,6 @@ adb uninstall -k --user 0 com.miui.bugreport
             <content:encoded><![CDATA[<p>因为最近开始玩 WSL，就想起搁置了好久的学习计划————bash。这篇文章记录一些重点。
 学习的是<a href="https://wangdoc.com/bash">阮一峰老师的教程</a></p><h2>1</h2><p>文件名有空格时，应使用双引号包裹，否则会变成两个文件。</p><pre><code class="language-shell">$ ls &quot;two words.txt&quot;</code></pre><h2>2</h2><p>每当 Shell 看到以<code>$</code>开头的单词时，就会尝试读取这个变量名对应的值。
 如果变量不存在，Bash 不会报错，而会输出空字符。所以即使 <code>unset</code> 命令删除了变量，还是可以读取这个变量，变量值为空字符串。</p><h2>3</h2><p>除法运算符的返回结果总是整数，比如 5 除以 2，得到的结果是 2，而不是 2.5</p>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
-            <title><![CDATA[真正的友情是什么样子的]]></title>
-            <link>https://rene.wang/p/WhatsTrueFriendship</link>
-            <guid>WhatsTrueFriendship</guid>
-            <pubDate>Fri, 04 Jun 2021 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<p>晚上突发奇想，想查一下真正的友情是什么样子的。</p><p>看了国内外零零总总的答案。</p><p>有人说是&quot;努力出现在你的生活中的（Make an effort to stay in your life)&quot;;</p><p>有人说是&quot;在你需要时出现的”；</p><p>有人说是“把你的困难当作他们的困难的”；</p><p>......</p><p>但我最同意的还是“<strong>三秋不见，如隔一日</strong>”的比喻。想想也快中考了，离我离开烟台的最好的哥们也两年了。那时没有太在意“朋友”这个概念，和大家相处时反倒更加轻松自然，不用考虑关系会不会淡。</p><p>现在呢，可能因为受了周围人的影响，渐渐开始有意识地去界定“朋友”，去界定“熟不熟”，反倒越活越累。还是觉得顺其自然最好。</p><p>至于异性朋友，那更应该顺其自然了，划一道红线，在这红线之外大家都很舒服，就足够了，没必要把“联系“放到日程表里。要是对异性朋友产生了感情，时刻提醒自己那道红线。</p><p>最后贴一个知乎的回答：</p><blockquote><p>之前一直觉得友情是无话不谈，不会因为时间，距离而产生隔阂，双方一直以对方为依靠和安全感但是现在我发现，现实中的友谊是，有可能有那么一段时间，你们会忽视对方，甚至有的时候会厌烦对方，觉得对方的缺点难以容忍，但是经过慢慢的磨合，慢慢地学会包容对方的缺点，慢慢地也学会在和对方相处时调整自己，即使经历过了这些，两个人仍然是朋友，虽然有过各种不满，但从未放弃过对方。真心觉得<strong>长久朋友之间，不止有美好，其实也有很多不好的回忆，只有这些不好，才显得这段友情更加珍贵。</strong></p></blockquote>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
     </channel>

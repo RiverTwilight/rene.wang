@@ -35,6 +35,12 @@
 			"en-US": "Submit"
 		}
 	},
+	"HomePage": {
+		"Features": {
+			"zh-CN": "精选栏目",
+			"en-US": "Features"
+		}
+	},
 	"postList": {
 		"allPosts": { "zh-CN": "查看全部 %s 篇文章", "en-US": "All %s Posts" }
 	}

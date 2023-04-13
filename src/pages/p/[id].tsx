@@ -142,14 +142,12 @@ const generateCatalog = (post) => {
 };
 
 const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
-	// TODO 右上角菜单显示 AboutThisBook
-
 	if (!postProps) return null;
 
 	return (
 		<>
-			{/* <TimeBar /> */}
 			<Typography itemScope itemType="http://schema.org/Article">
+				<meta itemProp="mainEntityOfPage" content={id} />
 				<Cover>
 					{typeof postProps.cover == "string" && (
 						<>
@@ -165,19 +163,15 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 				<h1 itemProp="headline">{postProps.title}</h1>
 				<div className="Textc(secondary)">
 					最后更新于
-					<span itemProp="dateCreated">
+					<time itemProp="datePublished" dateTime={postProps.date}>
 						{postProps.date.includes("T")
 							? formatDate(postProps.date).toLocaleDateString()
 							: parseDate(postProps.date).toLocaleDateString()}
-					</span>
-					{/* &nbsp;分类:
-					{postProps.categories
-						? postProps.categories.map(
-								(cate) =>
-									`${siteConfig.categories[cate][locale]} `
-						  )
-						: "未分类"} */}
+					</time>
 				</div>
+				<meta itemProp="author" content={postProps.author} />
+				<meta itemProp="publisher" content={siteConfig.author} />
+				<meta itemProp="inLanguage" content={locale} />
 				<br />
 				<article itemProp="articleBody">
 					<ReactMarkdown
@@ -190,11 +184,6 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 						source={postContent}
 					></ReactMarkdown>
 				</article>
-				{/* <ReadMore
-				currentId={id}
-				categories={frontmatter.categories}
-				data={recommendPost}
-			/> */}
 			</Typography>
 		</>
 	);

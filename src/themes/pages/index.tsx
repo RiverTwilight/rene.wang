@@ -14,7 +14,7 @@ import {
 } from "@kindle-ui/core";
 import Tab from "@/themes/components/Tab";
 import Text from "@/utils/i18n";
-import { postList } from "../i18n.json";
+import { postList, homePage } from "../i18n.json";
 import type { IPost } from "@/types/index";
 
 const MAX_POST_COUNT = 12;
@@ -66,7 +66,7 @@ function PostList({
 	));
 }
 
-const HomePage = (props: any) => {
+const Home = (props: any) => {
 	const { allPosts, falttedPosts, locale, allCategories } = props;
 	const [activeCategory, setActiveCategory] = useState("All");
 
@@ -84,13 +84,14 @@ const HomePage = (props: any) => {
 		<>
 			<div className="P(10px)">
 				<Card>
-					<CardTitle>精选栏目</CardTitle>
+					<Text dictionary={homePage} language={locale}>
+						<CardTitle>
+							<Text Features />
+						</CardTitle>
+					</Text>
 					<CardContent>
-						<Grid>
-							<GridItem
-								href=""
-								src="https://cdn.sspai.com/2022/09/14/323d5392b32276f64959c20977cbe81a.png?imageMogr2/auto-orient/quality/95/thumbnail/!800x400r/gravity/Center/crop/800x400/interlace/1"
-							/>
+						<Grid gap={1}>
+							<GridItem src="https://cdn.sspai.com/2022/09/14/323d5392b32276f64959c20977cbe81a.png?imageMogr2/auto-orient/quality/95/thumbnail/!800x400r/gravity/Center/crop/800x400/interlace/1" />
 						</Grid>
 					</CardContent>
 				</Card>
@@ -124,4 +125,4 @@ const HomePage = (props: any) => {
 	);
 };
 
-export default HomePage;
+export default Home;

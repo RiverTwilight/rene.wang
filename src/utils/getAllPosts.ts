@@ -173,7 +173,7 @@ export default function getAllPosts(
 			return locale ? child.name === locale : true;
 		});
 
-		console.log(locale, localizedTree);
+		// console.log(locale, localizedTree);
 
 		// console.log("./zh-CN/Tech/Macisfy-Your-Windows".split("/").pop());
 

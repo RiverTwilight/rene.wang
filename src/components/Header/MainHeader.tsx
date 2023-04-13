@@ -67,7 +67,7 @@ const MainHeader: React.FC<HeaderProps> = ({
 				}}
 				battery={86}
 				deviceName={`${currentPage ? `${currentPage.title} - ` : ""}${
-					siteConfig.title
+					siteConfig.title[lang]
 				}`}
 			/>
 			<ActionBar>
@@ -111,16 +111,21 @@ const MainHeader: React.FC<HeaderProps> = ({
 							items={[
 								...menuItems,
 								...pageMenuItems,
-								{
-									textPrimary: "Friends",
-									onClick: () => {
-										router.push("/special");
-									},
-								},
+								// {
+								// 	textPrimary: "Friends",
+								// 	onClick: () => {
+								// 		router.push("/special");
+								// 	},
+								// },
 								{
 									textPrimary: "Github",
 									component: "a",
 									href: siteConfig.author.github,
+								},
+								{
+									textPrimary: "Pixiv",
+									component: "a",
+									href: siteConfig.author.pixiv,
 								},
 								{
 									textPrimary: "Twitter",

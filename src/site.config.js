@@ -1,6 +1,9 @@
 //  TODO i18n
 module.exports = {
-	title: "江村暮的 Kindle",
+	title: {
+		"zh-CN": "江村暮的 Kindle",
+		"en-US": "Rene's Kindle",
+	},
 	root: "https://rene.wang",
 	description: "开发日志、技术文章以及生活随感。",
 	keywords: ["江村暮的博客", "RiverTwilight", "过气码农", "江村暮"],
@@ -10,6 +13,7 @@ module.exports = {
 		twitter: "https://twitter.com/rea1DonandTrump",
 		email: "contact@rene.wang",
 		github: "https://github.com/RiverTwilight",
+		pixiv: "https://www.pixiv.net/en/users/35572742",
 		intro: [
 			{
 				title: "关于作者",

@@ -61,5 +61,11 @@
 			"fr-FR": "Tous les %s articles",
 			"zh-HK": "查看全部 %s 篇文章"
 		}
+	},
+	"homePage": {
+		"Features": {
+			"zh-CN": "精选栏目",
+			"en-US": "Features"
+		}
 	}
 }

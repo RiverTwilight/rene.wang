@@ -55,8 +55,8 @@ const Layout = (props: {
 				/>
 				<meta name="viewport" content="viewport-fit=cover" />
 				<meta
+					content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
 					name="viewport"
-					content="width=device-width,initial-scale=1,maximum-scale=1,user-scaleable=0"
 				/>
 				<title>{showTitle}</title>
 			</Head>
@@ -70,7 +70,7 @@ const Layout = (props: {
 						siteConfig={siteConfig}
 					/>
 					<main>
-						{children}
+						<div style={{ minHeight: "50vh" }}>{children}</div>
 						<br></br>
 						<RelatedLink
 							links={siteConfig.relatedLinks}
