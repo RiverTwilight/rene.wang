@@ -18,7 +18,7 @@ const Layout = (props: {
 }) => {
 	const { currentPage, siteConfig, locale, children, menuItems } = props;
 	const { author, title } = siteConfig;
-	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title}`;
+	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title[locale]}`;
 	const showDescription = currentPage.description || siteConfig.description;
 	// const childrenWithProps = React.Children.map(props.children, (child) => {
 	// 	// checking isValidElement is the safe way and avoids a typescript error too
