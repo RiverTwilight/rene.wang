@@ -4,11 +4,11 @@ import styled from "styled-components";
 import CodeBlock from "@/components/CodeBlock";
 import ImageBlock from "@/components/LazyloadImage";
 import HeadingBlock from "@/components/HeadingBlock";
+import FrameBlock from "@/components/FrameBlock";
 import getPaths from "@/utils/getPaths";
 import getFilename from "@/utils/getFilename";
 import { Typography, TimeBar } from "@kindle-ui/core";
 import { paths } from "../../site.config";
-import { IPost } from "../../types";
 import matter from "gray-matter";
 import parseDate from "@/utils/parseDateStr";
 
@@ -179,6 +179,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 							code: CodeBlock,
 							heading: HeadingBlock,
 							image: ImageBlock,
+							iframe: FrameBlock,
 						}}
 						escapeHtml={false}
 						source={postContent}
