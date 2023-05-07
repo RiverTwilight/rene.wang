@@ -3,6 +3,8 @@ const fs = require("fs").promises;
 const path = require("path");
 const dotenv = require("dotenv");
 
+// https://developers.notion.com/reference/block#bulleted-list-item
+
 dotenv.config();
 
 const NOTION_API_KEY = process.env.NOTION_API_KEY;
