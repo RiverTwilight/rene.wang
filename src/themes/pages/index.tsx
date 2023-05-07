@@ -90,17 +90,21 @@ const Home = (props: any) => {
 						</CardTitle>
 					</Text>
 					<CardContent>
-						<Grid style={{ width: "100%" }} gap={10}>
-							<Link
+						<Grid rowGap={13} gap={10}>
+							{/* <Link
 								passHref
 								href="/p/Macisfy-Your-Windows"
 								legacyBehavior
 							>
 								<GridItem src="https://cdn.sspai.com/2022/09/14/323d5392b32276f64959c20977cbe81a.png?imageMogr2/auto-orient/quality/95/thumbnail/!800x400r/gravity/Center/crop/800x400/interlace/1" />
-							</Link>
+							</Link> */}
 							<GridItem
 								href="https://fav.rene.wang"
 								src="/image/cover/fav.png"
+							/>
+							<GridItem
+								href="https://febook.rene.wang"
+								src="https://febook.rene.wang/images/cover.png"
 							/>
 						</Grid>
 					</CardContent>
