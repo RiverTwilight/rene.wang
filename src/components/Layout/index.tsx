@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import { Container, KindleOasis } from "@kindle-ui/core";
@@ -18,7 +18,9 @@ const Layout = (props: {
 }) => {
 	const { currentPage, siteConfig, locale, children, menuItems } = props;
 	const { author, title } = siteConfig;
-	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${title[locale]}`;
+	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${
+		title[locale]
+	}`;
 	const showDescription = currentPage.description || siteConfig.description;
 	// const childrenWithProps = React.Children.map(props.children, (child) => {
 	// 	// checking isValidElement is the safe way and avoids a typescript error too
@@ -28,6 +30,26 @@ const Layout = (props: {
 	// 	}
 	// 	return child;
 	// });
+
+	const [dark, setDark] = useState(false);
+
+	useEffect(() => {
+		// Check if there's a saved preference in localStorage
+		const localStoragePreference = localStorage.getItem(
+			"COLOR_SCHEME_PREFERENCE"
+		);
+
+		if (localStoragePreference) {
+			setDark(localStoragePreference === "dark");
+		} else {
+			// Query the media preference if no preference is saved in localStorage
+			const darkMediaQuery = window.matchMedia(
+				"(prefers-color-scheme: dark)"
+			);
+			setDark(darkMediaQuery.matches);
+		}
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -62,7 +84,7 @@ const Layout = (props: {
 			</Head>
 			<div className="hidden-xs" style={{ height: "30px" }}></div>
 			<div id="platform">
-				<Container deviceFrame={KindleOasis}>
+				<Container dark={dark} deviceFrame={KindleOasis}>
 					<Header
 						menuItems={menuItems}
 						lang={locale}
