@@ -1509,15 +1509,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kindle-ui/core@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@kindle-ui/core@npm:1.1.1"
+"@kindle-ui/core@npm:latest":
+  version: 1.1.2
+  resolution: "@kindle-ui/core@npm:1.1.2"
   dependencies:
     styled-components: ^5.3.0
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: 5a2c8eb5f6f9fec09e8ad7f7bcfda7a5a71215f5535f67675fbd396aa1989cdce7f70f56ffe0a26a01151a0efde8b4a14bc45c377ca3d0c1b808bd84b64b313b
+  checksum: cf1a82d2fe645fccc8c21cc89ffcd954b6e531389ef576c62889e972e686eaf6096297a39e8077c70bedb00bcd6f69c0d8751b92a43a1bd7b91ae6684ca0a0e8
   languageName: node
   linkType: hard
 
@@ -3838,7 +3838,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nblog@workspace:."
   dependencies:
-    "@kindle-ui/core": ^1.1.1
+    "@kindle-ui/core": latest
     "@notion-stuff/blocks-markdown-parser": ^6.0.0
     "@notionhq/client": ^2.2.3
     "@svgr/webpack": 5.5.0

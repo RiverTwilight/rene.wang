@@ -19,16 +19,16 @@ const AllPost: React.FC<AllPostsProps> = ({
 					{sortedPosts.length &&
 						sortedPosts.map((post) => {
 							return (
-								<Link
-									href={"/p/" + post.id}
-									locale={locale}
-									key={post.id}
-									legacyBehavior
-								>
-									<li>
+								<li>
+									<Link
+										href={"/p/" + post.id}
+										locale={locale}
+										key={post.id}
+										legacyBehavior
+									>
 										{post.frontmatter.title || post.slug}
-									</li>
-								</Link>
+									</Link>
+								</li>
 							);
 						})}
 				</ul>
