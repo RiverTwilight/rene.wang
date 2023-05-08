@@ -4,7 +4,7 @@
         <title>[object Object]</title>
         <link>https://rene.wang</link>
         <description>开发日志、技术文章以及生活随感。</description>
-        <lastBuildDate>Sun, 07 May 2023 08:00:20 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 07 May 2023 08:04:19 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for rene.wng</generator>
         <image>
@@ -204,10 +204,39 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
+            <title><![CDATA[汇编语言入门]]></title>
+            <link>https://rene.wang/p/assembly-for-amateur</link>
+            <guid>assembly-for-amateur</guid>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>前置知识</h2><p>首先，将汇编代码转换为机器码：</p><pre><code class="language-shell">$ yasm -f macho64 hello-world.asm</code></pre><h2>汇编语言是什么</h2><p>CPU是敏捷的，又是愚蠢的。本质上，它只能阅读0和1这两种数字，但是却可以每秒钟进行数百万次运算。看似矛盾的说法，在阅读完本文后，相信读者会有自己的答案。</p><p>我们平时编写的诸如 Java, Python, Javascript 等均属于“高级语言”。计算机（机器）本身是无法理解这些代码的。举个例子，对于有听力障碍的人士，需要手语师将语言转换为手势。</p><p>这些高级编程语言，不能直接在计算机硬件上执行，需要将代码转换为计算机可以理解的机器语言（通常是机器代码或字节码）。</p><p>虽然高级编程语言具有易读、易编写和跨平台等优点，但作为低级语言，汇编语言在某些情况下仍然具有重要意义。它可以：</p><ul><li>直接与系统硬件交互</li><li>消耗更少的资源，可用于优化性能</li></ul><p>需要注意的是，无论高级语言还是低级语言，最终都需要先转换为机器码才能运行。</p><p>掌握汇编语言后，你可以收获：</p><ul><li>深入理解计算机内部工作原理</li><li>优化现有高级语言代码的性能</li><li>编写操作系统和底层驱动程序</li><li>逆向破解程序</li></ul><p>常见的汇编语言类型有：</p><ul><li>X86</li><li>ARM</li><li>6502</li><li>…</li></ul><h2>机器码</h2><p>机器码是CPU可以直接运行的代码。通常情况下，我们不需要手动编写机器码，而是使用汇编器将汇编代码（或者其他高级语言）转换为机器码。</p><p>机器码大概长这样：</p><pre><code class="language-javascript">10111000000000000000011
+00000000010100000000110</code></pre><p>然而这样的代码难以记忆又不方便调式，于是人们造出了汇编语言。</p><p>汇编语言的核心是汇编指令。</p><p>在汇编语言中，我们可以使用寄存器来存储变量。例如，使用mov指令将数据存储到寄存器中，使用add指令将两个寄存器中的数据相加。</p><p>函数是汇编语言中的一个重要概念。与高级语言中的函数类似，汇编语言中的函数也可以接受参数并返回值。我们可以使用call指令来调用函数，使用ret指令返回函数结果。</p><p>下面我们将讲解汇编语言中的常见用法。</p><h2>变量操作</h2><h2>条件控制</h2><p>在Javascript中，常见的条件控制语法如下：</p><pre><code class="language-javascript">if (condition) {
+  // do something
+} else {
+  // do something else
+}</code></pre><p>在汇编语言中，我们可以使用cmp指令进行比较，使用je和jne指令进行跳转：</p><p>其中：</p><ul><li>je 代表 Jump if Equal</li><li>jne 代表 Jump if Not Equal</li></ul><pre><code class="language-plain">    mov eax, 1      ; set eax to 1
+    cmp eax, 1      ; compare eax to 1
+    je true_label   ; jump to true_label if equal
+    ; do something if not equal
+    jmp end_label   ; jump to end_label
+true_label:
+    ; do something if equal
+end_label:</code></pre><p>以上代码将实现一个简单的if/else语句块。</p><h2>循环处理</h2><p>由于汇编语言缺少很多更高级语言的“语法糖”，很多场景下我们需要模拟一些高级语言的特性。</p><p>例如，在Javascript中的循环写法如下</p><pre><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+  // do something
+}</code></pre><p>在汇编语言中，我们可以使用cmp指令进行比较，使用jmp指令进行跳转：</p><pre><code class="language-plain">    mov rcx, 0      ; initialize counter
+loop_start:
+    cmp rcx, 10     ; compare counter to 10
+    jge loop_end    ; jump to end if greater than or equal to 10
+    ; do something
+    inc rcx         ; increment counter
+    jmp loop_start  ; jump to loop_start
+loop_end:</code></pre><p>以上代码将实现一个从0到9的计数器。</p><h2>函数</h2><h2>实战：编写一个汇编程序</h2>]]></content:encoded>
+            <author>contact@rene.wang (江村暮)</author>
+        </item>
+        <item>
             <title><![CDATA[开发一个云端个人助理 · 1]]></title>
             <link>https://rene.wang/p/develop-an-assistant-one</link>
             <guid>develop-an-assistant-one</guid>
-            <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p><img alt="Image" src="https://cdn.jsdelivr.net/gh/filess/img12@main/2022/10/04/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png"/></p><p>前几天给 RSSHub 提交了一个 PR，把我所就读的大学的两个学院官网做成了 RSS 源。</p><p>RSS 好是好，但就是缺少即时性，于是打算利用企业微信机器人做一个及时推送的服务， 并把服务范围扩大。</p><h1>关于配置模式的思考</h1><pre><code class="language-plain">{
 	&quot;service&quot;: [
 		{
@@ -238,7 +267,7 @@ let myNumber = number ?? 7; // =&gt; 0</code></pre><h2>思考</h2><p>微信的�
             <title><![CDATA[程序员提问的艺术]]></title>
             <link>https://rene.wang/p/how-to-ask-a-question</link>
             <guid>how-to-ask-a-question</guid>
-            <pubDate>Sat, 15 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>昨天在群里看见有朋友谈到程序员提问的艺术，我也写写我自己的想法。</p><p>编程遇到问题，太正常不过了。</p><p>为别人解决问题也可以提高自己的技术，但是让别人回答一个低质量、不走心的问题无疑是浪费双方时间。
 <img alt="Image" src="https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGweKtPFd70m0HvFop2Bh2jBlYJbv4eriaAjwHwfenKt4pw9oJ4PG5OHA/640?wx_fmt=jpeg"/></p><p>提问题之前，确保：</p><ul><li>你已经使用国外的搜索引擎搜索过了（国外的资源相对国内多）</li><li>你已经查阅过相关工具的文档</li><li>你已经尝试过自己解决</li><li>你已经排查了一些常见的外部因素，例如网络、硬件问题、重启系统</li></ul><p>不要觉得搜索引擎搜不到，这世界 7,200,000,000 人，总有人会碰到一样的问题并发布出来。</p><p>单独讲讲搜索引擎。要避免使用 &quot;how&quot;&quot;where&quot; 等疑问词，而是使用关键词搜索。比如，我想知道 Mysql 如何列出所有的用户，</p><p>√ 好的做法应该是：
 <img alt="Image" src="https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGN6LtW4SaJCWicW612icwKapBhGSttyXg9qE4bZLG41NOwZhCeuQGseDw/640?wx_fmt=png"/></p><p>❌ 而不是：
@@ -259,7 +288,7 @@ uptime    查看登陆多久、多少用户，负载</code></pre><ul><li>历史�
             <title><![CDATA[使用 Mocha + chai 测试 React 应用]]></title>
             <link>https://rene.wang/p/testing-react-with-mocha</link>
             <guid>testing-react-with-mocha</guid>
-            <pubDate>Tue, 11 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[&lt;hr /&gt;<p>最近在继续开发之前的 Kindle UI 库，想到该写一下测试，于是决定使用 Mocha 的测试方案（尝试一些新东西）。</p><p>（此段由GPT生成👉）在开发过程中，保证代码质量和正确性是非常重要的。测试是达到这个目的的有效方法之一，特别是在 JavaScript 开发中。在 React 应用开发中，Mocha 和 Chai 是两个非常流行的测试框架。本文将介绍如何使用 Mocha 和 Chai 测试 React 应用。</p><h2>为什么不用 react 官方推荐的 Jest 测试?</h2><p>jest 最初是为测试 react app 设计的。相比 Jest, Mocha 具有更高的灵活性（后者可以且必须进行额外的配置，而前者开箱即用），可以在浏览器和 node 环境下运行，并且支持一些复杂的语句例如：</p><pre><code class="language-plain">expect(person.age).to.be.lte(35).and.to.be.gte(18);Q</code></pre><p>由于我的项目并非单个 react app 而是 monorepo，所以在 workspace 根目录使用 mocha 无疑是更好的选择。</p><h2>安装依赖</h2><p>Mocha 本身是不支持 JSX 的，所以我们要安装一些依赖：</p><pre><code class="language-shell">yarn add mocha -D
 
 # Babel 配套插件
@@ -498,7 +527,7 @@ describe(&quot;general rendering&quot;, async () =&gt; {
             <title><![CDATA[海外走资入门指南：银行卡、电话卡与 iban]]></title>
             <link>https://rene.wang/p/captialisation</link>
             <guid>captialisation</guid>
-            <pubDate>Sat, 15 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>在开始折腾前请注意：</h2><ul><li>不必要逼自己开通一个账户/卡片，实在不行大可放弃</li><li>理财有风险，就算大公司也可能跑路，人在国内建议钱放国内</li><li>除非必要，不要提供虚假的 KYC 信息</li></ul><h2>海外地址</h2><p>海外地址是许多金融相关账号注册的必要条件，大致可分为三种等级：</p><p>目前笔者使用的是英国 Postbox。从英国转运两张电话卡到国内的资费如下（拥有地址并不收取租金）：
 <img alt="Image" src="https://i.ibb.co/wNsjdpZ/postbox.png"/></p><p>笔者使用的是带追踪的国际邮件，比平邮稍贵。共计 13.62 英镑。</p><h2>iban 个人银行账户</h2><p>这是申请流程最复杂的一种资产。笔者只尝试过 Bitfnex，最终因为地址证明处理不当被识破，无奈只好放弃。</p><p>你需要提供护照、银行流水、地址证明。所有证件的名字必须全部匹配。</p><p>也可以参考这个Youtube 视频</p><h2>海外卡组织在国内发行的卡</h2><p>截至 2023 年 2 月，国内已知可申请的境外发卡行的卡片有：</p><p>其中 BOC 代表中国银行，CIB 代表兴业银行，HSBC 代表汇丰银行。</p><p>Visa 和 Mastercard 是全球比较受欢迎的组织，AMEX 主要在美国提供服务。</p><p>上面提到的卡片钟，实测：</p><ul><li>长城跨境通可以绑定 Google Pay 并消费，支持支付 Google Play Developer 注册费用，不支持甲骨文验证</li><li>运通卡支持 Google Play 消费</li></ul><p>顺带提一句现汇和现钞的区别：现汇相当于你银行账户上的存款，是存在银行卡、存折、电子账户上的钱，是帐面上的外币；而现钞是你手头拥有的实实在在的外国纸币。外汇可以在全球自由流通，而外钞则需要监管。</p><p>如果中国银行的多币种卡出现外汇无法转换为人民币的情况，请先把外汇转移到另一张借记卡上，再进行兑换。</p><h2>海外电话卡</h2><p>目前国内可以独立申请到的海外电话卡有：</p><p>通常海外卡的漫游费用都很高，所以用来科学上网十分不划算，接收短信还是很香的。</p><h2>海外实体银行卡</h2><p>笔者暂时还没有折腾过。如果你到了香港，不妨去开一个香港账户。</p><h2>海外虚拟银行卡</h2><p>虚拟银行卡可以完成网上支付的大多数场景。</p><p>上述卡片中，实测：</p><ul><li>Depay 可以支付 Google Play Developer 注册费用，可以绑定支付宝在国内使用，可以注册 ChatGPT Plus</li></ul><h2>法币与虚拟币互转</h2><p>这些工具可以将法币兑换为虚拟币。</p><h2>相关资源/教程</h2><ul><li>Youtube 频道 1</li><li>Youtube 频道 2</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
@@ -514,7 +543,7 @@ describe(&quot;general rendering&quot;, async () =&gt; {
             <title><![CDATA[人生的意义？]]></title>
             <link>https://rene.wang/p/is-this-meaningful</link>
             <guid>is-this-meaningful</guid>
-            <pubDate>Mon, 10 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>再次思考这个问题。</p>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>
@@ -546,7 +575,7 @@ describe(&quot;general rendering&quot;, async () =&gt; {
             <title><![CDATA[红米6(cereus)救砖 + 刷第三方ROM教程]]></title>
             <link>https://rene.wang/p/hack-redmi</link>
             <guid>hack-redmi</guid>
-            <pubDate>Mon, 10 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[&lt;hr /&gt;
 &gt; 本文最初由 Charles_Su0923 发表于酷安，有改动。
 - 设备：红米 6
@@ -556,34 +585,10 @@ describe(&quot;general rendering&quot;, async () =&gt; {
             <author>contact@rene.wang (江村暮)</author>
         </item>
         <item>
-            <title><![CDATA[黑苹果不完全指南]]></title>
-            <link>https://rene.wang/p/hackitosh</link>
-            <guid>hackitosh</guid>
-            <pubDate>Mon, 10 Apr 2023 16:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[&lt;hr /&gt;<p>会进 bios</p><p>会英语或者翻译</p><p>有手、耐心</p><p>需要一个 U 盘</p><h2>前言</h2><p>本文适合对黑苹果毫无了解的小白。如果你已经买到电脑，想装黑苹果，可以继续阅读。</p><p>若你准备买一台可以装黑苹果设备，可参考 笔记本 台式机</p><p>本文默认你会科学上网、会使用 GitHub 。</p><h2>前期搜索&amp;明确配置</h2><p>黑果的大概启动原理是：修改 config 和 DSDT 来启动 OS X。</p><p>明确配置的一会搜索驱动会少很多事，你需要做的就是去搜一下 「机型+EFI」 。</p><p>有的话,直接跳到安装部分</p><p>你的电脑如果找不到或者太冷门，且也想装黑苹果。就需要自己配 EFI</p><p>配置 EFI</p><p>这是一个 ！大点！</p><p>请结合多方信息，</p><p>不要只看我的这篇、也不要局限于国内互联网。</p><p>你需要知道的信息</p><p>黑苹果不怎么挑 U，但太老、太偏、AMD，就节约时间不考虑了。上网本（奔腾、赛扬就直接 pass 不得行）</p><p>Intel 的集显(HD+一些数字)、AMD 的独立显卡大多都可驱动，这个请搜索 显卡型号+黑苹果”</p><p>网卡能驱动上的很少，能驱动的也有各种特殊方法。
-具体情况请自行搜索，本文不展开</p><p>声卡同理，请自行搜索。</p><h2>下载工作</h2><p>这里的文件参考部分软件
-请记住他的别称（打在括号里的）</p><p>请将你下载好的文件放在一起，软件请安装。请确保所有的东西你都能找到！</p><p>编辑 plist 配置的plist 编辑器 或者OpenCoreCFG</p><p>必备，下载 release最简 EFI</p><p>SSDT</p><p>diskgeunis(区分工具)百度去下</p><p>Lilu</p><p>VirtualSMC</p><p>WhateverGreen !部分 AMD 的集显不能装！</p><p>AICP 编辑工具</p><p>写盘工具</p><p>黑果小兵这里下载一个镜像，可以私聊我给你发一个</p><p>排错 1 排错 2
-这里面是常见的黑苹果会遇到的问题，遇到问题了来这看看</p><p>共 10 个文件</p><p>这里是笔记本的附加部分，台式机请跳过</p><p>因为有电池、键盘鼠标等，笔记本用户大多都需要补充这些驱动。当然凡事无绝对，你无法确保有些吃饱没事干，搞特殊</p><p>这一部分适用于大部分用户，如果这一部分按照广普的教程不行，请百度搜索以下内容：</p><p>所有笔记本用户。</p><ul><li>SMCProcessor.kext</li><li>SMCSuperIO.kext</li><li>SMCLightSensor.kext</li><li>SMCBatteryManager.kext</li><li>SMCDellSensors.kext(仅限 dell 用户)</li></ul><p>共 4 个(戴尔是 5 个)</p><p>AMD 用户 需要额外补充的驱动</p><p>AMDProcesser</p><p>AMDRadeonGPU</p><p>Intel 核显 （也就是整个电脑没有显卡）</p><p>直接用这个OC 工具箱特别省事</p><p>Nvdia</p><p>仅支持到 10.13.6</p><p>参考
-这个部分争议较大，且这个技术比较新，又加上我没有 Nvdia 的显卡无法测试</p><p>所以英伟达用户请自行测试</p><p>AMD 显卡（独显，如果你是 vega8 这类集显，要么等，要么 C++逆向）</p><p>AMD 显卡要么就是免驱</p><p>要么就是仿冒 ID</p><p>这一步 AMD 用户可以大喊一声：AMD YES</p><p>如果你是 vega8 的用户</p><p>且你刚好会 C++，接触过逆向工程。欢迎联系我</p><p>声卡部分，由于不同品牌的网卡有不同的驱动方式</p><p>有些事注入 ID 就好，有些需要单独加驱动，有些又无法驱动</p><p>在此我帮你搜到了全网的大部分声卡驱动，剩下的你自己测试
-声卡</p><p>网卡部分 intel 的看Intel</p><p>其他网卡</p><p>把你的网卡型号在这里面搜索一下</p><p>有你的网卡，你就去对应搜索“型号+黑苹果</p><p>现在，所有的下载工作应该都做完了，你可以稍事休息一下辛苦了，但真正的硬菜马上就来了。少喝酒，多吃菜</p><h2>配置 EFI</h2><p>请按照这个顺序或者你自己不会弄错的顺序来。</p><p>请将下载好的文件解压、安装。如果你看到 XXX.kext 这种文件夹，就证明她已经是最简了</p><p>请将下载好的文件分好类。</p><p>将「最简 EFI」解压到你找到地方</p><p>删除 Tools 文件夹下的所有东西</p><p>把 Drivers 文件下删得只剩 OpenRuntime.efi 「！仔细理解这句话！」</p><p>把这个放在 Drivers 里面</p><p>这一步的目的是让系统可以控制硬件，软件控制硬件
-参考</p><p>1.打开 <!-- -->\<!-- -->SSDT<!-- -->\<!-- --> 打开里的 <!-- -->\<!-- -->SSDTTime.bat<!-- -->\</p><p>2.以「4，3，2」的顺序「顺序不能错」会生成 3 个文件</p><p>3.现在我们需要处理下 SSDT-RTC0.dsl</p><p>没有自动生成就下载</p><p>用文本编辑器之类的打开它，用尽你毕生所学找到</p><pre><code class="language-plain">External (_SB_.PCI0.LPCB, DeviceObj)
-
-Scope (_SB.PCI0.LPCB)</code></pre><p>修改成</p><pre><code class="language-plain">External (_SB_.PCI0.LPC, DeviceObj)
-
-Scope (_SB.PCI0.LPC)</code></pre><p>4.处理 SSDT-PMC
-没有就下载</p><pre><code class="language-plain">External (_SB_.PCI0.LPCB, DeviceObj)
-
-Scope (_SB.PCI0.LPCB)</code></pre><p>修改为</p><pre><code class="language-plain">ternal (_SB_.PCI0.LPC, DeviceObj)
-
-Scope (_SB.PCI0.LPC)</code></pre><p>5.编译
-用这个指令</p>]]></content:encoded>
-            <author>contact@rene.wang (江村暮)</author>
-        </item>
-        <item>
             <title><![CDATA[玩机检查清单]]></title>
             <link>https://rene.wang/p/hackroid</link>
             <guid>hackroid</guid>
-            <pubDate>Sat, 22 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>这几个月陆陆续续刷了好多机，每次都容易忘记一些东西，所以写下这篇文章，以便下次刷机时查阅。</p><p>本文长期维护，欢迎你在 Github 上参与维护。</p><h2>离开 MIUI 的缺点</h2><ul><li>相机将被限制在 1200 万像素，目前尚无解决方案。</li><li>某些定制功能可能无法使用，例如 MIUI 的「双开」功能、杜比音效、按下电源键再解锁等。</li><li>某些设备可能无法再使用门禁卡。</li><li>游戏性能可能会下降。</li></ul><h2>Root &amp; 刷入 Magisk</h2><p>Magsik 的工作原理是直接把 API 写入系统的 boot.img 中，其安装方法也就是把已经 Hack 过的镜像重新刷入。Magisk 安装成功后，我们也同时拥有 Root 权限了。</p><h2>解锁 Bootloader</h2><p>解锁 Bootloader 后将有一定的风险，可能导致数据泄露，请注意。</p><h2>刷入官方 ROM</h2><p>⚠ 请务必做好设备数据备份，例如照片、联系人、信息等。</p><h2>刷入第三方 Rom</h2><p>请务必做好设备数据备份，例如照片、联系人、信息等。</p><p>这并不是一个很繁杂的操作，请保持冷静、平常心来做。</p><h2>其他资源</h2><p>这些 app 弥补了类原生系统的一些缺陷，或者增强了其功能。</p><ul><li>炼妖壶：可以在沙盒中运行一些 app，并且相当于“双开”，例如微信、QQ、支付宝等。</li><li>Shizuku： 应用权限管理</li><li>Thanox：管理后台</li><li>Scene4：场景模式</li><li>Google Camera：安卓平台最强相机</li></ul><pre><code class="language-shell">adb uninstall -k --user 0 com.miui.analytics
 adb uninstall -k --user 0 com.miui.analytics.service
 adb uninstall -k --user 0 com.miui.bugreport
@@ -594,7 +599,7 @@ adb uninstall -k --user 0 com.miui.bugreport
             <title><![CDATA[2023 国内注册 Google Play 开发者终极教程]]></title>
             <link>https://rene.wang/p/register-google-play-developer</link>
             <guid>register-google-play-developer</guid>
-            <pubDate>Sat, 15 Apr 2023 16:00:00 GMT</pubDate>
+            <pubDate>Sat, 06 May 2023 16:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>准备的材料</h2><ul><li>国区 Google 账号：如果不是国区，注册后将无法通过实名验证。笔者最初使用美区账号注册，发现只能使用美国政府发行的证件进行实名认证，且国家无法更改。</li><li>25 美元的注册费用；</li><li>带有 Visa/Mastercard/Express 的信用卡或者借记卡。如果国内申请不到，可以使用虚拟信用卡。据笔者了解，兴业银行联合发行的运通实体卡，以及 depay 的虚拟信用卡都可以完成注册费用支付；</li><li>居民身份证或者护照。</li></ul><h2>申请流程</h2><p>首先，进入浏览器无痕模式。如果你使用的是 Chrome，可以按下 Ctrl+Shift+N 打开无痕模式。</p><p>请注意，涉及国家地区的选项一律选择中国，除非你有外国政府颁发的合法证件（例如绿卡和护照）。</p><p>打开注册地址，输入基本信息。在注册阶段输入的大部分信息，在创建后都是可以修改的，所以不必太担心。</p><h2>注册后的注意事项</h2><ul><li>不要长期闲置这个账号，否则会被判定为休眠账户，而面临被删除的风险，且无法退还注册费用。</li><li>不要上传违规应用，请务必详细阅读指南。</li></ul><h2>收款</h2><p>在Google Play平台可以使用nobepay收款</p><h2>一些意外的处理方法</h2><ul><li>发现是美区账号注册，无法实名认证：联系客服要求删除账号并退款即可</li></ul>]]></content:encoded>
             <author>contact@rene.wang (江村暮)</author>
         </item>

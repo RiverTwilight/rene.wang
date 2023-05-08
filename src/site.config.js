@@ -34,10 +34,10 @@ module.exports = {
 			title: "AkaraChen",
 			url: "https://akr.moe/",
 		},
-		{
-			title: "dky的博客",
-			url: "https://wp.dkymore.com",
-		},
+		// {
+		// 	title: "dky的博客",
+		// 	url: "https://wp.dkymore.com",
+		// },
 		{
 			title: "辉晨雨幕",
 			url: "https://gloridust.xyz/",
@@ -53,6 +53,10 @@ module.exports = {
 		{
 			title: "Zack's Blog",
 			url: "https://blog.zackmount.life",
+		},
+		{
+			title: "HsuQNian",
+			url: "https://hsuqnian.top/",
 		},
 	],
 	paths: {
