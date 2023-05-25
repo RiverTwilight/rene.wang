@@ -37,10 +37,10 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 			case "quote":
 				return `> ${richTextToMarkdown(block.quote.rich_text)}\n`;
 			case "bulleted_list_item":
-				console.log(
-					`${block.bulleted_list_item.rich_text[0].plain_text}`,
-					block
-				);
+				// console.log(
+				// 	`${block.bulleted_list_item.rich_text[0].plain_text}`,
+				// 	block
+				// );
 				return `${spaces}- ${richTextToMarkdown(
 					block.bulleted_list_item.rich_text
 				)}\n${childrenContent || ""}`;
@@ -59,7 +59,8 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 					block.code.rich_text
 				)}\n\`\`\`\n`;
 			case "image":
-				return `![Image](${block.image.external.url})\n`;
+				let imageURL = block.image.type == "external" ? block.image.external.url : block.image.file.url
+				return `![Image](${imageURL})\n`;
 			default:
 				return "";
 		}
