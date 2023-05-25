@@ -36,7 +36,7 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 凡年滿11歲或以上的香港居民（除獲豁免或無須登記的人士外），須登記及領取身份證。本網頁將提供有關香港身份證的資料，包括如何申領或補領身份證、如何申請一份可顯示申請人登記身份證時所登記事項的證明、如何申請豁免登記身份證、如何預約申領身份證，以及在哪裏可以找到更多相關資料。
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230525%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230525T070601Z&X-Amz-Expires=3600&X-Amz-Signature=45df4edc80adb86afc3f1a3ddb260932b58f62a91fdbc3ec1340f149d95193eb&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230525%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230525T131628Z&X-Amz-Expires=3600&X-Amz-Signature=9ae4d0569b654a7ac0c032d54bba055f2854c209b29a93f46dc84d9322b834f7&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 ## 进阶：懒音
 
