@@ -92,7 +92,7 @@ const Layout = (props: {
 						siteConfig={siteConfig}
 					/>
 					<main>
-						<div style={{ minHeight: "50vh" }}>{children}</div>
+						<div style={{ minHeight: "80vh" }}>{children}</div>
 						<br></br>
 						<RelatedLink
 							links={siteConfig.relatedLinks}

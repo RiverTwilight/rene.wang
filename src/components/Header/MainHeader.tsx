@@ -60,7 +60,7 @@ const MainHeader: React.FC<HeaderProps> = ({
 	return (
 		<Navbar fixed>
 			<StatuBar
-			    celluar={{
+				celluar={{
 					on: true,
 					label: "LTE",
 					siginal: 3,
@@ -89,7 +89,11 @@ const MainHeader: React.FC<HeaderProps> = ({
 							<ArrowBackSharpIcon />
 							BACK
 						</ActionItem>
-						<ActionItem>
+						<ActionItem
+							onClick={() => {
+								router.push("/settings");
+							}}
+						>
 							<CogSharpIcon />
 							settings
 						</ActionItem>
