@@ -5,6 +5,7 @@
 -   [x] 支持自定义主题开发
 -   [x] 从 Notion 同步文章
 -   [x] 多语言 UI/文章
+-   [x] RSS 订阅
 -   [ ] 评论
 
 ## 🎞️ 使用
@@ -35,7 +36,7 @@ NOTION_DATABASE_ID=<YOUR_ID>
 目前支持两种写作方式：
 
 1. 将 Markdown 文件放入`/posts/<catagories>`目录即可。目前最高支持二级目录。
-2. 从 Notion 自动同步文章。
+2. 从 Notion 单向同步文章。
 
 如果你选择第一种方式，每篇文章至少需要以下两个 frontmatter：
 
