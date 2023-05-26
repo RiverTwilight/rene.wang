@@ -14,6 +14,10 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 ## 为什么要学习粤语？
 
 其实，学习的目的即在于享受其过程。
+1. 粤语在中国约有1.2亿的使用者，在海外也有大量受众，是除普通话之外唯一在国外大学有独立研究的中国语。
+2. 掌握粤语后，在粤语地区用粤语与本地人交流会有一种无法言说的微妙的快乐（相信掌握了任何外语的读者都会有这种感受）
+3. 港片、港曲在世界文化中占有不少的地位，掌握粤语无疑是坐上贵宾席来欣赏。
+4. 许多唐宋诗词其实是用粤语写就的，例如柳宗元著名的《江雪》，用粤语朗诵更有味道。
 
 ## 粤语与中文的关系
 
@@ -24,6 +28,8 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 ## 语音系统
 
 对于母语为中文的人士来说，可以直接从语音系统开始学习。在过去的一年中，我主要做了以下两件事：
+1. 完成多邻国的粤语课程：完成该课程之后，你会对粤语整体的发音系统有了初步了解，并且可以应对日常的交流场合，例如就餐和找工作。
+2. 定期收看香港无线新闻：除了了解香港最新的动态，你还能获得最贴近当代粤语口语的体验。
 
 完成以上两个任务，并有了时间的加成后，你就可以和粤语母语者交流了。
 
@@ -36,7 +42,7 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 凡年滿11歲或以上的香港居民（除獲豁免或無須登記的人士外），須登記及領取身份證。本網頁將提供有關香港身份證的資料，包括如何申領或補領身份證、如何申請一份可顯示申請人登記身份證時所登記事項的證明、如何申請豁免登記身份證、如何預約申領身份證，以及在哪裏可以找到更多相關資料。
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230525%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230525T070357Z&X-Amz-Expires=3600&X-Amz-Signature=2d0e6b64fc57787f4ba6617cc6140d3c8372b94d2a0868e43af5d32bf7f11e03&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230526T082425Z&X-Amz-Expires=3600&X-Amz-Signature=2ca2d07cc1d3d74d21a0bdd12b01a6e1cc8082e64336e3c43ef18dec36dc374a&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 ## 进阶：懒音
 

@@ -26,6 +26,8 @@ function richTextToMarkdown(richText) {
 }
 
 async function notionBlocksToMarkdown(blocks, indent = 0) {
+	let numberdListCount = 0;
+
 	const markdownPromises = blocks.map(async (block) => {
 		let childrenContent = null;
 		if (block.has_children) {
@@ -33,6 +35,12 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 			childrenContent = await getPageContent(block.id, indent + 1);
 		}
 		const spaces = "  ".repeat(indent);
+
+
+		if(block.type !== "numbered_list_item"){
+			numberdListCount = 0;
+		}
+
 		switch (block.type) {
 			case "quote":
 				return `> ${richTextToMarkdown(block.quote.rich_text)}\n`;
@@ -43,6 +51,11 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 				// );
 				return `${spaces}- ${richTextToMarkdown(
 					block.bulleted_list_item.rich_text
+				)}\n${childrenContent || ""}`;
+			case "numbered_list_item":
+				numberdListCount += 1;
+				return `${spaces}${numberdListCount}. ${richTextToMarkdown(
+					block.numbered_list_item.rich_text
 				)}\n${childrenContent || ""}`;
 			case "divider":
 				return `<hr />\n`;
@@ -59,8 +72,11 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 					block.code.rich_text
 				)}\n\`\`\`\n`;
 			case "image":
-				let imageURL = block.image.type == "external" ? block.image.external.url : block.image.file.url
-				return `![Image](${imageURL})\n`;
+				let imageURL =
+					block.image.type == "external"
+						? block.image.external.url
+						: block.image.file.url;
+				return `\n![Image](${imageURL})\n`;
 			default:
 				return "";
 		}
