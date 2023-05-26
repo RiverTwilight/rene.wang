@@ -71,6 +71,8 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 				return `\n\`\`\`${block.code.language}\n${richTextToMarkdown(
 					block.code.rich_text
 				)}\n\`\`\`\n`;
+			case "to_do":
+				return `\n- [${block.to_do.checked ? "x" : " "}] ${richTextToMarkdown(block.to_do.rich_text)}\n`;
 			case "image":
 				let imageURL =
 					block.image.type == "external"

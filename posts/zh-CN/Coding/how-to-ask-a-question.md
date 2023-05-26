@@ -10,6 +10,7 @@ date: 2023-05-07T06:57:00.000Z
 编程遇到问题，太正常不过了。
 
 为别人解决问题也可以提高自己的技术，但是让别人回答一个低质量、不走心的问题无疑是浪费双方时间。
+
 ![Image](https://mmbiz.qpic.cn/mmbiz_jpg/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGweKtPFd70m0HvFop2Bh2jBlYJbv4eriaAjwHwfenKt4pw9oJ4PG5OHA/640?wx_fmt=jpeg)
 
 提问题之前，确保：
@@ -23,9 +24,11 @@ date: 2023-05-07T06:57:00.000Z
 单独讲讲搜索引擎。要避免使用 "how""where" 等疑问词，而是使用关键词搜索。比如，我想知道 Mysql 如何列出所有的用户，
 
 √ 好的做法应该是：
+
 ![Image](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGN6LtW4SaJCWicW612icwKapBhGSttyXg9qE4bZLG41NOwZhCeuQGseDw/640?wx_fmt=png)
 
 ❌ 而不是：
+
 ![Image](https://mmbiz.qpic.cn/mmbiz_png/wQguWLEmv1AEzwHlwAQzeKhMiaLkjRUxGVbeIibkTvM3RDFicofIcGw9KUbnygZ1KoicMjSVt9SRMY8WDvjS9mjxug/640?wx_fmt=png)
 
 这同样适用于大部分搜索场景。

@@ -1,6 +1,6 @@
 ---
 title: 粤语学习不完全指南
-date: 2023-05-23T07:49:00.000Z
+date: 2023-05-26T08:32:00.000Z
 cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org%2Fwp-content%2Fuploads%2F2018%2F07%2Feason-chan_92630-780x405.jpeg&f=1&nofb=1&ipt=e9824591e6a1bdc694f93269de856bb43c161dea53d220cc8a4f06dc492a3cd1&ipo=images
 ---
 
@@ -10,6 +10,8 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 本文面向希望学习粤语的母语为中文人士。
 
 从去年夏天开始学习粤语到现在，我已经基本能无需字幕听懂粤语电影、新闻。本文将讲述我的学习经历与心得。当然，和学习任何一门语言一样，仅看一篇文章是不够的，还需要不断的听、说，本文只能为学习者指明方向。
+
+- [ ] asdfasdfasdfasdf
 
 ## 为什么要学习粤语？
 
@@ -42,7 +44,8 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 凡年滿11歲或以上的香港居民（除獲豁免或無須登記的人士外），須登記及領取身份證。本網頁將提供有關香港身份證的資料，包括如何申領或補領身份證、如何申請一份可顯示申請人登記身份證時所登記事項的證明、如何申請豁免登記身份證、如何預約申領身份證，以及在哪裏可以找到更多相關資料。
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230526T082425Z&X-Amz-Expires=3600&X-Amz-Signature=2ca2d07cc1d3d74d21a0bdd12b01a6e1cc8082e64336e3c43ef18dec36dc374a&X-Amz-SignedHeaders=host&x-id=GetObject)
+
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230526T083339Z&X-Amz-Expires=3600&X-Amz-Signature=a300fd10de798009f6ac69cd56d34984f8848c62c771de4ee58efba747d2b041&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 ## 进阶：懒音
 

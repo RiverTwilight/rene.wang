@@ -28,7 +28,7 @@ export default ({ src, alt }: { src: string; alt?: string }) => {
 				/>
 
 				{alt && (
-					<div id="" className="center">
+					<div className="Texta(center)">
 						{alt}
 					</div>
 				)}
