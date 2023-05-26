@@ -1,6 +1,6 @@
 ---
 title: 粤语学习不完全指南
-date: 2023-05-26T08:32:00.000Z
+date: 2023-05-26T08:57:00.000Z
 cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org%2Fwp-content%2Fuploads%2F2018%2F07%2Feason-chan_92630-780x405.jpeg&f=1&nofb=1&ipt=e9824591e6a1bdc694f93269de856bb43c161dea53d220cc8a4f06dc492a3cd1&ipo=images
 ---
 
@@ -10,8 +10,6 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 本文面向希望学习粤语的母语为中文人士。
 
 从去年夏天开始学习粤语到现在，我已经基本能无需字幕听懂粤语电影、新闻。本文将讲述我的学习经历与心得。当然，和学习任何一门语言一样，仅看一篇文章是不够的，还需要不断的听、说，本文只能为学习者指明方向。
-
-- [ ] asdfasdfasdfasdf
 
 ## 为什么要学习粤语？
 
@@ -45,7 +43,7 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
 
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230526T085450Z&X-Amz-Expires=3600&X-Amz-Signature=bfe5bf05b6bd05a3ba1783c4f3285829dca2175412ed7feffcc7c0f1aa8387b1&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230526%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230526T131411Z&X-Amz-Expires=3600&X-Amz-Signature=99850db9caad2cafb74107f0afa60b7cd9fdb638efa40d53c8b92e98e6f34a80&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 ## 进阶：懒音
 
