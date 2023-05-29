@@ -11,10 +11,6 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 
 从去年夏天开始学习粤语到现在，我已经基本能无需字幕听懂粤语电影、新闻。本文将讲述我的学习经历与心得。当然，和学习任何一门语言一样，仅看一篇文章是不够的，还需要不断的听、说，本文只能为学习者指明方向。
 
-$$ 
-F(x) = 2
-$$
-
 ## 为什么要学习粤语？
 
 其实，学习的目的即在于享受其过程。
@@ -49,7 +45,7 @@ $$
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
 
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230529%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230529T032059Z&X-Amz-Expires=3600&X-Amz-Signature=89203435b0efc7a23399447c3847f3af39cb3d84ba361d4e971ff6381064e12e&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230529%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230529T124523Z&X-Amz-Expires=3600&X-Amz-Signature=9782d8077b9ae81f79b001d0e0d14fe9e533105d252e7b154eb821ebf1e2634f&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 ## 进阶：懒音
 
