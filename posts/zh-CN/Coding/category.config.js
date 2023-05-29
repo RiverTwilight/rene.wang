@@ -1,4 +1,4 @@
 module.exports = {
-	name: "程序人生",
+	name: "代码",
 	description: "生活",
 };
