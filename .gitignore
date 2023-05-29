@@ -12,3 +12,5 @@ out
 
 .env.local
 .env
+
+public/rss/feed.xml
