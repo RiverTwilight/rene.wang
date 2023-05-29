@@ -10,6 +10,11 @@ body {
 		Hiragino Sans GB, Microsoft YaHei, Arial;
 }
 
+code {
+    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+	padding: 0 0.3em
+}
+
 /**
  * =============================================================================
  * ************   主体   ************

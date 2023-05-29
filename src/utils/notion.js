@@ -60,7 +60,7 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 			case "divider":
 				return `<hr />\n`;
 			case "paragraph":
-				return `\n${richTextToMarkdown(block.paragraph.rich_text)}\n`;
+				return `\n${richTextToMarkdown(block.paragraph.rich_text)}\n`; 
 			case "heading_2":
 				return `\n## ${richTextToMarkdown(
 					block.heading_2.rich_text

@@ -21,7 +21,13 @@ export default class extends PureComponent<{
 		SyntaxHighlighter.registerLanguage("javascript", javascript);
 	}
 	render() {
-		const { language, children } = this.props;
+		const { language, children, inline } = this.props;
+
+		if(inline){
+			return(
+				<code>{children}</code>
+			)
+		}
 		console.log(this.props);
 		return (
 			<figure className="highlight">
