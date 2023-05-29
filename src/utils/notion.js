@@ -54,7 +54,7 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 				)}\n${childrenContent || ""}`;
 			case "numbered_list_item":
 				numberdListCount += 1;
-				return `${numberdListCount === 0 ? "\n" : ""}${spaces}${numberdListCount}. ${richTextToMarkdown(
+				return `${numberdListCount === 1 ? "\n" : ""}${spaces}${numberdListCount}. ${richTextToMarkdown(
 					block.numbered_list_item.rich_text
 				)}\n${childrenContent || ""}`;
 			case "divider":
