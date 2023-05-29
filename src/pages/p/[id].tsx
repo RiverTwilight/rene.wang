@@ -108,6 +108,14 @@ const Cover = styled.div`
 	}
 `;
 
+const StyledArticlePage = styled.div`
+	padding: 0;
+
+	@media (min-width: 1024px) {
+		padding: 0 12px;
+	}
+`;
+
 // const ReadMore = ({ data }: any) => {
 // 	return (
 // 		<Card className="Br(30px)" title="阅读更多" icon={<BookOutline />}>
@@ -145,7 +153,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 	if (!postProps) return null;
 
 	return (
-		<>
+		<StyledArticlePage>
 			<Typography itemScope itemType="http://schema.org/Article">
 				<meta itemProp="mainEntityOfPage" content={id} />
 				<Cover>
@@ -186,7 +194,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 					></ReactMarkdown>
 				</article>
 			</Typography>
-		</>
+		</StyledArticlePage>
 	);
 };
 
