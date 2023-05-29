@@ -36,8 +36,7 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 		}
 		const spaces = "  ".repeat(indent);
 
-
-		if(block.type !== "numbered_list_item"){
+		if (block.type !== "numbered_list_item") {
 			numberdListCount = 0;
 		}
 
@@ -54,13 +53,15 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 				)}\n${childrenContent || ""}`;
 			case "numbered_list_item":
 				numberdListCount += 1;
-				return `${numberdListCount === 1 ? "\n" : ""}${spaces}${numberdListCount}. ${richTextToMarkdown(
+				return `${
+					numberdListCount === 1 ? "\n" : ""
+				}${spaces}${numberdListCount}. ${richTextToMarkdown(
 					block.numbered_list_item.rich_text
 				)}\n${childrenContent || ""}`;
 			case "divider":
 				return `<hr />\n`;
 			case "paragraph":
-				return `\n${richTextToMarkdown(block.paragraph.rich_text)}\n`; 
+				return `\n${richTextToMarkdown(block.paragraph.rich_text)}\n`;
 			case "heading_2":
 				return `\n## ${richTextToMarkdown(
 					block.heading_2.rich_text
@@ -74,13 +75,18 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 			case "equation":
 				return `\n$$${block.equation.expression}$$\n`;
 			case "to_do":
-				return `\n- [${block.to_do.checked ? "x" : " "}] ${richTextToMarkdown(block.to_do.rich_text)}\n`;
+				return `\n- [${
+					block.to_do.checked ? "x" : " "
+				}] ${richTextToMarkdown(block.to_do.rich_text)}\n`;
 			case "image":
 				let imageURL =
 					block.image.type == "external"
 						? block.image.external.url
 						: block.image.file.url;
 				return `\n![Image](${imageURL})\n`;
+			case "video":
+				// TODO
+				return `\n![Video](${block.video.url})\n`;
 			default:
 				return "";
 		}
