@@ -40,7 +40,7 @@ function PostList({
 	// );
 
 	return classfiedPosts.slice(0, MAX_POST_COUNT).map((post) => (
-		<Link key={post.id} passHref href={"/p/" + post.id}>
+		<Link key={post.id} passHref href={"/p/" + post.id} legacyBehavior>
 			<ListItem
 				style={{
 					cursor: "pointer",

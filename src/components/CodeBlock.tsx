@@ -12,7 +12,7 @@ import {
 
 export default class extends PureComponent<{
 	language: string;
-	value: string;
+	children;
 }> {
 	componentWillMount() {
 		// 注册要高亮的语法，
@@ -21,11 +21,12 @@ export default class extends PureComponent<{
 		SyntaxHighlighter.registerLanguage("javascript", javascript);
 	}
 	render() {
-		const { language, value } = this.props;
+		const { language, children } = this.props;
+		console.log(this.props);
 		return (
 			<figure className="highlight">
 				<SyntaxHighlighter language={language} style={atomDark}>
-					{value}
+					{children}
 				</SyntaxHighlighter>
 			</figure>
 		);

@@ -11,6 +11,9 @@ import { Typography, TimeBar } from "@kindle-ui/core";
 import { paths } from "../../site.config";
 import matter from "gray-matter";
 import parseDate from "@/utils/parseDateStr";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import 'katex/dist/katex.min.css'
 
 function formatDate(dateString) {
 	const date = new Date(dateString);
@@ -183,14 +186,16 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 				<br />
 				<article itemProp="articleBody">
 					<ReactMarkdown
-						renderers={{
+						escapeHtml={false}
+						remarkPlugins={[remarkMath]}
+						rehypePlugins={[rehypeKatex]}
+						components={{
 							code: CodeBlock,
 							heading: HeadingBlock,
-							image: ImageBlock,
+							img: ImageBlock,
 							iframe: FrameBlock,
 						}}
-						escapeHtml={false}
-						source={postContent}
+						children={postContent}
 					></ReactMarkdown>
 				</article>
 			</Typography>
