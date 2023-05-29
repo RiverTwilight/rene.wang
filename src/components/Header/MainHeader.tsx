@@ -77,6 +77,7 @@ const MainHeader: React.FC<HeaderProps> = ({
 							onClick={() => {
 								router.push("/");
 							}}
+							changeFill={false}
 						>
 							<HomeOutlineIcon />
 							<Text homePage />
@@ -85,6 +86,7 @@ const MainHeader: React.FC<HeaderProps> = ({
 							onClick={() => {
 								router.back();
 							}}
+							changeFill={false}
 						>
 							<ArrowBackSharpIcon />
 							BACK
