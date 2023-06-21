@@ -1,6 +1,5 @@
 import { TLocale, IPost } from "@/types/index";
 import getAllPosts from "@/utils/getAllPosts";
-import getPostId from "@/utils/getPostId";
 import getCategories, { ICategory } from "@/utils/getCategories";
 import generateRssFeed from "@/utils/generateRssFeed";
 import ThemedIndex from "@/themes/pages/index";
@@ -14,7 +13,7 @@ export async function getStaticProps({ locale, locales }) {
 					`${content.substr(0, 200)}${
 						content.length >= 200 ? "..." : ""
 					}`,
-				id: getPostId,
+				id: (text) => text,
 			},
 			enableFlat: true,
 			enableSort: true,

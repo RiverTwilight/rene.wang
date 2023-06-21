@@ -49,7 +49,7 @@ export default async function generateRssFeed() {
 			link: `${siteConfig.root}/p/${post.id}`,
 			content: renderToString(
 				createElement(ReactMarkdown, {
-					source: post.markdownBody,
+					children: post.markdownBody,
 				})
 			),
 			author: [author],

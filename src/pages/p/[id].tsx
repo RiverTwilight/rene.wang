@@ -13,7 +13,38 @@ import matter from "gray-matter";
 import parseDate from "@/utils/parseDateStr";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import 'katex/dist/katex.min.css'
+import "katex/dist/katex.min.css";
+
+import { GetStaticProps, GetStaticPaths } from "next";
+
+interface IPostProps {
+	title: string;
+	date: string;
+	author: string;
+	cover?: string;
+}
+
+interface ICurrentPage {
+	title: string;
+	path: string;
+	description: string;
+}
+
+interface IPost {
+	id: string;
+	frontmatter: IPostProps;
+	markdownBody: string;
+	slug: string;
+}
+
+interface IProps {
+	recommendPost: IPost[];
+	postContent: string;
+	postProps: IPostProps;
+	currentPage: ICurrentPage;
+	id: string;
+	locale: string;
+}
 
 function formatDate(dateString) {
 	const date = new Date(dateString);
@@ -91,7 +122,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 	};
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(props: GetStaticPaths) {
 	return {
 		paths: ["zh-CN", "en-US"]
 			.map((locale: string) => {
