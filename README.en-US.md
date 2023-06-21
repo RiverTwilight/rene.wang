@@ -1,5 +1,7 @@
 # Rene.wang
 
+[简体中文](./README.md) | English
+
 This is the source code for my blog and also a powerful static blogging site.
 
 -   [x] Supports custom theme development
@@ -45,7 +47,13 @@ If you choose to use Notion for writing, refer to this [database] () to create a
 
 ## Deploying to Vercel
 
-There are two deployment methods, Vercel and your own server. For Vercel, simply create the repository and follow the prompts. If you want to deploy to your own server, continue reading:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FRiverTwilight%2Frene.wang)
+
+## Deploying to Netify
+
+```bash
+CI= yarn run build
+```
 
 ## Deploying to Your Own Server
 

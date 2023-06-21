@@ -1,5 +1,7 @@
 # Rene.wang
 
+简体中文 | [English](./README.en-US.md)
+
 这是我的的 [博客](https://rene.wang) 的源代码，同时也是一个强大的静态博客站点。
 
 -   [x] 支持自定义主题开发
@@ -47,7 +49,15 @@ NOTION_DATABASE_ID=<YOUR_ID>
 
 ## 部署到 Vercel
 
-有两种部署方式，[Vercel](https://vercel.com/) 和自己的服务器，vercel 只需创建好仓库并按提示走就可以了，如果要部署到自己的服务器请继续阅读:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FRiverTwilight%2Frene.wang)
+
+## 部署到 Netify
+
+由于 netify 的特性，请在项目设置中把部署命令修改为：
+
+```bash
+CI= yarn run build
+```
 
 ## 部署到自己的服务器
 
