@@ -85,7 +85,7 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 						: block.image.file.url;
 				return `\n![Image](${imageURL})\n`;
 			case "video":
-				// TODO
+				// TODO Parse Notion's video block
 				return `\n![Video](${block.video.url})\n`;
 			default:
 				return "";

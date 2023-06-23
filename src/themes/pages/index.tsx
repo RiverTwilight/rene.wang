@@ -80,6 +80,8 @@ const Home = (props: any) => {
 		[allCategories]
 	);
 
+	// TODO Customize the Banner
+
 	return (
 		<>
 			<div className="P(10px)">
