@@ -1,6 +1,6 @@
 ---
 title: HVV 面经
-date: 2023-07-07T13:06:00.000Z
+date: 2023-07-08T06:09:00.000Z
 
 ---
 
@@ -36,7 +36,7 @@ date: 2023-07-07T13:06:00.000Z
 - regedit: 注册表
 - netstat: 查看端口
 - dir: 查看当前文件夹内容
-- net user: 查看用户
+- net user: 查看用户（包括影子账户）
 - ping: 检查网络联通
 - shift 后门：将C盘windows目录下面的system32文件里面的sethc.exe应用程序进行转移，并生成 sethc.exe.bak文件。并将cmd.exe拷贝覆盖sethc.exe 查找方式：看下是不是 cmd.exe 的MD5。certutil -hashfile filename MD5
 
@@ -55,16 +55,12 @@ date: 2023-07-07T13:06:00.000Z
 - 答：在windows/System32/winevt/Logs下
 
 ## Linux 相关
-
-账号  历史命令  端口  进程  启动项 定时任务  服务  文件  日志
-- 账户  /etc/passwd /etc/shadow
-
-```plain text
-who     查看当前登录用户（tty本地登陆  pts远程登录）
-w       查看系统信息，想知道某一时刻用户的行为
-uptime    查看登陆多久、多少用户，负载
-```
-- 历史命令 .bash_history  cat .bash_history
+- w: 显示目前登入系统的用户信息
+- who ：查看当前登录用户（tty本地登陆  pts远程登录）
+- last ：所有用户的登录记录
+- cat .bash_history 查看历史命令
+- ps -aux ：ps是用来监控进程的，aux参数代表查看所有进程。
+<hr />
 - 问：Linux 如何创建计划任务？
 - 答：使用 corntab 命令。
 - 问：corntab 的计划任务列表存储在哪里？
@@ -75,13 +71,12 @@ uptime    查看登陆多久、多少用户，负载
 - 答：30 23 * * * /path/to/script.sh > /path/to/logfile.log 2>&1
 - 问：Linux 如何查看端口开放情况？
 - 答：可以使用 netstat -anp | grep 端口号 命令来查看端口号对应的进程和状态。
-- 问：如何查看进程？
-- 答：使用ps aux命令。ps是用来监控进程的，aux参数代表查看所有进程。
 - 问：如何判断是否被增加了超级用户？
 - 答：查看是否有 UID 为 0 的用户。
 - 问：Linux 如何加固？
 - 答：删除无用账号、配置密码策略（复杂度、过期时间）、限制 su 命令使用 （限制用户使用 su命令变更为其他用户， 防止不当的角色切换） 、限制 ssh 远程登陆root、减少命令记录数（.bash_history）、升级内核版本。
 - /etc/hosts: 主机信息
+- /etc/shadow: 存储了系统用户的加密密码和其他安全相关的信息
 - /etc/password: 密码
 - /root/.bashrc: 环境变量
 - /root/.ssh/id_rsa: ssh私钥
@@ -99,6 +94,8 @@ uptime    查看登陆多久、多少用户，负载
 2. 下线应用；
 3. 排查应用日志查找是否有攻击请求；
 4. 更新官方发布的最新补丁或者升级版本。
+
+可以反映主机或网络失陷特征信息，这些信息入侵工具、恶意软件和攻击组织的属性，如邮箱、域名、IP、 URL、文件名、文件hash、证书和签名等，简称 IOCs。
 - 入侵检测：IDS
 - 入侵防御：IPS
 - 流量威胁检测：腾讯御界、奇安信天眼、绿盟、深信服等等。
@@ -129,8 +126,3 @@ uptime    查看登陆多久、多少用户，负载
 - 问：status 和 weblogic 的流量如何区分？
 - 答：请求URL中包含.action或.do, 这是struts2的默认请求后缀。weblogic的默认请求后缀是.jsp或.html；请求中包含struts2的默认参数,如:action, method等。weblogic的请求参数比较随意,没有固定模式；
 - 问：中间件如何加固？
-- 答：更改默认端口、低权限运维、降权网站根目录、自定义错误页面、删除自带网页，反序列化漏洞 ssrf任意文 件上传 war 后门文件部署。
-- 问：了解过哪些中间件？有哪些加固点？
-- 答：IIS 遇到特殊符号会进行截断，比如：“.asp”，从而认为文件后缀为“.asp”。tomcat 远程代码执行，war后门文件部署。
-
-## 渗透测试
