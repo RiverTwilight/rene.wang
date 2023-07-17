@@ -82,7 +82,7 @@ const Layout = (props: {
 				/>
 				<title>{showTitle}</title>
 			</Head>
-			<div className="hidden-xs" style={{ height: "30px" }}></div>
+			{/* <div className="hidden-xs" style={{ height: "30px" }}></div> */}
 			<div id="platform">
 				<Container dark={dark} deviceFrame={KindleOasis}>
 					<Header
