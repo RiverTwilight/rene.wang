@@ -45,7 +45,7 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
 
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230812%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230812T131227Z&X-Amz-Expires=3600&X-Amz-Signature=d4e171cae9ee8377a6e8903e1093ea0596abe1a971d779f47476f83df51d8e21&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230813%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230813T131233Z&X-Amz-Expires=3600&X-Amz-Signature=c14458c20a63dc03b2d4654bdb3f70f8ec627033f68a4b2a69c242c6388d2d57&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 ## 进阶：懒音
 
