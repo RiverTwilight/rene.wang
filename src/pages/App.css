@@ -41,7 +41,7 @@ article {
 		position: relative;
 	}
 	body {
-		background-image: url("/image/bg.png");
+		background-image: url("/image/paper-background.png");
 		background-position: center;
 		background-size: cover;
 		overflow: hidden;
@@ -49,8 +49,8 @@ article {
 		animation: bg 2s ease-in infinite;
 	}
 	main {
-		min-width: 900px;
-		padding-bottom: 100px;
+		width: 100%;
+		padding-bottom: 30px;
 	}
 }
 

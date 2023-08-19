@@ -11,6 +11,8 @@ import {
 	CardTitle,
 	Grid,
 	GridItem,
+	Section,
+	SectionTitle,
 } from "@kindle-ui/core";
 import Tab from "@/themes/components/Tab";
 import Text from "@/utils/i18n";
@@ -84,48 +86,45 @@ const Home = (props: any) => {
 
 	return (
 		<>
-			<div className="P(10px)">
-				<Card>
-					<Text dictionary={homePage} language={locale}>
-						<CardTitle>
-							<Text Features />
-						</CardTitle>
-					</Text>
-					<CardContent>
-						<Grid rowGap={13} gap={10}>
-							{/* <Link
+			<Section>
+				<Text dictionary={homePage} language={locale}>
+					<SectionTitle label={"Features"} />
+				</Text>
+
+				<Grid>
+					{/* <Link
 								passHref
 								href="/p/Macisfy-Your-Windows"
 								legacyBehavior
 							>
 								<GridItem src="https://cdn.sspai.com/2022/09/14/323d5392b32276f64959c20977cbe81a.png?imageMogr2/auto-orient/quality/95/thumbnail/!800x400r/gravity/Center/crop/800x400/interlace/1" />
 							</Link> */}
-							<GridItem
-								href="https://fav.rene.wang"
-								src="/image/cover/fav.png"
-							/>
-							<GridItem
-								href="https://febook.rene.wang"
-								src="https://febook.rene.wang/images/cover.png"
-							/>
-						</Grid>
-					</CardContent>
-				</Card>
-			</div>
-			<Tab
-				lang={locale}
-				tabs={tabs}
-				activeIndex={activeCategory}
-				onChange={(index) => {
-					setActiveCategory(index);
-				}}
-			/>
-			<div>
+					<GridItem
+						href="https://fav.rene.wang"
+						src="/image/cover/fav.png"
+					/>
+					<GridItem
+						href="https://febook.rene.wang"
+						src="https://febook.rene.wang/images/cover.png"
+					/>
+				</Grid>
+			</Section>
+			<Section>
+				<Tab
+					lang={locale}
+					tabs={tabs}
+					activeIndex={activeCategory}
+					onChange={(index) => {
+						setActiveCategory(index);
+					}}
+				/>
+
 				<PostList
 					activeCategory={activeCategory}
 					allPosts={allPosts}
 					falttedPosts={falttedPosts}
 				/>
+				
 				<br />
 				<div className="Dis(flex) JC(center)">
 					<Text dictionary={postList} language={locale}>
@@ -136,7 +135,7 @@ const Home = (props: any) => {
 						</Link>
 					</Text>
 				</div>
-			</div>
+			</Section>
 		</>
 	);
 };

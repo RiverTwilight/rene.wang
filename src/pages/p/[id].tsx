@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import CodeBlock from "@/components/CodeBlock";
@@ -144,6 +144,7 @@ const Cover = styled.div`
 
 const StyledArticlePage = styled.div`
 	padding: 0;
+	overflow: hidden;
 
 	@media (min-width: 1024px) {
 		padding: 0 12px;

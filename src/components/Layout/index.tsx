@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { Container, KindleOasis } from "@kindle-ui/core";
 import RelatedLink from "../RelatedLink";
 import { ICurrentPage, ISiteConfig } from "../../types";
+import { useRouter } from "next/router";
 
 const Layout = (props: {
 	/**网站配置 */
@@ -50,6 +51,11 @@ const Layout = (props: {
 		}
 	}, []);
 
+	useEffect(() => {
+		const container = document.querySelector(".content");
+		container.scrollTop = 0;
+	}, [currentPage]);
+
 	return (
 		<>
 			<Head>
@@ -92,7 +98,7 @@ const Layout = (props: {
 						siteConfig={siteConfig}
 					/>
 					<main>
-						<div style={{ minHeight: "80vh" }}>{children}</div>
+						<div>{children}</div>
 						<br></br>
 						<RelatedLink
 							links={siteConfig.relatedLinks}
