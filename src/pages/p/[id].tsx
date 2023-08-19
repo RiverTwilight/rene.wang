@@ -151,7 +151,7 @@ const StyledArticlePage = styled.div`
 	}
 
 	& section[itemProp="articleBody"] {
-		font-family: "Noto Serif SC";
+		font-family: "Bookerly", "Noto Serif SC";
 	}
 `;
 
