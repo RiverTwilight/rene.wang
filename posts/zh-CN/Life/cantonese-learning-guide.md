@@ -22,9 +22,9 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 
 ## 粤语与中文的关系
 
-粤语是中文的一种方言，也就是说，它是中国广大汉语语言系统中的一部分。粤语主要在中国的广东省，香港和澳门地区，以及广东省以外的一些地方（例如马来西亚和越南的一些华人社区）被广泛使用。
+粤语是中文的一种方言，也就是说，**它是中国广大汉语语言系统中的一部分**。粤语主要在中国的广东省，香港和澳门地区，以及广东省以外的一些地方（例如马来西亚和越南的一些华人社区）被广泛使用。
 
-虽然粤语是中文的一种方言，但它在语音、语法和词汇上与普通话（也被称为标准汉语或北方方言）有显著的区别。例如，粤语的声调比普通话多。在词汇上，粤语也有一些独特的词汇和表达方式，尤其是在日常口语中。粤语同时保留了很多上古词汇和语法（类似于日语）。
+虽然粤语是中文的一种方言，但它在语音、语法和词汇上与普通话（也被称为标准汉语或北方方言）有显著的区别。例如，粤语的声调比普通话多。在词汇上，粤语也有一些独特的词汇和表达方式，尤其是在日常口语中。**粤语同时保留了很多上古词汇和语法**（类似于日语）。
 
 ## 语音系统
 
@@ -41,11 +41,11 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 
 现代粤语可以和普通话共用一套书写系统。例如，香港特区政府官网的一段话如下：
 
-凡年滿11歲或以上的香港居民（除獲豁免或無須登記的人士外），須登記及領取身份證。本網頁將提供有關香港身份證的資料，包括如何申領或補領身份證、如何申請一份可顯示申請人登記身份證時所登記事項的證明、如何申請豁免登記身份證、如何預約申領身份證，以及在哪裏可以找到更多相關資料。
+*凡年滿11歲或以上的香港居民（除獲豁免或無須登記的人士外），須登記及領取身份證。本網頁將提供有關香港身份證的資料，包括如何申領或補領身份證、如何申請一份可顯示申請人登記身份證時所登記事項的證明、如何申請豁免登記身份證、如何預約申領身份證，以及在哪裏可以找到更多相關資料。*
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
 
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230819%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230819T145117Z&X-Amz-Expires=3600&X-Amz-Signature=2fc0fa2c610e93f9daf157fa8bfcacc5d1bb3b50d67aff758531644941140a96&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fcab9db9-8890-40ae-89f1-5ace1c088c04/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230819%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230819T151936Z&X-Amz-Expires=3600&X-Amz-Signature=b4fc9e391eaf12e06b570861343654262ee6af0f53fcdc2782cd6f56228f0a8d&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 ## 进阶：懒音
 
