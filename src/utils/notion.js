@@ -24,19 +24,23 @@ const notion = new Client({
 function richTextToMarkdown(richText) {
 	return richText
 		.map((text) => {
+			const { annotations } = text;
+
+			let res = text.plain_text;
+
 			if (annotations.bold) {
-				text = `**${text.plain_text}**`;
+				res = `**${res}**`;
 			}
 
 			if (annotations.italic) {
-				text = `*${text}*`;
+				res = `*${res}*`;
 			}
 
 			if (annotations.strikethrough) {
-				text = `~~${text}~~`;
+				res = `~~${res}~~`;
 			}
 
-			return text;
+			return res;
 		})
 		.join("");
 }
