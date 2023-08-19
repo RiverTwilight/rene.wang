@@ -22,7 +22,23 @@ const notion = new Client({
 });
 
 function richTextToMarkdown(richText) {
-	return richText.map((text) => text.plain_text).join("");
+	return richText
+		.map((text) => {
+			if (annotations.bold) {
+				text = `**${text.plain_text}**`;
+			}
+
+			if (annotations.italic) {
+				text = `*${text}*`;
+			}
+
+			if (annotations.strikethrough) {
+				text = `~~${text}~~`;
+			}
+
+			return text;
+		})
+		.join("");
 }
 
 async function notionBlocksToMarkdown(blocks, indent = 0) {
