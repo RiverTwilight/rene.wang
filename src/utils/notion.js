@@ -73,7 +73,7 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 					block.code.rich_text
 				)}\n\`\`\`\n`;
 			case "equation":
-				return `\n$$${block.equation.expression}$$\n`;
+				return `\n$$\n${block.equation.expression}\n$$\n`;
 			case "to_do":
 				return `\n- [${
 					block.to_do.checked ? "x" : " "

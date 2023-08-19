@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-	Card,
-	CardTitle,
-	Typography,
-	CardContent,
-} from "@kindle-ui/core";
+import { Card, CardTitle, Typography, CardContent } from "@kindle-ui/core";
 import dic from "../../i18n.json";
 import type { ISiteConfig } from "@/types/index";
 import styled from "styled-components";
@@ -13,14 +8,15 @@ const LinkList = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5em;
+	& a {
+		color: inherit;
+	}
 `;
 
 const LinkItem = ({ title, url }) => (
-	<>
-		<a key={title} href={url}>
-			{title}
-		</a>
-	</>
+	<a key={title} href={url}>
+		{title}
+	</a>
 );
 
 const RelatedLink = ({

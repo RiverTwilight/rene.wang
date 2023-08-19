@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Analytics } from "@vercel/analytics/react";
 import siteConfig from "../site.config.js";
-import "./App.css";
 import "kindle-fonts/bookerly.css";
 import "kindle-fonts/amazon-ember.css";
+import "./App.css";
 
 function MyApp({ Component, pageProps }) {
 	const [colorTheme, setColorTheme] = useState("light");

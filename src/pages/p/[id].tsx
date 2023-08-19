@@ -149,6 +149,10 @@ const StyledArticlePage = styled.div`
 	@media (min-width: 1024px) {
 		padding: 0 12px;
 	}
+
+	& section[itemProp="articleBody"] {
+		font-family: "Noto Serif SC";
+	}
 `;
 
 // const ReadMore = ({ data }: any) => {
@@ -216,7 +220,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 				<meta itemProp="publisher" content={siteConfig.author} />
 				<meta itemProp="inLanguage" content={locale} />
 				<br />
-				<article itemProp="articleBody">
+				<section itemProp="articleBody">
 					<ReactMarkdown
 						escapeHtml={false}
 						remarkPlugins={[remarkMath]}
@@ -229,7 +233,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 						}}
 						children={postContent}
 					></ReactMarkdown>
-				</article>
+				</section>
 			</Typography>
 		</StyledArticlePage>
 	);

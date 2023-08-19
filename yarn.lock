@@ -1509,16 +1509,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kindle-ui/core@npm:latest":
-  version: 1.1.4
-  resolution: "@kindle-ui/core@npm:1.1.4"
+"@kindle-ui/core@npm:1.1.6":
+  version: 1.1.6
+  resolution: "@kindle-ui/core@npm:1.1.6"
   dependencies:
     rollup-plugin-typescript2: ^0.35.0
     styled-components: ^5.3.0
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: b51613302a013e0cecb73fa49cea749784f1948fb41feddfc3e8bdeff305f56b70db3585c28553fcf854dfa5bbdb3014d0c3124d58cc89e5402e45e1e6dc52dd
+  checksum: 146541cc9a4ea00417013359dd9b3bc564524104fdca962efa5ac8c108ea2d49040f3d0e3ca73a7999a11cc06280f80a2036839019fbcf007175287c395f7972
   languageName: node
   linkType: hard
 
@@ -3758,10 +3758,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kindle-fonts@npm:1.0.0":
-  version: 1.0.0
-  resolution: "kindle-fonts@npm:1.0.0"
-  checksum: 39847682f792d021081dae0f37d4517f04ec6ffe8be2880b5bd572ebbd9c32ca7dfd4c0c6b25e1297730e13c88e917151bf4484c9f9260881ff8c3256b5565bb
+"kindle-fonts@npm:latest":
+  version: 1.0.1
+  resolution: "kindle-fonts@npm:1.0.1"
+  checksum: 4d5b05ca687501f8000f5c415bcd7cfa172f7bcd5a8aad11e9676671d43e4399d9870fe50a9676611a57a1192c6fe78aabe256e969c66154169baee912eb65ae
   languageName: node
   linkType: hard
 
@@ -4400,7 +4400,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nblog@workspace:."
   dependencies:
-    "@kindle-ui/core": latest
+    "@kindle-ui/core": 1.1.6
     "@notion-stuff/blocks-markdown-parser": ^6.0.0
     "@notionhq/client": ^2.2.3
     "@svgr/webpack": 5.5.0
@@ -4412,7 +4412,7 @@ __metadata:
     feed: ^4.2.2
     glob: ^7.1.6
     gray-matter: ^4.0.2
-    kindle-fonts: 1.0.0
+    kindle-fonts: latest
     next: ^13.4.4
     notion-client: ^6.16.0
     postcss: ^8.3.6
