@@ -12,7 +12,7 @@
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
-		"@kindle-ui/core": "1.1.7",
+		"@kindle-ui/core": "1.1.9",
 		"@notion-stuff/blocks-markdown-parser": "^6.0.0",
 		"@notionhq/client": "^2.2.3",
 		"@vercel/analytics": "^0.1.8",
