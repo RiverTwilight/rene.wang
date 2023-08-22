@@ -58,6 +58,10 @@ module.exports = {
 			title: "HsuQNian",
 			url: "https://hsuqnian.top/",
 		},
+		{
+			title: "Vinkon's Blog",
+			url: "https://lilkon.cn/",
+		},
 	],
 	paths: {
 		blog: "p/",
