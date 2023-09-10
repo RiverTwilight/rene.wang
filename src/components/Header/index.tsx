@@ -16,6 +16,7 @@ import {
 	ActionBarMenu,
 	HomeOutlineIcon,
 	CogSharpIcon,
+	DialogTitle,
 } from "@kindle-ui/core";
 import Text from "../../utils/i18n";
 import { nav, navbarMenu } from "../../i18n.json";
@@ -134,11 +135,14 @@ const Header: React.FC<HeaderProps> = ({
 				<ActionGroup>
 					<SearchBar />
 					<Dialog open={open} onClose={handleClose}>
+						<DialogTitle>About</DialogTitle>
 						<DialogContent>
 							{siteConfig.author.intro[0].content}
 						</DialogContent>
 						<DialogAction>
-							<Button onClick={handleClose}>CLOSE</Button>
+							<Button variant="secondary" onClick={()=>{
+								window.open("mailto://contact@rene.wang")
+							}}>Email me</Button>
 						</DialogAction>
 					</Dialog>
 					<Text dictionary={navbarMenu} language={lang}>

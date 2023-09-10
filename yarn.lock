@@ -1509,16 +1509,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kindle-ui/core@npm:1.1.9":
-  version: 1.1.9
-  resolution: "@kindle-ui/core@npm:1.1.9"
+"@kindle-ui/core@npm:latest":
+  version: 1.1.10
+  resolution: "@kindle-ui/core@npm:1.1.10"
   dependencies:
     rollup-plugin-typescript2: ^0.35.0
     styled-components: ^5.3.0
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
-  checksum: d39d9dd2899365db15182e1dc7e487d73c0b09bb837142b8e65d7df14b51e84bd9234b896b10adc01e62bb7bd6786b6d3b0fd16fff2a7ef34b9d849d90d391e3
+  checksum: 535b4059d5dd1135d92f069d28e79ef94c2ee3bdcd289ba1b59cccf2fe4eda61caf55de5acfc30551d0c4c4c97f8cd3e4dafe6ad515075199e3e4e85a0f596b7
   languageName: node
   linkType: hard
 
@@ -4400,7 +4400,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nblog@workspace:."
   dependencies:
-    "@kindle-ui/core": 1.1.9
+    "@kindle-ui/core": latest
     "@notion-stuff/blocks-markdown-parser": ^6.0.0
     "@notionhq/client": ^2.2.3
     "@svgr/webpack": 5.5.0
