@@ -1,0 +1,54 @@
+{
+	"zh-CN": [
+		{
+			"imageUrl": "/photography/IMG_7199.png",
+			"caption": "Santana 2023",
+			"alt": "Sunset Image",
+			"date": "2023-10-18"
+		},
+		{
+			"imageUrl": "/photography/IMG_7229.png",
+			"caption": "Nanchong",
+			"alt": "Beach Image",
+			"date": "2023-10-21"
+		},
+		{
+			"imageUrl": "/photography/IMG_7237.png",
+			"caption": "China & Me",
+			"alt": "Beach Image",
+			"date": "2023-10-21"
+		},
+		{
+			"imageUrl": "/photography/IMG_7246.png",
+			"caption": "门口的大草原",
+			"alt": "Beach Image",
+			"date": "2023-10-21"
+		}
+	],
+	"en-US": [
+		{
+			"imageUrl": "/photography/IMG_7199.png",
+			"caption": "Santana 2023",
+			"alt": "Sunset Image",
+			"date": "2023-10-18"
+		},
+		{
+			"imageUrl": "/photography/IMG_7229.png",
+			"caption": "Nanchong",
+			"alt": "Beach Image",
+			"date": "2023-10-21"
+		},
+		{
+			"imageUrl": "/photography/IMG_7237.png",
+			"caption": "China & Me",
+			"alt": "Beach Image",
+			"date": "2023-10-21"
+		},
+		{
+			"imageUrl": "/photography/IMG_7246.png",
+			"caption": "Green",
+			"alt": "Beach Image",
+			"date": "2023-10-21"
+		}
+	]
+}

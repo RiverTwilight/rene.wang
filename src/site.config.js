@@ -1,15 +1,15 @@
 //  TODO i18n
 module.exports = {
 	title: {
-		"zh-CN": "江村暮的 Kindle",
-		"en-US": "Rene's Kindle",
+		"zh-CN": "江村暮的个人网站",
+		"en-US": "Rene's Official Website",
 	},
 	root: "https://rene.wang",
 	description: "开发日志、技术文章以及生活随感。",
-	keywords: ["江村暮的博客", "RiverTwilight", "过气码农", "江村暮"],
+	keywords: ["江村暮的博客", "RiverTwilight", "过气码农", "江村暮", "RT"],
 	dataSource: "notion",
 	author: {
-		name: "江村暮",
+		name: "RiverTwilight",
 		twitter: "https://twitter.com/rea1DonandTrump",
 		email: "contact@rene.wang",
 		github: "https://github.com/RiverTwilight",

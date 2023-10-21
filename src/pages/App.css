@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 
 * a {
 	color: inherit;
@@ -38,6 +39,12 @@ article {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		background-image: url("/image/bg_1.jpeg");
+		background-position: center;
+		background-size: cover;
+		/* overflow: hidden; */
+		/* background: radial-gradient(#e4cea6, #9c8763); */
+		animation: bg 2s ease-in infinite;
 	}
 	.container {
 		min-height: 100vh;
@@ -46,17 +53,18 @@ article {
 		max-width: 1800px;
 		position: relative;
 	}
-	body {
-		background-image: url("/image/paper-background.png");
-		background-position: center;
-		background-size: cover;
-		overflow: hidden;
-		/* background: radial-gradient(#e4cea6, #9c8763); */
-		animation: bg 2s ease-in infinite;
-	}
+
 	main {
 		width: 100%;
 		padding-bottom: 30px;
+	}
+
+	#platform {
+		display: flex;
+		justify-content: center;
+	}
+	#gallery {
+		background-image: unset;
 	}
 }
 
@@ -70,6 +78,12 @@ main {
 	display: block;
 }
 
+#gallery {
+	margin-top: 2rem;
+	background-image: url("/image/bg_1.jpeg");
+
+}
+
 /* .hIBvgz {
 	background: linear-gradient(
 		-135deg,
@@ -81,9 +95,6 @@ main {
 	background-position: 0px 0px;
 }
 
-#platform {
-	animation: pullIn 3s ease-in infinite;
-}
 
 @keyframes screen-shade {
 	0% {

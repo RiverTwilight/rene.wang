@@ -5,6 +5,8 @@ import { Container, KindleOasis } from "@kindle-ui/core";
 import RelatedLink from "../RelatedLink";
 import { ICurrentPage, ISiteConfig } from "../../types";
 import { useRouter } from "next/router";
+import Gallery from "../Gallery";
+import galleryData from "../../../posts/gallery.json";
 
 const Layout = (props: {
 	/**网站配置 */
@@ -53,7 +55,10 @@ const Layout = (props: {
 
 	useEffect(() => {
 		const container = document.querySelector(".content");
-		container.scrollTop = 0;
+
+		if (container) {
+			container.scrollTop = 0;
+		}
 	}, [currentPage]);
 
 	return (
@@ -88,8 +93,7 @@ const Layout = (props: {
 				/>
 				<title>{showTitle}</title>
 			</Head>
-			{/* <div className="hidden-xs" style={{ height: "30px" }}></div> */}
-			<div id="platform">
+			<section id="platform">
 				<Container dark={dark} deviceFrame={KindleOasis}>
 					<Header
 						menuItems={menuItems}
@@ -106,7 +110,10 @@ const Layout = (props: {
 						/>
 					</main>
 				</Container>
-			</div>
+			</section>
+			<section id="gallery">
+				<Gallery photos={galleryData[locale]} />
+			</section>
 		</>
 	);
 };
