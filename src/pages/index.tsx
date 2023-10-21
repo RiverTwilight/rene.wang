@@ -19,7 +19,7 @@ export async function getStaticProps({ locale, locales }) {
 			enableSort: true,
 			locale,
 		}
-	);
+	).filter((post) => !post.frontmatter.hidden);
 
 	console.log("StaticProps:", allPosts);
 

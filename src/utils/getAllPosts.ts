@@ -143,7 +143,13 @@ export interface GetAllPostsOption {
 		id?: (id: string) => string;
 	};
 	enableSort?: boolean;
+	/**
+	 * If true, it will return a flatten array with posts in it.
+	 */
 	enableFlat?: boolean;
+	/**
+	 * Whether include the article content in the result.
+	 */
 	enableContent?: boolean;
 	locale?: string;
 }
@@ -197,8 +203,10 @@ export default function getAllPosts(
 
 						const { data: frontmatter, content: markdownBody } =
 							document;
-						
-							frontmatter.date = parseDate(frontmatter.date).toLocaleDateString()
+
+						frontmatter.date = parseDate(
+							frontmatter.date
+						).toLocaleDateString();
 
 						return {
 							defaultTitle: slug,
@@ -241,7 +249,7 @@ export default function getAllPosts(
 	if (enableFlat) {
 		if (enableSort) {
 			return flatPost(posts).sort((a, b) => {
-				console.log(a)
+				console.log(a);
 				const dateA = new Date(a.frontmatter.date);
 				const dateB = new Date(b.frontmatter.date);
 
