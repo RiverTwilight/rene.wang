@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const GalleryContainer = styled.div`
@@ -56,9 +56,18 @@ const DateStamp = styled.p`
 `;
 
 const Gallery = ({ photos }) => {
+	const [selectedPhotos, setSelectedPhotos] = useState([]);
+
+	useEffect(() => {
+		// Shuffle the array
+		const shuffledPhotos = [...photos].sort(() => Math.random() - 0.5);
+		// Take the first 5 items
+		setSelectedPhotos(shuffledPhotos.slice(0, 4));
+	}, []);
+
 	return (
 		<GalleryContainer>
-			{photos.map((photo, index) => {
+			{selectedPhotos.map((photo, index) => {
 				const randomAngle = Math.floor(Math.random() * 6) - 3;
 				const positions = ["left", "center", "right"];
 				const randomPosition =
