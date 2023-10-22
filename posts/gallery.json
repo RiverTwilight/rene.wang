@@ -31,6 +31,12 @@
 			"date": "2023-09-12"
 		},
 		{
+			"imageUrl": "/photography/IMG_5621.png",
+			"caption": "家乡",
+			"alt": "Blue Skyline",
+			"date": "2023-01-27"
+		},
+		{
 			"imageUrl": "/photography/IMG_7246.png",
 			"caption": "门口的大草原",
 			"alt": "Beach Image",
@@ -67,6 +73,12 @@
 			"caption": "Dawn",
 			"alt": "Blue Skyline",
 			"date": "2023-09-12"
+		},
+		{
+			"imageUrl": "/photography/IMG_5621.png",
+			"caption": "Hometown",
+			"alt": "The city I was born in.",
+			"date": "2023-01-27"
 		},
 		{
 			"imageUrl": "/photography/IMG_7246.png",

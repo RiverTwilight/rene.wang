@@ -47,6 +47,41 @@ NOTION_DATABASE_ID=<YOUR_ID>
 
 如果选择使用 Notion 写作，请参考这个 [database]() 的形式创建一个一样的。
 
+此外，若要启用底部的照片墙，只需编辑`/posts/gallery.json`即可，例如：
+
+```json
+{
+	"zh-CN": [
+		{
+			"imageUrl": "/photography/IMG_7199.png",
+			"caption": "Santana 2023",
+			"alt": "Sunset Image",
+			"date": "2023-10-18"
+		}
+	],
+	"en-US": [
+		{
+			"imageUrl": "/photography/IMG_6922.png",
+			"caption": "Dawn",
+			"alt": "Blue Skyline",
+			"date": "2023-09-12"
+		},
+		{
+			"imageUrl": "/photography/IMG_5621.png",
+			"caption": "Hometown",
+			"alt": "The city I was born in.",
+			"date": "2023-01-27"
+		},
+		{
+			"imageUrl": "/photography/IMG_7246.png",
+			"caption": "Green",
+			"alt": "Beach Image",
+			"date": "2023-10-21"
+		}
+	]
+}
+```
+
 ## 部署到 Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FRiverTwilight%2Frene.wang)
