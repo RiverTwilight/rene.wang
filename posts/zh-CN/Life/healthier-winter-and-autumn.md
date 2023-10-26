@@ -70,7 +70,7 @@ date: 2023-09-14T06:22:00.000Z
 
 注意，一定要吃**当季食物。**秋天应季的水果有山楂、柿子、苹果、梨等。
 
-![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/49ce748a-2e2b-4733-88a9-fc6dd68edda7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231025%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231025T131516Z&X-Amz-Expires=3600&X-Amz-Signature=171505b2c37ea4e22ba842c9fc19403fc5be09047b60c539c9ee84e76439dae3&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/49ce748a-2e2b-4733-88a9-fc6dd68edda7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231026%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231026T131503Z&X-Amz-Expires=3600&X-Amz-Signature=bef048e2e72fdc329c76817fec2503105f1c103050b7124d1bb342aac18455cc&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 体质弱怕冷，可以用紫苏叶煮水或泡水喝喝，解表散寒发汗，风寒感冒常用之物（气虚/温热症不宜），但适可而止，不宜久用。
 
