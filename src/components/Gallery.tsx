@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Image from "next/image";
 
 const GalleryContainer = styled.div`
 	display: flex;
@@ -24,7 +25,7 @@ const ImageFrame = styled.div`
 	}
 `;
 
-const Image = styled.img`
+const ImageInner = styled.img`
 	width: 100%;
 	height: auto;
 	border-radius: 0px;
@@ -54,14 +55,15 @@ const DateStamp = styled.p`
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 2px;
 `;
+const StyledImage = styled(Image)`
+	border-radius: 0px;
+`;
 
 const Gallery = ({ photos }) => {
 	const [selectedPhotos, setSelectedPhotos] = useState([]);
 
 	useEffect(() => {
-		// Shuffle the array
 		const shuffledPhotos = [...photos].sort(() => Math.random() - 0.5);
-		// Take the first 5 items
 		setSelectedPhotos(shuffledPhotos.slice(0, 4));
 	}, []);
 
@@ -72,10 +74,17 @@ const Gallery = ({ photos }) => {
 				const positions = ["left", "center", "right"];
 				const randomPosition =
 					positions[Math.floor(Math.random() * positions.length)];
+
 				return (
 					<ImageFrame key={index} angle={randomAngle}>
 						<PhotoWrapper>
-							<Image src={photo.imageUrl} alt={photo.alt} />
+							<StyledImage
+								src={photo.imageUrl}
+								alt={photo.alt}
+								width={800} // Adjust these values as per your layout requirements
+								height={450} // Adjust these values as per your layout requirements
+								layout="responsive" // Optional, but recommended for responsive images
+							/>
 							<DateStamp>{photo.date}</DateStamp>
 						</PhotoWrapper>
 						<Caption align={randomPosition}>
