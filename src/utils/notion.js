@@ -150,28 +150,33 @@ async function getBlogPosts() {
 (async function main() {
 	const posts = await getBlogPosts();
 
-	posts.forEach(async (post) => {
+	for (const post of posts) {
 		const postContent = await getPageContent(post.id);
 		const rawMarkdown = `---
 title: ${post.title}
 date: ${post.date}
-${post.cover ? `cover: ${post.cover}` : ""}
+${post.cover ? `cover: ${post.cover}` : ''}
 ---
 
 ${postContent}`;
 
-		const fileName = `${post.slug
-			.replace(/[^a-zA-Z0-9]/g, "-")
-			.toLowerCase()}.md`;
+		const fileName = `${post.slug.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}.md`;
 
-		post.locale.forEach(async (locale) => {
-			post.tags.forEach(async (tag) => {
-				await fs.writeFile(
-					path.join(`./posts/${locale.name}/${tag.name}`, fileName),
+		for (const locale of post.locale) {
+			for (const tag of post.tags) {
+				const directoryPath = path.join(`./posts/${locale.name}/${tag.name}`);
+
+				// Check if directory exists, if not, create it
+				if (!fs.existsSync(directoryPath)) {
+					fs.mkdirSync(directoryPath, { recursive: true });
+				}
+
+				await fs.promises.writeFile(
+					path.join(directoryPath, fileName),
 					rawMarkdown
 				);
 				console.log(`Synced post: ${fileName}`);
-			});
-		});
-	});
+			}
+		}
+	}
 })();

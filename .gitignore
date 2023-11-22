@@ -14,3 +14,5 @@ out
 .env
 
 public/rss/feed.xml
+
+.DS_Store
