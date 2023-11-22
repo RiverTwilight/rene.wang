@@ -2,14 +2,15 @@
 
 [简体中文](./README.md) | English
 
-This is the source code for my blog and also a powerful static blogging site.
+This is the source code for my [blog](https://rene.wang) and also a powerful static blogging site.
 
 -   [x] Supports custom theme development
 -   [x] Syncs articles from Notion
 -   [x] Multi-language UI and articles
+-   [x] RSS Feed
 -   [ ] Comments
 
-## 🎞️ Usage
+## 🎞️ Get Started
 
 Click on the Use this template button on the top right corner of the page to create your own repository.
 
@@ -20,30 +21,6 @@ Afterwards, modify the configuration file located at ./site.config.js.
 -   author: Author information
     -   name: Name
     -   intro: Introduction
-
-If you need to use Notion for writing, create a new Integration in Notion to obtain an API Key. Also, get your database_id.
-
-Then, add two environment variables in the Github repository:
-
-```bash
-NOTION_API_KEY=<YOUR_KEY>
-NOTION_DATABASE_ID=<YOUR_ID>
-```
-
-Once everything is ready, you can choose the deployment method you prefer.
-
-## ✍ Writing
-
-Currently, two writing methods are supported:
-
-Place the Markdown file in the /posts/<categories> directory. Currently, up to two-level directories are supported.
-Automatically sync articles from Notion.
-If you choose the first method, each article must have at least the following two frontmatter:
-
--   title
--   date
-
-If you choose to use Notion for writing, refer to this [database] () to create a similar one.
 
 ## Deploying to Vercel
 
@@ -67,8 +44,9 @@ mkdir -p /app/blog && cd /app/blog
 git init
 ```
 
-1. Github Repository Configuration
-   Create a repository on Github and add server information under Setting -> Secrets.
+### 1. Github Repository Configuration
+
+Create a repository on Github and add server information under Setting -> Secrets.
 
 ```bash
 SSH_HOST: Server IP
@@ -83,8 +61,34 @@ Add the server's git public key under Deploy Keys in the Github repository (gene
 vim ~/.ssh/id_rsa.pub
 ```
 
-2. Pushing Code
-   Make sure that the Action is enabled, and all updates to the master branch on Github will be automatically deployed to the server. Congratulations!
+### 2. Pushing Code
+
+Make sure that the Action is enabled, and all updates to the master branch on Github will be automatically deployed to the server. Congratulations!
+
+## ✍ Writing
+
+Currently, two writing methods are supported:
+
+1. Place the Markdown file in the /posts/<categories> directory. Currently, up to two-level directories are supported.
+2. Automatically sync articles from Notion.
+
+If you choose the first method, each article must have at least the following two frontmatter:
+
+-   title
+-   date
+
+If you choose to use Notion for writing, refer to this [database] () to create a similar one.
+
+Then, create a new Integration in Notion to obtain an API Key. Also, get your database_id.
+
+Finally, add two environment variables in the Github repository:
+
+```bash
+NOTION_API_KEY=<YOUR_KEY>
+NOTION_DATABASE_ID=<YOUR_ID>
+```
+
+Once everything is ready, you can choose the deployment method you prefer.
 
 ## License
 
