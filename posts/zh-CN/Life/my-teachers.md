@@ -33,7 +33,7 @@ date: 2023-09-12T05:22:00.000Z
 
 我从小喜欢在书上乱画，我记得很清楚的一种题材是在练习册上的“物理水体演算“（姑且允许我这么称呼吧），大概长这样：
 
-![Image](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eed8d0c-48f7-4215-be40-7d7c2c312228/40005b59-43d9-4a62-997c-5f572b3e6fa1/Screenshot_2023-09-10_at_09.55.18.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20231122%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231122T142008Z&X-Amz-Expires=3600&X-Amz-Signature=824ec0f92371e8a8f8dc8740541ff9f7e780a6e8e45ce64dab8d13aa4711e78d&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eed8d0c-48f7-4215-be40-7d7c2c312228/40005b59-43d9-4a62-997c-5f572b3e6fa1/Screenshot_2023-09-10_at_09.55.18.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20231123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231123T130519Z&X-Amz-Expires=3600&X-Amz-Signature=bf45efe9abe8c755288e654a7389a6d39fa2c7b751274b87421225305b2bf918&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 没啥特别的，就是在模拟水流的物理流动。遇到练习册上的印刷文字，我还会有模有样的让水流受到他们的影响。但是包括父母在内的许多老师都曾批评我不要在书上乱画（即使到初中我画的已经比这好很多了，仍然受到了很多批评）。她没有批评我，她反而对全班同学说“他（我）画的画非常有意思”之类的。
 
