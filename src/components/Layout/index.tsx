@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Header from "@/components/Header";
 import { Container, KindleOasis } from "@kindle-ui/core";
@@ -35,6 +35,7 @@ const Layout = (props: {
 	// });
 
 	const [dark, setDark] = useState(false);
+	const containerEle = useRef(null);
 
 	useEffect(() => {
 		// Check if there's a saved preference in localStorage
@@ -95,20 +96,23 @@ const Layout = (props: {
 			</Head>
 			<section id="platform">
 				<Container dark={dark} deviceFrame={KindleOasis}>
-					<Header
-						menuItems={menuItems}
-						lang={locale}
-						currentPage={currentPage}
-						siteConfig={siteConfig}
-					/>
-					<main>
-						<div>{children}</div>
-						<br></br>
-						<RelatedLink
-							links={siteConfig.relatedLinks}
-							locale={locale}
+					<div ref={containerEle}>
+						<Header
+							menuItems={menuItems}
+							lang={locale}
+							currentPage={currentPage}
+							siteConfig={siteConfig}
+							containerEle={containerEle}
 						/>
-					</main>
+						<main>
+							<div>{children}</div>
+							<br></br>
+							<RelatedLink
+								links={siteConfig.relatedLinks}
+								locale={locale}
+							/>
+						</main>
+					</div>
 				</Container>
 			</section>
 			<section id="gallery">

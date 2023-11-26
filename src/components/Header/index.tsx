@@ -26,6 +26,7 @@ interface HeaderProps {
 	siteConfig: ISiteConfig;
 	currentPage?: ICurrentPage;
 	lang?: string;
+	containerEle: any;
 	menuItems?: any[];
 }
 
@@ -33,6 +34,7 @@ const Header: React.FC<HeaderProps> = ({
 	siteConfig,
 	menuItems,
 	currentPage,
+	containerEle,
 	lang,
 }) => {
 	const router = useRouter();
@@ -134,15 +136,24 @@ const Header: React.FC<HeaderProps> = ({
 				<ActionBarSpace />
 				<ActionGroup>
 					<SearchBar />
-					<Dialog open={open} onClose={handleClose}>
+					<Dialog
+						anchorEl={containerEle.current}
+						open={open}
+						onClose={handleClose}
+					>
 						<DialogTitle>About</DialogTitle>
 						<DialogContent>
 							{siteConfig.author.intro[0].content}
 						</DialogContent>
 						<DialogAction>
-							<Button variant="secondary" onClick={()=>{
-								window.open("mailto://contact@rene.wang")
-							}}>Email me</Button>
+							<Button
+								variant="secondary"
+								onClick={() => {
+									window.open("mailto://contact@rene.wang");
+								}}
+							>
+								Email me
+							</Button>
 						</DialogAction>
 					</Dialog>
 					<Text dictionary={navbarMenu} language={lang}>
