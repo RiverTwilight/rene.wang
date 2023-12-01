@@ -114,7 +114,7 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 					block.numbered_list_item.rich_text
 				)}\n${childrenContent || ""}`;
 			case "divider":
-				return `<hr />\n`;
+				return `\n---\n`;
 			case "paragraph":
 				return `\n${richTextToMarkdown(block.paragraph.rich_text)}\n`;
 			case "heading_2":
