@@ -1,7 +1,6 @@
 ---
 title: Setting Up Fresh Ubuntu Server for Web Hosting
 date: 2023-11-28T01:10:00.000Z
-
 ---
 
 
