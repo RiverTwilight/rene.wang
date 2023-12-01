@@ -24,6 +24,13 @@ const notion = new Client({
 
 async function downloadImage(url, localPath) {
 	try {
+		const directory = path.dirname(localPath);
+
+		// Check if directory exists, if not, create it
+		if (!fs.existsSync(directory)) {
+			fs.mkdirSync(directory, { recursive: true });
+		}
+
 		const response = await axios({
 			method: "GET",
 			url: url,
