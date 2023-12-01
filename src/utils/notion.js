@@ -2,6 +2,7 @@ const { Client } = require("@notionhq/client");
 const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
+const axios = require("axios");
 
 // https://developers.notion.com/reference/block#bulleted-list-item
 
@@ -20,6 +21,27 @@ if (!NOTION_API_KEY || !NOTION_DATABASE_ID) {
 const notion = new Client({
 	auth: NOTION_API_KEY,
 });
+
+async function downloadImage(url, localPath) {
+	try {
+		const response = await axios({
+			method: "GET",
+			url: url,
+			responseType: "stream",
+		});
+
+		await new Promise((resolve, reject) => {
+			response.data
+				.pipe(fs.createWriteStream(localPath))
+				.on("finish", resolve)
+				.on("error", reject);
+		});
+
+		console.log(`Downloaded image to ${localPath}`);
+	} catch (error) {
+		console.error(`Error downloading image: ${error.message}`);
+	}
+}
 
 function richTextToMarkdown(richText) {
 	return richText
@@ -100,10 +122,15 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 				}] ${richTextToMarkdown(block.to_do.rich_text)}\n`;
 			case "image":
 				let imageURL =
-					block.image.type == "external"
+					block.image.type === "external"
 						? block.image.external.url
 						: block.image.file.url;
-				return `\n![Image](${imageURL})\n`;
+				const imageName = path.basename(new URL(imageURL).pathname);
+				const localImagePath = `/public/image/post/${imageName}`;
+
+				await downloadImage(imageURL, localImagePath);
+
+				return `\n![Image](.${localImagePath})\n`;
 			case "video":
 				// TODO Parse Notion's video block
 				return `\n![Video](${block.video.url})\n`;
@@ -155,16 +182,20 @@ async function getBlogPosts() {
 		const rawMarkdown = `---
 title: ${post.title}
 date: ${post.date}
-${post.cover ? `cover: ${post.cover}` : ''}
+${post.cover ? `cover: ${post.cover}` : ""}
 ---
 
 ${postContent}`;
 
-		const fileName = `${post.slug.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}.md`;
+		const fileName = `${post.slug
+			.replace(/[^a-zA-Z0-9]/g, "-")
+			.toLowerCase()}.md`;
 
 		for (const locale of post.locale) {
 			for (const tag of post.tags) {
-				const directoryPath = path.join(`./posts/${locale.name}/${tag.name}`);
+				const directoryPath = path.join(
+					`./posts/${locale.name}/${tag.name}`
+				);
 
 				// Check if directory exists, if not, create it
 				if (!fs.existsSync(directoryPath)) {

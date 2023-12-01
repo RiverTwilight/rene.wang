@@ -1,40 +1,68 @@
-import React, { PureComponent } from "react";
+import React, { useEffect } from "react";
+import styled from "styled-components";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-// 设置高亮样式
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-// 设置高亮的语言
 import {
 	jsx,
 	javascript,
+	bash,
 	sass,
 	scss,
+	typescript,
 } from "react-syntax-highlighter/dist/cjs/languages/prism";
 
-export default class extends PureComponent<{
-	language: string;
-	children;
-}> {
-	componentWillMount() {
-		// 注册要高亮的语法，
-		// 注意：如果不设置打包后供第三方使用是不起作用的
+const StyledFigure = styled.figure`
+	max-height: 90vh;
+	overflow: auto;
+	/* width: 100%;*/
+
+	// Full width on mobile devices
+	@media (max-width: 768px) {
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+
+		& pre {
+			border-radius: 0 !important;
+		}
+	}
+`;
+
+const CodeBlock = ({ node, inline, children }) => {
+	useEffect(() => {
 		SyntaxHighlighter.registerLanguage("jsx", jsx);
 		SyntaxHighlighter.registerLanguage("javascript", javascript);
-	}
-	render() {
-		const { language, children, inline } = this.props;
+		SyntaxHighlighter.registerLanguage("js", javascript);
+		SyntaxHighlighter.registerLanguage("typescript", typescript);
+		SyntaxHighlighter.registerLanguage("ts", typescript);
+		SyntaxHighlighter.registerLanguage("bash", bash);
+		SyntaxHighlighter.registerLanguage("sass", sass);
+		SyntaxHighlighter.registerLanguage("scss", scss);
+	}, []);
 
-		if(inline){
-			return(
-				<code>{children}</code>
-			)
-		}
-		console.log(this.props);
-		return (
-			<figure className="highlight">
-				<SyntaxHighlighter language={language} style={atomDark}>
-					{children}
-				</SyntaxHighlighter>
-			</figure>
-		);
+	// Extracting the language
+	const className = node.properties?.className || [];
+	const match = className.find((className) =>
+		className.startsWith("language-")
+	);
+	const language = match ? match.replace("language-", "") : null;
+
+	if (inline) {
+		return <code>{children}</code>;
 	}
-}
+
+	console.log(children)
+
+	return (
+		<StyledFigure>
+			<SyntaxHighlighter language={language} style={atomDark}>
+				{children}
+			</SyntaxHighlighter>
+		</StyledFigure>
+	);
+};
+
+export default CodeBlock;

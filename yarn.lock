@@ -4423,7 +4423,7 @@ __metadata:
     react-markdown: ^8.0.7
     react-mathjax: ^1.0.1
     react-notion-x: ^6.16.0
-    react-syntax-highlighter: ^15.4.4
+    react-syntax-highlighter: latest
     rehype-katex: ^6.0.3
     remark-math: ^5.1.1
     styled-components: ^5.1.1
@@ -5120,7 +5120,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-syntax-highlighter@npm:^15.4.4":
+"react-syntax-highlighter@npm:latest":
   version: 15.5.0
   resolution: "react-syntax-highlighter@npm:15.5.0"
   dependencies:
