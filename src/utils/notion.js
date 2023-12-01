@@ -31,6 +31,12 @@ async function downloadImage(url, localPath) {
 			fs.mkdirSync(directory, { recursive: true });
 		}
 
+		// Check if the image file already exists
+		if (fs.existsSync(localPath)) {
+			console.log(`Image already exists: ${localPath}`);
+			return;
+		}
+
 		const response = await axios({
 			method: "GET",
 			url: url,
@@ -133,11 +139,12 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 						? block.image.external.url
 						: block.image.file.url;
 				const imageName = path.basename(new URL(imageURL).pathname);
-				const localImagePath = `./public/image/post/${imageName}`;
+				const localImagePath = `/image/post/${imageName}`; // Updated path
+				const localFilesystemPath = `./public/image/post/${imageName}`; // Path for filesystem operations
 
-				await downloadImage(imageURL, localImagePath);
+				await downloadImage(imageURL, localFilesystemPath);
 
-				return `\n![Image](.${localImagePath})\n`;
+				return `\n![Image](${localImagePath})\n`;
 			case "video":
 				// TODO Parse Notion's video block
 				return `\n![Video](${block.video.url})\n`;
