@@ -11,7 +11,7 @@ cover: https://i.loli.net/2021/11/28/I7SbfaXY4TF6Adl.png
 
 重要！！：国内的大部分教程都没有提到，由于 MTK 特殊的硬件加密，故直接刷入 REC 会导致手机无法引导 REC，解决方案是下面这个文件。
 
-![Image](../public/image/post/3lSt1WAnUaoZMbv.png)
+![Image](/image/post/3lSt1WAnUaoZMbv.png)
 
 ## 总览
 
@@ -43,7 +43,7 @@ Step4：格式化 data 并且刷入系统，不出意外地话就会开机
 
 已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)[https://t.me/redmi6official]里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！
 
-![Image](../public/image/post/rwutbM9DBz6yoGL.png)
+![Image](/image/post/rwutbM9DBz6yoGL.png)
 
 ## Part4 | Adjust
 
