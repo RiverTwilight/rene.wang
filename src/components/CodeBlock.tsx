@@ -54,8 +54,6 @@ const CodeBlock = ({ node, inline, children }) => {
 		return <code>{children}</code>;
 	}
 
-	console.log(children)
-
 	return (
 		<StyledFigure>
 			<SyntaxHighlighter language={language} style={atomDark}>

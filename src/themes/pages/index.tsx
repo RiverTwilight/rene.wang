@@ -19,7 +19,7 @@ import Text from "@/utils/i18n";
 import { postList, homePage } from "../i18n.json";
 import type { IPost } from "@/types/index";
 
-const MAX_POST_COUNT = 12;
+const MAX_POST_COUNT = 15;
 const FLAG_ENABLE_SORT_BY_DATE = true;
 
 function PostList({
@@ -124,7 +124,7 @@ const Home = (props: any) => {
 					allPosts={allPosts}
 					falttedPosts={falttedPosts}
 				/>
-				
+
 				<br />
 				<div className="Dis(flex) JC(center)">
 					<Text dictionary={postList} language={locale}>

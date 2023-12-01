@@ -137,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({
 				<ActionGroup>
 					<SearchBar />
 					<Dialog
-						anchorEl={containerEle.current}
+						// anchorEl={containerEle.current}
 						open={open}
 						onClose={handleClose}
 					>

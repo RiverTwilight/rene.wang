@@ -21,7 +21,7 @@ export async function getStaticProps({ locale, locales }) {
 		}
 	).filter((post) => !post.frontmatter.hidden);
 
-	console.log("StaticProps:", allPosts);
+	// console.log("StaticProps:", allPosts);
 
 	generateRssFeed();
 

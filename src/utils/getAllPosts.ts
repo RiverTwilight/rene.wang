@@ -249,7 +249,7 @@ export default function getAllPosts(
 	if (enableFlat) {
 		if (enableSort) {
 			return flatPost(posts).sort((a, b) => {
-				console.log(a);
+				// console.log(a);
 				const dateA = new Date(a.frontmatter.date);
 				const dateB = new Date(b.frontmatter.date);
 

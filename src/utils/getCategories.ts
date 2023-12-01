@@ -16,7 +16,7 @@ function getCategories(requireFunc, options): ICategory[] {
 		const keys = context.keys();
 		const values = keys.map(context);
 
-		console.log(keys, values);
+		// console.log(keys, values);
 
 		const key_value_map = generateMap(keys, values);
 
