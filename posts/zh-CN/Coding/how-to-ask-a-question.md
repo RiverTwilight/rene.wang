@@ -11,7 +11,7 @@ date: 2023-05-07T06:57:00.000Z
 
 为别人解决问题也可以提高自己的技术，但是**让别人回答一个低质量、不走心的问题无疑是浪费双方时间**。
 
-![Image](./public/image/post/640)
+![Image](../public/image/post/640)
 
 提问题之前，确保：
 - 你已经使用国外的搜索引擎搜索过了（国外的资源相对国内多）
@@ -25,11 +25,11 @@ date: 2023-05-07T06:57:00.000Z
 
 √ 好的做法应该是：
 
-![Image](./public/image/post/640)
+![Image](../public/image/post/640)
 
 ❌ 而不是：
 
-![Image](./public/image/post/640)
+![Image](../public/image/post/640)
 
 这同样适用于大部分搜索场景。
 

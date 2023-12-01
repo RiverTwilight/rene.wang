@@ -5,7 +5,7 @@ date: 2023-05-07T06:57:00.000Z
 ---
 
 
-![Image](./public/image/post/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png)
+![Image](../public/image/post/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png)
 
 前几天给 RSSHub 提交了一个 PR，把我所就读的大学的两个学院官网做成了 RSS 源。
 

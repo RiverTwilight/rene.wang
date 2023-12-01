@@ -221,7 +221,7 @@ Then enable action for your github repo on this page.
 
 In your github repo, create three environemnt varibles for SSH connection at this page:
 
-![Image](./public/image/post/Screenshot_2023-11-28_at_08.58.02.png)
+![Image](../public/image/post/Screenshot_2023-11-28_at_08.58.02.png)
 
 
 

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta property="og:title" content="image.png - SM.MS - Simple Free Image Hosting" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Simple Free Image Hosting" />
+    <meta property="og:url" content="https://smms.app/image/rwutbM9DBz6yoGL" />
+    <meta property="og:image" content="https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png" />
+    <meta property="og:image:alt" content="image.png" />
+    
+    <title>image.png - SM.MS - Simple Free Image Hosting</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/assets/css/lib/fontawesome/css/all.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/css/indexstyle.css?version=3.0.0-202205291">
+    
+    <style>
+        .image-container{
+            text-align: center;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .error-template { margin-top:15px;margin-bottom:15px; }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css" media="screen" />
+
+    <link rel="stylesheet" href="/assets/css/customDark.css?version=3.0.0-202205291">
+    <!-- Load google font-->
+    <link rel="stylesheet" href="//fonts.rsb.net/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"  media="none" onload="if(media!='all')media='all'">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        .swal2-container {
+            zoom: 1.5;
+        }
+    </style>
+    <script src="/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    </head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark  vip ">
+    <div class="container nav-main">
+        <a class="navbar-brand" href="/">SM.MS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://smms.app/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://smms.app/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://smms.app/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://smms.app/pricing">Pricing</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://smms.app/changelog">Change Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://doc.sm.ms/">API Docs</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="drop_user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="drop_user">
+                                                    <a class="dropdown-item" href="https://smms.app/login">Login</a>
+                                                            <a class="dropdown-item" href="https://smms.app/register">Register</a>
+                                                                        </div>
+                </li>
+            </ul>
+                            <div class="advert_nav">
+                    <p><a target="_blank" href="https://sa.net/r/18">极云九折促销</a></p>
+                </div>
+                    </div><!--/.nav-collapse -->
+        <div class="switch-dark">
+            <input type="checkbox" id="switch-dark" class="">
+            <label for="switch-dark"></label>
+        </div>
+    </div><!--/.container-fluid -->
+</nav>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="container kv-main">
+    
+    <div class="container-full" style="padding-top: 20px">
+        <!--  -->
+        <div class="row">
+                            <div class="advertising_2">
+                                    </div>
+                                    <div class="col-md-12 gr-box">
+                                                                                        <div class="advertising_1">
+                                                            </div>
+                                                <div class="img-show-box">
+                                                            <div class="advertising_3_phone">
+                                                                    </div>
+                                                        <div class="image-container">
+                                <a href="https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png" class="fancybox" rel="gallery1">
+                                    <img class="image" src="https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png" alt="image.png" title="image.png" style="max-width: 100%" />
+                                </a>
+                            </div>
+                            <div class="text-center image-size-container" style="margin: 10px 0px;">
+                                <span class="badge badge-dark" style="border-radius: 0;">File Name: <span class="image-size">image.png</span></span>
+                                <span class="badge badge-dark" style="border-radius: 0;">Image Size: <span class="image-size">360x800</span>px</span>
+                            </div>
+                            <div style="max-width: 500px;margin: auto;">
+                                <div class="form-group">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">BBCode</div>
+                                        </div>
+                                        <input type='text' class="form-control" onclick="this.select();" value='[URL=https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png][IMG]https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png[/IMG][/URL]'/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">HTML</div>
+                                        </div>
+                                        <input type='text' class="form-control" id='sharegigya'onclick="this.select();" value='&lt;a href=&quot;https://smms.app/image/rwutbM9DBz6yoGL&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png&quot; alt=&quot;image.png&quot;&gt;&lt;/a&gt;'/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Markdown</div>
+                                        </div>
+                                        <input type='text' class="form-control" onclick="this.select();" value='![image.png](https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png)'/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Image URL</div>
+                                        </div>
+                                        <input type='text' class="form-control" onclick="this.select();" value='https://i.loli.net/2021/11/28/rwutbM9DBz6yoGL.png'/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                    <div class="advertising_1">
+                                                            </div>
+                                                            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-buttom-div" align="center">
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+<div id="accepr_box" class=' accepr_box '></div>
+<!-- /.content-wrapper -->
+
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+                        <div class="col-lg-6">
+                <p class="text-muted">
+                                            <span>Copyright Ⓒ  <a href="https://www.sb/" title="SB Professional Services">SB Professional Services, LLC</a>. All rights reserved.
+                        <a href="https://smms.app/terms-of-use/" title="TOS">Terms of Use</a> -
+                        <a href="https://smms.app/privacy-policy/" title="Privacy Policy">Privacy Policy</a>
+                    </p>
+                </div>
+                                    <div class="col-lg-6 advert_foot">
+                        <div class="advert_title">
+                            <h3>Riven Cloud</h3>
+                        </div>
+                        <div class="advert_text">
+                            <p>极云网络九折优惠码<span>SMMS</span></p>
+                            <a target="_blank" href="https://sa.net/r/18">点击传送</a>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+</footer>
+
+<!-- js -->
+<script src="/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="/ajax/libs/layer/2.3/layer.js"></script>
+<script src="/ajax/libs/limonte-sweetalert2/11.1.4/sweetalert2.all.min.js"></script>
+<script src="/assets/js/app.js?version=3.0.0-20220529"></script>
+
+<script type="text/javascript">
+    var recaptchaSiteKey = "6LdArYchAAAAADs9BJEP0Ud-MpC54mNN90Bp0BvK";
+</script>
+
+
+    <!-- Add fancyBox main JS and CSS files -->
+    <script type="text/javascript" src="/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fancybox").fancybox({
+                padding: 15,
+                infobar : true,
+                toolbar : true,
+                buttons : [
+                    'slideShow',
+                    'fullScreen',
+                    'download',
+                    'zoom',
+                    'close'
+                ],
+            });
+        });
+    </script>
+                
+<script type="text/javascript" src="/assets/js/switch_dark.js?version=3.0.0-20220529"></script>
+<script type="text/javascript" src="/assets/js/pop_up.js?version=3.0.0-20220529"></script>
+<script type="text/javascript" src="/assets/js/cookiebar-latest.min.js?version=3.0.0-20220529&theme=momh&always=1&noGeoIp=1&privacyPage=https%3A%2F%2Fsm.ms%2Fprivacy-policy%2F"></script>
+<script async defer data-domain="sm.ms" src="https://stat.u.sb/js/script.js"></script>
+</body>
+</html>

@@ -7,7 +7,7 @@ date: 2023-11-30T03:02:00.000Z
 
 昨天把移动硬盘插上Mac，发现竟然无法读取，而磁盘工具显示为“未挂载”。
 
-![Image](./public/image/post/Untitled.png)
+![Image](../public/image/post/Untitled.png)
 
 查阅资料后发现，这种情况通常是由于没有正确推出 exFAT 格式磁盘导致的。试了很多种解决方案，终于在一个 gist 页面（的评论区）找到了可行的。
 
@@ -19,7 +19,7 @@ diskutil list
 
 这会获取一个磁盘列表。找到你的磁盘，记住硬盘的 ID。比如我的是 disk8s1。
 
-![Image](./public/image/post/Screenshot_2023-11-30_at_10.46.27.png)
+![Image](../public/image/post/Screenshot_2023-11-30_at_10.46.27.png)
 
 接着输入这个命令，其中 ID 是你刚刚记住的数字：
 
@@ -44,6 +44,6 @@ sudo kill -9 65633
 
 最后，进入磁盘工具，执行硬盘急救，硬盘恢复如初。
 
-![Image](./public/image/post/Untitled.png)
+![Image](../public/image/post/Untitled.png)
 
 为避免这个情况再次发生，务必记得正确推出 exFAT 格式的磁盘，而不是硬插拔。
