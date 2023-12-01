@@ -221,7 +221,7 @@ Then enable action for your github repo on this page.
 
 In your github repo, create three environemnt varibles for SSH connection at this page:
 
-![Image](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eed8d0c-48f7-4215-be40-7d7c2c312228/685ca9b0-3469-44b5-b229-82af7d1b4730/Screenshot_2023-11-28_at_08.58.02.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20231129%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231129T130537Z&X-Amz-Expires=3600&X-Amz-Signature=36e7cf717a8c92192632d964f8306bcd5a1bc1a81c3d55374e3546e8b9207af1&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Image](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eed8d0c-48f7-4215-be40-7d7c2c312228/685ca9b0-3469-44b5-b229-82af7d1b4730/Screenshot_2023-11-28_at_08.58.02.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45HZZMZUHI%2F20231130%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231130T130545Z&X-Amz-Expires=3600&X-Amz-Signature=6b7c68e143dcbae4d3073e5316bc1f2d32054768abe512fee5089350f5145c6d&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 
