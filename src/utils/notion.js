@@ -133,7 +133,7 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 						? block.image.external.url
 						: block.image.file.url;
 				const imageName = path.basename(new URL(imageURL).pathname);
-				const localImagePath = `/public/image/post/${imageName}`;
+				const localImagePath = `./public/image/post/${imageName}`;
 
 				await downloadImage(imageURL, localImagePath);
 
