@@ -193,13 +193,14 @@ async function getBlogPosts() {
 
 	for (const post of posts) {
 		const postContent = await getPageContent(post.id);
-		const rawMarkdown = `---
-title: ${post.title}
-date: ${post.date}
-${post.cover ? `cover: ${post.cover}` : ""}
----
+		const metadata = [`title: ${post.title}`, `date: ${post.date}`];
 
-${postContent}`;
+		if (post.cover) {
+			metadata.push(`cover: ${post.cover}`);
+		}
+
+		const frontMatterStr = metadata.join("\n");
+		const rawMarkdown = `---\n${frontMatterStr}\n---\n\n${postContent}`;
 
 		const fileName = `${post.slug
 			.replace(/[^a-zA-Z0-9]/g, "-")
