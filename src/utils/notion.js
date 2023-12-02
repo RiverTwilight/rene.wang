@@ -197,7 +197,9 @@ async function getBlogPosts() {
 		const metadata = [
 			`title: ${post.title}`,
 			`date: ${post.date}`,
-			`summary: ${post.summary || postContent.slice(0, 50)}`,
+			`summary: ${
+				post.summary || postContent.slice(0, 50).replaceAll("\n", " ")
+			}`,
 		];
 
 		if (post.cover) {
