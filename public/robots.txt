@@ -1,0 +1,12 @@
+# robots.txt
+
+# Allow all crawlers access to all content
+User-agent: *
+Disallow:
+
+# Disallow crawling of specific directories or pages
+# Disallow: /private/
+# Disallow: /hidden-page.html
+
+# Sitemap (optional, but recommended)
+# Sitemap: https://www.yoursite.com/sitemap.xml
