@@ -13,7 +13,7 @@ export default async function generateRssFeed() {
 	const author = siteConfig.author;
 
 	const feed = new Feed({
-		title: siteConfig.title,
+		title: siteConfig.title["zh-CN"],
 		description: siteConfig.description,
 		id: siteURL,
 		link: siteURL,
@@ -21,7 +21,7 @@ export default async function generateRssFeed() {
 		favicon: `${siteURL}/favicon.ico`,
 		copyright: `All rights reserved ${date.getFullYear()}, RiverTwilight`,
 		updated: date,
-		generator: "Feed for rene.wng",
+		generator: "Feed for rene.wang",
 		feedLinks: {
 			rss2: `${siteURL}/rss/feed.xml`, // xml format
 			json: `${siteURL}/rss/feed.json`, // json fromat

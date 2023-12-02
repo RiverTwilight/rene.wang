@@ -107,10 +107,6 @@ export default class extends Document {
 						httpEquiv="X-UA-Compatible"
 						content="IE=edge,chrome=1"
 					/>
-					<script
-						defer
-						src="//hm.baidu.com/hm.js?29ab8ced8f951b925920356991531a45"
-					/>
 				</Head>
 				<body>
 					<Main />

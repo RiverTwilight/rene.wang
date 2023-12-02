@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import CodeBlock from "@/components/CodeBlock";
-import ImageBlock from "@/components/LazyloadImage";
+import ImageBlock from "@/components/ImageBlock";
 import HeadingBlock from "@/components/HeadingBlock";
 import FrameBlock from "@/components/FrameBlock";
 import getPaths from "@/utils/getPaths";
@@ -198,7 +198,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 				<Cover>
 					{typeof postProps.cover == "string" && (
 						<>
-							<ImageBlock src={postProps.cover} />
+							<ImageBlock alt="Cover" src={postProps.cover} />
 							<meta
 								itemProp="thumbnailUrl"
 								content={postProps.cover}

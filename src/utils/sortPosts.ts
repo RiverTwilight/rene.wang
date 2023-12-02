@@ -1,7 +1,7 @@
 import type { IPost } from "../types";
 
 function sortByDate(flattenPosts: IPost[]): IPost[] {
-	console.log("SortByDate", flattenPosts);
+	// console.log("SortByDate", flattenPosts);
 	return flattenPosts
 		.filter((post) => "date" in post.frontmatter)
 		.sort((a, b) => {

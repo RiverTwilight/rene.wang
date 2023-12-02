@@ -2,8 +2,6 @@
 title: 2020暑假收获
 cover: https://i.loli.net/2020/08/27/ANSR6Ty1iwq4gdP.png
 date: 2020/8/27
-categories:
-    - Life
 ---
 
 ## 读书
