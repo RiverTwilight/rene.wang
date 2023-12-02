@@ -176,6 +176,7 @@ async function getBlogPosts() {
 					id: post.id,
 					title: post.properties.Name.title[0]?.plain_text,
 					slug: post.properties.Slug.rich_text[0]?.plain_text,
+					summary: post.properties.Summary.rich_text[0]?.plain_text,
 					cover: post.properties.Cover.files[0]?.external.url,
 					date: post.properties.Date.last_edited_time,
 					locale: post.properties.Locale.multi_select,
@@ -193,7 +194,11 @@ async function getBlogPosts() {
 
 	for (const post of posts) {
 		const postContent = await getPageContent(post.id);
-		const metadata = [`title: ${post.title}`, `date: ${post.date}`];
+		const metadata = [
+			`title: ${post.title}`,
+			`date: ${post.date}`,
+			`summary: ${post.summary || postContent.slice(0, 50)}`,
+		];
 
 		if (post.cover) {
 			metadata.push(`cover: ${post.cover}`);
