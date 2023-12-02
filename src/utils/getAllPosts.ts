@@ -208,6 +208,8 @@ export default function getAllPosts(
 							frontmatter.date
 						).toLocaleDateString();
 
+						// console.log(frontmatter.date)
+
 						return {
 							defaultTitle: slug,
 							frontmatter,

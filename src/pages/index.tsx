@@ -20,7 +20,6 @@ export async function getStaticProps({ locale, locales }) {
 			locale,
 		}
 	).filter((post) => !post.frontmatter.hidden);
-
 	// console.log("StaticProps:", allPosts);
 
 	generateRssFeed();

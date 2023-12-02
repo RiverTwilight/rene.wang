@@ -107,8 +107,9 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 			// 	currentPost.frontmatter.categories || ["Unfiled"],
 			// 	currentId
 			// ),
-			postContent: currentPost.content,
-			postProps: currentPost.data,
+			// https://stackoverflow.com/questions/70449092/reason-object-object-date-cannot-be-serialized-as-json-please-only-ret
+			postContent: JSON.parse(JSON.stringify(currentPost.content)),
+			postProps: JSON.parse(JSON.stringify(currentPost.data)),
 			currentPage: {
 				title: currentPost.data.title || currentPost.data.slug,
 				path: "/" + paths.blog + currentId,

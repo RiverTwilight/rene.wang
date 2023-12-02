@@ -19,7 +19,7 @@ export default (locale) => {
 		};
 	});
 
-	console.log(paths);
+	// console.log(paths);
 
 	return paths;
 };
