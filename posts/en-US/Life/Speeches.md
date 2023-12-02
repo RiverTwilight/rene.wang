@@ -1,8 +1,6 @@
 ---
 title: Speeches
 date: 2020/6/2
-categories:
-    - Life
 ---
 
 ## Thinking in Programming

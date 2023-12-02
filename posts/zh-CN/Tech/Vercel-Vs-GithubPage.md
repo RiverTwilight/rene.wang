@@ -1,8 +1,6 @@
 ---
 title: 比Github更好用的代码部署平台
 date: 2020/7/5
-categories:
-    - Programming
 ---
 
 ## 前言
