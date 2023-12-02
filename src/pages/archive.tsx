@@ -1,7 +1,7 @@
 import React from "react";
 import getAllPosts from "@/utils/getAllPosts";
 import type { IPost, TLocale } from "@/types/index";
-import ThemedPage from "@/themes/pages/all";
+import ThemedPage from "@/themes/pages/archive";
 
 export async function getStaticProps({ locale, locales }) {
 	const allPosts = getAllPosts(
@@ -18,7 +18,7 @@ export async function getStaticProps({ locale, locales }) {
 			flattedPosts: allPosts,
 			currentPage: {
 				title: "全部文章",
-				path: "/all",
+				path: "/archive",
 			},
 			locale,
 		},

@@ -128,7 +128,7 @@ const Home = (props: any) => {
 				<br />
 				<div className="Dis(flex) JC(center)">
 					<Text dictionary={postList} language={locale}>
-						<Link legacyBehavior passHref href="/all">
+						<Link legacyBehavior passHref href="/archive">
 							<Button variant="outline" className="center">
 								<Text allPosts={[falttedPosts.length]} />
 							</Button>

@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 import { Typography } from "@kindle-ui/core";
 import { sortByDate } from "@/utils/sortPosts";
-import type { AllPostsProps } from "@/pages/all";
+import type { AllPostsProps } from "@/pages/archive";
 import { useRouter } from "next/router";
 
 const groupByYear = (posts) => {
