@@ -1,6 +1,6 @@
 ---
 title: macOS 无法读取 exFAT 硬盘解决方案
-date: 2023-11-30T03:02:00.000Z
+date: undefined
 summary: 昨天把移动硬盘插上Mac，发现竟然无法读取，而磁盘工具显示为“未挂载”。
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: HVV 面经
-date: 2023-07-08T06:09:00.000Z
+date: undefined
 summary: 最近连续参加了几家 hvv 面试，现总结如下。包括中介面和厂商面的内容。
 ---
 
