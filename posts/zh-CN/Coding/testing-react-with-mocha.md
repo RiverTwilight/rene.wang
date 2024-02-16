@@ -1,6 +1,6 @@
 ---
 title: 使用 Mocha + chai 测试 React 应用
-date: undefined
+date: 2023-05-07T06:57:00.000Z
 summary:  ---    最近在继续开发之前的 Kindle UI 库，想到该写一下测试，于是决定使用 Moc
 ---
 

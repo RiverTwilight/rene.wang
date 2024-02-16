@@ -134,11 +134,14 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 					block.to_do.checked ? "x" : " "
 				}] ${richTextToMarkdown(block.to_do.rich_text)}\n`;
 			case "image":
+				// console.log(block);
 				let imageURL =
 					block.image.type === "external"
 						? block.image.external.url
 						: block.image.file.url;
-				const imageName = path.basename(new URL(imageURL).pathname);
+				const imageName = `${block.id}_${path.basename(
+					new URL(imageURL).pathname
+				)}`;
 				const localImagePath = `/image/post/${imageName}`; // Updated path
 				const localFilesystemPath = `./public/image/post/${imageName}`; // Path for filesystem operations
 
@@ -170,7 +173,7 @@ async function getBlogPosts() {
 
 	const posts = await Promise.all(
 		results.results.map(async (post) => {
-			// console.log(post.properties.Slug);
+			// console.log(Object.keys(post.properties));
 			if (post.properties.Published.checkbox) {
 				return {
 					id: post.id,
@@ -178,13 +181,17 @@ async function getBlogPosts() {
 					slug: post.properties.Slug.rich_text[0]?.plain_text,
 					summary: post.properties.Summary.rich_text[0]?.plain_text,
 					cover: post.properties.Cover.files[0]?.external.url,
-					date: post.properties.Date.last_edited_time,
+					date:
+						post.properties.Date.last_edited_time ||
+						post.properties["Last edited time"].last_edited_time,
 					locale: post.properties.Locale.multi_select,
 					tags: post.properties.Tags.multi_select,
 				};
 			}
 		})
 	);
+
+	console.log(posts);
 
 	return posts.filter((post) => post);
 }

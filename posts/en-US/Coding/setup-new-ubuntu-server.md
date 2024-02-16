@@ -1,6 +1,6 @@
 ---
 title: Setting Up Fresh Ubuntu Server for Web Hosting
-date: undefined
+date: 2023-12-02T06:07:00.000Z
 summary: A breif 5-mins guide for setting up new server.
 ---
 
@@ -221,7 +221,7 @@ Then enable action for your github repo on this page.
 
 In your github repo, create three environemnt varibles for SSH connection at this page:
 
-![Image](/image/post/Screenshot_2023-11-28_at_08.58.02.png)
+![Image](/image/post/145962c0-71f0-49bb-8f2e-3bcbe73f476f_Screenshot_2023-11-28_at_08.58.02.png)
 
 
 

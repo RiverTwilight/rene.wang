@@ -4,11 +4,13 @@
 
 This is the source code for my [blog](https://rene.wang) and also a powerful static blogging site.
 
--   [x] Supports custom theme development
+-   [x] Write with Markdown
 -   [x] Syncs articles from Notion
 -   [x] Multi-language UI and articles
 -   [x] RSS Feed
--   [ ] Comments
+-   [x] Full SEO
+-   [x] Unique appearence
+-   [x] Deploy in one-click
 
 ## 🎞️ Get Started
 
@@ -18,9 +20,6 @@ Afterwards, modify the configuration file located at ./site.config.js.
 
 -   title: Blog name
 -   root: Blog root URL
--   author: Author information
-    -   name: Name
-    -   intro: Introduction
 
 ## Deploying to Vercel
 
@@ -87,6 +86,9 @@ Finally, add two environment variables in the Github repository:
 NOTION_API_KEY=<YOUR_KEY>
 NOTION_DATABASE_ID=<YOUR_ID>
 ```
+
+> [!NOTE]  
+> To get the NOTION_DATABASE_ID, open the page where the database is located, and the long string after the username in the browser URL is the id. To get the NOTION_API_KEY, you need to create a Connection on the first page of the Database, and then click "Manage connections" to get the TOKEN.
 
 Once everything is ready, you can choose the deployment method you prefer.
 

@@ -1,6 +1,6 @@
 ---
 title: 2023 国内注册 Google Play 开发者终极教程
-date: undefined
+date: 2023-12-02T05:39:00.000Z
 summary: 本文介绍 2023 年如何在中国大陆注册成为 Google Play 开发者。
 ---
 

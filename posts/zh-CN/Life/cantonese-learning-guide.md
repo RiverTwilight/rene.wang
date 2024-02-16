@@ -1,6 +1,6 @@
 ---
 title: 粤语学习不完全指南
-date: undefined
+date: 2023-05-26T08:57:00.000Z
 summary: 本文面向希望学习粤语的母语为中文人士。
 cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org%2Fwp-content%2Fuploads%2F2018%2F07%2Feason-chan_92630-780x405.jpeg&f=1&nofb=1&ipt=e9824591e6a1bdc694f93269de856bb43c161dea53d220cc8a4f06dc492a3cd1&ipo=images
 ---
@@ -46,7 +46,7 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 
 只要你认得的繁体字足够多，基本就是掌握了书写系统。此外，作为一个可选部分，很多粤语母语人士打字时都会使用简体字，并且夹杂一些简体字代表语气词。
 
-![Image](/image/post/Untitled.png)
+![Image](/image/post/b7da570b-61b6-4f5e-951e-f7ea0884b979_Untitled.png)
 
 ## 进阶：懒音
 

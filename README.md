@@ -4,11 +4,13 @@
 
 这是我的的 [博客](https://rene.wang) 的源代码，同时也是一个强大的静态博客站点。
 
--   [x] 支持自定义主题开发
+-   [x] 使用 Markdown 写作
 -   [x] 从 Notion 同步文章
 -   [x] 多语言 UI/文章
 -   [x] RSS 订阅
--   [ ] 评论
+-   [x] 良好的的 SEO
+-   [x] 独特的外观
+-   [x] 一键部署
 
 ## 🎞️ 开始使用
 
@@ -18,9 +20,6 @@
 
 -   title:博客名称
 -   root:博客根网址
--   author: 作者信息
-    -   name:名称
-    -   intro:介绍
 
 一切准备就绪后，可以选择你喜欢的方法部署。
 
@@ -86,12 +85,15 @@ vim ~/.ssh/id_rsa.pub
 
 之后，请在 Notion 新建一个 Intergation，获取 API Key. 同时获取你的 database_id
 
-然后，在 Github 仓库新增两个环境变量：
+然后，在 GitHub 仓库新增两个环境变量：
 
 ```bash
-NOTION_API_KEY=<YOUR_KEY>
-NOTION_DATABASE_ID=<YOUR_ID>
+NOTION_API_KEY=secret_xxxxx
+NOTION_DATABASE_ID=xxxxx
 ```
+
+> [!NOTE]  
+> 要获取 NOTION_DATABASE_ID，只需要打开数据库所在的页面，此时浏览器 URL 中用户名之后的长字符就是 id。要获取 NOTION_API_KEY，你需要先在 Database 的首页创建一个 Connection，然后点击 Manage connections 获取 TOKEN。
 
 此外，若要启用底部的照片墙，只需编辑`/posts/gallery.json`即可，例如：
 
@@ -127,19 +129,6 @@ NOTION_DATABASE_ID=<YOUR_ID>
 	]
 }
 ```
-
-## 自定义主题
-
-一个自定义主题需要包含以下文件：
-
-| 文件名       | 参数 | 说明         |
-| ------------ | ---- | ------------ |
-| index.tsx    |      | 首页         |
-| all.tsx      |      | 全部文章页面 |
-| detail.tsx   |      |              |
-| p/\[id\].tsx |      |              |
-
-开发完毕之后，可以替换 theme 中的文件来实现更换主题。
 
 ## License
 

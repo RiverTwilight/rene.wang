@@ -1,11 +1,11 @@
 ---
 title: 开发一个云端个人助理 · 1
-date: undefined
+date: 2023-12-02T05:41:00.000Z
 summary: 本文介绍如何开发一个运行在自己服务器上的个人助理
 ---
 
 
-![Image](/image/post/1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png)
+![Image](/image/post/7b0dfcdf-b8b3-429f-8b8a-81729d4a6af4_1664886373805-ba21e207-cf9d-4656-b3cd-f7c5eac42ac1.png)
 
 前几天给 RSSHub 提交了一个 PR，把我所就读的大学的两个学院官网做成了 RSS 源。
 
