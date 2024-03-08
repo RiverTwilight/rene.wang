@@ -4,6 +4,12 @@ date: 2023/10/27
 hidden: true
 ---
 
+## 2024-03-08
+
+-   Fix some bugs
+-   Support inline equation
+-   Remove some posts
+
 ## 2023-10-21
 
 -   Added gallery
