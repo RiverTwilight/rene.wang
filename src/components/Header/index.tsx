@@ -136,26 +136,6 @@ const Header: React.FC<HeaderProps> = ({
 				<ActionBarSpace />
 				<ActionGroup>
 					<SearchBar />
-					<Dialog
-						// anchorEl={containerEle.current}
-						open={open}
-						onClose={handleClose}
-					>
-						<DialogTitle>About</DialogTitle>
-						<DialogContent>
-							{siteConfig.author.intro[0].content}
-						</DialogContent>
-						<DialogAction>
-							<Button
-								variant="secondary"
-								onClick={() => {
-									window.open("mailto://contact@rene.wang");
-								}}
-							>
-								Email me
-							</Button>
-						</DialogAction>
-					</Dialog>
 					<Text dictionary={navbarMenu} language={lang}>
 						<ActionBarMenu
 							items={[
@@ -189,6 +169,26 @@ const Header: React.FC<HeaderProps> = ({
 							]}
 						/>
 					</Text>
+					<Dialog
+						// anchorEl={containerEle.current}
+						open={open}
+						onClose={handleClose}
+					>
+						<DialogTitle>About</DialogTitle>
+						<DialogContent>
+							{siteConfig.author.intro[0].content}
+						</DialogContent>
+						<DialogAction>
+							<Button
+								variant="secondary"
+								onClick={() => {
+									window.open("mailto://contact@rene.wang");
+								}}
+							>
+								Email me
+							</Button>
+						</DialogAction>
+					</Dialog>
 				</ActionGroup>
 			</ActionBar>
 		</Navbar>
