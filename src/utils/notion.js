@@ -226,7 +226,6 @@ async function getBlogPosts() {
 					`./posts/${locale.name}/${tag.name}`
 				);
 
-				// Check if directory exists, if not, create it
 				if (!fs.existsSync(directoryPath)) {
 					fs.mkdirSync(directoryPath, { recursive: true });
 				}
@@ -235,6 +234,7 @@ async function getBlogPosts() {
 					path.join(directoryPath, fileName),
 					rawMarkdown
 				);
+				
 				console.log(`Synced post: ${fileName}`);
 			}
 		}
