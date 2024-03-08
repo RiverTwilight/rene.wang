@@ -48,7 +48,7 @@ cover: https://i.loli.net/2021/11/28/I7SbfaXY4TF6Adl.png
 
 接着逐一修改快捷方式的名称。由于文件名不能重复，你需要混搭 “真实的空格” 和“在字符映射表中的空格字符”，来创造多个 “不一样” 的空白名。**文件名不宜过长**，否则会出现省略号。
 
-完成之后，我们还需要去除快捷方式自带的小箭头。在 Github 上搜索 [dism++](https://github.com/Chuyu-Team/Dism-Multi-language) 下载系统对应的版本打开，在 系统优化 - Explorer 中勾选 "隐藏快捷方式小箭头" 和 " 隐藏可执行文件小盾牌 “。
+完成之后，我们还需要去除快捷方式自带的小箭头。在 GitHub 上搜索 [dism++](https://github.com/Chuyu-Team/Dism-Multi-language) 下载系统对应的版本打开，在 系统优化 - Explorer 中勾选 "隐藏快捷方式小箭头" 和 " 隐藏可执行文件小盾牌 “。
 
 ![](https://cdn.sspai.com/2022/09/14/4727e9b1fc830ed589cbb8e5ac181491.png)
 

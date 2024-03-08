@@ -43,9 +43,9 @@ mkdir -p /app/blog && cd /app/blog
 git init
 ```
 
-### 1. Github Repository Configuration
+### 1. GitHub Repository Configuration
 
-Create a repository on Github and add server information under Setting -> Secrets.
+Create a repository on GitHub and add server information under Setting -> Secrets.
 
 ```bash
 SSH_HOST: Server IP
@@ -54,7 +54,7 @@ SSH_PORT: SSH port (default 22)
 SSH_PASSWORD: Server user password
 ```
 
-Add the server's git public key under Deploy Keys in the Github repository (generation method).
+Add the server's git public key under Deploy Keys in the GitHub repository (generation method).
 
 ```sh
 vim ~/.ssh/id_rsa.pub
@@ -62,7 +62,7 @@ vim ~/.ssh/id_rsa.pub
 
 ### 2. Pushing Code
 
-Make sure that the Action is enabled, and all updates to the master branch on Github will be automatically deployed to the server. Congratulations!
+Make sure that the Action is enabled, and all updates to the master branch on GitHub will be automatically deployed to the server. Congratulations!
 
 ## ✍ Writing
 
@@ -80,7 +80,7 @@ If you choose to use Notion for writing, refer to this [database] () to create a
 
 Then, create a new Integration in Notion to obtain an API Key. Also, get your database_id.
 
-Finally, add two environment variables in the Github repository:
+Finally, add two environment variables in the GitHub repository:
 
 ```bash
 NOTION_API_KEY=<YOUR_KEY>

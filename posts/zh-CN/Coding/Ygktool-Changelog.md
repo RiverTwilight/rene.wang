@@ -39,7 +39,7 @@ categories:
 
 ### 使用 npm link 时 Hook 报错
 
-使用 npm link 测试 UI 库时，如果组件使用了 Hook 就会报错。在 Github 关于 hook 的 issue 下找到了解决方案。问题原因是两个库使用各自的 React 依赖。解决方法是将 app 的 react 链接到 UI 库的 react 下。
+使用 npm link 测试 UI 库时，如果组件使用了 Hook 就会报错。在 GitHub 关于 hook 的 issue 下找到了解决方案。问题原因是两个库使用各自的 React 依赖。解决方法是将 app 的 react 链接到 UI 库的 react 下。
 
 ```bash
     npm-link-shared ./node_modules/mdui-in-react/node_modules . react && npm start

@@ -148,7 +148,7 @@ const Header: React.FC<HeaderProps> = ({
 								// 	},
 								// },
 								{
-									textPrimary: "Github",
+									textPrimary: "GitHub",
 									component: "a",
 									href: siteConfig.author.github,
 								},

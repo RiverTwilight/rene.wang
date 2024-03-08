@@ -181,7 +181,7 @@ Ensure DNS settings are correctly configured to point to your server.
 
 For more on Certbot, visit this [page](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal).
 
-## Use Github action for automention
+## Use GitHub action for automention
 
 We’ll create a github action to let the production always use latest code from master branch. Let’s start with writting github action file.
 

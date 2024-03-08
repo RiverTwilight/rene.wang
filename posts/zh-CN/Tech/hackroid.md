@@ -7,7 +7,7 @@ summary:  这几个月陆陆续续刷了好多机，每次都容易忘记一些�
 
 这几个月陆陆续续刷了好多机，每次都容易忘记一些东西，所以写下这篇文章，以便下次刷机时查阅。
 
-本文长期维护，欢迎你在 [Github](https://github.com/RiverTwilight/rene.wang/blob/master/posts/zh-CN/Tech/hackroid.md) 上参与维护。
+本文长期维护，欢迎你在 [GitHub](https://github.com/RiverTwilight/rene.wang/blob/master/posts/zh-CN/Tech/hackroid.md) 上参与维护。
 
 ## 离开 MIUI 的缺点
 - 相机将被限制在 1200 万像素，目前尚无解决方案。
@@ -20,7 +20,7 @@ summary:  这几个月陆陆续续刷了好多机，每次都容易忘记一些�
 Magsik 的工作原理是直接把 API 写入系统的 boot.img 中，其安装方法也就是把已经 Hack 过的镜像重新刷入。Magisk 安装成功后，我们也同时拥有 Root 权限了。
 
 1. 从**目前运行的系统镜像**中提取出 boot.img，并把它发送到手机上。通常民间说的“线刷包”才有这个文件，“卡刷包（后缀为 zip）”就需要通过工具提取。
-2. 在手机上安装 Magisk APP。建议从官方 Github 仓库下载安装包。
+2. 在手机上安装 Magisk APP。建议从官方 GitHub 仓库下载安装包。
 3. 点击“安装”，选择修补一个文件，选择之前提取的 boot.img。修补完成后，默认会把已修补的镜像放在 /Download 文件夹中。
 4. 将手机与电脑用数据线连接（要选择有文件传输功能的线材）。
 5. 把手机上修补过的镜像复制到电脑上。

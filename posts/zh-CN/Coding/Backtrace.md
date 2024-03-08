@@ -197,4 +197,4 @@ def queens(num=8,state=()):
 
 同样经典的模式：以每一次循环的状态为起点，搜索剩余的部分。
 
-感谢阅读，欢迎关注我的 [Github](https://github.com/RiverTwilight), 我会持续分享更多技术内容。
+感谢阅读，欢迎关注我的 [GitHub](https://github.com/RiverTwilight), 我会持续分享更多技术内容。
