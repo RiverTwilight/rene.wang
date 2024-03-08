@@ -4,9 +4,6 @@ import Header from "@/components/Header";
 import { Container, KindleOasis } from "@kindle-ui/core";
 import RelatedLink from "../RelatedLink";
 import { ICurrentPage, ISiteConfig } from "../../types";
-import { useRouter } from "next/router";
-import Gallery from "../Gallery";
-import galleryData from "../../../posts/gallery.json";
 
 const Layout = (props: {
 	/**网站配置 */
@@ -65,13 +62,22 @@ const Layout = (props: {
 	return (
 		<>
 			<Head>
+				<link
+					rel="alternate"
+					href="https://www.rene.wang/zh-CN"
+					hrefLang="zh-CN"
+				></link>
+				<link
+					rel="alternate"
+					href="https://www.rene.wang/en-US"
+					hrefLang="en-US"
+				></link>
+
 				<meta name="description" content={showDescription} />
 				<meta name="keywords" content={siteConfig.keywords.join(",")} />
-				<meta
-					itemProp="description"
-					name="description"
-					content={showDescription}
-				/>
+				<meta name="description" content={showDescription} />
+				<meta name="author" content={author.name} />
+
 				<meta itemProp="name" content={showTitle} />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content={showTitle} />
