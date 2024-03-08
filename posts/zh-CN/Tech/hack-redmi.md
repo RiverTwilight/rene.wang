@@ -43,7 +43,7 @@ Step4：格式化 data 并且刷入系统，不出意外地话就会开机
 
 结果发现可以进入开机动画，但是卡住不动了。于是重启，重来。
 
-已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)[https://t.me/redmi6official]里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！
+已经准备放弃了，后来不死心，在 Telegram 的(Redmi6 社群)[[https://t.me/redmi6official](https://t.me/redmi6official)]里，找到一个 rec 刷入工具和一个 DM 解除硬加密的工具，发现这就是想要的东西，于是我马上下载了并且成功了！
 
 ![Image](/image/post/d70157a4-17f3-4223-8f9c-f03e8ba662f5_rwutbM9DBz6yoGL.png)
 

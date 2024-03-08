@@ -59,23 +59,33 @@ async function downloadImage(url, localPath) {
 function richTextToMarkdown(richText) {
 	return richText
 		.map((text) => {
-			const { annotations } = text;
+			console.log("===>", text);
 
-			let res = text.plain_text;
+			if (text.type === "equation") {
+				return `$$ ${text.plain_text} $$`;
+			} else if (text.type === "text") {
+				const { annotations } = text;
 
-			if (annotations.bold) {
-				res = `**${res}**`;
+				let res = text.plain_text;
+
+				if (text.href) {
+					res = `[${res}](${text.href})`;
+				}
+
+				if (annotations.bold) {
+					res = `**${res}**`;
+				}
+
+				if (annotations.italic) {
+					res = `*${res}*`;
+				}
+
+				if (annotations.strikethrough) {
+					res = `~~${res}~~`;
+				}
+
+				return res;
 			}
-
-			if (annotations.italic) {
-				res = `*${res}*`;
-			}
-
-			if (annotations.strikethrough) {
-				res = `~~${res}~~`;
-			}
-
-			return res;
 		})
 		.join("");
 }
@@ -234,7 +244,7 @@ async function getBlogPosts() {
 					path.join(directoryPath, fileName),
 					rawMarkdown
 				);
-				
+
 				console.log(`Synced post: ${fileName}`);
 			}
 		}

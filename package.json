@@ -7,8 +7,7 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start -p 4000",
-		"test:notion": "node ./src/utils/notion.js",
-		"install:theme": ""
+		"test:notion": "node ./src/utils/notion.js"
 	},
 	"author": "",
 	"license": "MIT",

@@ -1,7 +1,7 @@
 ---
 title: 使用 Mocha + chai 测试 React 应用
 date: 2023-05-07T06:57:00.000Z
-summary:  ---    最近在继续开发之前的 Kindle UI 库，想到该写一下测试，于是决定使用 Moc
+summary:  ---    最近在继续开发之前的 [Kindle UI](https://github.com/
 ---
 
 
@@ -9,7 +9,7 @@ summary:  ---    最近在继续开发之前的 Kindle UI 库，想到该写一�
 
 
 
-最近在继续开发之前的 Kindle UI 库，想到该写一下测试，于是决定使用 Mocha 的测试方案（尝试一些新东西）。
+最近在继续开发之前的 [Kindle UI](https://github.com/RiverTwilight/kindle-ui) 库，想到该写一下测试，于是决定使用 [Mocha](https://mochajs.org/) 的测试方案（尝试一些新东西）。
 
 （此段由GPT生成👉）在开发过程中，保证代码质量和正确性是非常重要的。测试是达到这个目的的有效方法之一，特别是在 JavaScript 开发中。在 React 应用开发中，Mocha 和 Chai 是两个非常流行的测试框架。本文将介绍如何使用 Mocha 和 Chai 测试 React 应用。
 
@@ -126,7 +126,7 @@ module.exports = function getBabelConfig(api) {
 
 之后我们可以愉快地编写测试了。
 
-关于 react-test-renderer 的更多用法，可以参考官方文档。
+关于 react-test-renderer 的更多用法，可以参考[官方文档](https://reactjs.org/docs/test-renderer.html)。
 
 此处列举一些常见测试场景供参考：
 

@@ -102,7 +102,7 @@ cat /root/.ssh/id_ed25519.pub
 vim /root/.ssh/id_ed25519.pub
 ```
 
-Add this key to your GitHub account under SSH keys settings.
+Add this key to your GitHub account under [SSH keys settings](https://github.com/settings/keys).
 
 ## Install PM2
 
@@ -122,7 +122,7 @@ Replace “yarn” and second “start” with your actuall command.
 
 ## Config Nginx & SSL
 
-⚠️  Note: Replace 'ygeeker.com.cn' with your domain.
+⚠️  Note: Replace '[ygeeker.com.cn](http://ygeeker.com.cn/)' with your domain.
 
 Create the Nginx configuration file:
 
@@ -179,7 +179,7 @@ sudo certbot --nginx -d <your_domain> # Generate Certificate
 
 Ensure DNS settings are correctly configured to point to your server.
 
-For more on Certbot, visit this page.
+For more on Certbot, visit this [page](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal).
 
 ## Use Github action for automention
 

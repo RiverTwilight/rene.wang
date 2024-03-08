@@ -21,7 +21,7 @@ summary:  ---    **会进 bios**  **会英语或者翻译**  **有手、耐心**
 
 本文适合对黑苹果毫无了解的小白。如果你已经买到电脑，想装黑苹果，可以继续阅读。
 
-若你准备买一台可以装黑苹果设备，可参考 笔记本 台式机
+若你准备买一台可以装黑苹果设备，可参考 [笔记本](https://github.com/daliansky/Hackintosh) [台式机](https://macx.top/18202.html)
 
 本文默认你会科学上网、会使用 GitHub 。
 
@@ -56,32 +56,32 @@ Intel 的集显(HD+一些数字)、AMD 的独立显卡大多都可驱动，这�
 
 ## **下载工作**
 
-~~这里的文件~~~~参考~~~~部分软件~~
+~~这里的文件~~~~[参考](https://dortania.github.io/OpenCore-Install-Guide/ktext.html#must-haves)~~~~部分软件~~
 请记住他的别称（打在括号里的）
 
 ***请将你下载好的文件放在一起，软件请安装。请确保所有的东西你都能找到！***
 
-编辑 plist 配置的plist 编辑器 或者OpenCoreCFG
+编辑 plist 配置的[plist 编辑器](https://github.com/corpnewt/ProperTree) 或者[OpenCoreCFG](https://mackie100projects.altervista.org/opencore-configurator/)
 
-必备，下载 release最简 EFI
+必备，下载 release[最简 EFI](https://github.com/acidanthera/OpenCorePkg/releases)
 
-SSDT
+[SSDT](https://github.com/corpnewt/SSDTTime)
 
 diskgeunis(区分工具)百度去下
 
-Lilu
+[Lilu](https://github.com/acidanthera/Lilu/releases)
 
-VirtualSMC
+[VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)
 
-WhateverGreen !部分 AMD 的集显不能装！
+[WhateverGreen !部分 AMD 的集显不能装！](https://github.com/acidanthera/WhateverGreen/releases)
 
-AICP 编辑工具
+[AICP 编辑工具](https://acpica.org/downloads/binary-tools)
 
-写盘工具
+[写盘工具](https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-Setup-1.7.9.exe)
 
-黑果小兵这里下载一个镜像，可以私聊我给你发一个
+[黑果小兵](https://blog.daliansky.net/)这里下载一个镜像，可以私聊我给你发一个
 
-排错 1 排错 2
+[排错 1](https://shuiyunxc.gitee.io/2020/04/06/Faults/index/) [排错 2](https://apple.sqlsec.com/10-%E6%8E%92%E9%94%99/)
 这里面是常见的黑苹果会遇到的问题，遇到问题了来这看看
 
 *共 10 个文件*
@@ -103,19 +103,19 @@ AICP 编辑工具
 
 ***AMD 用户**** 需要额外补充的驱动*
 
-AMDProcesser
+[AMDProcesser](https://github.com/trulyspinach/SMCAMDProcessor)
 
-AMDRadeonGPU
+[AMDRadeonGPU](https://github.com/aluveitie/RadeonSensor)
 
 *Intel 核显 （也就是整个电脑没有显卡）*
 
-直接用这个OC 工具箱特别省事
+直接用这个[OC 工具箱](https://www.123pan.com/s/rd39-MkpOd)特别省事
 
 *Nvdia*
 
 ~~仅支持到 10.13.6~~
 
-参考
+[参考](https://www.bilibili.com/video/BV1wr4y1r78X?spm_id_from=333.337.search-card.all.click&vd_source=b2ed1387674e77df3a3f4f6acfe5a846)
 这个部分争议较大，且这个技术比较新，又加上我没有 Nvdia 的显卡无法测试
 
 所以英伟达用户请自行测试
@@ -137,11 +137,11 @@ AMD 显卡要么就是免驱
 有些事注入 ID 就好，有些需要单独加驱动，有些又无法驱动
 
 在此我帮你搜到了全网的大部分声卡驱动，剩下的你自己测试
-声卡
+[声卡](https://radcliffe.vercel.app/post/hei-ping-guo-sheng-qia-qu-dong/)
 
-网卡部分 intel 的看Intel
+网卡部分 intel 的看[Intel](https://zhuanlan.zhihu.com/p/299695036)
 
-其他网卡
+[其他网卡](https://zhuanlan.zhihu.com/p/339648390)
 
 把你的网卡型号在这里面搜索一下
 
@@ -163,10 +163,10 @@ AMD 显卡要么就是免驱
 
 把 Drivers 文件下删得只剩 OpenRuntime.efi 「！仔细理解这句话！」
 
-把这个放在 Drivers 里面
+把[这个](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)放在 Drivers 里面
 
 ~~这一步的目的是让系统可以控制硬件，软件控制硬件
-~~~~参考~~
+~~~~[参考](https://www.bilibili.com/read/cv10117507/)~~
 
 1.打开 \***\******SSDT\******\*** 打开里的 \***\******SSDTTime.bat\******\***
 
@@ -174,7 +174,7 @@ AMD 显卡要么就是免驱
 
 3.现在我们需要处理下 **SSDT-RTC0.dsl**
 
-没有自动生成就下载
+没有自动生成就[下载](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0.dsl)
 
 用文本编辑器之类的打开它，用尽你毕生所学找到
 
@@ -195,7 +195,7 @@ Scope (_SB.PCI0.LPC)
 ```
 
 4.处理 **SSDT-PMC**
-没有就下载
+没有就[下载](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PMC.dsl)
 
 ```plain text
 External (_SB_.PCI0.LPCB, DeviceObj)

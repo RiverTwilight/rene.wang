@@ -68,7 +68,7 @@ summary: 最近连续参加了几家 hvv 面试，现总结如下。包括中介
 - 问：corntab 的计划任务列表存储在哪里？
 - 答：位于 /etc/corntab 目录。
 - 问：能说说 corn 的详细语法吗？
-- 答：参考 https://blog.csdn.net/chen__yang_/article/details/109523061。创建、编辑计划任务的命令为crontab -e，查看当前计划任务的命令为crontab -l，删除某条计划任务的命令为crontab -r。
+- 答：参考 [https://blog.csdn.net/chen__yang_/article/details/109523061](https://blog.csdn.net/chen__yang_/article/details/109523061#:~:text=cron%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E8%AF%A6%E8%A7%A3%201%20%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%AE%80%E4%BB%8B%20%2A%2A%2A%2A%2A%2A%2A%2A%E7%AE%80%E5%8D%95%E7%9A%84%E9%9C%80%E6%B1%82%2A%2A%2A%2A%2A%2A%2A%2A%201%20...%202%20cron%E5%9F%BA%E7%A1%80,1%20...%204%20%E7%94%A8%E6%88%B7%E7%BA%A7%E7%9A%84%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%20crontab%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%20-u%20%E9%99%84%E5%8A%A0%E8%A6%81%E4%BF%AE%E6%94%B9%E5%85%B6crontab%E7%9A%84%E7%94%A8%E6%88%B7%E7%9A%84%E5%90%8D%E7%A7%B0%E3%80%82%20)。创建、编辑计划任务的命令为crontab -e，查看当前计划任务的命令为crontab -l，删除某条计划任务的命令为crontab -r。
 - 问：不错。如何把执行结果输出到文件？
 - 答：30 23 * * * /path/to/script.sh > /path/to/logfile.log 2>&1
 - 问：Linux 如何查看端口开放情况？

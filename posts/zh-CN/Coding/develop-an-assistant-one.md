@@ -104,4 +104,4 @@ assistant.regsiter("./components/core/swpu/is.js", {
 
 国内开放 API 的 IM 平台还比较少，后续将接入国外的一些平台。值得一提的是，配置结构可能就要采取”订阅源“和”用户“分开存储的逻辑。
 
-项目地址: **github.com/rivertwilight/assistant**
+项目地址: **[github.com/rivertwilight/assistant](http://github.com/rivertwilight/assistant)**

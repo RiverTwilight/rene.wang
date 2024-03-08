@@ -7,7 +7,7 @@ summary:  这几个月陆陆续续刷了好多机，每次都容易忘记一些�
 
 这几个月陆陆续续刷了好多机，每次都容易忘记一些东西，所以写下这篇文章，以便下次刷机时查阅。
 
-本文长期维护，欢迎你在 Github 上参与维护。
+本文长期维护，欢迎你在 [Github](https://github.com/RiverTwilight/rene.wang/blob/master/posts/zh-CN/Tech/hackroid.md) 上参与维护。
 
 ## 离开 MIUI 的缺点
 - 相机将被限制在 1200 万像素，目前尚无解决方案。
@@ -76,7 +76,7 @@ adb uninstall -k --user 0 com.miui.analytics.service
 adb uninstall -k --user 0 com.miui.bugreport
 # 更多包名可自行进入设置查看
 ```
-- 小米设备代号查询：https://miuiver.com/xiaomi-device-codename/
-- MIUI 官方下载：https://www.miui.com/download.html
-- MIUI 历史版本下载：https://miuiver.com/
-- 消除信号栏的感叹号：https://www.evil42.com/index.php/archives/17/
+- 小米设备代号查询：[https://miuiver.com/xiaomi-device-codename/](https://miuiver.com/xiaomi-device-codename/)
+- MIUI 官方下载：[https://www.miui.com/download.html](https://www.miui.com/download.html)
+- MIUI 历史版本下载：[https://miuiver.com/](https://miuiver.com/)
+- 消除信号栏的感叹号：[https://www.evil42.com/index.php/archives/17/](https://www.evil42.com/index.php/archives/17/)

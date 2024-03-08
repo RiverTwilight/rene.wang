@@ -105,5 +105,5 @@ summary: 本文不卖药，不卖号，无推广，是纯粹写给读者的健�
 希望大家早日重视起身体健康，把身体真正融入大自然，顺势而为，为实现梦想打下坚实的基础。
 
 ## 参考
-- https://en.wikipedia.org/wiki/Seasonal_affective_disorder
-- https://zhuanlan.zhihu.com/p/140415641
+- [https://en.wikipedia.org/wiki/Seasonal_affective_disorder](https://en.wikipedia.org/wiki/Seasonal_affective_disorder)
+- [https://zhuanlan.zhihu.com/p/140415641](https://zhuanlan.zhihu.com/p/140415641)

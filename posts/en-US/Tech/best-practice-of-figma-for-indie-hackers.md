@@ -6,7 +6,7 @@ summary: If you're an indie like me, in this post, I'll share how I manage my te
 
 
 As an indie hacker, you don't need to use Figma like a large organization. Typically, if you're an indie hacker, you may:
-- Have several websites for landing or documentation, or an all-in-one like YGeeker created by me
+- Have several websites for landing or documentation, or an all-in-one like [YGeeker](https://www.ygeeker.com/) created by me
 - Have several apps. Some on iOS only, some on multiple platforms, some extensions, etc.
 - Work solo most of the time. But sometimes your fans or enthusiasts help you with an icon, a page, etc.
 
@@ -22,7 +22,7 @@ Typically we put each screen in a Frame.
 
 It’s not recommended to put all frames in one page. Instead, use new page for a new screen. The space in the editor allows you try different ideas. Good design needs tries, tries, and retries. Besides, if a page is for a component (such as buttons), you may need to create variants for that, so it’s always a good idea to leave more space. Trust me, you won’t like navigating by dragging your pointer and find the frame in a mess.
 
-Here’s the Newsroom page (a single page in Figma) created by my colleague for the Newsroom page of YGeeker. A perfect example:
+Here’s the Newsroom page (a single page in Figma) created by my colleague for the [Newsroom](https://www.ygeeker.com/newsroom) page of YGeeker. A perfect example:
 
 ![Image](/image/post/c132802b-8ae8-4e52-ac0a-4abebdb35560_Screenshot_2024-03-07_at_17.27.31.png)
 
@@ -79,11 +79,11 @@ Therefore, it's practical to make a component for each logo/icon.
 - Create component for each product icon
 
 ## Read More
-- https://www.figma.com/best-practices/team-file-organization
-- https://help.figma.com/hc/en-us/sections/4403935997847-Components
+- [https://www.figma.com/best-practices/team-file-organization](https://www.figma.com/best-practices/team-file-organization/#by-pillars)
+- [https://help.figma.com/hc/en-us/sections/4403935997847-Components](https://help.figma.com/hc/en-us/sections/4403935997847-Components)
 
 
 
-💡 Feel free to comment via GitHub issue page or drop me an email.
+💡 Feel free to comment via GitHub [issue](https://github.com/RiverTwilight/rene.wang/issues) page or drop me an email.
 
 

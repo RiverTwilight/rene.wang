@@ -50,7 +50,7 @@ summary: 本文展示我个人的特长能力，作为简历的补充。
 能独立完成 UI 设计、游戏原型设计，有一定的设计心得与技巧积累。
 
 作品主要发布在公众号上。
-- 板绘｜ iPad 壁纸专辑（4K）
+- [板绘｜ iPad 壁纸专辑（4K）](https://mp.weixin.qq.com/s?__biz=Mzg5MDgyMDg3NQ%3D%3D&mid=2247483842&idx=1&sn=566445503cc7775cb54cb81adcf44937&chksm=cfd781a6f8a008b07da71d605d99748318a78f69efecfc807833e08aa3b515b9b5f80247c960#rd)
 
 ## 其他
 - 熟练的粤语听说
