@@ -1,12 +1,18 @@
-//  TODO i18n
 module.exports = {
 	title: {
-		"zh-CN": "江村暮的个人网站",
+		"zh-CN": "Rene 的个人网站",
 		"en-US": "Rene's Official Website",
 	},
 	root: "https://rene.wang",
-	description: "开发日志、技术文章以及生活随感。",
-	keywords: ["江村暮的博客", "RiverTwilight", "过气码农", "江村暮", "RT"],
+	description: "分享我的开发日志、技术文章以及生活随感。",
+	keywords: [
+		"Rene Wang",
+		"江村暮的博客",
+		"RiverTwilight",
+		"过气码农",
+		"江村暮",
+		"RT",
+	],
 	dataSource: "notion",
 	author: {
 		name: "RiverTwilight",
@@ -22,22 +28,11 @@ module.exports = {
 			},
 		],
 	},
-	themeConfig: {
-		featured: [
-			{
-				url: "",
-			},
-		],
-	},
 	relatedLinks: [
 		{
 			title: "AkaraChen",
 			url: "https://akr.moe/",
 		},
-		// {
-		// 	title: "dky的博客",
-		// 	url: "https://wp.dkymore.com",
-		// },
 		{
 			title: "辉晨雨幕",
 			url: "https://gloridust.xyz/",
