@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import ListOutline from "../static/icon/list-outline.svg";
 
 const Switch = styled.button`
 	margin: 1rem 0 0;
