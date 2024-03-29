@@ -4,6 +4,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 const axios = require("axios");
 
+// Notion Developer Guide
 // https://developers.notion.com/reference/block#bulleted-list-item
 
 dotenv.config();
@@ -59,7 +60,7 @@ async function downloadImage(url, localPath) {
 function richTextToMarkdown(richText) {
 	return richText
 		.map((text) => {
-			console.log("===>", text);
+			// console.log("===>", text);
 
 			if (text.type === "equation") {
 				return `$$ ${text.plain_text} $$`;
@@ -143,6 +144,36 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 				return `\n- [${
 					block.to_do.checked ? "x" : " "
 				}] ${richTextToMarkdown(block.to_do.rich_text)}\n`;
+			case "table":
+				const table_rows = await notion.blocks.children.list({
+					block_id: block.id,
+				});
+
+				let table_content = "";
+
+				table_rows.results.forEach((row, j) => {
+					row.table_row.cells.forEach((cell, i) => {
+						console.log("CELL", cell);
+
+						let cell_content = cell.length > 0 ? cell[0].plain_text : "";
+
+						table_content += `${
+							i === 0 ? "|" : ""
+						} ${cell_content} | ${
+							i === row.table_row.cells.length - 1 ? "\n" : ""
+						}`;
+					});
+
+					if (j === 0) {
+						table_content += `|${Array(block.table.table_width)
+							.fill(" --- |")
+							.join("")}\n`;
+					}
+				});
+
+				// console.log("====> ROWS", table_rows);
+
+				return table_content;
 			case "image":
 				// console.log(block);
 				let imageURL =
@@ -209,7 +240,9 @@ async function getBlogPosts() {
 (async function main() {
 	const posts = await getBlogPosts();
 
-	for (const post of posts) {
+	for (const post of posts.filter(
+		(p) => p.id === "d7f0a7d0-0497-473c-a8a3-81e8c96c323b"
+	)) {
 		const postContent = await getPageContent(post.id);
 		const metadata = [
 			`title: ${post.title}`,

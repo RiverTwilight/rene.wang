@@ -14,8 +14,9 @@ import parseDate from "@/utils/parseDateStr";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
-
 import { GetStaticProps, GetStaticPaths } from "next";
+import TableBlock from "@/components/TableBlock";
+import remarkGfm from "remark-gfm";
 
 interface IPostProps {
 	title: string;
@@ -223,8 +224,7 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 				<br />
 				<section itemProp="articleBody">
 					<ReactMarkdown
-						escapeHtml={false}
-						remarkPlugins={[remarkMath]}
+						remarkPlugins={[remarkMath, remarkGfm]}
 						rehypePlugins={[rehypeKatex]}
 						components={{
 							code: CodeBlock,
