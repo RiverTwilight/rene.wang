@@ -240,9 +240,7 @@ async function getBlogPosts() {
 (async function main() {
 	const posts = await getBlogPosts();
 
-	for (const post of posts.filter(
-		(p) => p.id === "d7f0a7d0-0497-473c-a8a3-81e8c96c323b"
-	)) {
+	for (const post of posts) {
 		const postContent = await getPageContent(post.id);
 		const metadata = [
 			`title: ${post.title}`,
