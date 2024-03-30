@@ -79,6 +79,9 @@ const Layout = (props: {
 				<meta property="og:site_name" content={appliedTitle} />
 				<meta property="og:description" content={appliedDescription} />
 				<meta property="og:locale" content="zh_CN" />
+				{currentPage.image && (
+					<meta property="og:image" content={currentPage.image} />
+				)}
 				<meta property="article:author" content={author.name} />
 				<meta property="article:tag" content={author.name} />
 				<meta name="twitter:card" content="summary_large_image" />

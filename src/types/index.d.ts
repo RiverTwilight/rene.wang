@@ -33,6 +33,7 @@ export interface ICurrentPage {
 	title: string;
 	path: string;
 	description?: string;
+	image?: string;
 }
 
 // 词典

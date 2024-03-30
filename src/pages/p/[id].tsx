@@ -117,6 +117,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 				description:
 					currentPost.data.summary ||
 					currentPost.content.slice(0, 100),
+				image: currentPost.data.cover,
 			},
 			id: currentId,
 			locale,
