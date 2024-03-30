@@ -15,7 +15,6 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { GetStaticProps, GetStaticPaths } from "next";
-import TableBlock from "@/components/TableBlock";
 import remarkGfm from "remark-gfm";
 
 interface IPostProps {
@@ -95,12 +94,6 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 		})(require.context("../../../posts", true, /\.md$/))
 	);
 
-	// console.log(
-	// 	posts.filter((post: any) => {
-	// 		console.log(post.id, currentId);
-	// 		return post.id === currentId;
-	// 	})
-	// );
 	return {
 		props: {
 			// recommendPost: getRecommendPost(
@@ -117,7 +110,7 @@ export async function getStaticProps({ locale, locales, ...ctx }) {
 				description:
 					currentPost.data.summary ||
 					currentPost.content.slice(0, 100),
-				image: currentPost.data.cover,
+				image: currentPost.data.cover || "",
 			},
 			id: currentId,
 			locale,
@@ -141,8 +134,8 @@ const Cover = styled.div`
 		object-fit: cover;
 		width: 100%;
 		max-height: 40vh;
-		border-radius: 30px 30px 0px 0px;
 	}
+	margin: 6px -10px 0 -10px;
 `;
 
 const StyledArticlePage = styled.div`
@@ -196,19 +189,19 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 
 	return (
 		<StyledArticlePage>
+			<Cover>
+				{typeof postProps.cover == "string" && (
+					<>
+						<ImageBlock alt="Cover" src={postProps.cover} />
+						<meta
+							itemProp="thumbnailUrl"
+							content={postProps.cover}
+						/>
+					</>
+				)}
+			</Cover>
 			<Typography itemScope itemType="http://schema.org/Article">
 				<meta itemProp="mainEntityOfPage" content={id} />
-				<Cover>
-					{typeof postProps.cover == "string" && (
-						<>
-							<ImageBlock alt="Cover" src={postProps.cover} />
-							<meta
-								itemProp="thumbnailUrl"
-								content={postProps.cover}
-							/>
-						</>
-					)}
-				</Cover>
 
 				<h1 itemProp="headline">{postProps.title}</h1>
 				<div className="Textc(secondary)">

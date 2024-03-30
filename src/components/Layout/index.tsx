@@ -79,7 +79,7 @@ const Layout = (props: {
 				<meta property="og:site_name" content={appliedTitle} />
 				<meta property="og:description" content={appliedDescription} />
 				<meta property="og:locale" content="zh_CN" />
-				{currentPage.image && (
+				{!!currentPage.image && (
 					<meta property="og:image" content={currentPage.image} />
 				)}
 				<meta property="article:author" content={author.name} />
