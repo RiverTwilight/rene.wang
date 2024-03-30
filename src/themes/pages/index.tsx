@@ -41,31 +41,44 @@ function PostList({
 	// 	[classfiedPosts]
 	// );
 
-	return classfiedPosts.slice(0, MAX_POST_COUNT).map((post) => (
-		<Link key={post.id} passHref href={"/p/" + post.id} legacyBehavior>
-			<ListItem
-				style={{
-					cursor: "pointer",
-				}}
-			>
-				<ListItemText
-					primary={
-						post.frontmatter ? post.frontmatter.title : post.slug
-					}
-					second={
-						post.frontmatter ? post.frontmatter.date : "1970/01/01"
-					}
-				/>
-				<ListItemIcon
-					onClick={() => {
-						console.log("Clicked");
-					}}
+	return (
+		<>
+			{classfiedPosts.slice(0, MAX_POST_COUNT).map((post) => (
+				<Link
+					key={post.id}
+					passHref
+					href={"/p/" + post.id}
+					legacyBehavior
 				>
-					<EllipsisVerticalIcon />
-				</ListItemIcon>
-			</ListItem>
-		</Link>
-	));
+					<ListItem
+						style={{
+							cursor: "pointer",
+						}}
+					>
+						<ListItemText
+							primary={
+								post.frontmatter
+									? post.frontmatter.title
+									: post.slug
+							}
+							second={
+								post.frontmatter
+									? post.frontmatter.date
+									: "1970/01/01"
+							}
+						/>
+						<ListItemIcon
+							onClick={() => {
+								console.log("Clicked");
+							}}
+						>
+							<EllipsisVerticalIcon />
+						</ListItemIcon>
+					</ListItem>
+				</Link>
+			))}
+		</>
+	);
 }
 
 const Home = (props: any) => {
