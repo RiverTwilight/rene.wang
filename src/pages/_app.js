@@ -1,4 +1,4 @@
-import React, { useState, useEffect,  } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Analytics } from "@vercel/analytics/react";
 import siteConfig from "../site.config.js";
@@ -6,19 +6,7 @@ import "kindle-fonts/bookerly.css";
 import "kindle-fonts/amazon-ember.css";
 import "./App.css";
 
-function MyApp({ Component, pageProps }) {
-	const [colorTheme, setColorTheme] = useState("light");
-
-	useEffect(() => {
-		if (localStorage.getItem("colorTheme")) {
-			setColorTheme(localStorage.getItem("colorTheme"));
-		}
-		window.setColorTheme = (state) => {
-			setColorTheme(state);
-		};
-		console.log("Some global functions to nerds: Window.setColorTheme()");
-	}, []);
-
+function App({ Component, pageProps }) {
 	const {
 		currentPage = {
 			title: "404",
@@ -56,4 +44,4 @@ function MyApp({ Component, pageProps }) {
 //     return { ...appProps };
 // };
 
-export default MyApp;
+export default App;

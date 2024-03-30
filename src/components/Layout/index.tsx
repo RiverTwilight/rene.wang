@@ -115,9 +115,6 @@ const Layout = (props: {
 					</div>
 				</Container>
 			</section>
-			{/* <section id="gallery">
-				<Gallery photos={galleryData[locale]} />
-			</section> */}
 		</>
 	);
 };

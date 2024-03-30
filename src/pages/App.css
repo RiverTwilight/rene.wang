@@ -33,25 +33,19 @@ article {
 	overflow-wrap: break-word;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 767px) {
 	body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background-image: url("/image/bg_1.jpeg");
-		background-position: center;
-		background-size: cover;
-		/* overflow: hidden; */
-		/* background: radial-gradient(#e4cea6, #9c8763); */
-		animation: bg 2s ease-in infinite;
+		background-color: rgb(246, 246, 246);
 	}
-	.container {
-		min-height: 100vh;
-		display: flex;
-		justify-content: center;
-		max-width: 1800px;
-		position: relative;
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			background-color: rgb(30, 30, 30);
+		}
 	}
 
 	main {
@@ -62,9 +56,6 @@ article {
 	#platform {
 		display: flex;
 		justify-content: center;
-	}
-	#gallery {
-		background-image: unset;
 	}
 }
 
@@ -77,48 +68,6 @@ main {
 	margin: 0 auto;
 	display: block;
 }
-
-#gallery {
-	margin-top: 2rem;
-	background-image: url("/image/bg_1.jpeg");
-
-}
-
-/* .hIBvgz {
-	background: linear-gradient(
-		-135deg,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(255, 255, 255, 0.1) 47%,
-		rgba(255, 255, 255, 0) 48%
-	);
-	animation: screen-shade 3s ease infinite;
-	background-position: 0px 0px;
-}
-
-
-@keyframes screen-shade {
-	0% {
-		background-position: 0px 0px;
-	}
-	100% {
-		background-position: 100px -300px;
-	}
-}
-
-@keyframes pullIn {
-	0% {
-		transform: perspective(1392px) rotateX(43deg) rotateY(0deg)
-			rotateZ(29deg) translateZ(-646px) scale(0.5);
-	}
-	50% {
-		transform: perspective(1002px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)
-			translateZ(0px) translateY(40px) scale(0.8);
-	}
-
-	100% {
-		transform: perspective(0px) translateY(80px) scale(1);
-	}
-} */
 
 /**
  * =============================================================================
