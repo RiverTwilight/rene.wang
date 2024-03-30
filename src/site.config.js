@@ -1,10 +1,15 @@
 module.exports = {
 	title: {
-		"zh-CN": "Rene 的个人网站",
+		"zh-CN": "Rene Wang 的个人网站",
 		"en-US": "Rene's Official Website",
 	},
+	description: {
+		"zh-CN":
+			"分享我的 Web, iOS, 游戏开发日志、3D 建模、创业经历以及生活随感。",
+		"en-US":
+			"My experience about web, AI, iOS, game development, 3D art, start-up, and my life journal.",
+	},
 	root: "https://rene.wang",
-	description: "分享我的开发日志、技术文章以及生活随感。",
 	keywords: [
 		"Rene Wang",
 		"江村暮的博客",
@@ -12,6 +17,7 @@ module.exports = {
 		"过气码农",
 		"江村暮",
 		"RT",
+		"YGeeker",
 	],
 	dataSource: "notion",
 	author: {

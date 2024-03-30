@@ -18,18 +18,12 @@ const Layout = (props: {
 }) => {
 	const { currentPage, siteConfig, locale, children, menuItems } = props;
 	const { author, title } = siteConfig;
-	const showTitle = `${currentPage ? `${currentPage.title} - ` : ""}${
+
+	const appliedTitle = `${currentPage ? `${currentPage.title} - ` : ""}${
 		title[locale]
 	}`;
-	const showDescription = currentPage.description || siteConfig.description;
-	// const childrenWithProps = React.Children.map(props.children, (child) => {
-	// 	// checking isValidElement is the safe way and avoids a typescript error too
-	// 	const props = { locale };
-	// 	if (React.isValidElement(child)) {
-	// 		return React.cloneElement(child, props);
-	// 	}
-	// 	return child;
-	// });
+	const appliedDescription =
+		currentPage.description || siteConfig.description[locale];
 
 	const [dark, setDark] = useState(false);
 	const containerEle = useRef(null);
@@ -70,25 +64,25 @@ const Layout = (props: {
 				<link
 					rel="alternate"
 					href="https://www.rene.wang/en-US"
-					hrefLang="en-US"
+					hrefLang="en"
 				></link>
 
-				<meta name="description" content={showDescription} />
+				<meta name="description" content={appliedDescription} />
 				<meta name="keywords" content={siteConfig.keywords.join(",")} />
-				<meta name="description" content={showDescription} />
+				<meta name="description" content={appliedDescription} />
 				<meta name="author" content={author.name} />
 
-				<meta itemProp="name" content={showTitle} />
+				<meta itemProp="name" content={appliedTitle} />
 				<meta property="og:type" content="website" />
-				<meta property="og:title" content={showTitle} />
+				<meta property="og:title" content={appliedTitle} />
 				<meta property="og:url" content={siteConfig.root} />
-				<meta property="og:site_name" content={showTitle} />
-				<meta property="og:description" content={showDescription} />
+				<meta property="og:site_name" content={appliedTitle} />
+				<meta property="og:description" content={appliedDescription} />
 				<meta property="og:locale" content="zh_CN" />
 				<meta property="article:author" content={author.name} />
 				<meta property="article:tag" content={author.name} />
-				<meta property="article:tag" content="云极客" />
-				<meta name="twitter:card" content={showDescription} />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:site" content="@rea1DonandTrump" />
 				<meta
 					name="google-site-verification"
 					content="3yqvRLDwkcm7nwNQ5bSG06I4wQ5ASf23HUtcyZIaz3I"
@@ -98,7 +92,7 @@ const Layout = (props: {
 					content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
 					name="viewport"
 				/>
-				<title>{showTitle}</title>
+				<title>{appliedTitle}</title>
 			</Head>
 			<section id="platform">
 				<Container dark={dark} deviceFrame={KindleOasis}>
