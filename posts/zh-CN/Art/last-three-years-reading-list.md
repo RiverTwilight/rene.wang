@@ -1,6 +1,6 @@
 ---
 title: 近三年的书单
-date: 2024-03-29T06:35:00.000Z
+date: 2024-04-04T05:08:00.000Z
 summary: 本文整理了我 17 - 19 岁读的一些书，并不做特定的推荐，只是做参考。
 ---
 
@@ -20,7 +20,7 @@ summary: 本文整理了我 17 - 19 岁读的一些书，并不做特定的推�
 
 全文通俗易懂，图文并茂，看完后能了解深度学习中的大部分基础概念，并且能拥有阅读相关论文的能力。
 
-阅读本书并不需要编程基础。建议跟随书中的代码自己开发一个一模一样的项目，仔细理解每一行代码的意义。我在边读边做的过程中整理了一个可配置、可允许的 Juypter Notebook，你这个以在这个 GitHub [仓库](https://github.com/RiverTwilight/Awesome-Machine-Learning-Playground)在线预览。
+阅读本书并不需要编程基础。建议跟随书中的代码自己开发一个一模一样的项目，仔细理解每一行代码的意义。我在边读边做的过程中整理了一个可配置、可运行的 Juypter Notebook，读者可以在这个 GitHub [仓库](https://github.com/RiverTwilight/Awesome-Machine-Learning-Playground)在线预览。
 
 ## Minimalist Enterpretuer
 
