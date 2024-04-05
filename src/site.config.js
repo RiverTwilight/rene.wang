@@ -63,6 +63,10 @@ module.exports = {
 			title: "Vinkon's Blog",
 			url: "https://lilkon.cn/",
 		},
+		{
+			title: "Doctor Wu",
+			url: "https://doctorwu.me/",
+		},
 	],
 	paths: {
 		blog: "p/",
