@@ -8,9 +8,10 @@
 -   [x] 从 Notion 同步文章
 -   [x] 多语言 UI/文章
 -   [x] RSS 订阅
--   [x] 良好的的 SEO
+-   [x] 良好的 SEO
 -   [x] 独特的外观
 -   [x] 一键部署
+-   [-] Twikoo 评论系统
 
 ## 🎞️ 开始使用
 
@@ -81,7 +82,7 @@ vim ~/.ssh/id_rsa.pub
 -   title
 -   date
 
-如果选择使用 Notion 写作，请参考这个 [database]() 的形式创建一个一样的。
+如果选择使用 Notion 写作，请参考这个 [database](https://rivertwilight.notion.site/faf0f2effa1746f8806af0c0df3d7b30?v=7c3efd0a9f7c4b858cee4f3d563b5d89) 的形式创建一个一样的。（打开后点击右上角 `Duplicate` 一键复制）
 
 之后，请在 Notion 新建一个 Intergation，获取 API Key. 同时获取你的 database_id
 
@@ -94,41 +95,6 @@ NOTION_DATABASE_ID=xxxxx
 
 > [!NOTE]  
 > 要获取 NOTION_DATABASE_ID，只需要打开数据库所在的页面，此时浏览器 URL 中用户名之后的长字符就是 id。要获取 NOTION_API_KEY，你需要先在 Database 的首页创建一个 Connection，然后点击 Manage connections 获取 TOKEN。
-
-此外，若要启用底部的照片墙，只需编辑`/posts/gallery.json`即可，例如：
-
-```json
-{
-	"zh-CN": [
-		{
-			"imageUrl": "/photography/IMG_7199.png",
-			"caption": "Santana 2023",
-			"alt": "Sunset Image",
-			"date": "2023-10-18"
-		}
-	],
-	"en-US": [
-		{
-			"imageUrl": "/photography/IMG_6922.png",
-			"caption": "Dawn",
-			"alt": "Blue Skyline",
-			"date": "2023-09-12"
-		},
-		{
-			"imageUrl": "/photography/IMG_5621.png",
-			"caption": "Hometown",
-			"alt": "The city I was born in.",
-			"date": "2023-01-27"
-		},
-		{
-			"imageUrl": "/photography/IMG_7246.png",
-			"caption": "Green",
-			"alt": "Beach Image",
-			"date": "2023-10-21"
-		}
-	]
-}
-```
 
 ## License
 
