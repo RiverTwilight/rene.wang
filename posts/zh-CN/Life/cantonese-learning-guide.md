@@ -1,6 +1,6 @@
 ---
 title: 粤语学习不完全指南
-date: 2023-05-26T08:57:00.000Z
+date: 2024-04-11T14:12:00.000Z
 summary: 本文面向希望学习粤语的母语为中文人士。
 cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org%2Fwp-content%2Fuploads%2F2018%2F07%2Feason-chan_92630-780x405.jpeg&f=1&nofb=1&ipt=e9824591e6a1bdc694f93269de856bb43c161dea53d220cc8a4f06dc492a3cd1&ipo=images
 ---
@@ -57,5 +57,7 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 同样，某些声母，如 "n-" 和 "l-"，在某些情况下可能被混淆或互换。例如，“你”（nei）可能会被发音为“lei”。
 
 尽管懒音在某些粤语社区中很常见，但是在正式的书面语或者在新闻报告中，通常还是会保持完整的标准发音。
+
+本文来自 YGeeker 编辑 Rene。访问 ygeeker
 
 
