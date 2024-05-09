@@ -21,7 +21,7 @@
 		"glob": "^7.1.6",
 		"gray-matter": "^4.0.2",
 		"kindle-fonts": "latest",
-		"next": "^13.4.4",
+		"next": "^14.1.1",
 		"notion-client": "^6.16.0",
 		"postcss": "^8.4.31",
 		"raw-loader": "^4.0.1",
