@@ -8,7 +8,7 @@ import FrameBlock from "@/components/FrameBlock";
 import getPaths from "@/utils/getPaths";
 import getFilename from "@/utils/getFilename";
 import { Typography, TimeBar } from "@kindle-ui/core";
-import { paths } from "../../site.config";
+import { paths, giscus as giscusConfig } from "../../site.config";
 import matter from "gray-matter";
 import parseDate from "@/utils/parseDateStr";
 import remarkMath from "remark-math";
@@ -195,8 +195,6 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 
 	const { colorScheme } = useColorScheme();
 
-	console.log("===>", colorScheme)
-
 	return (
 		<div>
 			<StyledArticlePage>
@@ -249,22 +247,28 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 					</section>
 				</Typography>
 			</StyledArticlePage>
-			<CommentContainer>
-				<Giscus
-					repo="rivertwilight/rene.wang"
-					repoId="MDEwOlJlcG9zaXRvcnkyNzUxNDE1Nzg="
-					category="Announcements"
-					categoryId="DIC_kwDOEGZTys4CfZSI"
-					mapping="pathname"
-					strict="0"
-					reactions-enabled="1"
-					emit-metadata="0"
-					input-position="bottom"
-					theme={colorScheme === "dark" ? "noborder_dark" : "noborder_light"}
-					lang="en"
-					loading="lazy"
-				></Giscus>
-			</CommentContainer>
+			{giscusConfig.enabled && (
+				<CommentContainer>
+					<Giscus
+						repo={giscusConfig.config.repo}
+						repoId={giscusConfig.config.repoId}
+						category={giscusConfig.config.category}
+						categoryId={giscusConfig.config.categoryId}
+						mapping="pathname"
+						strict="0"
+						reactions-enabled="1"
+						emit-metadata="0"
+						input-position="bottom"
+						theme={
+							colorScheme === "dark"
+								? "noborder_dark"
+								: "noborder_light"
+						}
+						lang={giscusConfig.config.lang}
+						loading="lazy"
+					></Giscus>
+				</CommentContainer>
+			)}
 		</div>
 	);
 };

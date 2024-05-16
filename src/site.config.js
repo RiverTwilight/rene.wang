@@ -20,6 +20,16 @@ module.exports = {
 		"YGeeker",
 	],
 	dataSource: "notion",
+	giscus: {
+		enabled: true,
+		config: {
+			repo: "rivertwilight/rene.wang",
+			repoId: "MDEwOlJlcG9zaXRvcnkyNzUxNDE1Nzg=",
+			category: "Announcements",
+			categoryId: "DIC_kwDOEGZTys4CfZSI",
+			lang: "en",
+		},
+	},
 	author: {
 		name: "RiverTwilight",
 		twitter: "https://twitter.com/rea1DonandTrump",

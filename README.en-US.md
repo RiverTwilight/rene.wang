@@ -11,15 +11,13 @@ This is the source code for my [blog](https://rene.wang) and also a powerful sta
 -   [x] Full SEO
 -   [x] Unique appearence
 -   [x] Deploy in one-click
+-   [x] Comment powered by Giscus
 
 ## 🎞️ Get Started
 
 Click on the Use this template button on the top right corner of the page to create your own repository.
 
 Afterwards, modify the configuration file located at ./site.config.js.
-
--   title: Blog name
--   root: Blog root URL
 
 ## Deploying to Vercel
 
