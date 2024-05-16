@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { Container, KindleOasis } from "@kindle-ui/core";
 import RelatedLink from "../RelatedLink";
 import { ICurrentPage, ISiteConfig } from "../../types";
+import { ColorSchemeProvider } from "src/contexts/colorScheme";
 
 const Layout = (props: {
 	/**网站配置 */
@@ -25,7 +26,7 @@ const Layout = (props: {
 	const appliedDescription =
 		currentPage.description || siteConfig.description[locale];
 
-	const [dark, setDark] = useState(false);
+	const [colorScheme, setColorScheme] = useState("light");
 	const containerEle = useRef(null);
 
 	useEffect(() => {
@@ -34,14 +35,16 @@ const Layout = (props: {
 			"COLOR_SCHEME_PREFERENCE"
 		);
 
-		if (localStoragePreference) {
-			setDark(localStoragePreference === "dark");
+		// if (localStoragePreference) {
+		if (false) {
+			setColorScheme(localStoragePreference);
 		} else {
 			// Query the media preference if no preference is saved in localStorage
 			const darkMediaQuery = window.matchMedia(
 				"(prefers-color-scheme: dark)"
 			);
-			setDark(darkMediaQuery.matches);
+
+			setColorScheme(darkMediaQuery.matches ? "dark" : "light");
 		}
 	}, []);
 
@@ -97,27 +100,32 @@ const Layout = (props: {
 				/>
 				<title>{appliedTitle}</title>
 			</Head>
-			<section id="platform">
-				<Container dark={dark} deviceFrame={KindleOasis}>
-					<div ref={containerEle}>
-						<Header
-							menuItems={menuItems}
-							lang={locale}
-							currentPage={currentPage}
-							siteConfig={siteConfig}
-							containerEle={containerEle}
-						/>
-						<main>
-							<div>{children}</div>
-							<br></br>
-							<RelatedLink
-								links={siteConfig.relatedLinks}
-								locale={locale}
+			<ColorSchemeProvider value={{ colorScheme, setColorScheme }}>
+				<section id="platform">
+					<Container
+						dark={colorScheme === "dark"}
+						deviceFrame={KindleOasis}
+					>
+						<div ref={containerEle}>
+							<Header
+								menuItems={menuItems}
+								lang={locale}
+								currentPage={currentPage}
+								siteConfig={siteConfig}
+								containerEle={containerEle}
 							/>
-						</main>
-					</div>
-				</Container>
-			</section>
+							<main>
+								<div>{children}</div>
+								<br></br>
+								<RelatedLink
+									links={siteConfig.relatedLinks}
+									locale={locale}
+								/>
+							</main>
+						</div>
+					</Container>
+				</section>
+			</ColorSchemeProvider>
 		</>
 	);
 };

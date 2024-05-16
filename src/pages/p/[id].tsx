@@ -16,6 +16,8 @@ import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 import remarkGfm from "remark-gfm";
+import Giscus from "@giscus/react";
+import { useColorScheme } from "src/contexts/colorScheme";
 
 interface IPostProps {
 	title: string;
@@ -138,6 +140,10 @@ const Cover = styled.div`
 	margin: 6px -10px 0 -10px;
 `;
 
+const CommentContainer = styled.div`
+	padding: 0 12px;
+`;
+
 const StyledArticlePage = styled.div`
 	padding: 0;
 	overflow: hidden;
@@ -187,50 +193,79 @@ const generateCatalog = (post) => {
 const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 	if (!postProps) return null;
 
-	return (
-		<StyledArticlePage>
-			<Cover>
-				{typeof postProps.cover == "string" && (
-					<>
-						<ImageBlock alt="Cover" src={postProps.cover} />
-						<meta
-							itemProp="thumbnailUrl"
-							content={postProps.cover}
-						/>
-					</>
-				)}
-			</Cover>
-			<Typography itemScope itemType="http://schema.org/Article">
-				<meta itemProp="mainEntityOfPage" content={id} />
+	const { colorScheme } = useColorScheme();
 
-				<h1 itemProp="headline">{postProps.title}</h1>
-				<div className="Textc(secondary)">
-					最后更新于
-					<time itemProp="datePublished" dateTime={postProps.date}>
-						{postProps.date.includes("T")
-							? formatDate(postProps.date).toLocaleDateString()
-							: parseDate(postProps.date).toLocaleDateString()}
-					</time>
-				</div>
-				<meta itemProp="author" content={postProps.author} />
-				<meta itemProp="publisher" content={siteConfig.author} />
-				<meta itemProp="inLanguage" content={locale} />
-				<br />
-				<section itemProp="articleBody">
-					<ReactMarkdown
-						remarkPlugins={[remarkMath, remarkGfm]}
-						rehypePlugins={[rehypeKatex]}
-						components={{
-							code: CodeBlock,
-							heading: HeadingBlock,
-							img: ImageBlock,
-							iframe: FrameBlock,
-						}}
-						children={postContent}
-					></ReactMarkdown>
-				</section>
-			</Typography>
-		</StyledArticlePage>
+	console.log("===>", colorScheme)
+
+	return (
+		<div>
+			<StyledArticlePage>
+				<Cover>
+					{typeof postProps.cover == "string" && (
+						<>
+							<ImageBlock alt="Cover" src={postProps.cover} />
+							<meta
+								itemProp="thumbnailUrl"
+								content={postProps.cover}
+							/>
+						</>
+					)}
+				</Cover>
+				<Typography itemScope itemType="http://schema.org/Article">
+					<meta itemProp="mainEntityOfPage" content={id} />
+
+					<h1 itemProp="headline">{postProps.title}</h1>
+					<div className="Textc(secondary)">
+						最后更新于
+						<time
+							itemProp="datePublished"
+							dateTime={postProps.date}
+						>
+							{postProps.date.includes("T")
+								? formatDate(
+										postProps.date
+								  ).toLocaleDateString()
+								: parseDate(
+										postProps.date
+								  ).toLocaleDateString()}
+						</time>
+					</div>
+					<meta itemProp="author" content={postProps.author} />
+					<meta itemProp="publisher" content={siteConfig.author} />
+					<meta itemProp="inLanguage" content={locale} />
+					<br />
+					<section itemProp="articleBody">
+						<ReactMarkdown
+							remarkPlugins={[remarkMath, remarkGfm]}
+							rehypePlugins={[rehypeKatex]}
+							components={{
+								code: CodeBlock,
+								heading: HeadingBlock,
+								img: ImageBlock,
+								iframe: FrameBlock,
+							}}
+							children={postContent}
+						></ReactMarkdown>
+					</section>
+				</Typography>
+			</StyledArticlePage>
+			<CommentContainer>
+				<Giscus
+					repo="rivertwilight/rene.wang"
+					repoId="MDEwOlJlcG9zaXRvcnkyNzUxNDE1Nzg="
+					category="Announcements"
+					categoryId="DIC_kwDOEGZTys4CfZSI"
+					mapping="pathname"
+					strict="0"
+					reactions-enabled="1"
+					emit-metadata="0"
+					input-position="bottom"
+					theme={colorScheme === "dark" ? "noborder_dark" : "noborder_light"}
+					lang="en"
+					loading="lazy"
+				></Giscus>
+			</CommentContainer>
+		</div>
 	);
 };
 
