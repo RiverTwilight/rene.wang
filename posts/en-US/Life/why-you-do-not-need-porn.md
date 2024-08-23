@@ -1,6 +1,6 @@
 ---
 title: Why You Need to COMPLETELY Remove Hard & Soft Porn From Your Life
-date: 2024-07-31T01:39:00.000Z
+date: 2024-08-23T14:35:00.000Z
 summary: Internet porn can have a negative impact on our brains and relationships due to the dopamine effect, the pursuit of novelty, and unrealistic expectations. Constant consumption can make real-life intimacy less satisfying and even lead to problems like erectile dysfunction.
 ---
 
