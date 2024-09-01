@@ -50,7 +50,7 @@ module.exports = {
 			url: "https://akr.moe/",
 		},
 		{
-			title: "辉晨雨幕",
+			title: "Ethan's Blog",
 			url: "https://gloridust.xyz/",
 		},
 		{
