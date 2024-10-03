@@ -77,6 +77,10 @@ module.exports = {
 			title: "Doctor Wu",
 			url: "https://doctorwu.me/",
 		},
+		{
+			title: "Teal.Press",
+			url: "https://teal.press",
+		},
 	],
 	paths: {
 		blog: "p/",
