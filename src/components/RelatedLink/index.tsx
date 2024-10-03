@@ -6,8 +6,14 @@ import styled from "styled-components";
 
 const LinkList = styled.div`
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 0.5em;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 0.5em;
+	column-gap: 0.75em;
+
+	@media (max-width: 767px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
 	& a {
 		color: inherit;
 	}
@@ -24,7 +30,7 @@ const RelatedLink = ({
 	links = [],
 }: {
 	locale: string;
-	links: Pick<ISiteConfig, "relatedLinks">;
+	links: ISiteConfig["relatedLinks"];
 }) => {
 	return (
 		<div className="P(10px)">
