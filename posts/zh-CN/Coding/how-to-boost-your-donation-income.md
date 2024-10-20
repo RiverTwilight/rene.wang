@@ -59,6 +59,7 @@ summary: 开源项目的盈利方式之一便是“捐赠”，好多开发者�
 - Paypal 个人收款
 
 国外可以考虑：
+- Stripe
 - Gumroad
 - Buy me a coffee
 - Lemon Squeezy
