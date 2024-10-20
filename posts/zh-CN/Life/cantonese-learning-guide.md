@@ -1,6 +1,6 @@
 ---
 title: 粤语学习不完全指南
-date: 2023-05-23T06:49:00.000Z
+date: 2023-05-23
 summary: 本文面向希望学习粤语的母语为中文人士。
 cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org%2Fwp-content%2Fuploads%2F2018%2F07%2Feason-chan_92630-780x405.jpeg&f=1&nofb=1&ipt=e9824591e6a1bdc694f93269de856bb43c161dea53d220cc8a4f06dc492a3cd1&ipo=images
 ---
@@ -31,8 +31,10 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 
 对于母语为中文的人士来说，可以直接从语音系统开始学习。在过去的一年中，我主要做了以下两件事：
 
-1. 完成多邻国的粤语课程：完成该课程之后，你会对粤语整体的发音系统有了初步了解，并且可以应对日常的交流场合，例如就餐和找工作。
+1. 完成多邻国的粤语课程：完成该课程之后，你会对粤语整体的发音系统和语法系统有了初步了解，并且可以应对日常的交流场合，例如就餐和找工作。
 2. 定期收看香港无线新闻：除了了解香港最新的动态，你还能获得最贴近当代粤语口语的体验。你可以在 YouTube 上免费收看。
+
+为了获得正宗的发音，你可以使用我做的[在线粤语拼音转换器](https://geekits.ygeeker.com/app/jyutping_converter)来学习读音。
 
 完成以上两个任务，并有了时间的加成后，你就可以和粤语母语者交流了。
 
@@ -59,7 +61,15 @@ cover: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebwiki.org
 尽管懒音在某些粤语社区中很常见，但是在正式的书面语或者在新闻报告中，通常还是会保持完整的标准发音。
 
 ## 进阶：俚语
-
-
+- “食死猫”：指背黑锅。
+- “踢晒脚”：形容忙得不可开交。
+- “冇雷公咁远”：非常遥远。
+- “静鸡鸡”：形容很安静。
+- “牙烟”：危险。
+- “黐线”：形容人神经不正常。
+- “湿湿碎”：小意思，很容易。
+- “一旧水”：一百元。
+- “论尽”：动作笨拙、迟缓。
+- “鸡啄唔断”：形容人说话不停。
 
 
