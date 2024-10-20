@@ -1,6 +1,6 @@
 ---
 title: Setting Up Fresh Ubuntu Server for Web Hosting
-date: 2023-12-02T06:07:00.000Z
+date: 2023-11-19T02:21:00.000Z
 summary: A breif 5-mins guide for setting up new server.
 ---
 

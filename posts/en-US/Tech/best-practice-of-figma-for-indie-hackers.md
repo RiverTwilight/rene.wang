@@ -1,6 +1,6 @@
 ---
 title: Best Practice of Figma for Indie Hackers
-date: 2024-03-08T06:19:00.000Z
+date: 2024-01-08T07:37:00.000Z
 summary: If you're an indie like me, in this post, I'll share how I manage my team, files, and pages in Figma. This is tailored for solo makers and will boost your work efficiency.
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 红米6(cereus)救砖 + 刷第三方ROM教程
-date: 2023-11-22T14:18:00.000Z
+date: 2023-04-11T12:10:00.000Z
 summary:  --- > 本文最初由 Charles_Su0923 发表于酷安，有改动。 - **设备**：红米
 cover: https://i.loli.net/2021/11/28/I7SbfaXY4TF6Adl.png
 ---

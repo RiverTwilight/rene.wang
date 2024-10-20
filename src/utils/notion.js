@@ -155,7 +155,8 @@ async function notionBlocksToMarkdown(blocks, indent = 0) {
 					row.table_row.cells.forEach((cell, i) => {
 						console.log("CELL", cell);
 
-						let cell_content = cell.length > 0 ? cell[0].plain_text : "";
+						let cell_content =
+							cell.length > 0 ? cell[0].plain_text : "";
 
 						table_content += `${
 							i === 0 ? "|" : ""
@@ -216,15 +217,19 @@ async function getBlogPosts() {
 		results.results.map(async (post) => {
 			// console.log(Object.keys(post.properties));
 			if (post.properties.Published.checkbox) {
+				let date = post.properties.Date.created_time;
+				console.log(post.properties.Date);
+				if (post.properties["Publish Date"].date) {
+					date = post.properties["Publish Date"].date.start;
+				}
+
 				return {
 					id: post.id,
 					title: post.properties.Name.title[0]?.plain_text,
 					slug: post.properties.Slug.rich_text[0]?.plain_text,
 					summary: post.properties.Summary.rich_text[0]?.plain_text,
 					cover: post.properties.Cover.files[0]?.external.url,
-					date:
-						post.properties.Date.last_edited_time ||
-						post.properties["Last edited time"].last_edited_time,
+					date,
 					locale: post.properties.Locale.multi_select,
 					tags: post.properties.Tags.multi_select,
 				};
