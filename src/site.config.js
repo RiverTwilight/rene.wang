@@ -59,7 +59,7 @@ module.exports = {
 		},
 		{
 			title: "Zack's Blog",
-			url: "https://blog.zackmount.life",
+			url: "https://www.zackmount.blog",
 		},
 		{
 			title: "HsuQNian",
