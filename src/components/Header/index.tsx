@@ -34,7 +34,6 @@ const Header: React.FC<HeaderProps> = ({
 	siteConfig,
 	menuItems,
 	currentPage,
-	containerEle,
 	lang,
 }) => {
 	const router = useRouter();
@@ -158,7 +157,7 @@ const Header: React.FC<HeaderProps> = ({
 									href: siteConfig.author.pixiv,
 								},
 								{
-									textPrimary: "Twitter",
+									textPrimary: "X",
 									component: "a",
 									href: siteConfig.author.twitter,
 								},
