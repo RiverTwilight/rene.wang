@@ -13,7 +13,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@giscus/react": "^3.0.0",
-		"@kindle-ui/core": "^1.1.13",
+		"@kindle-ui/core": "^1.1.14",
 		"@notion-stuff/blocks-markdown-parser": "^6.0.0",
 		"@notionhq/client": "^2.2.3",
 		"@vercel/analytics": "^0.1.8",

@@ -66,6 +66,7 @@ function PostList({
 									? post.frontmatter.date
 									: "1970/01/01"
 							}
+							allowWrap
 						/>
 						<ListItemIcon
 							onClick={() => {
