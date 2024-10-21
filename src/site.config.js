@@ -77,6 +77,10 @@ module.exports = {
 			title: "Teal.Press",
 			url: "https://teal.press",
 		},
+		{
+			title: "data4fun",
+			url: "https://data4fun.cc/",
+		},
 	],
 	paths: {
 		blog: "p/",
