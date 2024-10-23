@@ -48,14 +48,18 @@ interface IProps {
 	locale: string;
 }
 
-function formatDate(dateString) {
+function formatDate(dateString: string, locale: string): string {
 	const date = new Date(dateString);
-
-	const year = date.getFullYear().toString().substr(-4); // Extract the last two digits of the year
-	const month = ("0" + (date.getMonth() + 1)).slice(-2); // Add 1 to month (0-indexed) and pad with 0 if needed
-	const day = ("0" + date.getDate()).slice(-2); // Pad with 0 if needed
-
-	return new Date(Number(year), Number(month), Number(day));
+	
+	if (locale === 'zh-CN') {
+		const year = date.getFullYear();
+		const month = date.getMonth() + 1;
+		const day = date.getDate();
+		return `${year} 年 ${month} 月 ${day} 日`;
+	} else {
+		const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+		return date.toLocaleDateString('en-US', options);
+	}
 }
 
 /**
@@ -214,18 +218,11 @@ const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
 
 					<h1 itemProp="headline">{postProps.title}</h1>
 					<div className="Textc(secondary)">
-						最后更新于
 						<time
 							itemProp="datePublished"
 							dateTime={postProps.date}
 						>
-							{postProps.date.includes("T")
-								? formatDate(
-										postProps.date
-								  ).toLocaleDateString()
-								: parseDate(
-										postProps.date
-								  ).toLocaleDateString()}
+							{formatDate(postProps.date, locale)}
 						</time>
 					</div>
 					<meta itemProp="author" content={postProps.author} />
