@@ -36,14 +36,14 @@ Additionally, you can sort your page alphabetically for faster navigating.
 
 ## Team, Project, File
 
-You're the only one on the team.
+You're the only one in the team.
 
 ![Image](/image/post/4b75d573-0ec6-428a-b277-969acb716a6d_Untitled.png)
 
 It's advisable to use a single team and one project for each app or website. For instance, if your app "Landmark" has an iOS client, a landing page, and a basic backend UI, you could organize them separately like this:
-- Team - Joe Doe
-  - Project - Documentation Site
-  - Project - ClipMemo: Icons, Prototypes, Shortlisting materials, etc.
+- Team - My Super Team
+  - Project - Landmark: Landing.figma, backend.figma, etc
+  - Project - ClipMemo: Icons.figma, Prototypes.figma, Shortlisting materials.figma, etc.
   - Project - Social Content: Your build-in-public screenshot, poster, video cover, etc.
 
 Instead of cramming all pages and components into one Figma file, consider separating them. Just as you wouldn't put all components and hooks into a single .tsx file in a React project, use Figma's scalable file functionality to create separate, autonomous files.
@@ -54,18 +54,23 @@ What’s more, as Figma display a “Project/Filename” at the top of the edito
 
 ![Image](/image/post/474bfb01-5c82-469f-bf10-4c444f7ab4f6_Screenshot_2024-03-07_at_17.35.56.png)
 
-## Components & Varibles
+## Components & Variables
 
-Use the components you created across the team. You must add a published component to your Figma file before using it in a new design.
+Use components and variables across your team to streamline your design process. Components are reusable design elements, while variables allow you to define and manage design tokens.
 
-Using these can decrease your file size, improve consistency, and save time.
+Components in Figma are powerful tools for maintaining consistency and efficiency:
+- Create components for frequently used elements like buttons, icons, and form fields.
+- Use instances of components across your designs for easy updates and maintenance.
+- Utilize variants to create flexible components with different states or styles.
 
-For instance, I have many products, and therefore, many icons. I need to reuse them in areas such as:
-- Listing all products on the Discover page of YGeeker
-- Promoting A on the about page of B
-- Placing icons on a social media cover image
+Variables in Figma help manage design tokens and create more dynamic designs:
+- Define color, typography, and spacing variables for consistent branding.
+- Use boolean variables to create interactive prototypes with conditional visibility.
+- Leverage number variables for responsive designs that adapt to different screen sizes.
 
-Therefore, it's practical to make a component for each logo/icon.
+Using components and variables can significantly decrease your file size, improve consistency, and save time in your design process. BTW, they are shared across the whole project, but you need to add the library first if you need them in a file.
+
+Therefore, it's practical to make a component for each logo/icon. Additionally, you can use color variables to ensure consistent branding across all your designs, making it easy to update your color scheme globally if needed.
 
 ![Image](/image/post/643b5d98-9bc2-44da-a710-5c0c975f7ec0_Screenshot_2024-03-07_at_17.32.02.png)
 
@@ -84,6 +89,6 @@ Therefore, it's practical to make a component for each logo/icon.
 
 
 
-💡 Feel free to comment via GitHub [issue](https://github.com/RiverTwilight/rene.wang/issues) page or drop me an email.
+💡 Feel free to comment or drop me an email.
 
 
