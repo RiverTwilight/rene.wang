@@ -10,10 +10,6 @@ import "kindle-fonts/amazon-ember.css";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
-
   * a {
 	color: inherit;
   }

@@ -76,12 +76,12 @@ const StyledArticlePage = styled.div`
 		const { colorScheme } = useColorScheme();
 		return colorScheme === "dark" ? "#2D2D2D" : "#F3F3F3";
 	}};
+	border-radius: 28px;
+	border: 2px solid black;
 	@media (min-width: 1024px) {
 		max-width: 800px;
 		margin: 24px auto;
-		border-radius: 28px;
 		padding: 24px;
-		border: 2px solid black;
 		box-shadow: ${({ theme }) =>
 			theme.colorScheme === "dark"
 				? "0px 2px 6px rgba(0, 0, 0, 0.3)"
@@ -89,7 +89,7 @@ const StyledArticlePage = styled.div`
 	}
 
 	& section[itemProp="articleBody"] {
-		font-family: "Bookerly", "Noto Serif SC";
+		font-family: Roboto, sans-serif;
 		padding: 16px 24px;
 
 		h1 {

@@ -2,7 +2,7 @@ import React from "react";
 import { Analytics } from "@vercel/analytics/react";
 import siteConfig from "../site.config.js";
 import themeConfig from "theme.config";
-// import "./App.css";
+import "./App.css";
 
 function App({ Component, pageProps }) {
 	const {
