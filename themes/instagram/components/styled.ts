@@ -2,10 +2,21 @@ import styled from "styled-components";
 
 export const StyledGrid = styled.div`
 	columns: 3;
-	column-gap: 16px;
+	column-gap: 12px;
 	padding: 16px;
 	max-width: 1200px;
 	margin: 0 auto;
+
+	& > * {  // This targets direct children
+		margin-bottom: 12px;
+		break-inside: avoid;
+		display: inline-block;
+		width: 100%;
+	}
+
+	@media (max-width: 1280px) {
+		columns: 3;
+	}
 
 	@media (max-width: 1024px) {
 		columns: 2;
@@ -19,16 +30,15 @@ export const StyledGrid = styled.div`
 export const StyledCard = styled.div`
 	background: white;
 	border-radius: 16px;
-	break-inside: avoid;
-	margin-bottom: 16px;
 	cursor: pointer;
 	transition: box-shadow 0.2s ease-in-out;
 	padding: 16px;
 	position: relative;
 	overflow: hidden;
+	border: 2px solid black;
 
 	&:hover {
-		background: #e2e2e2;
+		background: rgba(255, 255, 255, 0.5);
 	}
 `;
 
@@ -54,6 +64,7 @@ export const Section = styled.section`
 	margin: 24px auto;
 	max-width: 1200px;
 	padding: 0 6px;
+	padding-bottom: 50vh;
 `;
 
 export const SectionTitle = styled.h2`
@@ -67,9 +78,8 @@ export const SectionTitle = styled.h2`
 export const TabContainer = styled.div`
 	display: flex;
 	gap: 8px;
-	margin-bottom: 16px;
 	overflow-x: auto;
-	padding: 8px 8px;
+	padding: 8px 14px;
 	scrollbar-width: none;
 	&::-webkit-scrollbar {
 		display: none;
@@ -78,14 +88,17 @@ export const TabContainer = styled.div`
 
 export const TabButton = styled.button<{ active: boolean }>`
 	padding: 8px 16px;
-	border: none;
-	border-radius: 16px;
+	border: 2px solid black;
+	border-radius: 12px;
 	background: ${(props) => (props.active ? "#e8f0fe" : "transparent")};
 	color: ${(props) => (props.active ? "#1a73e8" : "#5f6368")};
 	cursor: pointer;
 	white-space: nowrap;
 	transition: all 0.2s ease;
 	font-size: 0.875rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	&:hover {
 		background: ${(props) => (props.active ? "#e8f0fe" : "#f1f3f4")};
@@ -93,22 +106,18 @@ export const TabButton = styled.button<{ active: boolean }>`
 `;
 
 export const CenteredButton = styled.button`
-	display: inline-block;
 	padding: 8px 24px;
 	border: none;
-	border-radius: 4px;
-	background: #1a73e8;
-	color: white;
-	text-decoration: none;
-	transition: all 0.2s ease;
+	border-radius: 12px;
+	background: none;
+	color: black;
+	text-decoration: underline;
 	text-align: center;
-	font-size: 0.875rem;
+	font-size: 1.15rem;
 	font-weight: 500;
 
 	&:hover {
-		background: #1557b0;
-		box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
-			0 1px 3px 1px rgba(60, 64, 67, 0.15);
+		cursor: pointer;
 	}
 `;
 

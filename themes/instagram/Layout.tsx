@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Header from "./components/Header";
-import { ICurrentPage, ISiteConfig } from "../../types";
-import { ColorSchemeProvider } from "src/contexts/colorScheme";
+import { ICurrentPage, ISiteConfig } from "@/types/index";
+import { ColorSchemeProvider } from "@/contexts/colorScheme";
 import styled from "styled-components";
 import { GlobalStyles } from "./globalStyles";
-import themeConfig from "theme.config";
 
 const LayoutWrapper = styled.div<{ isDark: boolean }>`
 	min-height: 100vh;
-	background-color: ${(props) => (props.isDark ? "#202124" : "#f0f0f0")};
+	position: relative;
 	color: ${(props) => (props.isDark ? "#fff" : "#333")};
 	transition: background-color 0.3s ease;
+
+	&::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		background: url("/image/background.jpeg") no-repeat center center;
+		background-size: cover;
+		z-index: -1;
+	}
 `;
 
 const MainContainer = styled.div`
@@ -34,12 +45,13 @@ const HeaderWrapper = styled.header<{ isDark: boolean }>`
 	left: 0;
 	right: 0;
 	z-index: 1000;
+	background: #ecbbd0;
 `;
 
 const HeaderContainer = styled.div`
 	max-width: 1160px;
 	margin: 0 auto;
-	padding: 8px 16px;
+	padding: 8px 0;
 	height: 64px;
 	display: flex;
 	align-items: center;
@@ -137,7 +149,7 @@ const Layout = (props: {
 								menuItems={menuItems}
 								lang={locale}
 								currentPage={currentPage}
-								siteConfig={themeConfig.siteConfig}
+								siteConfig={siteConfig}
 							/>
 						</HeaderContainer>
 					</HeaderWrapper>

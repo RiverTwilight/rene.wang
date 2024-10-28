@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import CodeBlock from "../components/CodeBlock";
 import ImageBlock from "../components/ImageBlock";
 import HeadingBlock from "../components/HeadingBlock";
 import FrameBlock from "../components/FrameBlock";
-import { Typography, TimeBar } from "@kindle-ui/core";
-import { paths, giscus as giscusConfig } from "../../../site.config";
-import matter from "gray-matter";
-import parseDate from "@/utils/parseDateStr";
+import { paths, giscus as giscusConfig } from "../../../src/site.config";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
-import { GetStaticProps, GetStaticPaths } from "next";
 import remarkGfm from "remark-gfm";
 import Giscus from "@giscus/react";
 import { useColorScheme } from "src/contexts/colorScheme";
@@ -85,6 +81,7 @@ const StyledArticlePage = styled.div`
 		margin: 24px auto;
 		border-radius: 28px;
 		padding: 24px;
+		border: 2px solid black;
 		box-shadow: ${({ theme }) =>
 			theme.colorScheme === "dark"
 				? "0px 2px 6px rgba(0, 0, 0, 0.3)"
@@ -204,7 +201,7 @@ const ArticlePage = ({ id, postProps, postContent, siteConfig, locale }) => {
 						</>
 					)}
 				</Cover>
-				<Typography itemScope itemType="http://schema.org/Article">
+				<div itemScope itemType="http://schema.org/Article">
 					<meta itemProp="mainEntityOfPage" content={id} />
 
 					<ArticleHeader>
@@ -234,7 +231,7 @@ const ArticlePage = ({ id, postProps, postContent, siteConfig, locale }) => {
 							children={postContent}
 						></ReactMarkdown>
 					</section>
-				</Typography>
+				</div>
 			</StyledArticlePage>
 			{giscusConfig.enabled && (
 				<CommentContainer>

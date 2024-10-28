@@ -15,12 +15,6 @@ const THEME_NAME = "kindle";
 
 const themeConfig = {
 	kindle: {
-		siteConfig: {
-			title: {
-				"zh-CN": "Rene Wang 的个人网站",
-				"en-US": "Rene's Official Website",
-			},
-		},
 		layout: Kindle_Layout,
 		homePage: Kindle_HomePage,
 		articlePage: Kindle_ArticlePage,
@@ -28,12 +22,6 @@ const themeConfig = {
 		settingsPage: Kindle_SettingsPage,
 	},
 	instagram: {
-		siteConfig: {
-			title: {
-				"zh-CN": "Rika Li 的个人网站",
-				"en-US": "Rika's Official Website",
-			},
-		},
 		layout: Instagram_Layout,
 		homePage: Instagram_HomePage,
 		articlePage: Instagram_ArticlePage,

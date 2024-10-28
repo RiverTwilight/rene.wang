@@ -29,11 +29,14 @@
       "@/utils/*": [
         "src/utils/*"
       ],
+      "@/contexts/*": [
+        "src/contexts/*"
+      ],
       "@/types/*": [
         "src/types/*"
       ],
       "@/themes/*": [
-        "src/themes/*"
+        "themes/*"
       ]
     },
     "incremental": true
