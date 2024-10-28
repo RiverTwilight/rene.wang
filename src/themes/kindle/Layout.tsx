@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import { Container, KindleOasis } from "@kindle-ui/core";
-import Header from "@/components/Header";
+import Header from "./components/Header";
 import RelatedLink from "./components/RelatedLinks";
 import { ICurrentPage, ISiteConfig } from "../../types";
 import { ColorSchemeProvider } from "src/contexts/colorScheme";

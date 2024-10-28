@@ -18,7 +18,7 @@ import {
 	CogSharpIcon,
 	DialogTitle,
 } from "@kindle-ui/core";
-import Text from "../../utils/i18n";
+import Text from "@/utils/i18n";
 import { nav, navbarMenu } from "../../i18n.json";
 import { ICurrentPage, ISiteConfig } from "@/types/index";
 

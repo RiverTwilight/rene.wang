@@ -10,7 +10,8 @@ import Instagram_ArticlePage from "@/themes/instagram/pages/ArticlePage";
 import Instagram_ArchivePage from "@/themes/instagram/pages/ArchivePage";
 import Instagram_SettingsPage from "@/themes/instagram/pages/SettingsPage";
 
-const THEME_NAME = "instagram";
+const THEME_NAME = "kindle";
+// const THEME_NAME = "instagram";
 
 const themeConfig = {
 	kindle: {

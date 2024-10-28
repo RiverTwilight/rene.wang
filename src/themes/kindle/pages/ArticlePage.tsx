@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
-import CodeBlock from "@/components/CodeBlock";
-import ImageBlock from "@/components/ImageBlock";
-import HeadingBlock from "@/components/HeadingBlock";
-import FrameBlock from "@/components/FrameBlock";
-import getPaths from "@/utils/getPaths";
-import getFilename from "@/utils/getFilename";
+import CodeBlock from "../components/CodeBlock";
+import ImageBlock from "../components/ImageBlock";
+import HeadingBlock from "../components/HeadingBlock";
+import FrameBlock from "../components/FrameBlock";
 import { Typography, TimeBar } from "@kindle-ui/core";
 import { paths, giscus as giscusConfig } from "../../../site.config";
 import matter from "gray-matter";
