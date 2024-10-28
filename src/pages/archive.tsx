@@ -1,7 +1,7 @@
 import React from "react";
 import getAllPosts from "@/utils/getAllPosts";
 import type { IPost, TLocale } from "@/types/index";
-import ThemedPage from "@/themes/pages/archive";
+import themeConfig from "theme.config";
 
 export async function getStaticProps({ locale, locales }) {
 	const allPosts = getAllPosts(
@@ -32,11 +32,9 @@ export interface AllPostsProps {
 }
 
 const AllPost: React.FC<AllPostsProps> = (props) => {
-	return (
-		<>
-			<ThemedPage {...props} />
-		</>
-	);
+	const ArchivePage = themeConfig.archivePage;
+
+	return <ArchivePage {...props} />;
 };
 
 export default AllPost;

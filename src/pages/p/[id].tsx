@@ -1,23 +1,10 @@
-import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import styled from "styled-components";
-import CodeBlock from "@/components/CodeBlock";
-import ImageBlock from "@/components/ImageBlock";
-import HeadingBlock from "@/components/HeadingBlock";
-import FrameBlock from "@/components/FrameBlock";
+import React from "react";
 import getPaths from "@/utils/getPaths";
 import getFilename from "@/utils/getFilename";
-import { Typography, TimeBar } from "@kindle-ui/core";
 import { paths, giscus as giscusConfig } from "../../site.config";
 import matter from "gray-matter";
-import parseDate from "@/utils/parseDateStr";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import "katex/dist/katex.min.css";
-import { GetStaticProps, GetStaticPaths } from "next";
-import remarkGfm from "remark-gfm";
-import Giscus from "@giscus/react";
-import { useColorScheme } from "src/contexts/colorScheme";
+import { GetStaticPaths } from "next";
+import themeConfig from "theme.config";
 
 interface IPostProps {
 	title: string;
@@ -47,43 +34,6 @@ interface IProps {
 	id: string;
 	locale: string;
 }
-
-function formatDate(dateString: string, locale: string): string {
-	const date = new Date(dateString);
-	
-	if (locale === 'zh-CN') {
-		const year = date.getFullYear();
-		const month = date.getMonth() + 1;
-		const day = date.getDate();
-		return `${year} 年 ${month} 月 ${day} 日`;
-	} else {
-		const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-		return date.toLocaleDateString('en-US', options);
-	}
-}
-
-/**
- * 获取相关文章，包含相同标签
- * @param {Array} allPosts
- * @param {Array} categories 当前文章的目录
- * @param {String} currentId
- */
-// const getRecommendPost = (
-// 	allPosts: IPost[],
-// 	categories: any[],
-// 	currentId: string
-// ) => {
-// 	let data = [];
-// 	allPosts.forEach((post) => {
-// 		categories.forEach((cate) => {
-// 			post.frontmatter.categories.includes(cate) &&
-// 				!data.includes(post) &&
-// 				currentId !== post.id &&
-// 				data.push(post);
-// 		});
-// 	});
-// 	return data.slice(0, 3);
-// };
 
 export async function getStaticProps({ locale, locales, ...ctx }) {
 	const { id: currentId } = ctx.params;
@@ -135,139 +85,7 @@ export async function getStaticPaths(props: GetStaticPaths) {
 	};
 }
 
-const Cover = styled.div`
-	img {
-		object-fit: cover;
-		width: 100%;
-		max-height: 40vh;
-	}
-	margin: 6px -10px 0 -10px;
-`;
-
-const CommentContainer = styled.div`
-	padding: 0 12px;
-`;
-
-const StyledArticlePage = styled.div`
-	padding: 0;
-	overflow: hidden;
-
-	@media (min-width: 1024px) {
-		padding: 0 12px;
-	}
-
-	& section[itemProp="articleBody"] {
-		font-family: "Bookerly", "Noto Serif SC";
-	}
-`;
-
-// const ReadMore = ({ data }: any) => {
-// 	return (
-// 		<Card className="Br(30px)" title="阅读更多" icon={<BookOutline />}>
-// 			{data.map((item, i) => (
-// 				<PostItem
-// 					key={i}
-// 					id={item.id}
-// 					title={item.frontmatter.title || item.slug}
-// 					summary={item.markdownBody.substr(0, 200)}
-// 					cover={item.frontmatter.cover}
-// 					date={item.frontmatter.date}
-// 				/>
-// 			))}
-// 		</Card>
-// 	);
-// };
-
-const generateCatalog = (post) => {
-	var matchTitle = post.match(/\#+\s(.+)/g) || [];
-	return [
-		{
-			title: frontmatter.title || slug,
-			level: 0,
-		},
-		...matchTitle.map((tit) => {
-			return {
-				title: tit.substr(tit.lastIndexOf("#") + 1).trim(),
-				level: tit.lastIndexOf("#"),
-			};
-		}),
-	];
+export default (props) => {
+	const ArticlePage = themeConfig.articlePage;
+	return <ArticlePage {...props} />;
 };
-
-const Post = ({ id, postProps, postContent, siteConfig, locale }) => {
-	if (!postProps) return null;
-
-	const { colorScheme } = useColorScheme();
-
-	return (
-		<div>
-			<StyledArticlePage>
-				<Cover>
-					{typeof postProps.cover == "string" && (
-						<>
-							<ImageBlock alt="Cover" src={postProps.cover} />
-							<meta
-								itemProp="thumbnailUrl"
-								content={postProps.cover}
-							/>
-						</>
-					)}
-				</Cover>
-				<Typography itemScope itemType="http://schema.org/Article">
-					<meta itemProp="mainEntityOfPage" content={id} />
-
-					<h1 itemProp="headline">{postProps.title}</h1>
-					<div className="Textc(secondary)">
-						<time
-							itemProp="datePublished"
-							dateTime={postProps.date}
-						>
-							{formatDate(postProps.date, locale)}
-						</time>
-					</div>
-					<meta itemProp="author" content={postProps.author} />
-					<meta itemProp="publisher" content={siteConfig.author} />
-					<meta itemProp="inLanguage" content={locale} />
-					<br />
-					<section itemProp="articleBody">
-						<ReactMarkdown
-							remarkPlugins={[remarkMath, remarkGfm]}
-							rehypePlugins={[rehypeKatex]}
-							components={{
-								code: CodeBlock,
-								heading: HeadingBlock,
-								img: ImageBlock,
-								iframe: FrameBlock,
-							}}
-							children={postContent}
-						></ReactMarkdown>
-					</section>
-				</Typography>
-			</StyledArticlePage>
-			{giscusConfig.enabled && (
-				<CommentContainer>
-					<Giscus
-						repo={giscusConfig.config.repo}
-						repoId={giscusConfig.config.repoId}
-						category={giscusConfig.config.category}
-						categoryId={giscusConfig.config.categoryId}
-						mapping="pathname"
-						strict="0"
-						reactions-enabled="1"
-						emit-metadata="0"
-						input-position="bottom"
-						theme={
-							colorScheme === "dark"
-								? "noborder_dark"
-								: "noborder_light"
-						}
-						lang={giscusConfig.config.lang}
-						loading="lazy"
-					></Giscus>
-				</CommentContainer>
-			)}
-		</div>
-	);
-};
-
-export default Post;

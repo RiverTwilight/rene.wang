@@ -14,7 +14,7 @@ import {
 	Section,
 	SectionTitle,
 } from "@kindle-ui/core";
-import Tab from "@/themes/components/Tab";
+import Tab from "@/themes/kindle/components/Tab";
 import Text from "@/utils/i18n";
 import { postList, homePage } from "../i18n.json";
 import type { IPost } from "@/types/index";
@@ -96,8 +96,6 @@ const Home = (props: any) => {
 		[allCategories]
 	);
 
-	// TODO Customize the Banner
-
 	return (
 		<>
 			<Section>
@@ -137,10 +135,10 @@ const Home = (props: any) => {
 				/>
 
 				<br />
-				<div className="Dis(flex) JC(center)">
+				<div style={{ display: "flex", justifyContent: "center" }}>
 					<Text dictionary={postList} language={locale}>
 						<Link legacyBehavior passHref href="/archive">
-							<Button variant="outline" className="center">
+							<Button variant="outline">
 								<Text allPosts={[falttedPosts.length]} />
 							</Button>
 						</Link>

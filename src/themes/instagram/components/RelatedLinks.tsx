@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Card, CardTitle, Typography, CardContent } from "@kindle-ui/core";
-import dic from "../../i18n.json";
+import dic from "../../../i18n.json";
 import type { ISiteConfig } from "@/types/index";
 import styled from "styled-components";
 

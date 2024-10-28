@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Layout from "@/components/Layout";
+import React from "react";
 import { Analytics } from "@vercel/analytics/react";
 import siteConfig from "../site.config.js";
-import "kindle-fonts/bookerly.css";
-import "kindle-fonts/amazon-ember.css";
-import "./App.css";
+import themeConfig from "theme.config";
+// import "./App.css";
 
 function App({ Component, pageProps }) {
 	const {
@@ -14,6 +12,8 @@ function App({ Component, pageProps }) {
 		locale = "zh-CN",
 		menuItems = [],
 	} = pageProps;
+
+	const Layout = themeConfig.layout;
 
 	return (
 		<>

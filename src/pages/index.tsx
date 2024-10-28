@@ -2,7 +2,7 @@ import { TLocale, IPost } from "@/types/index";
 import getAllPosts from "@/utils/getAllPosts";
 import getCategories, { ICategory } from "@/utils/getCategories";
 import generateRssFeed from "@/utils/generateRssFeed";
-import ThemedIndex from "@/themes/pages/index";
+import themeConfig from "../../theme.config.jsx";
 
 export async function getStaticProps({ locale, locales }) {
 	const allPosts = getAllPosts(
@@ -20,7 +20,6 @@ export async function getStaticProps({ locale, locales }) {
 			locale,
 		}
 	).filter((post) => !post.frontmatter.hidden);
-	// console.log("StaticProps:", allPosts);
 
 	generateRssFeed();
 
@@ -52,12 +51,9 @@ interface HomePageProps {
 	allCategories: ICategory[];
 }
 
-const HomePage = (props: HomePageProps) => {
-	return (
-		<>
-			<ThemedIndex {...props} />
-		</>
-	);
-};
+export default (props: HomePageProps) => {
+	console.log(themeConfig);
+	const HomePage = themeConfig.homePage;
 
-export default HomePage;
+	return <HomePage {...props} />;
+};

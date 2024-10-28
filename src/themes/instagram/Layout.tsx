@@ -1,10 +1,53 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { Container, KindleOasis } from "@kindle-ui/core";
-import Header from "@/components/Header";
-import RelatedLink from "../../themes/kindle/components/RelatedLinks";
+import Header from "./components/Header";
 import { ICurrentPage, ISiteConfig } from "../../types";
 import { ColorSchemeProvider } from "src/contexts/colorScheme";
+import styled from "styled-components";
+import { GlobalStyles } from "./globalStyles";
+import themeConfig from "theme.config";
+
+const LayoutWrapper = styled.div<{ isDark: boolean }>`
+	min-height: 100vh;
+	background-color: ${(props) => (props.isDark ? "#202124" : "#f0f0f0")};
+	color: ${(props) => (props.isDark ? "#fff" : "#333")};
+	transition: background-color 0.3s ease;
+`;
+
+const MainContainer = styled.div`
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 16px;
+
+	@media (max-width: 768px) {
+		padding: 16px 8px;
+	}
+`;
+
+const MainContent = styled.main`
+	margin-top: 64px; // Space for fixed header
+`;
+
+const HeaderWrapper = styled.header<{ isDark: boolean }>`
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+`;
+
+const HeaderContainer = styled.div`
+	max-width: 1160px;
+	margin: 0 auto;
+	padding: 8px 16px;
+	height: 64px;
+	display: flex;
+	align-items: center;
+
+	@media (max-width: 768px) {
+		padding: 8px;
+	}
+`;
 
 const Layout = (props: {
 	/**网站配置 */
@@ -27,34 +70,20 @@ const Layout = (props: {
 		currentPage.description || siteConfig.description[locale];
 
 	const [colorScheme, setColorScheme] = useState("light");
-	const containerEle = useRef(null);
 
 	useEffect(() => {
-		// Check if there's a saved preference in localStorage
-		const localStoragePreference = localStorage.getItem(
-			"COLOR_SCHEME_PREFERENCE"
+		const darkMediaQuery = window.matchMedia(
+			"(prefers-color-scheme: dark)"
 		);
+		setColorScheme(darkMediaQuery.matches ? "dark" : "light");
 
-		// if (localStoragePreference) {
-		if (false) {
-			setColorScheme(localStoragePreference);
-		} else {
-			// Query the media preference if no preference is saved in localStorage
-			const darkMediaQuery = window.matchMedia(
-				"(prefers-color-scheme: dark)"
-			);
+		const handleChange = (e: MediaQueryListEvent) => {
+			setColorScheme(e.matches ? "dark" : "light");
+		};
 
-			setColorScheme(darkMediaQuery.matches ? "dark" : "light");
-		}
+		darkMediaQuery.addEventListener("change", handleChange);
+		return () => darkMediaQuery.removeEventListener("change", handleChange);
 	}, []);
-
-	useEffect(() => {
-		const container = document.querySelector(".content");
-
-		if (container) {
-			container.scrollTop = 0;
-		}
-	}, [currentPage]);
 
 	return (
 		<>
@@ -93,38 +122,29 @@ const Layout = (props: {
 					name="google-site-verification"
 					content="3yqvRLDwkcm7nwNQ5bSG06I4wQ5ASf23HUtcyZIaz3I"
 				/>
-				<meta name="viewport" content="viewport-fit=cover" />
 				<meta
-					content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"
 					name="viewport"
+					content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
 				/>
 				<title>{appliedTitle}</title>
 			</Head>
 			<ColorSchemeProvider value={{ colorScheme, setColorScheme }}>
-				<section id="platform">
-					<Container
-						dark={colorScheme === "dark"}
-						deviceFrame={KindleOasis}
-					>
-						<div ref={containerEle}>
+				<GlobalStyles isDark={colorScheme === "dark"} />
+				<LayoutWrapper isDark={colorScheme === "dark"}>
+					<HeaderWrapper isDark={colorScheme === "dark"}>
+						<HeaderContainer>
 							<Header
 								menuItems={menuItems}
 								lang={locale}
 								currentPage={currentPage}
-								siteConfig={siteConfig}
-								containerEle={containerEle}
+								siteConfig={themeConfig.siteConfig}
 							/>
-							<main>
-								<div>{children}</div>
-								<br></br>
-								<RelatedLink
-									links={siteConfig.relatedLinks}
-									locale={locale}
-								/>
-							</main>
-						</div>
-					</Container>
-				</section>
+						</HeaderContainer>
+					</HeaderWrapper>
+					<MainContainer>
+						<MainContent>{children}</MainContent>
+					</MainContainer>
+				</LayoutWrapper>
 			</ColorSchemeProvider>
 		</>
 	);

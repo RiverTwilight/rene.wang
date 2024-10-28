@@ -2,9 +2,69 @@ import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import { Container, KindleOasis } from "@kindle-ui/core";
 import Header from "@/components/Header";
-import RelatedLink from "../../themes/kindle/components/RelatedLinks";
+import RelatedLink from "./components/RelatedLinks";
 import { ICurrentPage, ISiteConfig } from "../../types";
 import { ColorSchemeProvider } from "src/contexts/colorScheme";
+import "kindle-fonts/bookerly.css";
+import "kindle-fonts/amazon-ember.css";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+
+  * a {
+	color: inherit;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell,
+      Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
+      Hiragino Sans GB, Microsoft YaHei, Arial;
+      
+    @media (min-width: 767px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(210, 210, 210);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: rgb(30, 30, 30);
+      }
+    }
+  }
+
+  code {
+    font-family: Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+  }
+
+  article {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+`;
+
+const PlatformSection = styled.section`
+	@media (min-width: 767px) {
+		display: flex;
+		justify-content: center;
+	}
+`;
+
+const MainContent = styled.main`
+	background-color: var(--bg-color);
+	min-height: 80vh;
+
+	@media (min-width: 767px) {
+		width: 100%;
+		padding-bottom: 30px;
+	}
+`;
 
 const Layout = (props: {
 	/**网站配置 */
@@ -100,8 +160,9 @@ const Layout = (props: {
 				/>
 				<title>{appliedTitle}</title>
 			</Head>
+			<GlobalStyle />
 			<ColorSchemeProvider value={{ colorScheme, setColorScheme }}>
-				<section id="platform">
+				<PlatformSection id="platform">
 					<Container
 						dark={colorScheme === "dark"}
 						deviceFrame={KindleOasis}
@@ -114,17 +175,17 @@ const Layout = (props: {
 								siteConfig={siteConfig}
 								containerEle={containerEle}
 							/>
-							<main>
+							<MainContent>
 								<div>{children}</div>
 								<br></br>
 								<RelatedLink
 									links={siteConfig.relatedLinks}
 									locale={locale}
 								/>
-							</main>
+							</MainContent>
 						</div>
 					</Container>
-				</section>
+				</PlatformSection>
 			</ColorSchemeProvider>
 		</>
 	);
