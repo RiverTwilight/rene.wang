@@ -78,10 +78,6 @@ module.exports = {
 			url: "https://teal.press",
 		},
 		{
-			title: "data4fun",
-			url: "https://data4fun.cc/",
-		},
-		{
 			title: "Pseudoyu",
 			url: "https://www.pseudoyu.com/",
 		},
