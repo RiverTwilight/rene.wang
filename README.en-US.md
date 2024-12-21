@@ -1,23 +1,25 @@
-# Rene.wang
+# Kanso
+
+A static-based personal website system that seamlessly integrates with Notion and Markdown.
 
 [简体中文](./README.md) | English
 
-This is the source code for my [blog](https://rene.wang) and also a powerful static blogging site.
+## ✨ Features
 
--   [x] Write with Markdown
--   [x] Syncs articles from Notion
--   [x] Multi-language UI and articles
--   [x] RSS Feed
--   [x] Full SEO
--   [x] Unique appearence
--   [x] Deploy in one-click
--   [x] Comment powered by Giscus
+-   Minimalist Design - Clean, distraction-free reading experience
+-   Dual Writing Flow - Write in Markdown or sync from Notion
+-   Multilingual Ready - Support for multiple languages in UI and content
+-   Modern Stack - Built with Next.js for optimal performance
+-   Deploy Anywhere - One-click deploy to Vercel, Netlify, or your own server
+-   Comments - Integrated with Giscus for community engagement
+-   SEO Optimized - Full SEO support out of the box
+-   RSS Feed - Keep your readers updated
 
-## 🎞️ Get Started
+## 🚀 Quick Start
 
-Click on the Use this template button on the top right corner of the page to create your own repository.
-
-Afterwards, modify the configuration file located at ./site.config.js.
+1. Click "Use this template" to create your repository
+2. Edit site.config.js with your information
+3. Deploy to your preferred platform
 
 ## Deploying to Vercel
 

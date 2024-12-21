@@ -1,25 +1,25 @@
-# Rene.wang
+# Kanso
+
+Kanso 是一个静态写作的个人网站系统，可以无缝集成 Notion 和 Markdown。
 
 简体中文 | [English](./README.en-US.md)
 
-这是我的的 [博客](https://rene.wang) 的源代码，同时也是一个强大的静态博客站点。
+## ✨ 特点
 
--   [x] 使用 Markdown 写作
--   [x] 从 Notion 同步文章
--   [x] 多语言 UI/文章
--   [x] RSS 订阅
--   [x] 良好的 SEO
--   [x] 独特的外观
--   [x] 一键部署
--   [x] Giscus 评论系统
+-   极简设计 - 清爽、无干扰的阅读体验
+-   双重写作流 - 支持 Markdown 写作或从 Notion 同步
+-   多语言支持 - UI 和内容支持多种语言
+-   现代技术栈 - 使用 Next.js 构建，性能优异
+-   灵活部署 - 一键部署到 Vercel、Netlify 或自己的服务器
+-   评论系统 - 集成 Giscus 实现社区互动
+-   SEO 优化 - 内置完整的 SEO 支持
+-   RSS 订阅 - 保持读者更新
 
-## 🎞️ 开始使用
+## 🚀 快速开始
 
-点击页面右上角 **Use this template**，创建你自己的仓库。
-
-之后，修改配置文件。位于 `./site.config.js`
-
-一切准备就绪后，可以选择你喜欢的方法部署。
+1. 点击 "Use this template" 创建你的仓库
+2. 编辑 site.config.js 填写你的信息
+3. 部署到你喜欢的平台
 
 ## 部署到 Vercel
 
@@ -27,15 +27,13 @@
 
 ## 部署到 Netify
 
-由于 netify 的特性，请在项目设置中把部署命令修改为：
-
 ```bash
 CI= yarn run build
 ```
 
 ## 部署到自己的服务器
 
-### 0.服务器配置
+### 0. 服务器配置
 
 确保服务器已安装 Node.js、 git 和 pm2。
 
